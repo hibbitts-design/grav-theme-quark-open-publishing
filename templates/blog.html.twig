@@ -1,0 +1,73 @@
+{% extends 'partials/base.html.twig' %}
+{% set blog_image = page.media.images[page.header.hero_image] ?: page.media.images|first %}
+{% set collection = page.collection() %}
+{% set show_breadcrumbs = header_var('show_sidebar', '/blog')|default(true) %}
+{% set show_sidebar = header_var('show_sidebar')|default(true) %}
+{% set show_pagination = header_var('show_sidebar')|default(true) %}
+
+{% block stylesheets %}
+    {% do assets.addCss('theme://css/bricklayer.css') %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% do assets.add('theme://js/bricklayer.min.js') %}
+{% endblock %}
+
+{# check content display flag - hibbittsdesign.org #}
+{% if not(grav.uri.param('chromeless')) and (not theme_var('chromeless.enabled')) %}
+  {% block hero %}
+      {% include 'partials/hero.html.twig' with {id: 'blog-hero', content: page.content, hero_image: blog_image} %}
+  {% endblock %}
+{% endif %}
+
+{% block body %}
+    <section id="body-wrapper" class="section blog-listing">
+        <section class="container {{ grid_size }}">
+
+        {% if show_breadcrumbs and config.plugins.breadcrumbs.enabled %}
+            {% include 'partials/breadcrumbs.html.twig' %}
+        {% endif %}
+
+        {% embed 'partials/layout.html.twig' with {blog: page} %}
+            {% block item %}
+
+                <div class="bricklayer">
+
+                {# display posts with 'featured' tag on current blog page - hibbittsdesign.org #}
+                {% for child in taxonomy.findTaxonomy({'tag': "featured"}) %}
+                    {% include 'partials/blog-list-item.html.twig' with {blog: page, page: child} %}
+                {% endfor %}
+
+                {# display posts without 'featured' tag - hibbittsdesign.org #}
+                {% for child in collection %}
+                  {% if "featured" not in child.taxonomy['tag'] %}
+                    {% include 'partials/blog-list-item.html.twig' with {blog: page, page: child} %}
+                  {% endif %}
+                {% endfor %}
+
+                </div>
+
+                {% if show_pagination and config.plugins.pagination.enabled and collection.params.pagination %}
+                    <div id="listing-footer">
+                        {% include 'partials/pagination.html.twig' with {base_url: page.url, pagination: collection.params.pagination} %}
+                    </div>
+                {% endif %}
+
+            {% endblock %}
+
+            {# check content display flag - hibbittsdesign.org #}
+            {% if not(grav.uri.param('chromeless')) and (not theme_var('chromeless.enabled')) %}
+              {% block sidebar %}
+                  {% include 'partials/sidebar.html.twig' %}
+              {% endblock %}
+            {% endif %}
+        {% endembed %}
+        </section>
+    </section>
+    <script>
+        //Bricklayer
+        var bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
+    </script>
+{% endblock %}

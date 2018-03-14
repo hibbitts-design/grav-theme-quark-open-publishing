@@ -1,0 +1,94 @@
+{# new twig template file - hibbittsdesign.org #}
+{% if theme_var('git_sync_repo_link') %}
+  {% if not page.header.hide_git_sync_repo_link %}
+    {% set git_repo_link_url = theme_var('git_sync_repo_link') %}
+    {% if theme_var('custom_git_sync_repo_link_icon') is empty %}
+      {% if 'github' in git_repo_link_url %}
+        {% set git_repo_link_icon = "github" %}
+      {% elseif 'gitlab' in git_repo_link_url %}
+        {% set git_repo_link_icon = "gitlab" %}
+      {% elseif 'bitbucket' in git_repo_link_url %}
+        {% set git_repo_link_icon = "bitbucket" %}
+      {% else %}
+        {% set git_repo_link_icon = "git" %}
+      {% endif %}
+    {% else %}
+      {% set git_repo_link_icon = theme_var('custom_git_sync_repo_link_icon') %}
+    {% endif %}
+    {% if theme_var('type_of_git_sync_repo_link') == 'view' or theme_var('type_of_git_sync_repo_link') is empty  %}
+      {% if theme_var('custom_git_sync_repo_link_text') is empty %}
+        {% set git_repo_link_text = 'View Content Repository' %}
+      {% else %}
+        {% set git_repo_link_text = theme_var('custom_git_sync_repo_link_text') %}
+      {% endif %}
+      <a class="newwindow external-link" href="{{ git_repo_link_url }}" title="{{ git_repo_link_text }}" target="_blank">
+      <i class="fa fa-{{ git_repo_link_icon }}" aria-hidden="true"></i>
+      {{ git_repo_link_text }}</a>
+    {% else %}
+      {% if page.header.git_sync_repo_link %}
+        {% set git_repo_link_url = page.header.git_sync_repo_link %}
+      {% else %}
+        {% set git_repo_link_url = git_repo_link_url ~ ('/' ~ page.filePathClean) | replace({'/user/': '/'}) %}
+      {% endif %}
+      {% if page.children.count %}
+        {% set git_repo_link_url = (git_repo_link_url|replace({('/'~page.template~'.md'):'/'})) %}
+      {% endif %}
+	  {% if theme_var('custom_git_sync_repo_link_text') is empty %}
+        {% set git_repo_link_text = 'Edit this Page' %}
+      {% else %}
+        {% set git_repo_link_text =  theme_var('custom_git_sync_repo_link_text') %}
+      {% endif %}
+      <a class="newwindow external-link" href="{{ git_repo_link_url }}" title="{{ git_repo_link_text }}" target="_blank">
+      <i class="fa fa-{{ git_repo_link_icon }}" aria-hidden="true"></i>
+      {{ git_repo_link_text }}</a>
+    {% endif %}
+  {% endif %}
+{% else %}
+  {% if config.plugins['git-sync'].enabled and config.plugins['git-sync'].repository is empty %}
+    {% set admin_panel_appearance_url = grav.base_url ~ '/admin/plugins/git-sync' %}
+    <a class="newwindow external-link" href="{{ admin_panel_appearance_url }}" title="Setup Git Sync">
+    <i class="fa fa-cog" aria-hidden="true"></i>
+    Setup Git Sync</a>
+  {% else %}
+    {% set git_sync_repo = config.plugins['git-sync'].repository %}
+    {% set git_sync_repo_link = (git_sync_repo | replace({'.git': '/'})) %}
+    {% if 'github' in git_sync_repo_link %}
+      {% set git_repo_link_icon = "github" %}
+      {% set git_repo_edit_link_url = (git_sync_repo|replace({'.git':'/'})) ~ 'blob/master' ~ (page.filePathClean)|replace({'user/':'/'}) %}
+    {% elseif 'gitlab' in git_sync_repo_link %}
+      {% set git_repo_link_icon = "gitlab" %}
+      {% set git_repo_edit_link_url = (git_sync_repo|replace({'.git':'/'})) ~ 'blob/master' ~ (page.filePathClean)|replace({'user/':'/'}) %}
+    {% elseif 'bitbucket' in git_sync_repo_link %}
+      {% set git_repo_link_icon = "bitbucket" %}
+      {% set git_repo_edit_link_url = (git_sync_repo|replace({'.git':'/'})) ~ 'src/master' ~ (page.filePathClean)|replace({'user/':'/'}) %}
+    {% else %}
+	    {% set git_repo_link_icon = "git" %}
+      {% set git_repo_edit_link_url = (git_sync_repo|replace({'.git':'/'})) ~ 'blob/master' ~ (page.filePathClean)|replace({'user/':'/'}) %}
+	  {% endif %}
+    {% if theme_var('custom_git_sync_repo_link_icon') is not empty %}
+        {% set git_repo_link_icon = theme_var('custom_git_sync_repo_link_icon') %}
+    {% endif %}
+    {% if theme_var('type_of_git_sync_repo_link') == 'view'  or theme_var('type_of_git_sync_repo_link') is empty %}
+      {% if theme_var('git_sync_repo_link_text') is empty %}
+        {% set git_repo_link_text = 'View Content Repository' %}
+      {% else %}
+        {% set git_repo_link_text = theme_var('custom_git_sync_repo_link_text')  %}
+      {% endif %}
+      <a class="newwindow external-link" href="{{ git_sync_repo_link}}" title="{{ git_repo_link_text }}" target="_blank">
+      <i class="fa fa-{{ git_repo_link_icon }}" aria-hidden="true"></i>
+      {{ git_repo_link_text }}</a>
+    {% else %}
+      {% if page.children.count %}
+        {% set git_repo_edit_link_url = (git_repo_edit_link_url|replace({('/'~page.template~'.md'):'/'})) %}
+      {% endif %}
+      {% if theme_var('custom_git_sync_repo_link_text') is empty %}
+        {% set git_repo_link_text = 'Edit this Page' %}
+      {% else %}
+        {% set git_repo_link_text = theme_var('custom_git_sync_repo_link_text') %}
+      {% endif %}
+      <a class="newwindow external-link" href="{{ git_repo_edit_link_url }}" title="{{ git_repo_link_text }}" target="_blank">
+      <i class="fa fa-{{ git_repo_link_icon }}" aria-hidden="true"></i>
+      {{ git_repo_link_text }}</a>
+    {% endif %}
+  {% endif %}
+{% endif %}

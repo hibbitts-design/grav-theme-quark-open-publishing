@@ -1,0 +1,27 @@
+{% set title_level = title_level ?: 'h2' %}
+{% if page.header.link %}
+    <{{ title_level }} class="p-name mt-1">
+        {% if page.header.continue_link is not sameas(false) %}
+        <a href="{{ page.url }}"><i class="fa fa-angle-double-right u-url"></i></a>
+        {% endif %}
+        <a href="{{ page.header.link }}" class="u-url">{{ page.title }}</a>
+    </{{ title_level }}>
+{% else %}
+    {% if page.header.post_icon %}
+      {% set titleicon = page.header.post_icon %}
+    {% else %}
+      {% if theme_var('post_icon') %}
+        {% set titleicon = theme_var('post_icon') %}
+      {% endif %}
+      {% if page.parent.header.post_icon %}
+        {% set titleicon = page.parent.header.post_icon %}
+      {% endif %}
+    {% endif %}
+    {% if not (grav.uri.param('hidepagetitle')) %}
+      {% if titleicon %}
+        <{{ title_level }} class="p-name mt-1"><a href="{{ page.url }}" class="u-url"><i class="fa fa-{{ titleicon }}" aria-hidden="true"></i> {{ page.title }}</a></{{ title_level }}>
+      {% else %}
+        <{{ title_level }} class="p-name mt-1"><a href="{{ page.url }}" class="u-url">{{ page.title }}</a></{{ title_level }}>
+      {% endif %}
+    {% endif %}
+{% endif %}

@@ -1,0 +1,46 @@
+{% set hide_home_menu_link = theme_var('hidehomemenulink') %}
+{% set home_alias = config.system.home.alias %}
+
+{% macro nav_loop(page, hide_home_menu_link, home_alias) %}
+    {% for p in page.children.visible %}
+      {# Supress home menu link - hibbittsdesign.org #}
+      {% if not((hide_home_menu_link) and (p.slug in home_alias)) %}
+        {% set active_page = (p.active or p.activeChild) ? 'active' : '' %}
+        {% if p.children.visible.count > 0 %}
+            <li>
+                <a href="{{ p.url }}" class="{{ active_page }}">
+                    {{ p.menu }}
+                </a>
+                <ul>
+                    {{ _self.nav_loop(p) }}
+                </ul>
+            </li>
+        {% else %}
+            <li>
+                <a href="{{ p.url }}" class="{{ active_page }}">
+                    {{ p.menu }}
+                </a>
+            </li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+{% endmacro %}
+
+<ul {{ tree ? 'class="tree"' : '' }}>
+    {{ _self.nav_loop(pages, hide_home_menu_link, home_alias ) }}
+    {# custom menu items check and display - hibbittsdesign.org #}
+    {% for mitem in theme_var('menu') %}
+      <li>
+        <a href="{{ mitem.url }}" target="{{ mitem.target }}">
+          {% if mitem.icon %}
+            <i class="fa fa-{{ mitem.icon }}"></i>
+          {% endif %}
+          {{ mitem.text }}
+        </a>
+      </li>
+    {% endfor %}
+    {# check to display git sync link in menu - hibbittsdesign.org #}
+    {% if theme_var('display_of_git_sync_repo_link') == 'menu' or theme_var('display_of_git_sync_repo_link') == empty %}
+      <li>{% include 'partials/git_sync_repo_link.html.twig' %}</li>
+    {% endif %}
+</ul>

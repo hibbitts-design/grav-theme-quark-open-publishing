@@ -1,0 +1,55 @@
+<div class="list-item h-entry">
+
+  {% set header_image = page.header.header_image | defined(true) %}
+  {% set header_image_width = page.header.header_image_width | defined(1000) %}
+  {% set header_image_height = page.header.header_image_height | defined(330) %}
+  {% set header_image_file = page.header.header_image_file %}
+
+  <div class="list-blog-header">
+    {% if header_image %}
+      {% if header_image_file %}
+        {% set image_parts = pathinfo(header_image_file) %}
+        {% set image_basename = image_parts.basename %}
+        {% set image_page = image_parts.dirname == '.' ? page : page.find(image_parts.dirname) %}
+        {% set header_image_media = image_page.media[image_basename] %}
+      {% else %}
+        {% set header_image_media = page.media.images | first %}
+      {% endif %}
+
+      {# support image credit tag with optional image meta file - hibbittsdesign.org #}
+      {% if header_image_media %}
+        {% if page.header.header_image_credit %}
+          {% set image_credit = page.header.header_image_credit %}
+          {% set image_creditlink = page.header.header_image_creditlink %}
+          {% set image_alt_text = page.header.header_image_alt_text %}
+        {% elseif header_image_media.meta.header_image_credit  %}
+          {% set image_credit = header_image_media.meta.header_image_credit %}
+          {% set image_creditlink = header_image_media.meta.header_image_creditlink %}
+          {% set image_alt_text = header_image_media.meta.header_image_alt_text %}
+        {% endif %}
+        {% if image_credit %}
+          <div class="image-credit-wrapper"><span class="image-credit">
+            {% if image_creditlink %}
+              Image: <a class="newwindow external-link" href="{{ image_creditlink }}">
+              {{ image_credit }}</a></span>
+              <img src="{{ header_image_media.cropZoom(header_image_width, header_image_height).url }}" alt="{{ image_alt_text }}"/>
+            {% else %}
+              Image: {{ image_credit }}</span>
+              <img src="{{ header_image_media.cropZoom(header_image_width, header_image_height).url }}" alt="{{ image_alt_text }}"/>
+            {% endif %}
+          </div>
+        {% else %}
+          <img src="{{ header_image_media.cropZoom(header_image_width, header_image_height).url }}" alt="{{ image_alt_text }}"/>
+        {% endif %}
+      {% endif %}
+
+  {% endif %}
+
+  </div>
+
+  <div class="modularitem">
+    {# diable regular post handling - hibbittsdesign.org #}
+    {# <h3>{{ page.title }}</h3> #}
+    <p>{{ page.content }}</p>
+  </div>
+</div>

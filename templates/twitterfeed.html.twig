@@ -1,0 +1,9 @@
+{% if page.header.published %}
+ {% block content %}
+  <div class="twitter-feed-wrapper">
+  {{page.content}}
+  <a class="twitter-timeline" data-height="{{ page.header.twitter_feed_height }}" data-chrome="noscrollbar" href="{{ page.header.twitter_feed_url }}">{{ page.header.twitter_feed_text }}</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+ {% endblock %}
+ </div>
+{% endif %}

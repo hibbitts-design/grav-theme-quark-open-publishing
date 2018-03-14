@@ -1,0 +1,47 @@
+title: Embedly Card
+'@extends':
+    type: default
+    context: blueprints://pages
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        content:
+            fields:
+                header.title:
+                  replace@: true
+                  type: text
+                  size: long
+                  label: Page Title
+
+                header.embedly_card_title:
+                    ordering@: 1
+                    type: text
+                    size: long
+                    label: Embedly Card Title
+
+                header.embedly_card_url:
+                    ordering@: 2
+                    type: text
+                    size: long
+                    label: Embedly Card URL
+                    validate:
+                      type: URL
+
+        options:
+          fields:
+            publishing:
+              fields:
+                header.published:
+                  default: 1
+
+        advanced:
+          fields:
+            overrides:
+              fields:
+                header.routable:
+                  default: 0
+                header.visible:
+                  default: 0

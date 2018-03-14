@@ -1,0 +1,51 @@
+{% extends 'partials/base.html.twig' %}
+{% set blog = page.find(theme_var('blog-page')|default('/blog')) %}
+{% set show_breadcrumbs = header_var('show_breadcrumbs', [page, blog]) %}
+{% set show_sidebar = header_var('show_sidebar', [page, blog])  %}
+{% set show_pagination = header_var('show_pagination', [page, blog]) %}
+{% set hero_image_name = page.header.hero_image %}
+
+{% block hero %}
+    {% if hero_image_name %}
+        {% set hero_image = page.media[hero_image_name] %}
+        {% set content %}
+            <h1>{{ page.title }}</h1>
+            <h2>{{ page.header.subtitle }}</h2>
+            {% include 'partials/blog/date.html.twig' %}
+            {% include 'partials/blog/taxonomy.html.twig' %}
+        {% endset %}
+        {% include 'partials/hero.html.twig' with {id: 'blog-hero'} %}
+
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+<section id="body-wrapper" class="section blog-listing">
+    <section class="container {{ grid_size }}">
+
+        {% if show_breadcrumbs and config.plugins.breadcrumbs.enabled %}
+            {% include 'partials/breadcrumbs.html.twig' %}
+        {% endif %}
+
+        {% embed 'partials/layout.html.twig' %}
+            {% block item %}
+                {% include 'partials/blog-item.html.twig' %}
+                {# check to display CC License - hibbittsdesign.org #} {# check to display git sync link in page - hibbittsdesign.org #}
+                {% if theme_var('display_of_git_sync_repo_link') == 'page' and not (grav.uri.param('summaryonly')) %}
+                  <p>{% include 'partials/git_sync_repo_link_note.html.twig' %}</p>
+                {% endif %}
+                {% if theme_var('cc_license.enabled') %}
+                  <p>{% include 'partials/creative_commons_license.html.twig' %}</p>
+                {% endif %}
+              {% endblock %}
+            {# check content display flag - hibbittsdesign.org #}
+            {% if not(grav.uri.param('chromeless')) and (not theme_var('chromeless.enabled')) %}
+              {% block sidebar %}
+                  {% include 'partials/sidebar.html.twig' %}
+              {% endblock %}
+            {% endif %}
+        {% endembed %}
+
+    </section>
+</section>
+{% endblock %}
