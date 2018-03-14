@@ -29,16 +29,18 @@
 <ul {{ tree ? 'class="tree"' : '' }}>
     {{ _self.nav_loop(pages, hide_home_menu_link, home_alias ) }}
     {# custom menu items check and display - hibbittsdesign.org #}
-    {% for mitem in theme_var('menu') %}
-      <li>
-        <a href="{{ mitem.url }}" target="{{ mitem.target }}">
-          {% if mitem.icon %}
-            <i class="fa fa-{{ mitem.icon }}"></i>
-          {% endif %}
-          {{ mitem.text }}
-        </a>
-      </li>
-    {% endfor %}
+    {% if theme_var('displaycustommenus.enabled') %}
+      {% for mitem in theme_var('menu') %}
+        <li>
+          <a href="{{ mitem.url }}" target="{{ mitem.target }}">
+            {% if mitem.icon %}
+              <i class="fa fa-{{ mitem.icon }}"></i>
+            {% endif %}
+            {{ mitem.text }}
+          </a>
+        </li>
+      {% endfor %}
+    {% endif %}
     {# check to display git sync link in menu - hibbittsdesign.org #}
     {% if theme_var('display_of_git_sync_repo_link') == 'menu' or theme_var('display_of_git_sync_repo_link') == empty %}
       <li>{% include 'partials/git_sync_repo_link.html.twig' %}</li>
