@@ -1,10 +1,12 @@
 {% set grid_size = theme_var('grid-size') %}
-{% set columns = page.header.class == 'small' ? 'col-12'  %}
+{% set image = page.media.images|first %}
 
-<section id="modular">
+<section id="modular" class="section">
     <section class="container {{ grid_size }}">
-      <div class="column {{ columns }}">
-          {{ page.content }}
-      </div>
+        <div class="columns">
+            <div class="column col-12 col-md-12">
+                {{ content }}
+            </div>
+        </div>
     </section>
 </section>
