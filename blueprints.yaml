@@ -3,8 +3,8 @@ version: .9.0.0
 description: "A customized version of the Quark theme with Git Sync and 'chromeless' mode (as shown in screenshot)."
 icon: unlock
 author:
- name: Paul Hibbitts
- email: paul@hibbittsdesign.org
+ name: Hibbitts Design
+ email: hello@hibbittsdesign.org
  url: http://hibbittsdesign.org
 homepage: https://github.com/hibbitts-design/grav-theme-quark-open-publishing
 demo: http://demo.hibbittsdesign.org/grav-open-publishing-quark/
