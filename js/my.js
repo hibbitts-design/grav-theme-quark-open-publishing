@@ -3,6 +3,7 @@ $(document).ready(function(){
    $("a.topwindow").attr("target","_top");
 
   $('#body-wrapper').on('click', 'a:not(.external-link):not([href^="#"])', function(e){
+     if ($(this).attr('rel') != 'lightbox'){
       e.preventDefault();
       var url  = window.location.href;
       var newurl = $(this).attr('href');
@@ -16,5 +17,6 @@ $(document).ready(function(){
       }
 
       window.location.href = newurl;
+    }
   });
 });
