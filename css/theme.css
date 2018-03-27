@@ -45,10 +45,14 @@ right: 0;
 
 #blog-hero h1 {
     color: #FFFFFF !important;
+    font-size: 3.25rem !important;
+    margin-bottom: 50px;
 }
 
 #blog-hero h2 {
     color: #FFFFFF !important;
+    font-size: 2rem !important;
+    margin-bottom: 50px;
 }
 
 #blog-hero h3 {
