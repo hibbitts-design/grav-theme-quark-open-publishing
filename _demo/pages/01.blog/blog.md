@@ -1,5 +1,5 @@
 ---
-title: Home
+title: Blog
 sitemap:
     changefreq: monthly
 body_classes: 'header-dark header-transparent'
@@ -24,5 +24,5 @@ feed:
 pagination: true
 ---
 
-# My **Grav**tastic Blog
-## the ramblings of a rambler
+# My **Open** Publishing Space
+## Publish, Share, and Collaborate
