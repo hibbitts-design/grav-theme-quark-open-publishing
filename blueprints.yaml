@@ -1,5 +1,5 @@
 name: Quark Open Publishing
-version: .9.0.0
+version: 0.9.0
 description: "A customized version of the Quark theme with Git Sync and 'chromeless' mode (as shown in screenshot)."
 icon: unlock
 author:
