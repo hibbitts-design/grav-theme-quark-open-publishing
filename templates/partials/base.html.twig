@@ -89,6 +89,15 @@
                         {% include 'partials/messages.html.twig' ignore missing %}
                     {% endblock %}
                     {% block content %}{% endblock %}
+
+                    {# check to display CC License - hibbittsdesign.org #} {# check to display git sync link in page - hibbittsdesign.org #}
+                    {% if theme_var('display_of_git_sync_repo_link') == 'page' and not (grav.uri.param('summaryonly')) %}
+                      <p>{% include 'partials/git_sync_repo_link_note.html.twig' %}</p>
+                    {% endif %}
+                    {% if theme_var('cc_license.enabled') %}
+                      <p>{% include 'partials/creative_commons_license.html.twig' %}</p>
+                    {% endif %}
+
                 </section>
             </section>
         {% endblock %}
