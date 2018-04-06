@@ -1,0 +1,46 @@
+title: H5P Content Options
+'@extends':
+    type: default
+    context: blueprints://pages
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        content:
+            fields:
+                header.title:
+                  replace@: true
+                  type: text
+                  size: long
+                  label: Page Title
+
+                header.hp5_content_id:
+                    ordering@: 1
+                    type: integer
+                    size: short
+                    label: H5P Content ID (Node)
+                    description: 'For example, for the URL https://h5p.org/node/712 the ID would be 712.'
+
+                info:
+                    ordering@: 3
+                    type: display
+                    size: large
+                    label: 'How-to Tip'
+                    markdown: false
+                    content: "To display this item within another page, enter '[plugin:page-inject](/hp5-content/PAGE)' in your Markdown content area."
+
+        options:
+          fields:
+            publishing:
+              fields:
+                header.published:
+                  default: 1
+
+        advanced:
+          fields:
+            overrides:
+              fields:
+                header.visible:
+                  default: 0

@@ -1,0 +1,24 @@
+{% if page.header.published %}
+{% block content %}
+<div class="h5p-content-wrapper">
+{{page.content}}
+{% if displaypagetitle is defined %}
+  {% if displaypagetitle %}
+    <strong>{{page.title}}</strong><br>
+  {% endif %}
+{% endif %}
+{% set h5pcontentid = page.header.hp5_content_id %}
+  {% if h5pcontentid|contains('http') %}
+    {% set h5pcontenturl = h5pcontentid %}
+  {% else %}
+    {% if theme_var('h5pembedrootpath') %}
+      {% set h5pembedrootpath = theme_var('h5pembedrootpath') %}
+    {% else %}
+      {% set h5pembedrootpath = 'https://h5p.org/h5p/embed/' %}
+    {% endif %}
+    {% set h5pcontenturl = h5pembedrootpath ~ h5pcontentid %}
+  {% endif %}
+    <iframe src="{{h5pcontenturl}}" width="400" height="300" frameborder="0" allowfullscreen="allowfullscreen"></iframe><script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script><br><br>
+</div>
+{% endblock %}
+{% endif %}
