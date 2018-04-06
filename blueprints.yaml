@@ -1,5 +1,5 @@
 name: Quark Open Publishing
-version: 0.9.0
+version: 0.9.1
 description: "A customized version of the Quark theme with Git Sync and 'chromeless' mode (as shown in screenshot)."
 icon: unlock
 author:
@@ -128,6 +128,21 @@ form:
                 label: Custom Git Repository Tree URL
                 help: Enter the URL that leads to the pages folder of your Git Repository.
                 description: "URL path to pages folder for 'View/Edit Page in Git Repository' option, but with '/pages' and everything following it removed. For example, 'https://github.com/paulhibbitts/demo-grav-course-hub/tree/master'."
+                validate:
+                    type: URL
+
+            h5psetup:
+                type: section
+                title: H5P Setup
+                underline: true
+                
+            h5pembedrootpath:
+                type: text
+                size: long
+                label:  H5P Embed Source URL
+                default:  'https://h5p.org/h5p/embed/'
+                help: Enter the embed source URL path up to, but not including, the H5P Content ID.
+                description:  "H5P embed source URL path up to, but not including, the Content ID. For example, for h5p.org the URL would be 'https://h5p.org/h5p/embed/'."
                 validate:
                     type: URL
 
