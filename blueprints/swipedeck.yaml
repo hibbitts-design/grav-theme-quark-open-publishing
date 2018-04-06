@@ -1,0 +1,51 @@
+title: Swipe Deck Options
+'@extends':
+    type: default
+    context: blueprints://pages
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        content:
+            fields:
+                header.title:
+                  replace@: true
+                  type: text
+                  size: long
+                  label: Page Title
+
+                header.swipe_deck_title:
+                    ordering@: 1
+                    type: text
+                    size: long
+                    label: Swipe Deck Title
+
+                header.swipe_deck_id:
+                    ordering@: 2
+                    type: integer
+                    size: small
+                    label: Swipe Deck ID
+
+                header.swipe_deck_pdf_url:
+                    ordering@: 3
+                    type: text
+                    size: long
+                    label: Swipe Deck PDF URL
+                    validate:
+                      type: URL
+
+        options:
+          fields:
+            publishing:
+              fields:
+                header.published:
+                  default: 1
+
+        advanced:
+          fields:
+            overrides:
+              fields:
+                header.visible:
+                  default: 0

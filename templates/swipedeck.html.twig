@@ -1,0 +1,20 @@
+{% if page.header.published %}
+
+ {% block content %}
+  {{ page.content }}
+  {% if displaypagetitle is defined %}
+    {% if displaypagetitle %}
+      <strong>{{page.title}}</strong><br>
+    {% endif %}
+  {% endif %}  
+  {{ page.header.swipe_deck_title }}
+  {% if page.header.swipe_deck_pdf_url %}
+  (<a href="{{ page.header.swipe_deck_pdf_url }}">Download slides as PDF</a>)
+  {% endif %}
+  <div class="embed-responsive embed-responsive-16by9">
+    <figure><iframe width="600" height="338" src="{{ 'https://www.swipe.to/embed/' ~ page.header.swipe_deck_id }}" allowfullscreen></iframe></figure>
+  </div>
+  <br>
+ {% endblock %}
+
+{% endif %}
