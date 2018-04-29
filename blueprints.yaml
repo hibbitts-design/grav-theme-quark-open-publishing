@@ -1,5 +1,5 @@
 name: Quark Open Publishing
-version: 0.9.1
+version: 0.9.2
 description: "A customized version of the Quark theme with Git Sync and 'chromeless' mode (as shown in screenshot)."
 icon: unlock
 author:
@@ -135,7 +135,7 @@ form:
                 type: section
                 title: H5P Setup
                 underline: true
-                
+
             h5pembedrootpath:
                 type: text
                 size: long
