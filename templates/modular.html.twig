@@ -54,18 +54,15 @@
 {% endblock %}
 
 {% block body %}
-    <div style="margin-bottom: 122px;"></div>
     {% for module in page.collection() if module.template != 'modular/hero' %}
         <div id="{{ _self.pageLinkName(module.menu) }}"></div>
         {{ module.content }}
     {% endfor %}
-    <div style="padding-left: 1.4rem;">
-      {# check to display CC License - hibbittsdesign.org #} {# check to display git sync link in page - hibbittsdesign.org #}
-      {% if theme_var('display_of_git_sync_repo_link') == 'page' and not (grav.uri.param('summaryonly')) %}
-        {% include 'partials/git_sync_repo_link_note.html.twig' %}
-      {% endif %}
-      {% if theme_var('cc_license.enabled') %}
-        {% include 'partials/creative_commons_license.html.twig' %}
-      {% endif %}
-    </div>
+    {# check to display CC License - hibbittsdesign.org #} {# check to display git sync link in page - hibbittsdesign.org #}
+    {% if theme_var('display_of_git_sync_repo_link') == 'page' and not (grav.uri.param('summaryonly')) %}
+      {% include 'partials/git_sync_repo_link_note.html.twig' %}
+    {% endif %}
+    {% if theme_var('cc_license.enabled') %}
+      {% include 'partials/creative_commons_license.html.twig' %}
+    {% endif %}
 {% endblock %}
