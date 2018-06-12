@@ -1,3 +1,15 @@
+# v0.9.4
+## 06/12/2018
+
+1. [](#new)
+    * Added example Modular collection page
+    * Added full width page template for Modular pages
+1. [](#improved)
+    * Updated demo pages in theme '_demo' folder
+1. [](#bugfix)
+    * Restored theme ability to hide Blog Sidebar
+    * Updated default checks for Blog list page options
+
 # v0.9.3
 ## 06/10/2018
 
