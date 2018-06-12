@@ -10,9 +10,6 @@ taxonomy:
 hero_classes: 'text-dark title-h1h2 overlay-light hero-large parallax'
 hero_image: unsplash-luca-bravo.jpg
 blog_url: /blog
-show_sidebar: false
-show_breadcrumbs: true
-show_pagination: true
 subtitle: 'finding beauty in structure'
 ---
 
@@ -75,4 +72,3 @@ raptam, mihi latentes deducunt mente postquam. Celatos montanaque, prolem;
 
 Adeo hortanda maneat stultae pennis amnis altera, voce deo: res? Hanc lana est
 locutus intrat Lapitharum mersura, Martem Iuno terras?
-
