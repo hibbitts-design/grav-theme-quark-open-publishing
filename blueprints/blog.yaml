@@ -18,6 +18,17 @@ form:
                 title: Appearance
                 underline: true
 
+            header.bricklayer_layout:
+                type:                      toggle
+                label:                     Use Bricklayer Layout
+                highlight:                 1
+                default:                   1
+                options:
+                    1:                     Yes
+                    0:                     No
+                validate:
+                    type:                  bool
+
             header.display_post_summary.enabled:
                 type:                      toggle
                 label:                     Hide Summaries on Blog Post Pages
