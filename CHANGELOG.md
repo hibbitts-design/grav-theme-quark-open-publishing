@@ -1,3 +1,12 @@
+# v0.9.5
+## 06/19/2018
+
+1. [](#new)
+    * Added support for 'header_image' frontmatter option
+    * Added option to turn off bricklayer layout for Blog list pages
+1. [](#improved)
+    * Blog header images now handled properly up to 'extra large' grid size
+
 # v0.9.4
 ## 06/12/2018
 
