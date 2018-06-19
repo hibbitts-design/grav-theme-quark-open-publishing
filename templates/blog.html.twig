@@ -46,7 +46,11 @@
         {% embed 'partials/layout.html.twig' with {blog: page} %}
             {% block item %}
 
-                <div class="bricklayer">
+                {% if ((page.header.bricklayer_layout is not defined) or (page.header.bricklayer_layout)) %}
+                  <div class="bricklayer">
+                {% else %}
+                  <div>
+                {% endif %}
 
                 {# display posts with 'featured' tag on current blog page - hibbittsdesign.org #}
                 {% for child in taxonomy.findTaxonomy({'tag': "featured"}) %}
