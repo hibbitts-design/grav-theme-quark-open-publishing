@@ -1,3 +1,11 @@
+# v0.9.6
+## 07/02/2018
+
+1. [](#improved)
+    * Updated demo pages in theme '_demo' folder
+1. [](#bugfix)
+    * Removed OERSchema dependency
+
 # v0.9.5
 ## 06/19/2018
 
