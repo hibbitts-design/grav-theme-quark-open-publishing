@@ -1,3 +1,16 @@
+# v0.9.7
+## 07/06/2018
+
+1. [](#new)
+    * Added templates and blueprints for PDFs and SpeakerDeck files
+    * Added custom content list template and blueprint
+1. [](#improved)
+    * Updated link and title only templates for Embedly Cards and Swipe decks
+    * Updated location of Git Sync link on blog list pages
+    * Added drop shadow for blog hero H1,H2,H3 text
+1. [](#bugfix)
+    * Fixed incorrect responsive div classes
+
 # v0.9.6
 ## 07/02/2018
 
