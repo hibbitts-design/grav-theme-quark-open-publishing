@@ -1,0 +1,49 @@
+title: SpeakerDeck Options
+'@extends':
+    type: default
+    context: blueprints://pages
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        content:
+            fields:
+                header.title:
+                  replace@: true
+                  type: text
+                  size: long
+                  label: Page Title
+
+                header.speakerdeck_title:
+                    ordering@: 1
+                    type: text
+                    size: long
+                    label: SpeakerDeck Title
+
+                header.speakerdeck_id:
+                    ordering@: 2
+                    type: integer
+                    size: medium
+                    label: SpeakerDeck ID
+
+                header.speakerdeck_slide:
+                    ordering@: 3
+                    type: integer
+                    size: small
+                    label: SpeakerDeck Slide #
+
+        options:
+          fields:
+            publishing:
+              fields:
+                header.published:
+                  default: 1
+
+        advanced:
+          fields:
+            overrides:
+              fields:
+                header.visible:
+                  default: 0

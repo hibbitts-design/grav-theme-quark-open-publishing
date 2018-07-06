@@ -1,0 +1,26 @@
+{% if page.header.published %}
+
+{% block content %}
+{{ page.content }}
+{% if page.header.speakerdeck_slide is defined %}
+  {% set speakerdeckslide = page.header.speakerdeck_slide %}
+{% else %}
+  {% set speakerdeckslide = 1  %}
+{% endif %}
+{% if displaypagetitle is defined %}
+{% if displaypagetitle %}
+  <strong>{{page.title}}</strong><br>
+{% endif %}
+{% endif %}
+{% if displaycontenttitle is defined %}
+  {% if displaycontenttitle %}
+  {{ page.header.speakerdeck_title }}
+  {% endif %}
+{% else %}
+{{ page.header.speakerdeck_title }}
+{% endif %}
+<script async class="speakerdeck-embed" data-slide="{{speakerdeckslide}}" data-id="{{ page.header.speakerdeck_id }}" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
+<br>
+{% endblock %}
+
+{% endif %}

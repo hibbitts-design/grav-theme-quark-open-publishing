@@ -1,0 +1,28 @@
+{% if page.header.published %}
+
+{% block content %}
+{{ page.content }}
+{% if displaypagetitle is defined %}
+  {% if displaypagetitle %}
+  <strong>{{page.title}}</strong>
+  {% endif %}
+{% endif %}
+{% if displaycontenttitle is defined %}
+  {% if displaycontenttitle %}
+    {% if displaypagetitle is defined %}
+    {% if displaypagetitle %}
+      <br>
+    {% endif %}
+    {% endif %}
+  {{ page.header.pdf_title }}
+  {% endif %}
+{% else %}
+  {{ page.header.pdf_title }}
+{% endif %}
+<div class="video-responsive video-responsive-1-1">
+  <iframe style="border: 0px #ffffff none;" src="https://docs.google.com/gview?url={{ page.header.pdf_url }}&embedded=true" width="640" height="480"></iframe>
+</div>
+<br>
+{% endblock %}
+
+{% endif %}
