@@ -1,0 +1,108 @@
+title: Custom Content List
+@extends:
+    type: default
+    context: blueprints://pages
+
+child_type: embedlycard
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        advanced:
+          fields:
+            overrides:
+              fields:
+                header.child_type:
+                  default: customcontentlist
+        requiredreadings:
+          type: tab
+          title: Custom Content List
+
+          fields:
+            header.content.order.by:
+              type: select
+              label: Order By
+              default: date
+              options:
+                folder: Folder
+                title: Title
+                date: Date
+                default: Default
+
+            header.content.order.dir:
+              type: select
+              label: Order
+              default: desc
+              options:
+                asc: Ascending
+                desc: Descending
+
+            coursehub1:
+                type: section
+                title: "Appearance"
+                underline: true
+
+            header.show_sidebar:
+                type:                      toggle
+                label:                     Display Sidebar Page
+                highlight:                 1
+                default:                   1
+                options:
+                    1:                     Yes
+                    0:                     No
+                validate:
+                    type:                  bool
+
+            header.display_child_page_titles:
+                type: toggle
+                label: Display Child Page Titles
+                help: Determines if child page titles are displayed
+                default: 0
+                highlight: 0
+                options:
+                    1:  Yes
+                    0:  No
+                validate:
+                    type: bool
+
+            header.display_content_titles:
+                type: toggle
+                label: Display Content Titles
+                help: Determines if content titles are displayed
+                default: 1
+                highlight: 1
+                options:
+                    1:  Yes
+                    0:  No
+                validate:
+                    type: bool
+
+            coursehub2:
+                type: section
+                title: Git Repository
+                underline: true
+
+            header.hide_git_sync_repo_link:
+                type: toggle
+                label: Display Git Repository Edit Page Link
+                help: Determines if the Git Repository edit Page link is displayed for this page
+                default: 0
+                highlight: 0
+                options:
+                    0:  Yes
+                    1:  No
+                validate:
+                    type: bool
+
+            header.git_sync_repo_link:
+                type: text
+                size: large
+                label: Custom Git Repository Page URL
+                help: Custom Git Repository URL for this page, to override the automatically calculated URL
+                default: null
+                validate:
+                    type: URL

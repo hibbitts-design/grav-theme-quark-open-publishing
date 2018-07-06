@@ -1,0 +1,56 @@
+{% if page.header.show_sidebar is defined %}
+  {% set show_sidebar = page.header.show_sidebar %}
+{% else %}
+  {% set show_sidebar = true %}
+{% endif %}
+
+{% embed 'partials/base.html.twig' %}
+
+{% block content %}
+  <div class="main-content">
+    <div class="container">
+      <div class="row">
+        {# check content display flag - hibbittsdesign.org #}
+        {% if not (grav.uri.param('chromeless')) and (show_sidebar) %}
+          <div class="col-md-8 blog-main">
+        {% else %}
+          <div class="col-md-12 blog-main">
+        {% endif %}
+
+        {% if not (page.header.hide_page_title) and not (grav.uri.param('hidepagetitle')) %}
+          <h3>{{page.title}}</h3>
+        {% endif %}
+        {{ page.content }}
+        {% set collection = page.collection() %}
+        {% if page.header.display_template %}
+          {% set templatename = page.header.display_template ~ '.html.twig' %}
+        {% endif %}
+        {% for child in collection %}
+          {% if not templatename %}
+            {% set templatename = child.template ~ '.html.twig' %}
+          {% endif %}
+          <p>{% include templatename with {'page':child, 'displaypagetitle':page.header.display_child_page_titles, 'displaycontenttitle':page.header.display_content_titles} %}</p>
+        {% endfor %}
+
+        {# Git repository edit link - hibbittsdesign.org #}
+        {% if ( page.header.git_sync_repo_link_display is defined and page.header.git_sync_repo_link_display == 'page' ) or (( config.site.gitrepo.editlinklocation == 'page' and page.header.git_sync_repo_link_display is not defined ) and not (page.header.hide_git_sync_repo_link)) %}
+          <hr>
+          <br>
+          {% include 'partials/gitrepo_link_note.html.twig' %}
+          <br>
+        {% endif %}
+
+      </div>
+
+      {# check content display flag - hibbittsdesign.org #}
+      {% if not (grav.uri.param('chromeless')) and (show_sidebar) %}
+        <div class="col-md-4 blog-sidebar">
+          {% include 'partials/sidebar.html.twig' with {'blog':page} %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  </div>
+  {% endblock %}
+
+{% endembed %}
