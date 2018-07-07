@@ -81,7 +81,7 @@
                   <p>{% include 'partials/creative_commons_license.html.twig' %}</p>
                 {% endif %}
               </div>
-              
+
             {% endblock %}
 
             {# check content display flag - hibbittsdesign.org #}
@@ -96,6 +96,8 @@
     </section>
     <script>
         //Bricklayer
-        var bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
+        {% if ((page.header.bricklayer_layout is not defined) or (page.header.bricklayer_layout)) %}
+          var bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
+        {% endif %}
     </script>
 {% endblock %}
