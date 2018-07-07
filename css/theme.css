@@ -46,13 +46,11 @@ right: 0;
 
 #blog-hero h1 {
     text-shadow: 1px 1px 4px rgba(34,34,34,0.6);
-    font-size: 3.25rem !important;
     margin-bottom: 50px;
 }
 
 #blog-hero h2 {
     text-shadow: 1px 1px 4px rgba(34,34,34,0.6);
-    font-size: 2rem !important;
     margin-bottom: 50px;
 }
 
