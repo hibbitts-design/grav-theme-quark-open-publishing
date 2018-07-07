@@ -1,3 +1,9 @@
+# v0.9.9
+## 07/07/2018
+
+1. [](#bugfix)
+    * Restored responsive blog heading text 
+
 # v0.9.8
 ## 07/07/2018
 
