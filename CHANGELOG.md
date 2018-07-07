@@ -1,3 +1,18 @@
+# v0.9.8
+## 07/07/2018
+
+1. [](#new)
+    * Added support for custom global JavaScript (scripts.html.twig)
+1. [](#improved)
+    * Removed fixed blog header text color
+    * Added bricklayer layout option check before jQuery call
+    * Added check to hide Git Sync link note
+    * Added better handling of pagination on small screens (thanks OleVik)
+    * Updated Quark CSS files to latest development branch version
+1. [](#bugfix)
+    * Fixed display of link blog posts
+    * Fixed Next Post and Previous Post button display issue
+
 # v0.9.7
 ## 07/06/2018
 
