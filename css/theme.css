@@ -62,9 +62,49 @@ right: 0;
     text-shadow: 1px 1px 4px rgba(34,34,34,0.6);
 }
 
-#modular {
-    padding-top: 0rem;
-    padding-bottom: 0rem;
+img.left {
+  display:inline;
+  float:left;
+  margin:5px 15px 5px 0;
+}
+
+img.right {
+  float:right;
+  margin:5px 0 5px 15px;
+}
+
+img.center {
+  display:block;
+  margin:10px
+  auto;
+}
+
+figure.image-caption {
+    text-align: center;
+    margin: 1rem;
+}
+
+figure.image-caption figcaption {
+    opacity: 0.7;
+    font-size: 90%;
+}
+
+figure.figure-right {
+    float:right;
+    margin:5px 0 5px 15px;
+}
+
+figure.figure-left {
+    float: left;
+    margin:5px 15px 5px 0;
+}
+
+figure.caption-left figcaption {
+    text-align: left;
+}
+
+figure.caption-right figcaption {
+    text-align: right;
 }
 
 @media only screen and (max-width: 640px) {
