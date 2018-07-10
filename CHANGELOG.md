@@ -1,8 +1,21 @@
+# v1.0.0
+## 07/10/2018
+
+1. [](#new)
+    * Added new 'hide_cc_license' page header option
+    * Added classes to float images left(img.left), right(img.right) and align center(img.center)
+    * Added Image Captions Plugin as Theme dependency
+    * Added experimental ShortCode 'clearboth' to insert Div for clearing image floats
+1. [](#improved)
+    * Updated demo pages in theme '_demo' folder (to include image float examples)
+    * Removed unneeded page template file (fullwidthpagemodular)
+    * Removed unneeded modular page elements CSS
+
 # v0.9.9
 ## 07/07/2018
 
 1. [](#bugfix)
-    * Restored responsive blog heading text 
+    * Restored responsive blog heading text
 
 # v0.9.8
 ## 07/07/2018

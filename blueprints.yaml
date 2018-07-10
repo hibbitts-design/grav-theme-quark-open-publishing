@@ -24,6 +24,7 @@ dependencies:
   - feed
   - form
   - git-sync
+  - image-captions
   - login
   - markdown-fontawesome
   - markdown-notices
