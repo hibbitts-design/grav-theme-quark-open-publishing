@@ -7,6 +7,12 @@ use Grav\Common\Theme;
 class QuarkOpenPublishing extends Quark
 {
 
+  public static function getblogpageheroclasses()
+  {
+    $config = Grav::instance()['config'];
+    return $config->get('themes.' . $config->get('system.pages.theme'). '.blog_page_hero_classes');
+  }
+
   public static function getSubscribedEvents()
   {
       return [
