@@ -1,3 +1,14 @@
+# v1.0.1
+## 07/13/2018
+
+1. [](#new)
+    * Added ability to define default hero classes for blog pages
+    * Added SpeakerDeck ShortCode
+1. [](#improved)
+    * Updated demo pages in theme '_demo' folder
+1. [](#bugfix)
+    * Removed Image Captions Plugin as Theme dependency
+
 # v1.0.0
 ## 07/10/2018
 
@@ -5,7 +16,7 @@
     * Added new 'hide_cc_license' page header option
     * Added classes to float images left(img.left), right(img.right) and align center(img.center)
     * Added Image Captions Plugin as Theme dependency
-    * Added experimental ShortCode 'clearboth' to insert Div for clearing image floats
+    * Added experimental ShortCode 'ClearBoth' to insert Div for clearing image floats
 1. [](#improved)
     * Updated demo pages in theme '_demo' folder (to include image float examples)
     * Removed unneeded page template file (fullwidthpagemodular)
