@@ -1,3 +1,9 @@
+# v1.0.3
+## 07/31/2018
+
+1. [](#new)
+    * Added support for "Continue Reading" button link in blog post lists
+
 # v1.0.2
 ## 07/13/2018
 
