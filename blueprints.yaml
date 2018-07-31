@@ -1,6 +1,6 @@
 name: Quark Open Blog
 version: 1.0.4
-description: "A customized version of the Quark theme with Git Sync and 'chromeless' mode (as shown in screenshot)."
+description: "A customized version of the Quark theme, with Git Sync and 'chromeless' mode (as shown in screenshot)."
 icon: unlock
 author:
  name: Hibbitts Design
