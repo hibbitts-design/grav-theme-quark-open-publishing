@@ -1,3 +1,9 @@
+# v1.0.4
+## 08/01/2018
+
+1. [](#improved)
+    * Changed theme title from "Quark Open Publishing" to "Quark Open Blog"
+
 # v1.0.3
 ## 07/31/2018
 

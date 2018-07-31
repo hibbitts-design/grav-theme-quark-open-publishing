@@ -1,5 +1,5 @@
-name: Quark Open Publishing
-version: 1.0.3
+name: Quark Open Blog
+version: 1.0.4
 description: "A customized version of the Quark theme with Git Sync and 'chromeless' mode (as shown in screenshot)."
 icon: unlock
 author:
@@ -49,7 +49,7 @@ form:
 
         general_info:
           type: tab
-          title: Open Publishing Space Options
+          title: Open Blog Options
           fields:
 
             chromelessoptions:
@@ -254,7 +254,7 @@ form:
 
         theme_info:
           type: tab
-          title: Quark Theme Options
+          title: Quark Options
           fields:
 
             production-mode:
