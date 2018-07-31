@@ -42,6 +42,8 @@
       <div class="card-body">
           {% if page.summary != page.content %}
               {{ page.summary }}
+              <br>
+              <a href="{{ page.url }}" title="{{ page.title }}" class="btn btn-primary">Continue Reading</a>
           {% else %}
               {{ page.content }}
           {% endif %}
