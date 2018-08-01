@@ -42,8 +42,10 @@
       <div class="card-body">
           {% if page.summary != page.content %}
               {{ page.summary }}
-              <br>
-              <a href="{{ page.url }}" title="{{ page.title }}" class="btn btn-primary">Continue Reading</a>
+              {% if page.header.continue_link is sameas(true) %}
+                <br>
+                <a href="{{ page.url }}" title="{{ page.title }}" class="btn btn-primary">Continue Reading</a>
+              {% endif %}
           {% else %}
               {{ page.content }}
           {% endif %}
