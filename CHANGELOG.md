@@ -1,3 +1,11 @@
+# v1.0.5
+## 08/01/2018
+
+1. [](#bugfix)
+    * Restored check for "Continue Reading" button link in blog post lists
+1. [](#improved)
+    * Updated demo pages in theme '_demo' folder
+
 # v1.0.4
 ## 08/01/2018
 
