@@ -1,3 +1,9 @@
+# v1.0.6
+## 08/06/2018
+
+1. [](#improved)
+    * Updated theme screenshots and blueprint
+
 # v1.0.5
 ## 08/01/2018
 
@@ -10,7 +16,7 @@
 ## 08/01/2018
 
 1. [](#improved)
-    * Changed theme title from "Quark Open Publishing" to "Quark Open Blog"
+    * Updated demo pages in theme '_demo' folder
 
 # v1.0.3
 ## 07/31/2018
