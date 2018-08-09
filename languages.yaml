@@ -125,7 +125,7 @@ it:
   TRANSLATION_TEST: Quark!
   BLOG:
     ITEM:
-      CONTINUE_READING: Continua a Leggere
+      CONTINUE_READING: Continua a leggere
       NEXT_POST: Prossimo articolo
       PREV_POST: Articolo precedente
   SIDEBAR:
