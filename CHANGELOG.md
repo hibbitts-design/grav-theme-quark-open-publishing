@@ -3,6 +3,7 @@
 
 1. [](#improved)
     * Revised the Italian translation for the "Continue Reading" button
+    * Removed unneeded CSS from Blog "Hero" H1 H2 title text
 
 # v1.0.7
 ## 08/09/2018
