@@ -1,3 +1,9 @@
+# v1.0.7
+## 08/09/2018
+
+1. [](#bugfix)
+    * Updated the "Continue Reading" button to support multi-language labels
+
 # v1.0.6
 ## 08/06/2018
 
