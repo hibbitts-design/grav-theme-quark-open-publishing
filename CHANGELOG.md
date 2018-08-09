@@ -1,3 +1,9 @@
+# v1.0.8
+## 08/09/2018
+
+1. [](#improved)
+    * Revised the Italian translation for the "Continue Reading" button
+
 # v1.0.7
 ## 08/09/2018
 
