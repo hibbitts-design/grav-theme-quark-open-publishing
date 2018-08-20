@@ -1,5 +1,5 @@
 # v1.1.0
-## XX/XX/2018
+## 08/20/2018
 
 1. [](#improved)
     * Updated theme blueprints
