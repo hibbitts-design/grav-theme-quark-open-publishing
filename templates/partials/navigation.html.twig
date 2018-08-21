@@ -9,7 +9,10 @@
         {% if p.children.visible.count > 0 %}
             <li>
                 <a href="{{ p.url }}" class="{{ active_page }}">
-                    {{ p.menu }}
+                  {% if p.header.icon %}
+                    <i class="fa fa-{{ p.header.icon }}"></i>
+                  {% endif %}
+                  {{ p.menu }}
                 </a>
                 <ul>
                     {{ _self.nav_loop(p) }}
@@ -18,7 +21,10 @@
         {% else %}
             <li>
                 <a href="{{ p.url }}" class="{{ active_page }}">
-                    {{ p.menu }}
+                  {% if p.header.icon %}
+                    <i class="fa fa-{{ p.header.icon }}"></i>
+                  {% endif %}
+                  {{ p.menu }}
                 </a>
             </li>
         {% endif %}
