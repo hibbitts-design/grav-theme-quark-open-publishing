@@ -1,3 +1,9 @@
+# v1.1.2
+## 08/21/2018
+
+1. [](#new)
+    * Added Image Captions plugin to theme dependencies
+
 # v1.1.1
 ## 08/21/2018
 
