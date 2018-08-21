@@ -1,5 +1,5 @@
 name: Quark Open Publishing
-version: 1.1.1
+version: 1.1.2
 description: "A custom version of the Quark theme for open publishing. Includes Git Sync and 'chromeless' content embedding."
 icon: unlock
 author:
@@ -24,6 +24,7 @@ dependencies:
   - feed
   - form
   - git-sync
+  - image-captions
   - login
   - markdown-fontawesome
   - markdown-notices
