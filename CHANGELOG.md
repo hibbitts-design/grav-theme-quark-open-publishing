@@ -1,3 +1,11 @@
+# v1.1.1
+## 08/21/2018
+
+1. [](#new)
+    * Added support for page menu icons
+1. [](#improved)
+    * Updated demo pages in theme '_demo' folder
+
 # v1.1.0
 ## 08/20/2018
 
