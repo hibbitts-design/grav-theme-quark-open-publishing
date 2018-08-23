@@ -1,11 +1,24 @@
 {% set feed_url = blog.url == '/' or blog.url == base_url_relative ? (base_url_relative~'/'~blog.slug) : blog.url %}
 {% set new_base_url = blog.url == '/' ? '' : blog.url %}
 
+{% set sidebar_page = pages.find('/sidebar') %}
+{% set sidebar_page_content =  sidebar_page.content %}
+
 {% if config.plugins.simplesearch.enabled %}
 <div class="sidebar-content">
     {% include 'partials/simplesearch_searchbox.html.twig' %}
 </div>
 {% endif %}
+
+{# display sidebar markdown page - hibbittsdesign.org #}
+{% if sidebar_page.header.position == 'top' or sidebar_page.header.position is empty %}
+  {% if sidebar_page_content is not empty %}
+    <div class="sidebar-content">
+      {{ sidebar_page_content }}
+    </div>
+  {% endif %}
+{% endif %}
+
 {% if config.plugins.relatedpages.enabled and related_pages|length > 0 %}
 <div class="sidebar-content">
     <h4>{{ 'SIDEBAR.RELATED_POSTS.HEADLINE'|t }}</h4>
@@ -19,9 +32,6 @@
 </div>
 {% endif %}
 
-{# revised location of Markdown sidebar area - hibbittsdesign.org #}
-{{ page.find('/sidebar').content }}
-
 {% if config.plugins.taxonomylist.enabled %}
 <div class="sidebar-content">
     <h4>{{ 'SIDEBAR.POPULAR_TAGS.HEADLINE'|t }}</h4>
@@ -34,6 +44,16 @@
 	{% include 'partials/archives.html.twig' with {'base_url':new_base_url} %}
 </div>
 {% endif %}
+
+{# display sidebar markdown page - hibbittsdesign.org #}
+{% if sidebar_page.header.position == 'bottom' %}
+  {% if sidebar_page_content is not empty %}
+    <div class="sidebar-content">
+      {{ sidebar_page_content }}
+    </div>
+  {% endif %}
+{% endif %}
+
 {% if config.plugins.feed.enabled %}
 <div class="sidebar-content syndicate">
     <h4>{{ 'SIDEBAR.SYNDICATE.HEADLINE'|t }}</h4>
