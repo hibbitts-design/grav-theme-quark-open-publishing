@@ -1,3 +1,9 @@
+# v1.1.4
+## 08/23/2018
+
+1. [](#new)
+    * Added support for custom logo (thanks Andy)
+
 # v1.1.3
 ## 08/23/2018
 
