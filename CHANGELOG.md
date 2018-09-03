@@ -1,3 +1,9 @@
+# v1.1.6
+## 09/03/2018
+
+1. [](#improved)
+    * Improved support for Comments Plugin
+
 # v1.1.5
 ## 08/23/2018
 
