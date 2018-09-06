@@ -1,3 +1,13 @@
+# v1.1.7
+## 09/06/2018
+
+1. [](#new)
+    * Added Twitter Shortcode ([twitter url="" text="" theme="" height=""]), where theme can be 'light' or 'dark'
+    * Added Spectre.CSS Button Shortcode ([button url="" label="" target="" size="" classes=""])
+    * Added PDF Shortcode ([pdf url="")
+1. [](#improved)
+    * Updated Theme ReadMe file
+
 # v1.1.6
 ## 09/03/2018
 
