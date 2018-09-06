@@ -2,15 +2,16 @@
 
 ![Quark Open Publishing Theme](screenshot.jpg)
 
-Quark Open Publishing is a customized version of the most recent default [Grav](http://getgrav.org) theme. In addition for built-in support for the Git Sync Plugin, a ['Chromeless' mode](http://demo.hibbittsdesign.org/grav-skeleton-open-publishing-chromeless-site/) (shown above) is available to better embed Grav content into other systems.
+Quark Open Publishing is a customized version of Quark, the most recent default [Grav](http://getgrav.org) theme. In addition for built-in support for the Git Sync Plugin, a ['Chromeless' mode](http://demo.hibbittsdesign.org/grav-skeleton-open-publishing-chromeless-site/) (shown above) is available to better embed Grav content into other systems.
 
-This inherited theme is built with the [Spectre.css](https://picturepan2.github.io/spectre/) framework and provides a powerful base for developing your own themes. Quark uses functionality that is only available in Grav 1.4+, as such you cannot run Quark on earlier versions of Grav.
+This inherited theme is built with the [Spectre.css](https://picturepan2.github.io/spectre/) framework and provides a powerful base for developing your own themes. Quark Open Publishing uses functionality that is only available in Grav 1.4+, as such you cannot run Quark Open Publishing on earlier versions of Grav.
 
-## Open Publishing Features
+## Quark Open Publishing Features
 
 * Integrated support for Git Sync (i.e. view/edit pages in GitHub)
 * 'Chromeless' page display (i.e. only display page content) for embedding pages in a 3rd party system
 * Markdown-based sidebar widget
+* Built-in Shortcodes - including Embed.ly, SpeakerDeck, Swipe and H5P
 * Featured posts (i.e. sticky posts)
 * Option to toggle page summaries (i.e. summaries are not displayed with page content)
 * Custom menubar items
@@ -42,29 +43,27 @@ This inherited theme is built with the [Spectre.css](https://picturepan2.github.
 
 # Installation
 
-Installing the Quark theme can be done in one of two ways. Our GPM (Grav Package Manager) installation method enables you to quickly and easily install the theme with a simple terminal command, while the manual method enables you to do so via a zip file.
-
-The theme by itself is useful, but you may have an easier time getting up and running by installing a skeleton. The Quark theme can be found in both the [One-page](https://github.com/getgrav/grav-skeleton-onepage-site) and [Blog Site](https://github.com/getgrav/grav-skeleton-blog-site) which are self-contained repositories for a complete sites which include: sample content, configuration, theme, and plugins.
+Installing the Quark Open Publishing theme can be done in one of two ways. Our GPM (Grav Package Manager) installation method enables you to quickly and easily install the theme with a simple terminal command, while the manual method enables you to do so via a zip file.
 
 ## GPM Installation (Preferred)
 
 The simplest way to install this theme is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm) through your system's Terminal (also called the command line).  From the root of your Grav install type:
 
-    bin/gpm install quark
+    bin/gpm install quark-open-publishing
 
-This will install the Quark theme into your `/user/themes` directory within Grav. Its files can be found under `/your/site/grav/user/themes/quark`.
+This will install the Quark Open Publishing theme into your `/user/themes` directory within Grav. Its files can be found under `/your/site/grav/user/themes/quark-open-publishing`.
 
 ## Manual Installation
 
-To install this theme, just download the zip version of this repository and unzip it under `/your/site/grav/user/themes`. Then, rename the folder to `quark`. You can find these files either on [GitHub](https://github.com/getgrav/grav-theme-quark) or via [GetGrav.org](http://getgrav.org/downloads/themes).
+To install this theme, just download the zip version of this repository and unzip it under `/your/site/grav/user/themes`. Then, rename the folder to `quark-open-publishing`. You can find these files either on [GitHub](https://github.com/hibbitts-design/grav-theme-quark-open-publishing) or via [GetGrav.org](http://getgrav.org/downloads/themes).
 
 You should now have all the theme files under
 
-    /your/site/grav/user/themes/quark
+    /your/site/grav/user/themes/quark-open-publishing
 
 ## Default Options
 
-Quark comes with a few default options that can be set site-wide.  These options are:
+Quark Open Publishing comes with a few default options that can be set site-wide.  These options are:
 
 ```yaml
 enabled: true                 # Enable the theme
@@ -78,13 +77,13 @@ sticky-footer: true           # Causes the footer to be sticky at the bottom of 
 blog-page: '/blog'            # The route to the blog listing page, useful for a blog style layout with sidebar
 ```
 
-To make modifications, you can copy the `user/themes/quark/quark.yaml` file to `user/config/themes/` folder and modify, or you can use the admin plugin.
+To make modifications, you can copy the `user/themes/quark/quark-open-publishing.yaml` file to `user/config/themes/` folder and modify, or you can use the admin plugin.
 
-> NOTE: Do not modify the `user/themes/quark/quark.yaml` file directly or your changes will be lost with any updates
+> NOTE: Do not modify the `user/themes/quark/quark-open-publishing.yaml` file directly or your changes will be lost with any updates
 
 ## Page Overrides
 
-Quark has the ability to allow pages to override some of the default options by letting the user set `body_classes` for any page.  The theme will merge the combination of the defaults with any `body_classes` set. For example:
+Quark Open Publising has the ability to allow pages to override some of the default options by letting the user set `body_classes` for any page.  The theme will merge the combination of the defaults with any `body_classes` set. For example:
 
 ```yaml
 body_classes: "header-dark header-transparent"
