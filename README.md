@@ -2,7 +2,7 @@
 
 ![Quark Open Publishing Theme](screenshot.jpg)
 
-Quark Open Publishing is a customized version of [Quark](https://github.com/getgrav/grav-theme-quark), the most recent default [Grav](http://getgrav.org) theme. In addition for built-in support for the Git Sync Plugin, a ['Chromeless' mode](http://demo.hibbittsdesign.org/grav-skeleton-open-publishing-chromeless-site/) (shown above) is available to better embed Grav content into other systems.
+Quark Open Publishing is a customized version of [Quark](https://github.com/getgrav/grav-theme-quark), the most recent default [Grav](http://getgrav.org) theme. In addition for built-in support for the Git Sync Plugin, a ['Chromeless' mode](http://demo.hibbittsdesign.org/grav-open-publishing-quark/chromeless:true) (shown above) is available to better embed Grav content into other systems.
 
 This inherited theme is built with the [Spectre.css](https://picturepan2.github.io/spectre/) framework and provides a powerful base for developing your own themes. Quark Open Publishing uses functionality that is only available in Grav 1.4+, as such you cannot run Quark Open Publishing on earlier versions of Grav.
 
