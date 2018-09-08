@@ -1,3 +1,9 @@
+# v1.1.8
+##09/08/2018
+
+1. [](#improved)
+    * Updated various Git Sync-related blueprint text labels
+
 # v1.1.7
 ## 09/06/2018
 
