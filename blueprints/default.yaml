@@ -44,8 +44,8 @@ form:
             header.git_sync_repo_link:
                 type: text
                 size: large
-                label: Custom Git Repository Page URL
-                help: Custom Git Repository URL for this page, to override the automatically calculated URL
+                label: Custom Git Repository File/Folder URL
+                help: Enter the URL for this Page in your Git Repository, to override the automatically calculated URL
                 default: null
                 validate:
                     type: URL

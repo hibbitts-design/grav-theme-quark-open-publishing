@@ -1,5 +1,5 @@
 name: Quark Open Publishing
-version: 1.1.7
+version: 1.1.8
 description: "A custom version of the Quark theme for open publishing. Includes Git Sync and 'chromeless' content embedding."
 icon: unlock
 author:
@@ -127,9 +127,9 @@ form:
 
             git_sync_repo_link:
                 type: input.url
-                label: Custom Git Repository Tree URL
-                help: Enter the URL that leads to the pages folder of your Git Repository.
-                description: "URL path to pages folder for 'View/Edit Page in Git Repository' option, but with '/pages' and everything following it removed. For example, 'https://github.com/paulhibbitts/demo-grav-course-hub/tree/master'."
+                label: Custom Git Repository URL
+                help: Enter the URL that leads to the Pages folder in your Git Repository.
+                description: "URL path to a Git repository up to, but not including, ''/pages'' and everything following it. For example, ''https://github.com/paulhibbitts/demo-grav-course-hub/tree/master''."
                 validate:
                     type: URL
 
