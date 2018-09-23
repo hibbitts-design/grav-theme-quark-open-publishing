@@ -43,7 +43,7 @@
     <h1 class="hidden">{{page.title}}</h1>
 
     {# check content display flag - hibbittsdesign.org #}
-    {% if not(grav.uri.param('chromeless')) and (not theme_var('chromeless.enabled')) %}
+    {% if not (grav.uri.param('chromeless') or grav.uri.param('embedded')) and not(theme_var('chromeless.enabled')) %}
       {% block header %}
           <section id="header" class="section">
               <section class="container {{ grid_size }}">
@@ -105,7 +105,7 @@
 
     </div>
 {# check content display flag - hibbittsdesign.org #}
-{% if not (grav.uri.param('chromeless')) and (not theme_var('chromeless.enabled')) %}
+{% if not (grav.uri.param('chromeless') or grav.uri.param('embedded')) and (not theme_var('chromeless.enabled')) %}
   {% block footer %}
       <section id="footer" class="section bg-gray">
           <section class="container {{ grid_size }}">

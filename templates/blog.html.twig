@@ -29,7 +29,7 @@
 {% endblock %}
 
 {# check content display flag - hibbittsdesign.org #}
-{% if not(grav.uri.param('chromeless')) and (not theme_var('chromeless.enabled')) %}
+{% if not (grav.uri.param('chromeless') or grav.uri.param('embedded')) and not(theme_var('chromeless.enabled')) %}
   {% block hero %}
       {% include 'partials/hero.html.twig' with {id: 'blog-hero', content: page.content, hero_image: blog_image} %}
   {% endblock %}
@@ -85,7 +85,7 @@
             {% endblock %}
 
             {# check content display flag - hibbittsdesign.org #}
-            {% if not(grav.uri.param('chromeless')) and (not theme_var('chromeless.enabled')) %}
+            {% if not (grav.uri.param('chromeless') or grav.uri.param('embedded')) and not(theme_var('chromeless.enabled')) %}
               {% block sidebar %}
                   {% include 'partials/sidebar.html.twig' %}
               {% endblock %}

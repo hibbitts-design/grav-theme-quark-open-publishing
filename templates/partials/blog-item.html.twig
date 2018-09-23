@@ -41,7 +41,7 @@
 </div>
 
 {# added check for content display flag - hibbittsdesign.org #}
-{% if not (grav.uri.param('chromeless')) %}
+{% if not (grav.uri.param('chromeless') or grav.uri.param('embedded')) and not(theme_var('chromeless.enabled')) %}
 
   <p class="prev-next text-center">
 

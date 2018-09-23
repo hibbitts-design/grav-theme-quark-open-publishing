@@ -2,7 +2,7 @@
 {% set sidebar_col = show_sidebar ? 'col-3 col-md-12' : 'col-12' %}
 
 {# check content display flag - hibbittsdesign.org #}
-{% if grav.uri.param('chromeless') or theme_var('chromeless.enabled') %}
+{% if grav.uri.param('chromeless') or grav.uri.param('embedded') or theme_var('chromeless.enabled') %}
   {% set item_col = 'col-12' %}
   {% set sidebar_col = 'col-12' %}
 {% endif %}
@@ -12,7 +12,7 @@
         {% block item %}{% endblock %}
     </div>
     {# check content display flag - hibbittsdesign.org #}
-    {% if not(grav.uri.param('chromeless')) and (not theme_var('chromeless.enabled')) %}
+    {% if not (grav.uri.param('chromeless') or grav.uri.param('embedded')) and not(theme_var('chromeless.enabled')) %}
       {% if show_sidebar %}
       <div id="sidebar" class="column {{ sidebar_col }}">
           {% block sidebar %}{% endblock %}
