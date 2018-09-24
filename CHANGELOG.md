@@ -1,3 +1,9 @@
+# v1.2.0
+## 09/24/2018
+
+1. [](#improved)
+    * Added multi-language compatibility for option to hide Homepage link in menubar
+
 # v1.1.9
 ## 09/23/2018
 
