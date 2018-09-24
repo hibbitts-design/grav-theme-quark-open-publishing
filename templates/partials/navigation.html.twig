@@ -1,10 +1,9 @@
 {% set hide_home_menu_link = theme_var('hidehomemenulink') %}
-{% set home_alias = config.system.home.alias %}
 
 {% macro nav_loop(page, hide_home_menu_link, home_alias) %}
     {% for p in page.children.visible %}
       {# Supress home menu link - hibbittsdesign.org #}
-      {% if not((hide_home_menu_link) and (p.slug in home_alias)) %}
+      {% if not((hide_home_menu_link) and p.home) %}
         {% set active_page = (p.active or p.activeChild) ? 'active' : '' %}
         {% if p.children.visible.count > 0 %}
             <li>
