@@ -1,5 +1,6 @@
 ---
 title: 'Section One'
+visible: false
 ---
 
 ### Section One
