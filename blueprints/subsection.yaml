@@ -1,0 +1,4 @@
+title: Subsection Page Options
+'@extends':
+    type: default
+    context: blueprints://pages

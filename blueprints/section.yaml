@@ -1,0 +1,4 @@
+title: Section Page Options
+'@extends':
+    type: default
+    context: blueprints://pages
