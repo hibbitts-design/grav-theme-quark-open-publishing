@@ -5,6 +5,13 @@
 <div class="columns">
   <div id="section" class="column col-9 col-md-12">
 
+        {{ dump (page.header.hide_page_title) }}
+        {% if not (page.header.hide_page_title) and not (grav.uri.param('hidepagetitle')) %}
+          <h3>{{page.title}}</h3>
+        {% else %}
+          <h3 aria-label={{page.title}}></h3>
+        {% endif %}
+
         {{ page.content }}
 
           <p class="prev-next">
