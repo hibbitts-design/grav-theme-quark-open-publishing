@@ -1,0 +1,94 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+<div class="columns">
+  <div id="section" class="column col-9 col-md-12">
+
+        {{ page.content }}
+
+          <p class="prev-next">
+            {% set siblings = page.parent.children() %}
+            {% set children = page.children() %}
+
+      {% if not (page.parent.slug == 'pages') %}
+
+        <p>
+
+            {% if not siblings.isFirst(page.path) %}
+                {% if page.children.count == 0 %}
+                  <a class="btn btn-primary" href="{{ siblings.nextSibling(page.path).url }}"><i class="fa fa-chevron-left"></i> {{ siblings.nextSibling(page.path).title }}</a>
+                {% else %}
+                  <a class="btn btn-primary" href="{{ siblings.nextSibling(page.path).url }}"><i class="fa fa-chevron-left"></i> {{ siblings.nextSibling(page.path).title }}</a>
+                {% endif %}
+            {% else %}
+                {% if not (page.parent.parent.slug == 'pages') %}
+                  <a class="btn btn-primary" href="{{ page.parent.url }}"><i class="fa fa-chevron-left"></i> {{ page.parent.title }}</a>
+                {% endif %}
+            {% endif %}
+
+            {% if not siblings.isLast(page.path) %}
+              {% if page.children.count == 0 %}
+                <a class="btn btn-primary" href="{{ siblings.prevSibling(page.path).url }}">{{ siblings.prevSibling(page.path).title }} <i class="fa fa-chevron-right"></i></a>
+              {% else %}
+                <a class="btn btn-primary" href="{{ page.children|first.url }}">{{ page.children|first.title }} <i class="fa fa-chevron-right"></i></a>
+              {% endif %}
+            {% else %}
+			          {% if not (page.parent.parent.slug == 'pages') %}
+                  {% set siblings = page.parent.parent.children() %}
+                  {% if not siblings.isLast(page.parent.path) %}
+                    <a class="btn btn-primary" href="{{ siblings.prevSibling(page.parent.path).url }}">{{ siblings.prevSibling(page.parent.path).title }} <i class="fa fa-chevron-right"></i></a>
+                  {% endif %}
+                {% else %}
+                  <a class="btn btn-primary" href="{{ page.children|first.url }}">{{ page.children|first.title }} <i class="fa fa-chevron-right"></i></a>
+              {% endif %}
+            {% endif %}
+
+          </p>
+
+        {% endif %}
+
+    </div>
+
+    <div id="section-nav" class="column col-3 col-md-12">
+
+    <ul class="nav">
+
+    {% set collection = page.collection() %}
+    {% if collection is empty %}
+      {% set collection = page.parent.collection() %}
+      {% if collection is empty %}
+        {% set collection = page.parent.parent.collection() %}
+      {% endif %}
+    {% endif %}
+    {% for p in collection %}
+
+      {% set current_parent = p.active ? 'active' : '' %}
+      <li class="nav-item  {{ current_parent }}">
+        <a href="{{ p.url }}">{{ p.title }}</a>
+      </li>
+
+      {% if p.children.count != 0 %}
+
+        {% if p.active or (p.slug == page.parent.slug) %}
+          <ul class="nav">
+          {% for child in p.children %}
+            {% set current_child = child.active ? 'active' : '' %}
+            <li class="nav-item {{ current_child }}">
+              <a href="{{ child.url }}">{{ child.title }}</a>
+            </li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+
+      {% endif %}
+
+    {% endfor %}
+
+    </ul>
+
+    </div>
+
+  </div>
+
+  {% endblock %}
