@@ -1,3 +1,9 @@
+# v1.2.2
+## 10/06/2018
+
+1. [](#new)
+    * Added blueprints for section-type pages
+
 # v1.2.1
 ## 10/05/2018
 
