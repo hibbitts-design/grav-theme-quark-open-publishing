@@ -1,3 +1,11 @@
+# v1.2.1
+## 10/05/2018
+
+1. [](#new)
+    * Added new 'section' and 'subsection' page templates
+1. [](#improved)
+    * Updated demo pages in theme '_demo' folder
+
 # v1.2.0
 ## 09/24/2018
 
