@@ -1,3 +1,9 @@
+# v1.2.4
+## 10/08/2018
+
+1. [](#improved)
+    * Updated custom content list template and blueprint
+
 # v1.2.3
 ## 10/07/2018
 
