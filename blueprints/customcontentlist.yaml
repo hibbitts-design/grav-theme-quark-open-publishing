@@ -3,8 +3,6 @@ title: Custom Content List
     type: default
     context: blueprints://pages
 
-child_type: embedlycard
-
 form:
   fields:
     tabs:
@@ -17,7 +15,9 @@ form:
             overrides:
               fields:
                 header.child_type:
-                  default: customcontentlist
+                  default: embedlycard
+                  toggleable: false
+
         requiredreadings:
           type: tab
           title: Custom Content List
@@ -45,17 +45,6 @@ form:
                 type: section
                 title: "Appearance"
                 underline: true
-
-            header.show_sidebar:
-                type:                      toggle
-                label:                     Display Sidebar Page
-                highlight:                 1
-                default:                   1
-                options:
-                    1:                     Yes
-                    0:                     No
-                validate:
-                    type:                  bool
 
             header.display_child_page_titles:
                 type: toggle
