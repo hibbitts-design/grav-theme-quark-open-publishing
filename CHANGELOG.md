@@ -1,3 +1,10 @@
+# v1.2.3
+## 10/07/2018
+
+1. [](#improved)
+    * Adjusted page title alignment for section-type pages
+    * Updated demo pages in theme '_demo' folder
+
 # v1.2.2
 ## 10/06/2018
 
