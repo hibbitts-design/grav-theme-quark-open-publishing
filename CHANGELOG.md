@@ -1,3 +1,9 @@
+# v1.2.5
+## 10/09/2018
+
+1. [](#bugfix)
+    * Restored check for option to hide Git Sync link in menu
+
 # v1.2.4
 ## 10/08/2018
 
