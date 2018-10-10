@@ -22,5 +22,5 @@ feed:
 pagination: true
 ---
 
-# My **Open** Blog
+# My **Open Blogging** Space
 ## Create, Publish, Share and Collaborate
