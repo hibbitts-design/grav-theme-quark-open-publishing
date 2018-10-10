@@ -1,4 +1,4 @@
-# Quark Open Blogging Theme
+# Quark Open Blogging (Publishing) Theme
 
 ![Quark Open Blogging Theme](screenshot.jpg)
 
