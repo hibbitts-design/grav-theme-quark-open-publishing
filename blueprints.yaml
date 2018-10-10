@@ -1,6 +1,6 @@
-name: Quark Open Publishing
+name: Quark Open Blogging
 version: 1.2.5
-description: "A custom version of the Quark theme for open publishing. Includes Git Sync and 'chromeless' content embedding."
+description: "A custom version of the Quark theme for open blogging. Includes Git Sync and 'chromeless' content embedding."
 icon: unlock
 author:
  name: Hibbitts Design
@@ -9,7 +9,7 @@ author:
 homepage: https://github.com/hibbitts-design/grav-theme-quark-open-publishing
 demo: http://demo.hibbittsdesign.org/grav-open-publishing-quark/
 docs: https://github.com/hibbitts-design/grav-theme-quark-open-publishing/blob/master/README.md
-keywords: open, publishing, gitsync, chromeless
+keywords: open, blog, gitsync, chromeless
 bugs: https://github.com/hibbitts-design/grav-theme-quark-open-publishing/issues
 license: MIT
 
@@ -52,7 +52,7 @@ form:
 
         general_info:
           type: tab
-          title: Open Publishing Options
+          title: Open Blogging Options
           fields:
 
             chromelessoptions:
