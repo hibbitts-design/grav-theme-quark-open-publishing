@@ -1,3 +1,9 @@
+# v1.2.8
+## 10/12/2018
+
+1. [](#improved)
+    * Updated theme blueprints
+
 # v1.2.7
 ## 10/11/2018
 
