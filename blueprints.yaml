@@ -1,5 +1,5 @@
 name: Quark Open Blogging
-version: 1.2.6
+version: 1.2.7
 description: "A custom version of the Quark theme for open blogging. Includes Git Sync and 'chromeless' content embedding."
 icon: unlock
 author:
@@ -106,8 +106,7 @@ form:
                 type: input.text
                 size: long
                 label: Text before Git Sync Link on Pages
-                default: 'Have a suggestion or correction?'
-                description: 'The text before the Git Sync link (only when displayed on a Page).'
+                description: The text before the Git Sync link (only when displayed on a Page), e.g. 'Have a suggestion or correction?'.
 
             custom_git_sync_repo_link_icon:
                 type: input.text
