@@ -1,5 +1,5 @@
 # v1.2.7
-## 10/10/2018
+## 10/11/2018
 
 1. [](#improved)
     * Added support for no text prompt before Git Sync link on Pages
