@@ -1,12 +1,12 @@
-# Quark Open Blogging (Publishing) Theme
+# Quark Open Publishing (Blogging) Theme
 
-![Quark Open Blogging Theme](screenshot.jpg)
+![Quark Open Publishing Theme](screenshot.jpg)
 
-Quark Open Blogging is a customized version of [Quark](https://github.com/getgrav/grav-theme-quark), the most recent default [Grav](http://getgrav.org) theme. In addition for built-in support for the Git Sync Plugin, a ['Chromeless' mode](http://demo.hibbittsdesign.org/grav-open-publishing-quark/chromeless:true) (shown above) is available to better embed Grav content into other systems.
+Quark Open Publishing is a customized version of [Quark](https://github.com/getgrav/grav-theme-quark), the most recent default [Grav](http://getgrav.org) theme. In addition for built-in support for the Git Sync Plugin, a ['Chromeless' mode](http://demo.hibbittsdesign.org/grav-open-publishing-quark/chromeless:true) (shown above) is available to better embed Grav content into other systems.
 
-This inherited theme is built with the [Spectre.css](https://picturepan2.github.io/spectre/) framework and provides a powerful base for developing your own themes. Quark Open Blogging uses functionality that is only available in Grav 1.4+, as such you cannot run Quark Open Blogging on earlier versions of Grav.
+This inherited theme is built with the [Spectre.css](https://picturepan2.github.io/spectre/) framework and provides a powerful base for developing your own themes. Quark Open Publishing uses functionality that is only available in Grav 1.4+, as such you cannot run Quark Open Publishing on earlier versions of Grav.
 
-## Quark Open Blogging Features
+## Quark Open Publishing Features
 
 * Integrated support for Git Sync (i.e. view/edit pages in GitHub)
 * 'Chromeless' page display (i.e. only display page content) for embedding pages in a 3rd party system
@@ -43,7 +43,7 @@ This inherited theme is built with the [Spectre.css](https://picturepan2.github.
 
 # Installation
 
-Installing the Quark Open Blogging theme can be done in one of two ways. Our GPM (Grav Package Manager) installation method enables you to quickly and easily install the theme with a simple terminal command, while the manual method enables you to do so via a zip file.
+Installing the Quark Open Publishing theme can be done in one of two ways. Our GPM (Grav Package Manager) installation method enables you to quickly and easily install the theme with a simple terminal command, while the manual method enables you to do so via a zip file.
 
 ## GPM Installation (Preferred)
 
@@ -51,7 +51,7 @@ The simplest way to install this theme is via the [Grav Package Manager (GPM)](h
 
     bin/gpm install quark-open-publishing
 
-This will install the Quark Open Blogging theme into your `/user/themes` directory within Grav. Its files can be found under `/your/site/grav/user/themes/quark-open-publishing`.
+This will install the Quark Open Publishing theme into your `/user/themes` directory within Grav. Its files can be found under `/your/site/grav/user/themes/quark-open-publishing`.
 
 ## Manual Installation
 
@@ -63,7 +63,7 @@ You should now have all the theme files under
 
 ## Default Options
 
-Quark Open Blogging comes with a few default options that can be set site-wide.  These options are:
+Quark Open Publishing comes with a few default options that can be set site-wide.  These options are:
 
 ```yaml
 enabled: true                 # Enable the theme
@@ -83,7 +83,7 @@ To make modifications, you can copy the `user/themes/quark/quark-open-publishing
 
 ## Page Overrides
 
-Quark Open Publising has the ability to allow pages to override some of the default options by letting the user set `body_classes` for any page.  The theme will merge the combination of the defaults with any `body_classes` set. For example:
+Quark Open Publishing has the ability to allow pages to override some of the default options by letting the user set `body_classes` for any page.  The theme will merge the combination of the defaults with any `body_classes` set. For example:
 
 ```yaml
 body_classes: "header-dark header-transparent"
