@@ -1,3 +1,11 @@
+# v1.2.9
+## 10/19/2018
+
+1. [](#improved)
+    * Restored Admin Panel display name to Quark Open Publishing
+    * Updated theme screenshots
+    * Updated demo pages in theme '_demo' folder
+
 # v1.2.8
 ## 10/12/2018
 
@@ -14,7 +22,7 @@
 ## 10/10/2018
 
 1. [](#improved)
-    * Changed Admin Panel display name from Quark Open Publishing to Quark Open Blogging
+    * Testing Admin Panel display name from Quark Open Publishing to Quark Open Blogging
     * Updated theme screenshots
     * Updated demo pages in theme '_demo' folder
 
