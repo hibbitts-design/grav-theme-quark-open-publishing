@@ -1,6 +1,6 @@
-name: Quark Open Blogging
-version: 1.2.8
-description: "A custom version of the Quark theme for open blogging. Includes Git Sync and 'chromeless' content embedding."
+name: Quark Open Publishing
+version: 1.2.9
+description: "A custom version of the Quark theme for open publishing and blogging. Includes Git Sync and 'chromeless' content embedding."
 icon: unlock
 author:
  name: Hibbitts Design
