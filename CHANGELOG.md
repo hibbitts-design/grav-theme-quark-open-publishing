@@ -22,7 +22,7 @@
 ## 10/10/2018
 
 1. [](#improved)
-    * Testing Admin Panel display name from Quark Open Publishing to Quark Open Blogging
+    * Testing changing Admin Panel display name from Quark Open Publishing to Quark Open Blogging
     * Updated theme screenshots
     * Updated demo pages in theme '_demo' folder
 
