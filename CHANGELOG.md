@@ -1,3 +1,10 @@
+# v1.3.0
+## 11/06/2018
+
+1. [](#bugfix)
+    * Updated language.yaml references to include 'THEME_QUARK' prefix
+    * Fixed incorrect H4 padding for sidebar items
+
 # v1.2.9
 ## 10/19/2018
 
