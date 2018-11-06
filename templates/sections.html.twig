@@ -4,9 +4,10 @@
 
   <div class="columns">
 
-    <div id="section" class="column col-9 col-md-12">
+    <div id="sections-content" class="column col-9 col-md-12">
 
       {% if not(page.header.hide_page_title)and not(grav.uri.param('hidepagetitle')) %}
+        <div style="margin-top: -30px;"></div>
         <h3>{{page.title}}</h3>
       {% endif %}
 
@@ -69,7 +70,7 @@
 
       </div>
 
-      <div id="section-nav" class="column col-3 col-md-12">
+      <div id="sections-nav" class="column col-3 col-md-12">
 
         <ul class="nav">
 
