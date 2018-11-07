@@ -2,6 +2,11 @@
  {% block content %}
   <div class="embedly-card-wrapper">
   {{page.content}}
+  {% if displaypagetitle is defined %}
+    {% if displaypagetitle %}
+      <strong>{{page.title}}</strong><br>
+    {% endif %}
+  {% endif %}
   <a class="embedly-card" data-card-controls="0" data-card-align="{{page.header.embedly_card_alignment}}" href="{{ page.header.embedly_card_url}}" >{{ page.header.embedly_card_title }}</a>
   <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
   </div>
