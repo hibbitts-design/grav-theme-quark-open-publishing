@@ -125,3 +125,11 @@ figure.caption-right figcaption {
         display: inline-block;
     }
 }
+
+h1.sections-page-title-template, h2.sections-page-title-template, h3.sections-page-title-template, h4.sections-page-title-template, h5.sections-page-title-template, h6.sections-page-title-template {
+    margin-top: 0rem;
+}
+
+.sections-page-title {
+    margin-top: -2rem;
+}

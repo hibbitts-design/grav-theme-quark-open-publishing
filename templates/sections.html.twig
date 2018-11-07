@@ -7,8 +7,7 @@
     <div id="sections-content" class="column col-9 col-md-12">
 
       {% if not(page.header.hide_page_title)and not(grav.uri.param('hidepagetitle')) %}
-        <div style="margin-top: -2rem;"></div>
-        <h3>{{page.title}}</h3>
+        <h3 class="sections-page-title-template">{{page.title}}</h3>
       {% endif %}
 
       {{ page.content }}
