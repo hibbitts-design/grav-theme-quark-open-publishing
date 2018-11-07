@@ -1,3 +1,11 @@
+# v1.3.1
+## 11/07/2018
+
+1. [](#improved)
+    * Included option to show/hide page titles for embed.ly cards
+    * Adjusted handling of padding for Headings in Sections template
+    * Updated demo pages in theme '_demo' folder
+
 # v1.3.0
 ## 11/06/2018
 
