@@ -10,7 +10,7 @@ content:
     limit: 0    
 ---
 
-[div class="section-page-title"]
+[div class="sections-page-title"]
 ### Sections
 [/div]
 
