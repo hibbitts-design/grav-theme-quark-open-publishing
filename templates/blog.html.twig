@@ -3,19 +3,19 @@
 {% set collection = page.collection() %}
 {# revise checks for Blog list page options - hibbittsdesign.org #}
 {% if page.header.show_breadcrumbs is defined %}
-  {% set show_breadcrumbs = page.header.show_breadcrumbs %}
+    {% set show_breadcrumbs = page.header.show_breadcrumbs %}
 {% else %}
-  {% set show_breadcrumbs = true %}
+    {% set show_breadcrumbs = true %}
 {% endif %}
 {% if page.header.show_sidebar is defined %}
-  {% set show_sidebar = page.header.show_sidebar %}
+    {% set show_sidebar = page.header.show_sidebar %}
 {% else %}
-  {% set show_sidebar = true %}
+    {% set show_sidebar = true %}
 {% endif %}
 {% if page.header.show_pagination is defined %}
-  {% set show_pagination = page.header.show_pagination %}
+    {% set show_pagination = page.header.show_pagination %}
 {% else %}
-  {% set show_pagination = true %}
+    {% set show_pagination = true %}
 {% endif %}
 
 {% block stylesheets %}
@@ -30,39 +30,39 @@
 
 {# check content display flag - hibbittsdesign.org #}
 {% if not (grav.uri.param('chromeless') or grav.uri.param('embedded')) and not(theme_var('chromeless.enabled')) %}
-  {% block hero %}
-      {% include 'partials/hero.html.twig' with {id: 'blog-hero', content: page.content, hero_image: blog_image} %}
-  {% endblock %}
+    {% block hero %}
+        {% include 'partials/hero.html.twig' with {id: 'blog-hero', content: page.content, hero_image: blog_image} %}
+    {% endblock %}
 {% endif %}
 
 {% block body %}
     <section id="body-wrapper" class="section blog-listing">
         <section class="container {{ grid_size }}">
 
-        {% if show_breadcrumbs and config.plugins.breadcrumbs.enabled %}
-            {% include 'partials/breadcrumbs.html.twig' %}
-        {% endif %}
+            {% if show_breadcrumbs and config.plugins.breadcrumbs.enabled %}
+                {% include 'partials/breadcrumbs.html.twig' %}
+            {% endif %}
 
-        {% embed 'partials/layout.html.twig' with {blog: page} %}
+            {% embed 'partials/layout.html.twig' with {blog: page} %}
             {% block item %}
 
-                {% if ((page.header.bricklayer_layout is not defined) or (page.header.bricklayer_layout)) %}
-                  <div class="bricklayer">
+            {% if ((page.header.bricklayer_layout is not defined) or (page.header.bricklayer_layout)) %}
+            <div class="bricklayer">
                 {% else %}
-                  <div>
-                {% endif %}
+                <div>
+                    {% endif %}
 
-                {# display posts with 'featured' tag on current blog page - hibbittsdesign.org #}
-                {% for child in taxonomy.findTaxonomy({'tag': "featured"}) %}
-                    {% include 'partials/blog-list-item.html.twig' with {blog: page, page: child} %}
-                {% endfor %}
+                    {# display posts with 'featured' tag on current blog page - hibbittsdesign.org #}
+                    {% for child in taxonomy.findTaxonomy({'tag': "featured"}) %}
+                        {% include 'partials/blog-list-item.html.twig' with {blog: page, page: child} %}
+                    {% endfor %}
 
-                {# display posts without 'featured' tag - hibbittsdesign.org #}
-                {% for child in collection %}
-                  {% if "featured" not in child.taxonomy['tag'] %}
-                    {% include 'partials/blog-list-item.html.twig' with {blog: page, page: child} %}
-                  {% endif %}
-                {% endfor %}
+                    {# display posts without 'featured' tag - hibbittsdesign.org #}
+                    {% for child in collection %}
+                        {% if "featured" not in child.taxonomy['tag'] %}
+                            {% include 'partials/blog-list-item.html.twig' with {blog: page, page: child} %}
+                        {% endif %}
+                    {% endfor %}
 
                 </div>
 
@@ -73,31 +73,31 @@
                 {% endif %}
 
                 <div style="text-align:center;">
-                {# check to display CC License - hibbittsdesign.org #} {# check to display git sync link in page - hibbittsdesign.org #}
-                {% if theme_var('display_of_git_sync_repo_link') == 'page' and not (grav.uri.param('summaryonly')) %}
-                  <p>{% include 'partials/git_sync_repo_link_note.html.twig' %}</p>
-                {% endif %}
-                {% if theme_var('cc_license.enabled') and (not page.header.hide_cc_license) %}
-                  <p>{% include 'partials/creative_commons_license.html.twig' %}</p>
-                {% endif %}
-              </div>
+                    {# check to display CC License - hibbittsdesign.org #} {# check to display git sync link in page - hibbittsdesign.org #}
+                    {% if theme_var('display_of_git_sync_repo_link') == 'page' and not (grav.uri.param('summaryonly')) %}
+                        <p>{% include 'partials/git_sync_repo_link_note.html.twig' %}</p>
+                    {% endif %}
+                    {% if theme_var('cc_license.enabled') and (not page.header.hide_cc_license) %}
+                        <p>{% include 'partials/creative_commons_license.html.twig' %}</p>
+                    {% endif %}
+                </div>
 
-            {% endblock %}
+                {% endblock %}
 
-            {# check content display flag - hibbittsdesign.org #}
-            {% if not (grav.uri.param('chromeless') or grav.uri.param('embedded')) and not(theme_var('chromeless.enabled')) %}
-              {% block sidebar %}
-                  {% include 'partials/sidebar.html.twig' %}
-              {% endblock %}
-            {% endif %}
-        {% endembed %}
+                {# check content display flag - hibbittsdesign.org #}
+                {% if not (grav.uri.param('chromeless') or grav.uri.param('embedded')) and not(theme_var('chromeless.enabled')) %}
+                    {% block sidebar %}
+                        {% include 'partials/sidebar.html.twig' %}
+                    {% endblock %}
+                {% endif %}
+                {% endembed %}
         </section>
 
     </section>
     <script>
         //Bricklayer
         {% if ((page.header.bricklayer_layout is not defined) or (page.header.bricklayer_layout)) %}
-          var bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
+            var bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
         {% endif %}
     </script>
 {% endblock %}

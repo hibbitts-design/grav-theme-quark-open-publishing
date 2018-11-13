@@ -1,4 +1,5 @@
 <?php
+
 namespace Grav\Plugin\Shortcodes;
 
 use Grav\Common\Utils;
@@ -8,7 +9,7 @@ class ClearBothShortcode extends Shortcode
 {
     public function init()
     {
-        $this->shortcode->getHandlers()->add('clearboth', function(ShortcodeInterface $sc) {
+        $this->shortcode->getHandlers()->add('clearboth', function (ShortcodeInterface $sc) {
 
             // Get shortcode content and parameters
             $str = $sc->getContent();

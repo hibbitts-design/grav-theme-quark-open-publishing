@@ -1,29 +1,29 @@
 <div class="content-item h-entry">
 
-{% if not hero_image_name %}
-    <div class="content-title text-center">
-        {% include 'partials/blog/title.html.twig' with {title_level: 'h2'} %}
-        {% if not (grav.uri.param('hidepagetitle')) %}
-          {% if page.header.subtitle %}
-          <h3 >{{ page.header.subtitle }}</h3>
-          {% endif %}
-          {% include 'partials/blog/date.html.twig' %}
-          {% include 'partials/blog/taxonomy.html.twig' %}
-        {% endif %}
-    </div>
-{% endif %}
+    {% if not hero_image_name %}
+        <div class="content-title text-center">
+            {% include 'partials/blog/title.html.twig' with {title_level: 'h2'} %}
+            {% if not (grav.uri.param('hidepagetitle')) %}
+                {% if page.header.subtitle %}
+                    <h3>{{ page.header.subtitle }}</h3>
+                {% endif %}
+                {% include 'partials/blog/date.html.twig' %}
+                {% include 'partials/blog/taxonomy.html.twig' %}
+            {% endif %}
+        </div>
+    {% endif %}
 
     <div class="e-content">
         {# check to hide post summary on page - hibbittsdesign.org #}
         {% if page.parent.header.display_post_summary.enabled %}
-          {% set content = page.content | slice(page.summary | length) %}
+            {% set content = page.content | slice(page.summary | length) %}
         {% else %}
-          {% set content = page.content %}
+            {% set content = page.content %}
         {% endif %}
 
         {# check to show summary only - hibbittsdesign.org #}
         {% if not (grav.uri.param('summaryonly')) %}
-            {% if content is not empty  %}
+            {% if content is not empty %}
                 {{ content }}
             {% else %}
                 {{ page.summary }}
@@ -37,22 +37,24 @@
         {% include 'partials/comments.html.twig' %}
     {% endif %}
 
-
 </div>
 
 {# added check for content display flag - hibbittsdesign.org #}
 {% if not (grav.uri.param('chromeless') or grav.uri.param('embedded')) and not(theme_var('chromeless.enabled')) %}
 
-  <p class="prev-next text-center">
+    <p class="prev-next text-center">
+        {% if not page.isLast %}
+            <a class="btn" href="{{ page.prevSibling.url }}">
+                <i class="fa fa-angle-left"></i>
+                {{ 'THEME_QUARK.BLOG.ITEM.PREV_POST'|t }}
+            </a>
+        {% endif %}
 
-
-      {% if not page.isLast %}
-              <a class="btn" href="{{ page.prevSibling.url }}"><i class="fa fa-angle-left"></i> {{ 'THEME_QUARK.BLOG.ITEM.PREV_POST'|t }}</a>
-      {% endif %}
-
-      {% if not page.isFirst %}
-          <a class="btn" href="{{ page.nextSibling.url }}">{{ 'THEME_QUARK.BLOG.ITEM.NEXT_POST'|t }} <i class="fa fa-angle-right"></i></a>
-      {% endif %}
-  </p>
+        {% if not page.isFirst %}
+            <a class="btn" href="{{ page.nextSibling.url }}">{{ 'THEME_QUARK.BLOG.ITEM.NEXT_POST'|t }}
+                <i class="fa fa-angle-right"></i>
+            </a>
+        {% endif %}
+    </p>
 
 {% endif %}
