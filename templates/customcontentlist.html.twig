@@ -2,33 +2,35 @@
 
 {% block content %}
 
-  <div class="columns">
+    <div class="columns">
 
-    <div id="section" class="column col-12">
+        <div id="section" class="column col-12">
 
-      {% if not(page.header.hide_page_title)and not(grav.uri.param('hidepagetitle')) %}
-        <h3>{{page.title}}</h3>
-      {% endif %}
+            {% if not(page.header.hide_page_title)and not(grav.uri.param('hidepagetitle')) %}
+                <h3>{{ page.title }}</h3>
+            {% endif %}
 
-      {{ page.content }}
+            {{ page.content }}
 
-      {% set collection = page.collection() %}
-      {% if page.header.display_template %}
-        {% set templatename = page.header.display_template ~ '.html.twig' %}
-      {% endif %}
-      {% for child in collection %}
-        {% if not templatename %}
-          {% set templatename = child.template ~ '.html.twig' %}
-        {% endif %}
-        <p>{% include templatename with {
-            'page' : child,
-            'displaypagetitle' : page.header.display_child_page_titles,
-            'displaycontenttitle' : page.header.display_content_titles
-          } %}</p>
-      {% endfor %}
+            {% set collection = page.collection() %}
+            {% if page.header.display_template %}
+                {% set templatename = page.header.display_template ~ '.html.twig' %}
+            {% endif %}
+            {% for child in collection %}
+                {% if not templatename %}
+                    {% set templatename = child.template ~ '.html.twig' %}
+                {% endif %}
+                <p>
+                    {% include templatename with {
+                        'page' : child,
+                        'displaypagetitle' : page.header.display_child_page_titles,
+                        'displaycontenttitle' : page.header.display_content_titles
+                    } %}
+                </p>
+            {% endfor %}
+
+        </div>
 
     </div>
-
-  </div>
 
 {% endblock %}

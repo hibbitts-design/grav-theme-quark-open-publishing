@@ -8,7 +8,7 @@
             type="text"
             {% if min_chars > 0 %} min="{{- min_chars -}}" {% endif %}
             required
-            placeholder="{{"PLUGIN_SIMPLESEARCH.SEARCH_PLACEHOLDER"|t}}"
+            placeholder="{{ "PLUGIN_SIMPLESEARCH.SEARCH_PLACEHOLDER"|t }}"
             value="{{ query|e }}"
             data-search-invalid="{{ "PLUGIN_SIMPLESEARCH.SEARCH_FIELD_MINIMUM_CHARACTERS"|t(min_chars)|raw }}"
             data-search-separator="{{ config.system.param_sep }}"
@@ -16,7 +16,7 @@
         />
         {% if config.plugins.simplesearch.display_button %}
             <button type="submit" class="search-submit">
-                <img src="{{ url('plugin://simplesearch/assets/search.svg') }}" />
+                <img src="{{ url('plugin://simplesearch/assets/search.svg') }}"/>
             </button>
         {% endif %}
     </form>
