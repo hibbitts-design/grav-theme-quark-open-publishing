@@ -1,4 +1,5 @@
 <?php
+
 namespace Grav\Plugin\Shortcodes;
 
 use Grav\Common\Utils;
@@ -8,26 +9,26 @@ class ButtonShortcode extends Shortcode
 {
     public function init()
     {
-        $this->shortcode->getHandlers()->add('button', function(ShortcodeInterface $sc) {
+        $this->shortcode->getHandlers()->add('button', function (ShortcodeInterface $sc) {
 
             // Get shortcode content and parameters
             $str = $sc->getContent();
 
-            $buttonurl= $sc->getParameter('url', $sc->getBbCode());
-            $buttontarget= $sc->getParameter('target', $sc->getBbCode());
-            $buttonstyle= $sc->getParameter('style', $sc->getBbCode());
-            $buttonsize= $sc->getParameter('size', $sc->getBbCode());
-            $buttonclasses= $sc->getParameter('classes', $sc->getBbCode());
-            $buttonlabel= $sc->getParameter('label', $sc->getBbCode());
+            $buttonurl = $sc->getParameter('url', $sc->getBbCode());
+            $buttontarget = $sc->getParameter('target', $sc->getBbCode());
+            $buttonstyle = $sc->getParameter('style', $sc->getBbCode());
+            $buttonsize = $sc->getParameter('size', $sc->getBbCode());
+            $buttonclasses = $sc->getParameter('classes', $sc->getBbCode());
+            $buttonlabel = $sc->getParameter('label', $sc->getBbCode());
 
             if (empty($buttonsize)) {
-              $buttonsize = "btn";
+                $buttonsize = "btn";
             } else {
-              $buttonsize = "btn btn-" . $buttonsize;
+                $buttonsize = "btn btn-" . $buttonsize;
             }
 
             if (!empty($buttonurl) && !empty($buttonlabel)) {
-                $output = '<a href="'.$buttonurl.'" target="'.$buttontarget.'" class="'.$buttonsize.' btn-'.$buttonstyle.' '.$buttonclasses.'">'.$buttonlabel.'</a>';
+                $output = '<a href="' . $buttonurl . '" target="' . $buttontarget . '" class="' . $buttonsize . ' btn-' . $buttonstyle . ' ' . $buttonclasses . '">' . $buttonlabel . '</a>';
 
                 return $output;
             }

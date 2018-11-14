@@ -14,13 +14,13 @@
     {{ parent() }}
     {% if show_onpage_menu %}
         <script>
-        // singlePageNav initialization & configuration
-        $('ul.navigation').singlePageNav({
-            offset: $('#header').outerHeight(),
-            filter: ':not(.external)',
-            updateHash: true,
-            currentClass: 'active'
-        });
+            // singlePageNav initialization & configuration
+            $('ul.navigation').singlePageNav({
+                offset: $('#header').outerHeight(),
+                filter: ':not(.external)',
+                updateHash: true,
+                currentClass: 'active'
+            });
         </script>
     {% endif %}
 {% endblock %}
@@ -28,21 +28,25 @@
 {% block header_navigation %}
     {% if show_onpage_menu %}
         <ul class="navigation">
-        {% for module in page.collection() %}
-            {% set current_module = (module.active or module.activeChild) ? 'active' : '' %}
-            <li><a class="{{ current_module }}" href="#{{ _self.pageLinkName(module.menu) }}">{{ module.menu }}</a></li>
-        {% endfor %}
-        {% for mitem in site.menu %}
-            <li>
-                <a {% if mitem.class %}class="{{ mitem.class }}"{% endif %} href="{{ mitem.url }}">
-                    {% if mitem.icon %}<i class="fa fa-{{ mitem.icon }}"></i>{% endif %}
-                    {{ mitem.text }}
-                </a>
-            </li>
-        {% endfor %}
+            {% for module in page.collection() %}
+                {% set current_module = (module.active or module.activeChild) ? 'active' : '' %}
+                <li>
+                    <a class="{{ current_module }}" href="#{{ _self.pageLinkName(module.menu) }}">{{ module.menu }}</a>
+                </li>
+            {% endfor %}
+            {% for mitem in site.menu %}
+                <li>
+                    <a {% if mitem.class %}class="{{ mitem.class }}"{% endif %} href="{{ mitem.url }}">
+                        {% if mitem.icon %}
+                            <i class="fa fa-{{ mitem.icon }}"></i>
+                        {% endif %}
+                        {{ mitem.text }}
+                    </a>
+                </li>
+            {% endfor %}
         </ul>
     {% else %}
-        {{  parent() }}
+        {{ parent() }}
     {% endif %}
 {% endblock %}
 
@@ -60,9 +64,9 @@
     {% endfor %}
     {# check to display CC License - hibbittsdesign.org #} {# check to display git sync link in page - hibbittsdesign.org #}
     {% if theme_var('display_of_git_sync_repo_link') == 'page' and not (grav.uri.param('summaryonly')) %}
-      {% include 'partials/git_sync_repo_link_note.html.twig' %}
+        {% include 'partials/git_sync_repo_link_note.html.twig' %}
     {% endif %}
     {% if theme_var('cc_license.enabled') and (not page.header.hide_cc_license) %}
-      {% include 'partials/creative_commons_license.html.twig' %}
+        {% include 'partials/creative_commons_license.html.twig' %}
     {% endif %}
 {% endblock %}

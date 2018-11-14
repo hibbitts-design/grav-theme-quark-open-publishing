@@ -2,32 +2,32 @@
 
 {% macro nav_loop(page, hide_home_menu_link, home_alias) %}
     {% for p in page.children.visible %}
-      {# Supress home menu link - hibbittsdesign.org #}
-      {% if not((hide_home_menu_link) and p.home) %}
-        {% set active_page = (p.active or p.activeChild) ? 'active' : '' %}
-        {% if p.children.visible.count > 0 %}
-            <li>
-                <a href="{{ p.url }}" class="{{ active_page }}">
-                  {% if p.header.icon %}
-                    <i class="fa fa-{{ p.header.icon }}"></i>
-                  {% endif %}
-                  {{ p.menu }}
-                </a>
-                <ul>
-                    {{ _self.nav_loop(p) }}
-                </ul>
-            </li>
-        {% else %}
-            <li>
-                <a href="{{ p.url }}" class="{{ active_page }}">
-                  {% if p.header.icon %}
-                    <i class="fa fa-{{ p.header.icon }}"></i>
-                  {% endif %}
-                  {{ p.menu }}
-                </a>
-            </li>
+        {# Supress home menu link - hibbittsdesign.org #}
+        {% if not((hide_home_menu_link) and p.home) %}
+            {% set active_page = (p.active or p.activeChild) ? 'active' : '' %}
+            {% if p.children.visible.count > 0 %}
+                <li>
+                    <a href="{{ p.url }}" class="{{ active_page }}">
+                        {% if p.header.icon %}
+                            <i class="fa fa-{{ p.header.icon }}"></i>
+                        {% endif %}
+                        {{ p.menu }}
+                    </a>
+                    <ul>
+                        {{ _self.nav_loop(p) }}
+                    </ul>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ p.url }}" class="{{ active_page }}">
+                        {% if p.header.icon %}
+                            <i class="fa fa-{{ p.header.icon }}"></i>
+                        {% endif %}
+                        {{ p.menu }}
+                    </a>
+                </li>
+            {% endif %}
         {% endif %}
-      {% endif %}
     {% endfor %}
 {% endmacro %}
 
@@ -35,19 +35,19 @@
     {{ _self.nav_loop(pages, hide_home_menu_link, home_alias ) }}
     {# custom menu items check and display - hibbittsdesign.org #}
     {% if theme_var('displaycustommenus.enabled') %}
-      {% for mitem in theme_var('menu') %}
-        <li>
-          <a href="{{ mitem.url }}" target="{{ mitem.target }}">
-            {% if mitem.icon %}
-              <i class="fa fa-{{ mitem.icon }}"></i>
-            {% endif %}
-            {{ mitem.text }}
-          </a>
-        </li>
-      {% endfor %}
+        {% for mitem in theme_var('menu') %}
+            <li>
+                <a href="{{ mitem.url }}" target="{{ mitem.target }}">
+                    {% if mitem.icon %}
+                        <i class="fa fa-{{ mitem.icon }}"></i>
+                    {% endif %}
+                    {{ mitem.text }}
+                </a>
+            </li>
+        {% endfor %}
     {% endif %}
     {# check to display git sync link in menu - hibbittsdesign.org #}
     {% if theme_var('display_of_git_sync_repo_link') == 'menu' or theme_var('display_of_git_sync_repo_link') == empty %}
-      <li>{% include 'partials/git_sync_repo_link.html.twig' %}</li>
+        <li>{% include 'partials/git_sync_repo_link.html.twig' %}</li>
     {% endif %}
 </ul>
