@@ -31,7 +31,7 @@
     {% endfor %}
 {% endmacro %}
 
-<ul {s{ tree ? 'class="tree"' : '' }}>
+<ul {{ tree ? 'class="tree"' : '' }}>
     {{ _self.nav_loop(pages, hide_home_menu_link, home_alias ) }}
     {# custom menu items check and display - hibbittsdesign.org #}
     {% if theme_var('displaycustommenus.enabled') %}
