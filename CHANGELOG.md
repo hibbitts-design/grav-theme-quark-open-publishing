@@ -1,3 +1,9 @@
+# v1.3.4
+## 11/13/2018
+
+1. [](#bugfix)
+    * Added 'THEME_QUARK' prefix to 'Continue Reading' button label
+
 # v1.3.3
 ## 11/13/2018
 
