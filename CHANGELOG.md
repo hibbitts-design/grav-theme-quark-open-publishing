@@ -1,3 +1,9 @@
+# v1.3.3
+## 11/13/2018
+
+1. [](#improved)
+    * Twig template files cleanup and formatting (thanks RobLui)
+
 # v1.3.2
 ## 11/09/2018
 
