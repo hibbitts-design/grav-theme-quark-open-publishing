@@ -22,14 +22,26 @@ form:
                     size: long
                     label: SpeakerDeck Title
 
-                header.speakerdeck_id:
+                header.display_speakerdeck_title:
                     ordering@: 2
+                    type: toggle
+                    label: Display SpeakDeck Title
+                    default: 0
+                    highlight: 1
+                    options:
+                        1:  Yes
+                        0:  No
+                    validate:
+                        type: bool
+
+                header.speakerdeck_id:
+                    ordering@: 3
                     type: integer
                     size: medium
                     label: SpeakerDeck ID
 
                 header.speakerdeck_slide:
-                    ordering@: 3
+                    ordering@: 4
                     type: integer
                     size: small
                     label: SpeakerDeck Slide #
@@ -46,4 +58,4 @@ form:
             overrides:
               fields:
                 header.visible:
-                  default: 0
+                  default: 1

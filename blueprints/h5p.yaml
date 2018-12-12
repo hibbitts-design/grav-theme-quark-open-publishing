@@ -16,20 +16,38 @@ form:
                   size: long
                   label: Page Title
 
-                header.hp5_content_id:
-                    ordering@: 1
+                header.h5p_content_title:
+                    ordering@: 2
+                    type: text
+                    size: long
+                    label: H5P Content Title
+
+                header.display_h5p_content_title:
+                    ordering@: 3
+                    type: toggle
+                    label: Display H5P Content Title
+                    default: 0
+                    highlight: 1
+                    options:
+                        1:  Yes
+                        0:  No
+                    validate:
+                        type: bool
+
+                header.h5p_content_id:
+                    ordering@: 4
                     type: integer
                     size: short
                     label: H5P Content ID (Node)
                     description: 'For example, for the URL https://h5p.org/node/712 the ID would be 712.'
 
                 info:
-                    ordering@: 3
+                    ordering@: 5
                     type: display
                     size: large
                     label: 'How-to Tip'
                     markdown: false
-                    content: "To display this item within another page, enter '[plugin:page-inject](/hp5-content/PAGE)' in your Markdown content area."
+                    content: "To display this item within another page, enter '[plugin:page-inject](/h5p/PAGE)' in your Markdown content area."
 
         options:
           fields:
@@ -43,4 +61,4 @@ form:
             overrides:
               fields:
                 header.visible:
-                  default: 0
+                  default: 1

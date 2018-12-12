@@ -1,5 +1,11 @@
 {# no tab indents for Page Inject Plugin compatibility - hibbittsdesign.org #}
 {% if page.header.published %}
+{% if page.header.display_page_title is defined and not (displaypagetitle is defined)%}
+{% set displaypagetitle = page.header.display_page_title %}
+{% endif %}
+{% if page.header.display_pdf_title is defined and not (displaycontenttitle is defined)%}
+{% set displaycontenttitle = page.header.display_pdf_title %}
+{% endif %}
 {% block content %}
 {{ page.content }}
 {% if displaypagetitle is defined %}

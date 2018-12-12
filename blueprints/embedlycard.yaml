@@ -1,4 +1,4 @@
-title: Embedly Card
+title: Embedly Card Options
 '@extends':
     type: default
     context: blueprints://pages
@@ -17,16 +17,39 @@ form:
                   label: Page Title
 
                 header.embedly_card_title:
-                    ordering@: 1
+                    ordering@: 2
                     type: text
                     size: long
                     label: Embedly Card Title
 
+                header.display_embedly_card_title:
+                    ordering@: 3
+                    type: toggle
+                    label: Display Embedly Card Title
+                    default: 0
+                    highlight: 1
+                    options:
+                        1:  Yes
+                        0:  No
+                    validate:
+                        type: bool
+
+                header.embedly_card_alignment:
+                    ordering@: 4
+                    type: select
+                    size: small
+                    label: Embedly Card Alignment
+                    default: left
+                    options:
+                        left: Left
+                        center: Center
+                        right: Right
+
                 header.embedly_card_url:
-                    ordering@: 2
+                    ordering@: 5
                     type: text
                     size: long
-                    label: Embedly Card URL
+                    label: Embedly Card Web Page URL
                     validate:
                       type: URL
 
@@ -41,7 +64,5 @@ form:
           fields:
             overrides:
               fields:
-                header.routable:
-                  default: 0
                 header.visible:
-                  default: 0
+                  default: 1

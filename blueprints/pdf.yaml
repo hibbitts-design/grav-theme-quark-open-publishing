@@ -17,13 +17,25 @@ form:
                   label: Page Title
 
                 header.pdf_title:
-                    ordering@: 1
+                    ordering@: 2
                     type: text
                     size: long
                     label: PDF Title
 
+                header.display_pdf_title:
+                    ordering@: 3
+                    type: toggle
+                    label: Display PDF Title
+                    default: 0
+                    highlight: 1
+                    options:
+                        1:  Yes
+                        0:  No
+                    validate:
+                        type: bool
+
                 header.pdf_url:
-                    ordering@: 2
+                    ordering@: 4
                     type: text
                     size: long
                     label: PDF URL
@@ -42,4 +54,4 @@ form:
             overrides:
               fields:
                 header.visible:
-                  default: 0
+                  default: 1

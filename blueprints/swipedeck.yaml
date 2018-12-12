@@ -22,14 +22,26 @@ form:
                     size: long
                     label: Swipe Deck Title
 
-                header.swipe_deck_id:
+                header.display_swipe_deck_title:
                     ordering@: 2
+                    type: toggle
+                    label: Display Swipe Deck Title
+                    default: 0
+                    highlight: 1
+                    options:
+                        1:  Yes
+                        0:  No
+                    validate:
+                        type: bool
+
+                header.swipe_deck_id:
+                    ordering@: 3
                     type: integer
                     size: small
                     label: Swipe Deck ID
 
                 header.swipe_deck_pdf_url:
-                    ordering@: 3
+                    ordering@: 4
                     type: text
                     size: long
                     label: Swipe Deck PDF URL
@@ -48,4 +60,4 @@ form:
             overrides:
               fields:
                 header.visible:
-                  default: 0
+                  default: 1
