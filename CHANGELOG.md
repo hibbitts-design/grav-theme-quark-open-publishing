@@ -1,3 +1,12 @@
+# v1.3.5
+## 12/12/2018
+
+1. [](#improved)
+    * Updated Embedly Card, H5P, PDF, SpeakerDeck and Swipe Deck templates and blueprints (to align with latest Bootstrap4 Open Matter Theme release)
+    * Updated demo pages in theme '_demo' folder
+1. [](#bugfix)
+    * Removed deprecated Twitter feed template and blueprint
+
 # v1.3.4
 ## 11/13/2018
 
