@@ -31,3 +31,10 @@ form:
                     1:  No
                 validate:
                     type: bool
+
+        advanced:
+          fields:
+            columns:
+              fields:
+                ordering:
+                  default: 1
