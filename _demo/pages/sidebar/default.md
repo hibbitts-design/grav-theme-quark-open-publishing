@@ -9,4 +9,4 @@ position: top
 
 Some text here.
 
-[plugin:page-inject](/twitterfeed)
+[twitter url="https://twitter.com/hibbittsdesign/lists/cpt-363" text="A Twitter list by @hibbittsdesign" height="600"]
