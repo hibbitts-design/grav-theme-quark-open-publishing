@@ -1,3 +1,9 @@
+# v1.3.7
+## 12/16/2018
+
+1. [](#improved)
+    * Featured Posts and Popular Tags are now more compatible with use of multiple blogs. Note: use `- '@self'` for the filter in the Archives Plugin for use of multiple blogs. (Thanks to @pamtbaau for pointing me in the right direction)
+
 # v1.3.6
 ## 12/12/2018
 
