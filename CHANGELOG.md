@@ -1,8 +1,14 @@
+# v1.3.8
+## 01/07/2019
+
+1. [](#bugfix)
+    * Removed experimental support for multiple blog compatibility for Featured Posts and Popular Tags
+
 # v1.3.7
 ## 12/16/2018
 
 1. [](#improved)
-    * Featured Posts and Popular Tags are now more compatible with use of multiple blogs. Note: use `- '@self'` for the filter in the Archives Plugin for use of multiple blogs. (Thanks to @pamtbaau for pointing me in the right direction)
+    * Experimental support of multiple blog compatibility for Featured Posts and Popular Tags. Note: use `- '@self'` for the filter in the Archives Plugin for use of multiple blogs. (Thanks to @pamtbaau for pointing me in the right direction)
 
 # v1.3.6
 ## 12/12/2018
