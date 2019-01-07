@@ -54,9 +54,7 @@
 
                     {# display posts with 'featured' tag on current blog page - hibbittsdesign.org #}
                     {% for child in taxonomy.findTaxonomy({'tag': "featured"}) %}
-                        {% if child.path starts with page.path %}
-                            {% include 'partials/blog-list-item.html.twig' with {blog: page, page: child} %}
-                        {% endif %}
+                        {% include 'partials/blog-list-item.html.twig' with {blog: page, page: child} %}
                     {% endfor %}
 
                     {# display posts without 'featured' tag - hibbittsdesign.org #}
