@@ -1,3 +1,9 @@
+# v1.3.9
+## 01/09/2019
+
+1. [](#bugfix)
+    * Corrected Multi-Language reference for 'Feeling Lucky' sidebar widget
+
 # v1.3.8
 ## 01/07/2019
 
