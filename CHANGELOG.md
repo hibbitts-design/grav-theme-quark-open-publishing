@@ -1,3 +1,10 @@
+# v1.4.1
+## 01/28/2019
+
+1. [](#improved)
+    * Added 'onlysummary' alias for the URL parameter 'summaryonly'
+    * Improved handling of embedded item summary pages
+
 # v1.4.0
 ## 01/28/2019
 
