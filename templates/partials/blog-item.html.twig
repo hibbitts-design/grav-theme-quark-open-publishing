@@ -22,7 +22,7 @@
         {% endif %}
 
         {# check to show summary only - hibbittsdesign.org #}
-        {% if not (grav.uri.param('summaryonly')) %}
+        {% if not (grav.uri.param('summaryonly') or grav.uri.param('onlysummary')) %}
             {% if content is not empty %}
                 {{ content }}
             {% else %}
@@ -30,6 +30,9 @@
             {% endif %}
         {% else %}
             {{ page.summary }}
+            {% if page.header.continue_link is sameas(true) %}
+              <a href="{{ page.url }}" title="{{ page.title }}" class="btn btn-primary">{{ 'THEME_QUARK.BLOG.ITEM.CONTINUE_READING'|t }}</a>
+            {% endif %}
         {% endif %}
     </div>
 
@@ -40,7 +43,7 @@
 </div>
 
 {# added check for content display flag - hibbittsdesign.org #}
-{% if not (grav.uri.param('chromeless') or grav.uri.param('embedded')) and not(theme_var('chromeless.enabled')) %}
+{% if not (grav.uri.param('chromeless') or grav.uri.param('embedded')) and not(theme_var('chromeless.enabled')) and not (grav.uri.param('summaryonly') or grav.uri.param('onlysummary')) %}
 
     <p class="prev-next text-center">
         {% if not page.isLast %}

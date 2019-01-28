@@ -43,7 +43,6 @@
           {% if page.summary != page.content %}
               {{ page.summary }}
               {% if page.header.continue_link is sameas(true) %}
-                <br>
                 <a href="{{ page.url }}" title="{{ page.title }}" class="btn btn-primary">{{ 'THEME_QUARK.BLOG.ITEM.CONTINUE_READING'|t }}</a>
               {% endif %}
           {% else %}
