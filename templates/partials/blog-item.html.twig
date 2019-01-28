@@ -31,7 +31,7 @@
         {% else %}
             {{ page.summary }}
             {% if page.header.continue_link is sameas(true) %}
-              <a href="{{ page.url }}" title="{{ page.title }}" class="btn btn-primary">{{ 'THEME_QUARK.BLOG.ITEM.CONTINUE_READING'|t }}</a>
+              <a href="{{ page.url ~ '/chromeless:true' }}" title="{{ page.title }}" class="btn btn-primary topwindow external-link">{{ 'THEME_QUARK.BLOG.ITEM.CONTINUE_READING'|t }}</a>
             {% endif %}
         {% endif %}
     </div>
