@@ -9,14 +9,14 @@
             <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
         </a>
         <br/>
-        {% if not (theme_config.cc_license.icon) %}
+        {% if not theme_var('cc_license.icon') %}
             {{ licence_intro_txt }}
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
                 Creative Commons Attribution 4.0 International License
             </a>
-        {% endif %}
-        {% if theme_config.cc_license.text %}
-            {{ theme_config.cc_license.text }}
+            {% if theme_var('cc_license.text') %}
+                {{ theme_var('cc_license.text') }}
+            {% endif %}
         {% endif %}
 
     {% elseif(theme_var('cc_license.type') == 'ccbysa') %}
@@ -24,14 +24,14 @@
             <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"/>
         </a>
         <br/>
-        {% if not (theme_config.cc_license.icon) %}
+        {% if not theme_var('cc_license.icon') %}
             {{ licence_intro_txt }}
             <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
                 Creative Commons Attribution-ShareAlike 4.0 International License
             </a>
-        {% endif %}
-        {% if theme_config.cc_license.text %}
-            {{ theme_config.cc_license.text }}
+            {% if theme_var('cc_license.text') %}
+                {{ theme_var('cc_license.text') }}
+            {% endif %}
         {% endif %}
 
     {% elseif(theme_var('cc_license.type') == 'ccbynd') %}
@@ -39,14 +39,14 @@
             <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/88x31.png"/>
         </a>
         <br/>
-        {% if not (theme_config.cc_license.icon) %}
+        {% if not theme_var('cc_license.icon') %}
             {{ licence_intro_txt }}
             <a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/">
                 Creative Commons Attribution-NoDerivatives 4.0 International License
             </a>
-        {% endif %}
-        {% if theme_config.cc_license.text %}
-            {{ theme_config.cc_license.text }}
+            {% if theme_var('cc_license.text') %}
+                {{ theme_var('cc_license.text') }}
+            {% endif %}
         {% endif %}
 
     {% elseif(theme_var('cc_license.type') == 'ccbync') %}
@@ -54,42 +54,42 @@
             <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"/>
         </a>
         <br/>
-        {% if not (theme_config.cc_license.icon) %}
+        {% if not theme_var('cc_license.icon') %}
             {{ licence_intro_txt }}
             <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
                 Creative Commons Attribution-NonCommercial 4.0 International License
             </a>
-        {% endif %}
-        {% if theme_config.cc_license.text %}
-            {{ theme_config.cc_license.text }}
+            {% if theme_var('cc_license.text') %}
+                {{ theme_var('cc_license.text') }}
+            {% endif %}
         {% endif %}
     {% elseif( theme_var('cc_license.type') == 'ccbyncsa') %}
         <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
             <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/>
         </a>
         <br/>
-        {% if not (theme_config.cc_license.icon) %}
+        {% if not theme_var('cc_license.icon') %}
             {{ licence_intro_txt }}
             <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
                 Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License
             </a>
-        {% endif %}
-        {% if theme_config.cc_license.text %}
-            {{ theme_config.cc_license.text }}
+            {% if theme_var('cc_license.text') %}
+                {{ theme_var('cc_license.text') }}
+            {% endif %}
         {% endif %}
     {% elseif( theme_var('cc_license.type') == 'ccbyncnd') %}
         <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
             <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"/>
         </a>
         <br/>
-        {% if not (theme_config.cc_license.icon) %}
+        {% if not theme_var('cc_license.icon') %}
             {{ licence_intro_txt }}
             <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
                 Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
             </a>
-        {% endif %}
-        {% if theme_config.cc_license.text %}
-            {{ theme_config.cc_license.text }}
+            {% if theme_var('cc_license.text') %}
+                {{ theme_var('cc_license.text') }}
+            {% endif %}
         {% endif %}
     {% endif %}
     <br>

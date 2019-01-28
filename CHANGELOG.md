@@ -1,3 +1,11 @@
+# v1.4.0
+## 01/28/2019
+
+1. [](#improved)
+    * When displaying pages in 'chromeless' mode, a Creative Commons License is no longer displayed (it is assumed that this would be included in the parent system i.e. LMS)
+1. [](#bugfix)
+    * Fixed display of additional text for a Creative Commons License
+
 # v1.3.9
 ## 01/09/2019
 
