@@ -1,3 +1,9 @@
+# v1.4.2
+## 01/29/2019
+
+1. [](#improved)
+    * Removed unneeded Pagination CSS for improved display on smaller screens (use Pagination Plugin 'Delta' settings to change the number of items shown instead)
+
 # v1.4.1
 ## 01/28/2019
 
