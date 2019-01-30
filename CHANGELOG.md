@@ -1,3 +1,9 @@
+# v1.4.3
+## 01/30/2019
+
+1. [](#new)
+    * Added iFrame template, blueprint, and shortcode (with responsive support for 4-3 and 16-9 aspect ratios)
+
 # v1.4.2
 ## 01/29/2019
 
