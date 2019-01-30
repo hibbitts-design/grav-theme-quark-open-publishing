@@ -1,0 +1,91 @@
+title: iFrame Options
+'@extends':
+    type: default
+    context: blueprints://pages
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        content:
+            fields:
+                header.title:
+                  replace@: true
+                  type: text
+                  size: long
+                  label: Page Title
+
+                header.iframe_title:
+                    ordering@: 2
+                    type: text
+                    size: long
+                    label: iFrame Title
+
+                header.display_iframe_title:
+                    ordering@: 3
+                    type: toggle
+                    label: Display iFrame Title
+                    default: 0
+                    highlight: 1
+                    options:
+                        1:  Yes
+                        0:  No
+                    validate:
+                        type: bool
+
+                header.iframe_url:
+                    ordering@: 4
+                    type: text
+                    size: long
+                    label: iFrame Source URL (https)
+                    validate:
+                      type: URL
+
+                header.iframe_aspect_ratio:
+                    ordering@: 5
+                    type: select
+                    label: iFrame Aspect Ratio
+                    default: 4-3
+                    size: small
+                    options:
+                        4-3: 4-3
+                        16-9: 16-9
+
+                header.iframe_links:
+                    ordering@: 6
+                    name: iframelinks
+                    type: list
+                    label: 'iFrame Links'
+                    fields:
+                        .text:
+                            type: text
+                            label: Text
+                            description: 'Text label for link item.'
+                        .icon:
+                            type: text
+                            label: Icon
+                            description: 'Font Awesome icon for link item.'
+                        .url:
+                            type: text
+                            label: URL
+                            description: 'URL for link item.'
+
+                content:
+                  unset@: true
+                header.media_order:
+                  unset@: true
+
+        options:
+          fields:
+            publishing:
+              fields:
+                header.published:
+                  default: 1
+
+        advanced:
+          fields:
+            overrides:
+              fields:
+                header.visible:
+                  default: 1

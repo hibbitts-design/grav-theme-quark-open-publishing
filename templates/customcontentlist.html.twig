@@ -22,9 +22,10 @@
                 {% endif %}
                 <p>
                     {% include templatename with {
-                        'page' : child,
-                        'displaypagetitle' : page.header.display_child_page_titles,
-                        'displaycontenttitle' : page.header.display_content_titles
+                        'page':child,
+                        'displaypagetitle':page.header.display_child_page_titles,
+                        'displaycontenttitle':page.header.display_content_titles,
+                        'displaycontentlinks':page.header.display_content_links                        
                     } %}
                 </p>
             {% endfor %}
