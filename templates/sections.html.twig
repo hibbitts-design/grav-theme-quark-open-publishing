@@ -13,8 +13,8 @@
             {{ page.content }}
 
             <p class="prev-next">
-                {% set siblings = page.parent.children() %}
-                {% set children = page.children() %}
+                {% set siblings = page.parent.children.visible() %}
+                {% set children = page.children.visible() %}
 
                 {% if not(page.parent.slug == 'pages') %}
 
@@ -50,7 +50,7 @@
                     {% endif %}
                 {% else %}
                     {% if not(page.parent.parent.slug == 'pages') %}
-                        {% set siblings = page.parent.parent.children() %}
+                        {% set siblings = page.parent.parent.children.visible() %}
                         {% if not siblings.isLast(page.parent.path) %}
                             <a class="btn btn-primary"
                                href="{{ siblings.prevSibling(page.parent.path).url }}">{{ siblings.prevSibling(page.parent.path).title }}
@@ -74,12 +74,12 @@
 
             <ul class="nav">
 
-                {% set collection = page.collection() %}
+                {% set collection = page.collection.visible() %}
 
                 {% if collection is empty %}
-                    {% set collection = page.parent.collection() %}
+                    {% set collection = page.parent.collection.visible() %}
                     {% if collection is empty %}
-                        {% set collection = page.parent.parent.collection() %}
+                        {% set collection = page.parent.parent.collection.visible() %}
                     {% endif %}
                 {% endif %}
 
@@ -92,11 +92,11 @@
                         <a href="{{ p.url }}">{{ p.title }}</a>
                     </li>
 
-                    {% if p.children.count != 0 %}
+                    {% if p.children.visible.count != 0 %}
 
                         {% if p.active or(p.slug == page.parent.slug) %}
                             <ul class="nav">
-                                {% for child in p.children %}
+                                {% for child in p.children.visible %}
                                     {% set current_child = child.active
                                         ? 'active'
                                         : '' %}

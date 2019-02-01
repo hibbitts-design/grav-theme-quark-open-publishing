@@ -254,6 +254,17 @@ form:
                             validate:
                                 type:                  bool
 
+                        dropdown.enabled:
+                            type: toggle
+                            label: Display Dropdowns in Menubar
+                            highlight: 1
+                            default: 0
+                            options:
+                              1: Enabled
+                              0: Disabled
+                            validate:
+                              type: bool
+
                 theme_info:
                     type: tab
                     title: Quark Options

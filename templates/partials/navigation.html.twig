@@ -5,7 +5,7 @@
         {# Supress home menu link - hibbittsdesign.org #}
         {% if not((hide_home_menu_link) and p.home) %}
             {% set active_page = (p.active or p.activeChild) ? 'active' : '' %}
-            {% if p.children.visible.count > 0 %}
+            {% if theme_var('dropdown.enabled') and p.children.visible.count > 0 %}
                 <li>
                     <a href="{{ p.url }}" class="{{ active_page }}">
                         {% if p.header.icon %}
@@ -34,7 +34,7 @@
 <ul {{ tree ? 'class="tree"' : '' }}>
     {{ _self.nav_loop(pages, hide_home_menu_link, home_alias ) }}
     {# custom menu items check and display - hibbittsdesign.org #}
-    {% if theme_var('displaycustommenus.enabled') %}
+    {% if theme_var('displaycustommenus') %}
         {% for mitem in theme_var('menu') %}
             <li>
                 <a href="{{ mitem.url }}" target="{{ mitem.target }}">
