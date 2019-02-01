@@ -13,8 +13,8 @@
             {{ page.content }}
 
             <p class="prev-next">
-                {% set siblings = page.parent.children() %}
-                {% set children = page.children() %}
+                {% set siblings = page.parent.children.visible() %}
+                {% set children = page.children.visible() %}
 
                 {% if not(page.parent.slug == 'pages') %}
 
