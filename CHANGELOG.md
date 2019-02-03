@@ -2,7 +2,7 @@
 ## 02/02/2019
 
 1. [](#new)
-    *Add support for page 'visible' setting in Section-type pages. For existing Section-type pages, ensure that any current 'visible: false' values are removed for those pages to be included.
+    *Added support for page 'visible' setting in Section-type pages. For existing Section-type pages, ensure that any current 'visible: false' values are removed for those pages to be included.
 1. [](#improved)
     * Updated demo pages in theme '_demo' folder
 
