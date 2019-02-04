@@ -6,7 +6,6 @@
 1. [](#bugfix)
     * Fixed option to show or hide custom menu items
 
-
 # v1.4.4
 ## 02/03/2019
 
