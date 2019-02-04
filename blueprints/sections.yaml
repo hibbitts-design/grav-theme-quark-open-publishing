@@ -31,3 +31,29 @@ form:
                     1:  No
                 validate:
                     type: bool
+
+            sectionpages:
+              type: tab
+              title: Section Pages
+
+        sectionpages:
+          type: tab
+          title: Sections Config
+
+          fields:
+
+            appearance:
+              type: section
+              title: Appearance
+              underline: true
+
+            header.hide_next_prev_page_buttons:
+                type: toggle
+                label: Display Next/Prev Section Buttons
+                default: 0
+                highlight: 0
+                options:
+                    0:  Yes
+                    1:  No
+                validate:
+                    type: bool
