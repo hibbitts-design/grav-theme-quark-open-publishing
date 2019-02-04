@@ -1,9 +1,18 @@
+# v1.4.5
+## 02/04/2019
+
+1. [](#new)
+    * Added option to show or hide Section Page Next/Prev buttons
+1. [](#bugfix)
+    * Fixed option to show or hide custom menu items
+
+
 # v1.4.4
 ## 02/03/2019
 
 1. [](#new)
     * Added support for 'visible' option setting in Section-type pages. For existing Section-type pages, ensure that any current 'visible: false' values are removed for those pages to be included.
-    * Added Theme option to show/hide menubar dropdowns
+    * Added Theme option to show or hide menubar dropdowns
 1. [](#improved)
     * Updated demo pages in theme '_demo' folder
 
@@ -83,7 +92,7 @@
 ## 11/09/2018
 
 1. [](#improved)
-    * Included option to show/hide page titles for embed.ly cards
+    * Included option to show or hide page titles for embed.ly cards
     * Adjusted handling of padding for Headings in Sections template
     * Updated demo pages in theme '_demo' folder
 
@@ -91,7 +100,7 @@
 ## 11/07/2018
 
 1. [](#improved)
-    * Included option to show/hide page titles for embed.ly cards
+    * Included option to show or hide page titles for embed.ly cards
     * Adjusted handling of padding for Headings in Sections template
     * Updated demo pages in theme '_demo' folder
 
