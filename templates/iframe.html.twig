@@ -38,14 +38,24 @@
 {% set loopindex = 0 %}
 {% if page.header.iframe_links is defined %}
 {% for litem in page.header.iframe_links %}
-{% if loopindex > 0 %} | {% endif %}<a class="newwindow external-link" href="{{ litem.url }}"><i class="fa {{litem.icon}}" aria-hidden="true"></i>{{litem.text}}</a>
+{% if litem.source|first == '/' %}
+{% set litem_source = base_url ~ litem.source %}
+{% else %}
+{% set litem_source = litem.source %}
+{% endif %}
+{% if loopindex > 0 %} | {% endif %}<a class="newwindow external-link" href="{{ litem_source }}"><i class="fa {{litem.icon}}" aria-hidden="true"></i>{{litem.text}}</a>
 {% set loopindex = loopindex + 1 %}
 {% endfor %}
 {% endif %}
 {% endif %}
 {% endif %}
+{% if page.header.iframe_source|first == '/' %}
+{% set iframesource = base_url ~ page.header.iframe_source %}
+{% else %}
+{% set iframesource = page.header.iframe_source %}
+{% endif %}
 <div class="video-responsive video-responsive-{{ iframeaspectratio }}">
-<iframe src="{{ page.header.iframe_url }}" width="640" height="480" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe src="{{ iframesource }}" width="640" height="480" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 </div>
 <br>
 {% endblock %}

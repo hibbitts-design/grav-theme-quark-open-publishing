@@ -34,13 +34,14 @@ form:
                     validate:
                         type: bool
 
-                header.iframe_url:
+                header.iframe_source:
                     ordering@: 4
                     type: text
                     size: long
-                    label: iFrame Source URL (https)
+                    label: iFrame Source
+                    description: URL or Grav site page path.
                     validate:
-                      type: URL
+                      required: true
 
                 header.iframe_aspect_ratio:
                     ordering@: 5
@@ -66,10 +67,10 @@ form:
                             type: text
                             label: Icon
                             description: 'Font Awesome icon for link item.'
-                        .url:
+                        .source:
                             type: text
-                            label: URL
-                            description: 'URL for link item.'
+                            label: Source
+                            description: 'URL or Grav site page path for link item.'
 
                 content:
                   unset@: true
