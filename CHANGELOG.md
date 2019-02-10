@@ -1,3 +1,9 @@
+# v1.4.8
+## 02/09/2019
+
+1. [](#improved)
+    * Better support for flat lists of Section-type pages
+
 # v1.4.7
 ## 02/07/2019
 
