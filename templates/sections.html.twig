@@ -63,9 +63,11 @@
                   </a>
                 {% endif %}
               {% else %}
-                <a class="btn btn-primary" href="{{ page.children|first.url }}">{{ page.children|first.title }}
-                  <i class="fa fa-chevron-right"></i>
-                </a>
+                {% if page.children.count != 0 %}
+                  <a class="btn btn-primary" href="{{ page.children|first.url }}">{{ page.children|first.title }}
+                    <i class="fa fa-chevron-right"></i>
+                  </a>
+                {% endif %}
               {% endif %}
             {% endif %}
 
