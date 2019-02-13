@@ -1,3 +1,9 @@
+# v1.4.9
+## 02/13/2019
+
+1. [](#improved)
+    * For improved support of the Presentation Plugin, Markdown links with "=_target" are now handled better
+
 # v1.4.8
 ## 02/09/2019
 
