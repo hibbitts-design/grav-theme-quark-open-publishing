@@ -91,7 +91,7 @@ form:
                   type: text
                   label: PLUGIN_PRESENTATION.ADMIN.STYLE.FONT.HEADER.LABEL
                   description: PLUGIN_PRESENTATION.ADMIN.STYLE.FONT.HEADER.DESCRIPTION
-                  default: 'GillSans,Arial'
+                  default: 'GillSans,''Gill Sans MT'',Arial'
                 header.style.header-color:
                   type: colorpicker
                   label: PLUGIN_PRESENTATION.ADMIN.STYLE.FONT.HEADER_COLOR.LABEL
@@ -100,7 +100,7 @@ form:
                   type: text
                   label: PLUGIN_PRESENTATION.ADMIN.STYLE.FONT.BLOCK.LABEL
                   description: PLUGIN_PRESENTATION.ADMIN.STYLE.FONT.BLOCK.DESCRIPTION
-                  default: 'GillSans,Arial'
+                  default: 'GillSans,''Gill Sans MT'',Arial'
                 header.style.block-color:
                   type: colorpicker
                   label: PLUGIN_PRESENTATION.ADMIN.STYLE.FONT.BLOCK_COLOR.LABEL
