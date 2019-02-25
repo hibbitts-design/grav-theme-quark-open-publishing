@@ -3,6 +3,7 @@
 
 1. [](#improved)
     * Added default padding for Font Awesome icons
+    * Added 'Gill Sans MT' to default font family for Presentation pages
 
 # v1.5.0
 ## 02/24/2019
