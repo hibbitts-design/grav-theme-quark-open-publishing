@@ -71,12 +71,10 @@ form:
                   label: PLUGIN_PRESENTATION.ADMIN.OPTIONS.TEXTSIZE.SCALE.LABEL
                   description: PLUGIN_PRESENTATION.ADMIN.OPTIONS.TEXTSIZE.SCALE.DESCRIPTION
                   data-options@: '\Grav\Plugin\PresentationPlugin::getModularScaleBlueprintOptions'
-                  default: 1.125
                 header.textsize.modifier:
                   type: number
                   label: PLUGIN_PRESENTATION.ADMIN.OPTIONS.TEXTSIZE.MODIFIER.LABEL
                   description: PLUGIN_PRESENTATION.ADMIN.OPTIONS.TEXTSIZE.MODIFIER.DESCRIPTION
-                  default: 1
                   validate:
                     type: int
                     min: 0
@@ -91,7 +89,6 @@ form:
                   type: text
                   label: PLUGIN_PRESENTATION.ADMIN.STYLE.FONT.HEADER.LABEL
                   description: PLUGIN_PRESENTATION.ADMIN.STYLE.FONT.HEADER.DESCRIPTION
-                  default: 'GillSans,''Gill Sans MT'',Arial'
                 header.style.header-color:
                   type: colorpicker
                   label: PLUGIN_PRESENTATION.ADMIN.STYLE.FONT.HEADER_COLOR.LABEL
@@ -100,7 +97,6 @@ form:
                   type: text
                   label: PLUGIN_PRESENTATION.ADMIN.STYLE.FONT.BLOCK.LABEL
                   description: PLUGIN_PRESENTATION.ADMIN.STYLE.FONT.BLOCK.DESCRIPTION
-                  default: 'GillSans,''Gill Sans MT'',Arial'
                 header.style.block-color:
                   type: colorpicker
                   label: PLUGIN_PRESENTATION.ADMIN.STYLE.FONT.BLOCK_COLOR.LABEL
@@ -141,6 +137,56 @@ form:
                     round: PLUGIN_PRESENTATION.ADMIN.STYLE.BACKGROUND-REPEAT.OPTIONS.ROUND
                     initial: PLUGIN_PRESENTATION.ADMIN.COMMON.INITIAL
                     inherit: PLUGIN_PRESENTATION.ADMIN.COMMON.INHERIT
+                header.style.justify-content:
+                  type: select
+                  label: PLUGIN_PRESENTATION.ADMIN.STYLE.JUSTIFY-CONTENT.LABEL
+                  help: PLUGIN_PRESENTATION.ADMIN.STYLE.JUSTIFY-CONTENT.HELP
+                  options:
+                    "": PLUGIN_PRESENTATION.ADMIN.COMMON.NONE
+                    center: PLUGIN_PRESENTATION.ADMIN.STYLE.JUSTIFY-CONTENT.OPTIONS.CENTER
+                    start: PLUGIN_PRESENTATION.ADMIN.STYLE.JUSTIFY-CONTENT.OPTIONS.START
+                    end: PLUGIN_PRESENTATION.ADMIN.STYLE.JUSTIFY-CONTENT.OPTIONS.END
+                    flex-start: PLUGIN_PRESENTATION.ADMIN.STYLE.JUSTIFY-CONTENT.OPTIONS.FLEX-START
+                    flex-end: PLUGIN_PRESENTATION.ADMIN.STYLE.JUSTIFY-CONTENT.OPTIONS.FLEX-END
+                    left: PLUGIN_PRESENTATION.ADMIN.STYLE.JUSTIFY-CONTENT.OPTIONS.LEFT
+                    right: PLUGIN_PRESENTATION.ADMIN.STYLE.JUSTIFY-CONTENT.OPTIONS.RIGHT
+                    normal: PLUGIN_PRESENTATION.ADMIN.STYLE.JUSTIFY-CONTENT.OPTIONS.NORMAL
+                    space-between: PLUGIN_PRESENTATION.ADMIN.STYLE.JUSTIFY-CONTENT.OPTIONS.SPACE-BETWEEN
+                    space-around: PLUGIN_PRESENTATION.ADMIN.STYLE.JUSTIFY-CONTENT.OPTIONS.SPACE-AROUND
+                    space-evenly: PLUGIN_PRESENTATION.ADMIN.STYLE.JUSTIFY-CONTENT.OPTIONS.SPACE-EVENLY
+                    stretch: PLUGIN_PRESENTATION.ADMIN.STYLE.JUSTIFY-CONTENT.OPTIONS.STRETCH
+                    initial: PLUGIN_PRESENTATION.ADMIN.COMMON.INITIAL
+                    inherit: PLUGIN_PRESENTATION.ADMIN.COMMON.INHERIT
+                header.style.align-items:
+                  type: select
+                  label: PLUGIN_PRESENTATION.ADMIN.STYLE.ALIGN-ITEMS.LABEL
+                  help: PLUGIN_PRESENTATION.ADMIN.STYLE.ALIGN-ITEMS.HELP
+                  options:
+                    "": PLUGIN_PRESENTATION.ADMIN.COMMON.NONE
+                    center: PLUGIN_PRESENTATION.ADMIN.STYLE.ALIGN-ITEMS.OPTIONS.CENTER
+                    start: PLUGIN_PRESENTATION.ADMIN.STYLE.ALIGN-ITEMS.OPTIONS.START
+                    end: PLUGIN_PRESENTATION.ADMIN.STYLE.ALIGN-ITEMS.OPTIONS.END
+                    flex-start: PLUGIN_PRESENTATION.ADMIN.STYLE.ALIGN-ITEMS.OPTIONS.FLEX-START
+                    flex-end: PLUGIN_PRESENTATION.ADMIN.STYLE.ALIGN-ITEMS.OPTIONS.FLEX-END
+                    self-start: PLUGIN_PRESENTATION.ADMIN.STYLE.ALIGN-ITEMS.OPTIONS.SELF-START
+                    self-end: PLUGIN_PRESENTATION.ADMIN.STYLE.ALIGN-ITEMS.OPTIONS.SELF-END
+                    normal: PLUGIN_PRESENTATION.ADMIN.STYLE.ALIGN-ITEMS.OPTIONS.NORMAL
+                    baseline: PLUGIN_PRESENTATION.ADMIN.STYLE.ALIGN-ITEMS.OPTIONS.BASELINE
+                    'first baseline': PLUGIN_PRESENTATION.ADMIN.STYLE.ALIGN-ITEMS.OPTIONS.FIRST-BASELINE
+                    'last baseline': PLUGIN_PRESENTATION.ADMIN.STYLE.ALIGN-ITEMS.OPTIONS.LAST-BASELINE
+                    initial: PLUGIN_PRESENTATION.ADMIN.COMMON.INITIAL
+                    inherit: PLUGIN_PRESENTATION.ADMIN.COMMON.INHERIT
+                header.horizontal:
+                  type: toggle
+                  label: PLUGIN_PRESENTATION.ADMIN.OPTIONS.HORIZONTAL.LABEL
+                  help: PLUGIN_PRESENTATION.ADMIN.OPTIONS.HORIZONTAL.HELP
+                  description: PLUGIN_PRESENTATION.ADMIN.OPTIONS.HORIZONTAL.DESCRIPTION
+                  highlight: 0
+                  options:
+                    1: PLUGIN_PRESENTATION.ADMIN.OPTIONS.HORIZONTAL.OPTIONS.HORIZONTAL
+                    0: PLUGIN_PRESENTATION.ADMIN.OPTIONS.HORIZONTAL.OPTIONS.VERTICAL
+                  validate:
+                    type: bool
         options:
           type: tab
           fields:
@@ -155,17 +201,6 @@ form:
                   help: PLUGIN_PRESENTATION.ADMIN.OPTIONS.CLASS.HELP
                   validate:
                     type: commalist
-                header.horizontal:
-                  type: toggle
-                  label: PLUGIN_PRESENTATION.ADMIN.OPTIONS.HORIZONTAL.LABEL
-                  help: PLUGIN_PRESENTATION.ADMIN.OPTIONS.HORIZONTAL.HELP
-                  highlight: 0
-                  default: 1
-                  options:
-                    1: PLUGIN_ADMIN.ENABLED
-                    0: PLUGIN_ADMIN.DISABLED
-                  validate:
-                    type: bool
                 header.footer:
                   type: text
                   label: PLUGIN_PRESENTATION.ADMIN.ADVANCED.FOOTER.LABEL
@@ -175,7 +210,6 @@ form:
                   label: PLUGIN_PRESENTATION.ADMIN.ADVANCED.SHORTCODES.LABEL
                   description: PLUGIN_PRESENTATION.ADMIN.ADVANCED.SHORTCODES.DESCRIPTION
                   highlight: 1
-                  default: 1
                   options:
                     1: PLUGIN_ADMIN.ENABLED
                     0: PLUGIN_ADMIN.DISABLED
@@ -186,7 +220,7 @@ form:
           fields:
             advanced:
               type: section
-              title: PLUGIN_PRESENTATION.ADMIN.ADVANCED.TITLE
+              title: PLUGIN_PRESENTATION.ADMIN.ADVANCED.TAB_TITLE
               underline: true
               fields:
                 header.presentation.content:
@@ -207,7 +241,6 @@ form:
                       '\Grav\Plugin\PresentationPlugin::getClassNamesBlueprintOptions',
                       "Parser",
                     ]
-                  default: 'deckset'
                 header.presentation.styles:
                   type: select
                   label: PLUGIN_PRESENTATION.ADMIN.ADVANCED.STYLES.LABEL
@@ -215,5 +248,5 @@ form:
                   data-options@:
                     [
                       '\Grav\Plugin\PresentationPlugin::getClassNamesBlueprintOptions',
-                      "Styles",
+                      "Transport",
                     ]
