@@ -13,4 +13,4 @@ taxonomy:
 
 
 Example Embedded Presentation  
-[presentation="presentation/placeholder-slide"]
+[presentation="presentations/placeholder-slide"]
