@@ -1,6 +1,6 @@
 ---
 title: 'Read Me'
-published: false
+published: true
 ---
 
 ### Easily Create, Share and Collaborate using Grav Open Publishing (Blogging) Space!  
