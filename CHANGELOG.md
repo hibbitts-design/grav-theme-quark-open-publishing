@@ -1,3 +1,9 @@
+# v1.5.3
+## 03/22/2019
+
+1. [](#bugfix)
+    * Corrected Grav version dependency to 1.5.10
+
 # v1.5.2
 ## 03/22/2019
 
