@@ -1,3 +1,9 @@
+# v1.5.4
+## 03/22/2019
+
+1. [](#bugfix)
+    * Removed unneeded `endblock` in Twig theme file
+
 # v1.5.3
 ## 03/22/2019
 
