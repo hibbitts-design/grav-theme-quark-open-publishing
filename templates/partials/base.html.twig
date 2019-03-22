@@ -24,7 +24,6 @@
             {% do assets.addCss('theme://css/custom.css') %}
             {% do assets.addCss('theme://css/font-awesome.min.css') %}
         {% endblock %}
-        {{ assets.css() }}
 
         {% block javascripts %}
             {% do assets.addJs('jquery', 101) %}
@@ -32,7 +31,13 @@
             {% do assets.addJs('theme://js/site.js', {group:'bottom'}) %}
             {% do assets.addJs('theme://js/my.js', 100) %}
         {% endblock %}
-        {{ assets.js() }}
+
+        {% block assets deferred %}
+            {{ assets.css()|raw }}
+            {{ assets.js()|raw }}
+        {% endblock %}
+
+{% endblock %}
 
     {% endblock head %}
 </head>
