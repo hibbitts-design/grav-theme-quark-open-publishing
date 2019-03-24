@@ -28,7 +28,7 @@ class ButtonShortcode extends Shortcode
             }
 
             if (!empty($buttonurl) && !empty($buttonlabel)) {
-                $output = '<a href="' . $buttonurl . '" target="' . $buttontarget . '" class="' . $buttonsize . ' btn-' . $buttonstyle . ' ' . $buttonclasses . '">' . $buttonlabel . '</a>';
+                $output = '<p><a href="' . $buttonurl . '" target="' . $buttontarget . '" class="' . $buttonsize . ' btn-' . $buttonstyle . ' ' . $buttonclasses . '">' . $buttonlabel . '</a></p>';
 
                 return $output;
             }

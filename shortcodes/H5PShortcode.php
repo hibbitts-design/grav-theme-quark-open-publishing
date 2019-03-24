@@ -23,9 +23,9 @@ class H5PShortcode extends Shortcode
 
 
                 if (strpos($h5proot, 'h5p.com') !== false) {
-                    $output = '<iframe src="'.$h5proot.''.$h5pid.'/embed" width="400" height="300" frameborder="0" allowfullscreen="allowfullscreen"></iframe><script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script><br><br>';
+                    $output = '<p><iframe src="'.$h5proot.''.$h5pid.'/embed" width="400" height="300" frameborder="0" allowfullscreen="allowfullscreen"></iframe><script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script></p>';
                 } else {
-                    $output = '<iframe src="'.$h5proot.''.$h5pid.'" width="400" height="300" frameborder="0" allowfullscreen="allowfullscreen"></iframe><script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script><br><br>';
+                    $output = '<p><iframe src="'.$h5proot.''.$h5pid.'" width="400" height="300" frameborder="0" allowfullscreen="allowfullscreen"></iframe><script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script></p>';
                 }
 
                 return $output;
