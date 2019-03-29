@@ -1,3 +1,9 @@
+# v1.6.0-beta.9
+## 03/29/2019
+
+1. [](#improved)
+    * Twig 2.0 compatibility
+
 # v1.6.0-beta.8
 ## 03/25/2019
 
