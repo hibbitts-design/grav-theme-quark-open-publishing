@@ -10,7 +10,7 @@
                 <h3>{{ page.title }}</h3>
             {% endif %}
 
-            {{ page.content }}
+            {{ page.content|raw }}
 
             {% set collection = page.collection() %}
             {% if page.header.display_template %}
@@ -25,7 +25,7 @@
                         'page':child,
                         'displaypagetitle':page.header.display_child_page_titles,
                         'displaycontenttitle':page.header.display_content_titles,
-                        'displaycontentlinks':page.header.display_content_links                        
+                        'displaycontentlinks':page.header.display_content_links
                     } %}
                 </p>
             {% endfor %}

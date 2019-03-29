@@ -19,14 +19,14 @@
               {% if image_creditlink %}
                 Image: <a class="newwindow external-link" href="{{ image_creditlink }}">
                 {{ image_credit }}</a></span>
-                <a href="{{ page.url }}">{{ image.cropZoom(1400,400).html }}</a>
+                <a href="{{ page.url }}">{{ image.cropZoom(1400,400).html|raw }}</a>
               {% else %}
                 Image: {{ image_credit }}</span>
-                <a href="{{ page.url }}">{{ image.cropZoom(1400,400).html }}</a>
+                <a href="{{ page.url }}">{{ image.cropZoom(1400,400).html|raw }}</a>
               {% endif %}
             </div>
           {% else %}
-            <a href="{{ page.url }}">{{ image.cropZoom(1400,400).html }}</a>
+            <a href="{{ page.url }}">{{ image.cropZoom(1400,400).html|raw }}</a>
           {% endif %}
 
       </div>
@@ -41,12 +41,12 @@
       </div>
       <div class="card-body">
           {% if page.summary != page.content %}
-              {{ page.summary }}
-              {% if page.header.continue_link is sameas(true) %}
+              {{ page.summary|raw }}
+              {% if page.header.continue_link is same as(true) %}
                 <a href="{{ page.url }}" title="{{ page.title }}" class="btn btn-primary">{{ 'THEME_QUARK.BLOG.ITEM.CONTINUE_READING'|t }}</a>
               {% endif %}
           {% else %}
-              {{ page.content }}
+              {{ page.content|raw }}
           {% endif %}
       </div>
       <div class="card-footer">

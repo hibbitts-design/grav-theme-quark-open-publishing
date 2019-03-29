@@ -16,7 +16,7 @@
     <div class="e-content">
         {# check to hide post summary on page - hibbittsdesign.org #}
         {% if page.parent.header.display_post_summary.enabled %}
-            {% set content = page.content | slice(page.summary | length) %}
+            {% set content = page.content|slice(page.summary | length) %}
         {% else %}
             {% set content = page.content %}
         {% endif %}
@@ -24,13 +24,13 @@
         {# check to show summary only - hibbittsdesign.org #}
         {% if not (grav.uri.param('summaryonly') or grav.uri.param('onlysummary')) %}
             {% if content is not empty %}
-                {{ content }}
+                {{ content|raw }}
             {% else %}
-                {{ page.summary }}
+                {{ page.summary|raw }}
             {% endif %}
         {% else %}
-            {{ page.summary }}
-            {% if page.header.continue_link is sameas(true) %}
+            {{ page.summary|raw }}
+            {% if page.header.continue_link is same as(true) %}
               <a href="{{ page.url ~ '/chromeless:true' }}" title="{{ page.title }}" class="btn btn-primary topwindow external-link">{{ 'THEME_QUARK.BLOG.ITEM.CONTINUE_READING'|t }}</a>
             {% endif %}
         {% endif %}

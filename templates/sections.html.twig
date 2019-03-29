@@ -16,7 +16,7 @@
         <h3 class="sections-page-title-template">{{ page.title }}</h3>
       {% endif %}
 
-      {{ page.content }}
+      {{ page.content|raw }}
 
       {% if not(hide_next_prev_page_buttons) %}
 

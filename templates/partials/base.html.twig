@@ -119,7 +119,7 @@
                 {# display footer markdown page - hibbittsdesign.org #}
                 {% set content = pages.find('/footer').content %}
                 {% if content %}
-                    {{ content }}
+                    {{ content|raw }}
                 {% endif %}
             </section>
         </section>
@@ -141,7 +141,7 @@
 {% include 'partials/scripts.html.twig' %}
 
 {% block bottom %}
-    {{ assets.js('bottom') }}
+    {{ assets.js('bottom')|raw }}
 {% endblock %}
 
 </body>
