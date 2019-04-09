@@ -1,4 +1,10 @@
 # v1.6.0-beta.9
+## 04/09/2019
+
+1. [](#improved)
+    * Twig 2.0 compatibility for Page menu items including Font Awesome icons
+
+# v1.6.0-beta.9
 ## 03/29/2019
 
 1. [](#improved)
