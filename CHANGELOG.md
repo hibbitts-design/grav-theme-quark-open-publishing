@@ -3,6 +3,7 @@
 
 1. [](#improved)
     * Update to Quark 2.0 release
+    * Set Grav 1.6 dependency
 
 # v1.6.0-beta.10
 ## 04/09/2019
