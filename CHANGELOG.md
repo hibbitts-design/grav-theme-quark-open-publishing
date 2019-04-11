@@ -1,3 +1,9 @@
+# v1.6.0-beta.11
+## 04/11/2019
+
+1. [](#improved)
+    * Update to Quark 2.0 release
+
 # v1.6.0-beta.10
 ## 04/09/2019
 
