@@ -1,70 +1,21 @@
-# v1.6.0-beta.11
-## 04/11/2019
+# v1.5.4
+## 03/22/2019
 
-1. [](#improved)
-    * Update to Quark 2.0 release
-    * Set Grav 1.6 dependency
+1. [](#bugfix)
+    * Removed unneeded `endblock` in Twig theme file
 
-# v1.6.0-beta.10
-## 04/09/2019
+# v1.5.3
+## 03/22/2019
 
-1. [](#improved)
-    * Twig 2.0 compatibility for Page menu items including Font Awesome icons
+1. [](#bugfix)
+    * Corrected Grav version dependency to 1.5.10
 
-# v1.6.0-beta.9
-## 03/29/2019
-
-1. [](#improved)
-    * Twig 2.0 compatibility
-
-# v1.6.0-beta.8
-## 03/25/2019
-
-1. [](#improved)
-    * Added insert Presentation Shortcode button into Editor toolbar
-
-# v1.6.0-beta.7
-## 03/24/2019
-
-1. [](#improved)
-    * Added paragraph wrapper to Bootstrap button, H5P, and Swipe Shortcodes
-
-# v1.6.0-beta.6
+# v1.5.2
 ## 03/22/2019
 
 1. [](#new)
+    * Set Dependency of Grav 1.5.10+ which has support for new **Deferred Block** Twig extension
     * Implement assets rendering using **Deferred Block** Twig extension
-
-# v1.6.0-beta.5
-## 03/14/2019
-
-1. [](#improved)
-    * Updated example pages in theme '_demo' folder
-
-# v1.6.0-beta.4
-## 03/13/2019
-
-1. [](#improved)
-    * Updated customized Presentation Plugin Blueprint
-
-# v1.6.0-beta.3
-## 03/07/2019
-
-1. [](#improved)
-    * Updated example pages in theme '_demo' folder
-
-# v1.6.0-beta.2
-## 02/27/2019
-
-1. [](#improved)
-    * Updated example pages in theme '_demo' folder
-
-# v1.6.0-beta.1
-## 02/27/2019
-
-1. [](#new)
-    * Added Presentation (which requires Grav 1.6) Plugin as dependency
-    * Updated example pages in theme '_demo' folder to include use of the Presentation Plugin
 
 # v1.5.1
 ## 02/24/2019
