@@ -1,3 +1,16 @@
+# v1.6.0
+## 04/11/2019
+
+1. [](#new)
+    * Set Grav dependency to 1.6+
+    * Added Presentation Plugin as dependency
+    * Added insert Presentation Shortcode button into Editor toolbar
+    * Added example pages in theme '_demo' folder to include use of the Presentation Plugin
+    * Implement assets rendering using **Deferred Block** Twig extension
+1. [](#improved)
+    * Twig 2.0 compatibility
+    * Added paragraph wrapper to Bootstrap button, H5P, and Swipe Shortcodes
+
 # v1.5.4
 ## 03/22/2019
 
@@ -8,13 +21,13 @@
 ## 03/22/2019
 
 1. [](#bugfix)
-    * Corrected Grav version dependency to 1.5.10
+    * Corrected Grav dependency to 1.5.10
 
 # v1.5.2
 ## 03/22/2019
 
 1. [](#new)
-    * Set Dependency of Grav 1.5.10+ which has support for new **Deferred Block** Twig extension
+    * Set Grav dependency to 1.5.10+ which has support for new **Deferred Block** Twig extension
     * Implement assets rendering using **Deferred Block** Twig extension
 
 # v1.5.1
