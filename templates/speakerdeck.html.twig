@@ -7,7 +7,7 @@
 {% set displaycontenttitle = page.header.display_speakerdeck_title %}
 {% endif %}
 {% block content %}
-{{ page.content }}
+{{ page.content|raw }}
 {% if page.header.speakerdeck_slide is defined %}
 {% set speakerdeckslide = page.header.speakerdeck_slide %}
 {% else %}

@@ -2,6 +2,6 @@
     {% if page.summary != page.content %}
         {{ page.summary }}
     {% else %}
-        {{ page.content }}
+        {{ page.content|raw }}
     {% endif %}
 </div>

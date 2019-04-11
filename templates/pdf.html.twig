@@ -7,7 +7,7 @@
 {% set displaycontenttitle = page.header.display_pdf_title %}
 {% endif %}
 {% block content %}
-{{ page.content }}
+{{ page.content|raw }}
 {% if displaypagetitle is defined %}
 {% if displaypagetitle %}
 <strong>{{ page.title }}</strong>

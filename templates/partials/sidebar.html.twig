@@ -14,7 +14,7 @@
 {% if sidebar_page.header.position == 'top' or sidebar_page.header.position is empty %}
     {% if sidebar_page_content is not empty %}
         <div class="sidebar-content">
-            {{ sidebar_page_content }}
+            {{ sidebar_page_content|raw }}
         </div>
     {% endif %}
 {% endif %}
@@ -49,7 +49,7 @@
 {% if sidebar_page.header.position == 'bottom' %}
     {% if sidebar_page_content is not empty %}
         <div class="sidebar-content">
-            {{ sidebar_page_content }}
+            {{ sidebar_page_content|raw }}
         </div>
     {% endif %}
 {% endif %}

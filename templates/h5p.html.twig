@@ -8,7 +8,7 @@
 {% endif %}
 {% block content %}
 <div class="h5p-content-wrapper">
-{{ page.content }}
+{{ page.content|raw }}
 {% if displaypagetitle is defined %}
 {% if displaypagetitle %}
 <strong>{{ page.title }}</strong><br>
