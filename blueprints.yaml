@@ -15,7 +15,7 @@ bugs: https://github.com/hibbitts-design/grav-theme-quark-open-publishing/issues
 license: MIT
 
 dependencies:
-- { name: grav, version: '>=1.6.0-rc.3' }
+- { name: grav, version: '>=1.6.0' }
 - admin
 - auto-date
 - archives
