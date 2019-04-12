@@ -1,90 +1,89 @@
 {% set body_classes = body_class(['header-fixed', 'header-animated', 'header-dark', 'header-transparent', 'sticky-footer']) %}
 {% set grid_size = theme_var('grid-size') %}
-{% set compress = theme_var('production_mode') ? '.min.css' : '.css' %}
+{% set compress = theme_var('production-mode') ? '.min.css' : '.css' %}
 <!DOCTYPE html>
 <html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}">
 <head>
-    {% block head deferred %}
-        <meta charset="utf-8"/>
-        <title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+{% block head deferred %}
+    <meta charset="utf-8" />
+    <title>{% if page.title %}{{ page.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
 
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% include 'partials/metadata.html.twig' %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include 'partials/metadata.html.twig' %}
 
-        <link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png') }}"/>
-        <link rel="canonical" href="{{ page.url(true, true) }}"/>
+    <link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png') }}" />
+    <link rel="canonical" href="{{ page.url(true, true) }}" />
+{% endblock head %}
 
-        {% block stylesheets %}
-            {% do assets.addCss('theme://css-compiled/spectre'~compress) %}
-            {% if theme_var('spectre.exp') %}{% do assets.addCss('theme://css-compiled/spectre-exp'~compress) %}{% endif %}
-            {% if theme_var('spectre.icons') %}{% do assets.addCss('theme://css-compiled/spectre-icons'~compress) %}{% endif %}
-            {% do assets.addCss('theme://css-compiled/theme'~compress) %}
-            {% do assets.addCss('theme://css/theme.css',100) %}
-            {% do assets.addCss('theme://css/custom.css') %}
-            {% do assets.addCss('theme://css/font-awesome.min.css') %}
-        {% endblock %}
+{% block stylesheets %}
+    {% do assets.addCss('theme://css-compiled/spectre'~compress) %}
+    {% if theme_var('spectre.exp') %}{% do assets.addCss('theme://css-compiled/spectre-exp'~compress)  %}{% endif %}
+    {% if theme_var('spectre.icons') %}{%  do assets.addCss('theme://css-compiled/spectre-icons'~compress) %}{% endif %}
+    {% do assets.addCss('theme://css-compiled/theme'~compress) %}
+    {% do assets.addCss('theme://css/theme.css',100) %}
+    {% do assets.addCss('theme://css/custom.css') %}
+    {% do assets.addCss('theme://css/line-awesome.min.css') %}
+{% endblock %}
 
-        {% block javascripts %}
-            {% do assets.addJs('jquery', 101) %}
-            {% do assets.addJs('theme://js/jquery.treemenu.js', {group:'bottom'}) %}
-            {% do assets.addJs('theme://js/site.js', {group:'bottom'}) %}
-            {% do assets.addJs('theme://js/my.js', 100) %}
-        {% endblock %}
+{% block javascripts %}
+    {% do assets.addJs('jquery', 101) %}
+    {% do assets.addJs('theme://js/jquery.treemenu.js', {group:'bottom'}) %}
+    {% do assets.addJs('theme://js/site.js', {group:'bottom'}) %}
+    {% do assets.addJs('theme://js/my.js', 100) %}
+{% endblock %}
 
-        {% block assets deferred %}
-            {{ assets.css()|raw }}
-            {{ assets.js()|raw }}
-        {% endblock %}
-
-    {% endblock head %}
+{% block assets deferred %}
+    {{ assets.css()|raw }}
+    {{ assets.js()|raw }}
+{% endblock %}
 </head>
 <body id="top" class="{% block body_classes %}{{ body_classes }}{% endblock %}">
-<div id="page-wrapper">
+    <div id="page-wrapper">
 
     {# added hidden page title for screen readers - hibbittsdesign.org #}
     <h1 class="hidden">{{ page.title }}</h1>
 
     {# check content display flag - hibbittsdesign.org #}
     {% if not (grav.uri.param('chromeless') or grav.uri.param('embedded')) and not(theme_var('chromeless.enabled')) %}
-        {% block header deferred %}
-            <section id="header" class="section">
-                <section class="container {{ grid_size }}">
-                    <nav class="navbar">
-                        <section class="navbar-section logo">
-                            {% include 'partials/logo.html.twig' %}
-                        </section>
-                        <section class="navbar-section">
+    {% block header deferred %}
+        <section id="header" class="section">
+            <section class="container {{ grid_size }}">
+                <nav class="navbar">
+                    <section class="navbar-section logo">
+                        {% include 'partials/logo.html.twig' %}
+                    </section>
+                    <section class="navbar-section desktop-menu">
 
-                            <nav class="dropmenu animated">
-                                {% block header_navigation %}
-                                    {% include 'partials/navigation.html.twig' %}
-                                {% endblock %}
-                            </nav>
+                        <nav class="dropmenu animated">
+                        {% block header_navigation %}
+                            {% include 'partials/navigation.html.twig' %}
+                        {% endblock %}
+                        </nav>
 
-                            {% if config.plugins.login.enabled and grav.user.username %}
-                                <span class="login-status-wrapper"><i class="fa fa-user"></i> {% include 'partials/login-status.html.twig' %}</span>
-                            {% endif %}
+                        {% if config.plugins.login.enabled and grav.user.username %}
+                            <span class="login-status-wrapper"><i class="fa fa-user"></i> {% include 'partials/login-status.html.twig' %}</span>
+                        {% endif %}
 
-                        </section>
-                    </nav>
-                </section>
+                    </section>
+                </nav>
             </section>
-            <div class="mobile-menu">
-                <div class="button_container" id="toggle">
-                    <span class="top"></span>
-                    <span class="middle"></span>
-                    <span class="bottom"></span>
-                </div>
+        </section>
+        <div class="mobile-menu">
+            <div class="button_container" id="toggle">
+                <span class="top"></span>
+                <span class="middle"></span>
+                <span class="bottom"></span>
             </div>
-        {% endblock %}
+        </div>
+    {% endblock %}
 
-        {% block hero %}{% endblock %}
+    {% block hero %}{% endblock %}
     {% else %}
-        <div style="margin-bottom: -80px;"></div>
+      <div style="margin-bottom: -80px;"></div>
     {% endif %}
 
-    <section id="start">
+        <section id="start">
         {% block body %}
             <section id="body-wrapper" class="section">
                 <section class="container {{ grid_size }}">
@@ -104,38 +103,39 @@
                 </section>
             </section>
         {% endblock %}
-    </section>
-
-</div>
-{# check content display flag - hibbittsdesign.org #}
-{% if not (grav.uri.param('chromeless') or grav.uri.param('embedded')) and (not theme_var('chromeless.enabled')) %}
-    {% block footer %}
-        <section id="footer" class="section bg-gray">
-            <section class="container {{ grid_size }}">
-                {# check to display git sync link in footer or not yet defined by saving theme settings - hibbittsdesign.org #}
-                {% if theme_var('display_of_git_sync_repo_link') == 'footer' %}
-                    <br>{% include 'partials/git_sync_repo_link.html.twig' %}<br><br>
-                {% endif %}
-                {# display footer markdown page - hibbittsdesign.org #}
-                {% set content = pages.find('/footer').content %}
-                {% if content %}
-                    {{ content|raw }}
-                {% endif %}
-            </section>
         </section>
-    {% endblock %}
-{% endif %}
 
-<div class="mobile-container">
-    <div class="overlay" id="overlay">
-        <div class="mobile-logo">
-            {% include 'partials/logo.html.twig' with {mobile: true} %}
-        </div>
-        <nav class="overlay-menu">
-            {% include 'partials/navigation.html.twig' with {tree: true} %}
-        </nav>
     </div>
-</div>
+
+    {# check content display flag - hibbittsdesign.org #}
+    {% if not (grav.uri.param('chromeless') or grav.uri.param('embedded')) and (not theme_var('chromeless.enabled')) %}
+        {% block footer %}
+            <section id="footer" class="section bg-gray">
+                <section class="container {{ grid_size }}">
+                    {# check to display git sync link in footer or not yet defined by saving theme settings - hibbittsdesign.org #}
+                    {% if theme_var('display_of_git_sync_repo_link') == 'footer' %}
+                        <br>{% include 'partials/git_sync_repo_link.html.twig' %}<br><br>
+                    {% endif %}
+                    {# display footer markdown page - hibbittsdesign.org #}
+                    {% set content = pages.find('/footer').content %}
+                    {% if content %}
+                        {{ content|raw }}
+                    {% endif %}
+                </section>
+            </section>
+        {% endblock %}
+    {% endif %}
+
+    <div class="mobile-container">
+        <div class="overlay" id="overlay">
+            <div class="mobile-logo">
+                {% include 'partials/logo.html.twig' with {mobile: true} %}
+            </div>
+            <nav class="overlay-menu">
+                {% include 'partials/navigation.html.twig' with {tree: true} %}
+            </nav>
+        </div>
+    </div>
 
 {# added global scripts - hibbittsdesign.org #}
 {% include 'partials/scripts.html.twig' %}
@@ -145,3 +145,4 @@
 {% endblock %}
 
 </body>
+</html>
