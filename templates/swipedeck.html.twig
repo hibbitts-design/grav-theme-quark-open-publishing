@@ -7,6 +7,8 @@
 {% set displaycontenttitle = page.header.display_swipe_deck_title %}
 {% endif %}
 {% block content %}
+<div class="swipedeck-wrapper">
+<p>
 {{ page.content|raw }}
 {% if displaypagetitle is defined %}
 {% if displaypagetitle %}
@@ -22,6 +24,7 @@
 <iframe style="border: 0px #ffffff none;" width="600" height="338" src="{{ 'https://www.swipe.to/embed/' ~ page.header.swipe_deck_id }}" allowfullscreen></iframe>
 </figure>
 </div>
-<br>
+</p>
+</div>
 {% endblock %}
 {% endif %}

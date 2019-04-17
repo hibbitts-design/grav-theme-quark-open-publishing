@@ -8,6 +8,7 @@
 {% endif %}
 {% block content %}
 <div class="h5p-content-wrapper">
+<p>
 {{ page.content|raw }}
 {% if displaypagetitle is defined %}
 {% if displaypagetitle %}
@@ -36,7 +37,7 @@
 {% endif %}
 <iframe src="{{ h5pcontenturl }}" width="400" height="300" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 <script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script>
-<br><br>
+</p>
 </div>
 {% endblock %}
 {% endif %}

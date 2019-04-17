@@ -10,6 +10,8 @@
 {% set displaycontentlinks = page.header.display_iframe_links %}
 {% endif %}
 {% block content %}
+<div class="iframe-wrapper">
+<p>
 {{ page.content|raw }}
 {% if displaypagetitle is defined %}
 {% if displaypagetitle %}
@@ -56,7 +58,7 @@
 {% endif %}
 <div class="video-responsive video-responsive-{{ iframeaspectratio }}">
 <iframe src="{{ iframesource }}" width="640" height="480" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+</p>
 </div>
-<br>
 {% endblock %}
 {% endif %}
