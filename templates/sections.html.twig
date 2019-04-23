@@ -28,9 +28,16 @@
 
             {% if not siblings.isFirst(page.path) %}
               {% if page.children.count == 0 %}
-                <a class="btn btn-primary" href="{{ siblings.nextSibling(page.path).url }}">
+                {% if (siblings.nextSibling(page.path).children|last) %}
+                  <a class="btn btn-primary" href="{{ siblings.nextSibling(page.path).children|last.url }}">
+                  <i class="fa fa-chevron-left"></i>
+                  {{ siblings.nextSibling(page.path).children|last.title }}
+                  </a>
+                {% else %}
+                  <a class="btn btn-primary" href="{{ siblings.nextSibling(page.path).url }}">
                   <i class="fa fa-chevron-left"></i>
                   {{ siblings.nextSibling(page.path).title }}</a>
+                {% endif %}
               {% else %}
                 <a class="btn btn-primary" href="{{ siblings.nextSibling(page.path).url }}">
                   <i class="fa fa-chevron-left"></i>
