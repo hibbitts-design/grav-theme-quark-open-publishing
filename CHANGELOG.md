@@ -1,3 +1,10 @@
+# v1.6.4
+## 04/23/2019
+
+1. [](#improved)
+    * Improved handling of Section Page Next/Prev buttons for previous Section with children pages
+    * Removed extra space after icon with Git Sync links on Pages
+
 # v1.6.3
 ## 04/17/2019
 
