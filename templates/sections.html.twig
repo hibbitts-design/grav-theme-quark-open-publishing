@@ -41,9 +41,11 @@
                   {{ siblings.nextSibling(page.path).title }}</a>
                 {% endif %}
               {% else %}
-                <a class="btn btn-primary" href="{% if activetag %}{{ siblings.nextSibling(page.path).url  ~ '/tag:' ~ activetag }}{% else %}{{ siblings.nextSibling(page.path).url }}{% endif %}">
-                  <i class="fa fa-chevron-left"></i>
-                  {{ siblings.nextSibling(page.path).title }}</a>
+                {% if siblings.nextSibling(page.path).url %}
+                  <a class="btn btn-primary" href="{% if activetag %}{{ siblings.nextSibling(page.path).url  ~ '/tag:' ~ activetag }}{% else %}{{ siblings.nextSibling(page.path).url }}{% endif %}">
+                    <i class="fa fa-chevron-left"></i>
+                    {{ siblings.nextSibling(page.path).title }}</a>
+                {% endif %}
               {% endif %}
             {% else %}
               {% if not(page.parent.parent.slug == 'pages') %}
@@ -55,9 +57,11 @@
 
             {% if not siblings.isLast(page.path) %}
               {% if children | length == 0 %}
-                <a class="btn btn-primary" href="{% if activetag %}{{ siblings.prevSibling(page.path).url ~ '/tag:' ~ activetag }}{% else %}{{ siblings.prevSibling(page.path).url }}{% endif %}">{{ siblings.prevSibling(page.path).title }}
-                  <i class="fa fa-chevron-right"></i>
-                </a>
+                {% if siblings.prevSibling(page.path).url %}
+                  <a class="btn btn-primary" href="{% if activetag %}{{ siblings.prevSibling(page.path).url ~ '/tag:' ~ activetag }}{% else %}{{ siblings.prevSibling(page.path).url }}{% endif %}">{{ siblings.prevSibling(page.path).title }}
+                    <i class="fa fa-chevron-right"></i>
+                  </a>
+                {% endif %}
               {% else %}
                 <a class="btn btn-primary" href="{% if activetag %}{{ page.children|first.url ~ '/tag:' ~ activetag }}{% else %}{{ page.children|first.url }}{% endif %}">{{ page.children|first.title }}
                   <i class="fa fa-chevron-right"></i>
