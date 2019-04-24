@@ -1,3 +1,9 @@
+# v1.6.5
+## 04/24/2019
+
+1. [](#new)
+    * Initial taxonomy support for section-type pages
+
 # v1.6.4
 ## 04/23/2019
 
