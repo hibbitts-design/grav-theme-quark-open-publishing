@@ -1,3 +1,9 @@
+# v1.6.7
+## 04/24/2019
+
+1. [](#improved)
+    * Add support for taxonomy tags on Section child pages
+
 # v1.6.6
 ## 04/24/2019
 
@@ -5,7 +11,7 @@
     * Further improved taxonomy support for section-type pages
 
 # v1.6.5
-## 04/24/2019
+## 04/23/2019
 
 1. [](#new)
     * Initial taxonomy support for section-type pages
