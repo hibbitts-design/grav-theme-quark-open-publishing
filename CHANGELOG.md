@@ -1,3 +1,9 @@
+# v1.6.6
+## 04/24/2019
+
+1. [](#improved)
+    * Further improved taxonomy support for section-type pages
+
 # v1.6.5
 ## 04/24/2019
 
