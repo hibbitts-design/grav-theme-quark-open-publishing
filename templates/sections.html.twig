@@ -8,6 +8,8 @@
 
 {% block content %}
 
+  {% set activetag = uri.param('tag') %}
+
   <div class="columns">
 
     <div id="sections-content" class="column col-9 col-md-12">
@@ -21,57 +23,57 @@
       {% if not(hide_next_prev_page_buttons) %}
 
         <p class="prev-next">
-          {% set siblings = page.parent.children.visible() %}
-          {% set children = page.children.visible() %}
+          {% set siblings = page.collection({ 'items': {'@page.children.visible' : page.parent.route }}) %}
+          {% set children = page.collection({ 'items': {'@page.children.visible' : page.route }}) %}
 
           {% if not(page.parent.slug == 'pages') %}
 
             {% if not siblings.isFirst(page.path) %}
-              {% if page.children.count == 0 %}
+              {% if children | length != 0 %}
                 {% if (siblings.nextSibling(page.path).children|last) %}
-                  <a class="btn btn-primary" href="{{ siblings.nextSibling(page.path).children|last.url }}">
+                  <a class="btn btn-primary" href="{% if activetag %}{{ siblings.nextSibling(page.path).children|last.url ~ '/tag:' ~ activetag }}{% else %}{{ siblings.nextSibling(page.path).children|last.url }}{% endif %}">
                   <i class="fa fa-chevron-left"></i>
                   {{ siblings.nextSibling(page.path).children|last.title }}
                   </a>
                 {% else %}
-                  <a class="btn btn-primary" href="{{ siblings.nextSibling(page.path).url }}">
+                  <a class="btn btn-primary" href="{% if activetag %}{{ siblings.nextSibling(page.path).url ~ '/tag:' ~ activetag }}{% else %}{{ siblings.nextSibling(page.path).url }}{% endif %}">
                   <i class="fa fa-chevron-left"></i>
                   {{ siblings.nextSibling(page.path).title }}</a>
                 {% endif %}
               {% else %}
-                <a class="btn btn-primary" href="{{ siblings.nextSibling(page.path).url }}">
+                <a class="btn btn-primary" href="{% if activetag %}{{ siblings.nextSibling(page.path).url  ~ '/tag:' ~ activetag }}{% else %}{{ siblings.nextSibling(page.path).url }}{% endif %}">
                   <i class="fa fa-chevron-left"></i>
                   {{ siblings.nextSibling(page.path).title }}</a>
               {% endif %}
             {% else %}
               {% if not(page.parent.parent.slug == 'pages') %}
-                <a class="btn btn-primary" href="{{ page.parent.url }}">
+                <a class="btn btn-primary" href="{% if activetag %}{{ page.parent.url ~ '/tag:' ~ activetag }}{% else %}{{ page.parent.url }}{% endif %}">
                   <i class="fa fa-chevron-left"></i>
                   {{ page.parent.title }}</a>
               {% endif %}
             {% endif %}
 
             {% if not siblings.isLast(page.path) %}
-              {% if page.children.count == 0 %}
-                <a class="btn btn-primary" href="{{ siblings.prevSibling(page.path).url }}">{{ siblings.prevSibling(page.path).title }}
+              {% if children | length == 0 %}
+                <a class="btn btn-primary" href="{% if activetag %}{{ siblings.prevSibling(page.path).url ~ '/tag:' ~ activetag }}{% else %}{{ siblings.prevSibling(page.path).url }}{% endif %}">{{ siblings.prevSibling(page.path).title }}
                   <i class="fa fa-chevron-right"></i>
                 </a>
               {% else %}
-                <a class="btn btn-primary" href="{{ page.children|first.url }}">{{ page.children|first.title }}
+                <a class="btn btn-primary" href="{% if activetag %}{{ page.children|first.url ~ '/tag:' ~ activetag }}{% else %}{{ page.children|first.url }}{% endif %}">{{ page.children|first.title }}
                   <i class="fa fa-chevron-right"></i>
                 </a>
               {% endif %}
             {% else %}
               {% if not(page.parent.parent.slug == 'pages') %}
-                {% set siblings = page.parent.parent.children.visible() %}
+                {% set siblings = page.collection({ items: {'@page.children.visible' : page.parent.parent.route }}) %}
                 {% if not siblings.isLast(page.parent.path) %}
-                  <a class="btn btn-primary" href="{{ siblings.prevSibling(page.parent.path).url }}">{{ siblings.prevSibling(page.parent.path).title }}
+                  <a class="btn btn-primary" href="{% if activetag %}{{ siblings.prevSibling(page.parent.path).url ~ '/tag:' ~ activetag }}{% else %}{{ siblings.prevSibling(page.parent.path).url }}{% endif %}">{{ siblings.prevSibling(page.parent.path).title }}
                     <i class="fa fa-chevron-right"></i>
                   </a>
                 {% endif %}
               {% else %}
                 {% if page.children.count != 0 %}
-                  <a class="btn btn-primary" href="{{ page.children|first.url }}">{{ page.children|first.title }}
+                  <a class="btn btn-primary" href="{% if activetag %}{{ page.children|first.url ~ '/tag:' ~ activetag }}{% else %}{{ page.children|first.url }}{% endif %}">{{ page.children|first.title }}
                     <i class="fa fa-chevron-right"></i>
                   </a>
                 {% endif %}
@@ -103,7 +105,7 @@
               ? 'active'
               : '' %}
             <li class="nav-item  {{ current_parent }}">
-              <a href="{{ p.url }}">{{ p.title }}</a>
+              <a href="{% if activetag %}{{ p.url ~ '/tag:' ~ activetag }}{% else %}{{ p.url }}{% endif %}">{{ p.title }}</a>
             </li>
 
             {% if p.children.visible.count != 0 %}
@@ -115,7 +117,7 @@
                       ? 'active'
                       : '' %}
                     <li class="nav-item {{ current_child }}">
-                      <a href="{{ child.url }}">{{ child.title }}</a>
+                      <a href="{% if activetag %}{{ child.url  ~ '/tag:' ~ activetag }}{% else %}{{ child.url }}{% endif %}">{{ child.title }}</a>
                     </li>
                   {% endfor %}
                 </ul>
