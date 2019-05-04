@@ -42,6 +42,28 @@ form:
 
           fields:
 
+            header.content.items:
+              type: hidden
+              default: '@self.children'
+
+            header.content.order.by:
+              type: select
+              label: Order By
+              default: date
+              options:
+                folder: Folder
+                title: Title
+                date: Date
+                default: Default
+
+            header.content.order.dir:
+              type: select
+              label: Order
+              default: asc
+              options:
+                asc: Ascending
+                desc: Descending
+                
             appearance:
               type: section
               title: Appearance
