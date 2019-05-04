@@ -1,0 +1,65 @@
+title: Presentations Page Options
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        options:
+          type: tab
+
+          fields:
+
+            pagetitle:
+                type: section
+                title: Page Title
+                underline: true
+
+            header.hide_page_title:
+                type: toggle
+                label: Display Title at top of Page
+                help: Determines if the page title is displayed at the top of a page
+                default: 0
+                highlight: 0
+                options:
+                    0:  Yes
+                    1:  No
+                validate:
+                    type: bool
+
+            sectionpages:
+              type: tab
+              title: Section Pages
+
+        presentationpages:
+          type: tab
+          title: Presentations Config
+
+          fields:
+
+            header.content.items:
+              type: hidden
+              default: '@self.children'
+
+            header.content.order.by:
+              type: select
+              label: Order By
+              default: date
+              options:
+                folder: Folder
+                title: Title
+                date: Date
+                default: Default
+
+            header.content.order.dir:
+              type: select
+              label: Order
+              default: asc
+              options:
+                asc: Ascending
+                desc: Descending
