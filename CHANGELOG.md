@@ -1,3 +1,13 @@
+# v1.7.0
+## 05/04/2019
+
+1. [](#new)
+    * Initial support for Presentation list pages
+1. [](#improved)
+    * Added default page collection frontmatter for new Sections pages
+    * Added sort options and order for Sections pages
+    * Updated demo pages in theme '_demo' folder
+
 # v1.6.9
 ## 04/27/2019
 
