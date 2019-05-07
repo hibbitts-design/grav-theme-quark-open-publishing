@@ -1,3 +1,9 @@
+# v1.7.2
+## 05/07/2019
+
+1. [](#new)
+    * Added default Favicon image file
+
 # v1.7.1
 ## 05/05/2019
 
