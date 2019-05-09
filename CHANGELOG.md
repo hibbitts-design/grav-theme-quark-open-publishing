@@ -1,3 +1,9 @@
+# v1.7.3
+## 05/09/2019
+
+1. [](#improved)
+    * Additional support of the alias 'embedded' for 'chromeless'
+
 # v1.7.2
 ## 05/07/2019
 
