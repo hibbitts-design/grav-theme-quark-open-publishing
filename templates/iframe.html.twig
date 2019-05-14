@@ -36,7 +36,7 @@
 {% endif %}
 {% if displaycontentlinks is defined %}
 {% if displaycontentlinks %}
-<br>
+{% if page.header.iframe_links | length > 1 %}<br>{% endif %}
 {% set loopindex = 0 %}
 {% if page.header.iframe_links is defined %}
 {% for litem in page.header.iframe_links %}
@@ -45,7 +45,11 @@
 {% else %}
 {% set litem_source = litem.source %}
 {% endif %}
-{% if loopindex > 0 %} | {% endif %}<a class="newwindow external-link" href="{{ litem_source }}"><i class="fa {{litem.icon}}" aria-hidden="true"></i>{{litem.text}}</a>
+{% if loopindex > 0 %} | {% endif %}
+{% if page.header.iframe_links | length == 1 %}({% endif %}
+<a class="newwindow external-link" href="{{ litem_source }}">
+<i class="fa {{litem.icon}}" aria-hidden="true"></i>{{litem.text}}</a>
+{% if page.header.iframe_links | length == 1 %}){% endif %}
 {% set loopindex = loopindex + 1 %}
 {% endfor %}
 {% endif %}
