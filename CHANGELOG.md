@@ -1,3 +1,9 @@
+# v1.7.5
+## 05/14/2019
+
+1. [](#improved)
+    * Improved presentation of a single iFrame template link
+
 # v1.7.4
 ## 05/10/2019
 
