@@ -1,3 +1,9 @@
+# v1.7.6
+## 05/15/2019
+
+1. [](#improved)
+    * Links of embedded background images in Presentations are automatically opened in a new Browser window
+
 # v1.7.5
 ## 05/14/2019
 
