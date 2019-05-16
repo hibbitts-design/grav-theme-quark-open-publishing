@@ -1,3 +1,9 @@
+# v1.7.9
+## 05/16/2019
+
+1. [](#bugfix)
+    * Display of custom git sync text fixed to work with "View Git Repository" functionality
+
 # v1.7.8
 ## 05/16/2019
 
