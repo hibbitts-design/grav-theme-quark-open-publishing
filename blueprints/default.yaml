@@ -41,6 +41,14 @@ form:
                 validate:
                     type: bool
 
+            header.git_sync_repo_link_text:
+                type: input.text
+                size: medium
+                label: 'Custom Git Sync Link Text'
+                description: 'Link text, e.g. ''View Page on GitHub''.'
+                validate:
+                    type: text
+                    
             header.git_sync_repo_link:
                 type: text
                 size: large
