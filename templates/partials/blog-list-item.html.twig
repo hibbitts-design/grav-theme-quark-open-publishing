@@ -5,10 +5,10 @@
       <div class="card-image">
 
         {# support image credit tag with optional image meta file - hibbittsdesign.org #}
+          {% set image_alt_text = page.header.header_image_alt_text %}
           {% if page.header.header_image_credit %}
             {% set image_credit = page.header.header_image_credit %}
             {% set image_creditlink = page.header.header_image_creditlink %}
-            {% set image_alt_text = page.header.header_image_alt_text %}
           {% elseif header_image_media.meta.header_image_credit  %}
             {% set image_credit = header_image_media.meta.header_image_credit %}
             {% set image_creditlink = header_image_media.meta.header_image_creditlink %}
@@ -19,14 +19,14 @@
               {% if image_creditlink %}
                 Image: <a class="newwindow external-link" href="{{ image_creditlink }}">
                 {{ image_credit }}</a></span>
-                <a href="{{ page.url }}">{{ image.cropZoom(1400,400).html|raw }}</a>
+                <a href="{{ page.url }}"><img src="{{ image.cropZoom(1400,400).url }}" alt="{{ image_alt_text }}"></a>
               {% else %}
                 Image: {{ image_credit }}</span>
-                <a href="{{ page.url }}">{{ image.cropZoom(1400,400).html|raw }}</a>
+                <a href="{{ page.url }}"><img src="{{ image.cropZoom(1400,400).url }}" alt="{{ image_alt_text }}"></a>
               {% endif %}
             </div>
           {% else %}
-            <a href="{{ page.url }}">{{ image.cropZoom(1400,400).html|raw }}</a>
+            <a href="{{ page.url }}"><img src="{{ image.cropZoom(1400,400).url }}" alt="{{ image_alt_text }}"></a>
           {% endif %}
 
       </div>

@@ -18,10 +18,10 @@
 
             {# support image credit tag with optional image meta file - hibbittsdesign.org #}
             {% if header_image_media %}
+                {% set image_alt_text = page.header.header_image_alt_text %}
                 {% if page.header.header_image_credit %}
                     {% set image_credit = page.header.header_image_credit %}
                     {% set image_creditlink = page.header.header_image_creditlink %}
-                    {% set image_alt_text = page.header.header_image_alt_text %}
                 {% elseif header_image_media.meta.header_image_credit %}
                     {% set image_credit = header_image_media.meta.header_image_credit %}
                     {% set image_creditlink = header_image_media.meta.header_image_creditlink %}
