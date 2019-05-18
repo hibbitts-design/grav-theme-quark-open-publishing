@@ -1,3 +1,10 @@
+# v1.8.0
+## 05/18/2019
+
+1. [](#improved)
+    * Additional support for Alt tag on blog post header images (no longer requires image credit link)
+    * Updated demo pages in theme '_demo' folder
+
 # v1.7.9
 ## 05/16/2019
 
