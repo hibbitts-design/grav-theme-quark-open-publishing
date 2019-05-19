@@ -15,7 +15,6 @@ This inherited theme is built with the [Spectre.css](https://picturepan2.github.
 * Featured posts (i.e. sticky posts)
 * Option to toggle page summaries (i.e. summaries are not displayed with page content)
 * Enhanced support for the [Presentation Plugin](https://github.com/OleVik/grav-plugin-presentation)
-* Custom menubar items
 * Easy-to-use interface to create custom menubar items
 * Creative Commons license display
 * Web accessibility enhancements (i.e. hidden H1 page titles)
