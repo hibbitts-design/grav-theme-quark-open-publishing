@@ -1,22 +1,22 @@
 # Quark Open Publishing (Blogging) Theme
 
-![Quark Open Publishing Theme](screenshot.jpg)
-
 Quark Open Publishing is a customized version of [Quark](https://github.com/getgrav/grav-theme-quark), the most recent default [Grav](http://getgrav.org) theme. In addition for built-in support for the Git Sync Plugin, a ['Chromeless' mode](http://demo.hibbittsdesign.org/grav-open-publishing-quark/chromeless:true) (shown above) is available to better embed Grav content into other systems.
 
-This inherited theme is built with the [Spectre.css](https://picturepan2.github.io/spectre/) framework and provides a powerful base for developing your own themes. Quark Open Publishing uses functionality that is only available in Grav 1.4+, as such you cannot run Quark Open Publishing on earlier versions of Grav.
+This inherited theme is built with the [Spectre.css](https://picturepan2.github.io/spectre/) framework and provides a powerful base for developing your own themes. Quark Open Publishing uses functionality that is only available in Grav 1.6+, as such you cannot run Quark Open Publishing on earlier versions of Grav.
+
+![Quark Open Publishing Theme](screenshot.jpg)
 
 ## Quark Open Publishing Features
 
-* Integrated support for Git Sync (i.e. view/edit pages in GitHub)
+* Integrated support for the [Git Sync](https://github.com/trilbymedia/grav-plugin-git-sync) Plugin (i.e. view/edit pages in GitHub)
 * 'Chromeless' page display (i.e. only display page content) for embedding pages in a 3rd party system
 * Markdown-based sidebar widget
-* Built-in Shortcodes - including Embed.ly, SpeakerDeck, Swipe and H5P
+* Built-in Shortcodes - including Button, Embed.ly, H5P, iFrame, PDF, SpeakerDeck, Swipe and Twitter
 * Featured posts (i.e. sticky posts)
 * Option to toggle page summaries (i.e. summaries are not displayed with page content)
+* Enhanced support for the [Presentation Plugin](https://github.com/OleVik/grav-plugin-presentation)
 * Custom menubar items
 * Easy-to-use interface to create custom menubar items
-* Option to hide Home page link in menubar
 * Creative Commons license display
 * Web accessibility enhancements (i.e. hidden H1 page titles)
 
