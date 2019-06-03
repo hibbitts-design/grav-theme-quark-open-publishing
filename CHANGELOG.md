@@ -1,3 +1,12 @@
+# v1.8.1
+## 06/03/2019
+
+1. [](#new)
+    * Added automatic Git Sync Link support for embedded Presentations
+    * Added option to hide Presentation title
+1. [](#improved)
+    * Updated demo pages in theme '_demo' folder
+
 # v1.8.0
 ## 05/18/2019
 
