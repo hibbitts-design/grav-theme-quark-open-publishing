@@ -34,7 +34,7 @@
             }
           }) %}
 
-          {% if not(page.parent.slug == 'pages') %}
+          {% if not(page.template == 'sections') %}
 
             {% if not siblings.isFirst(page.path) %}
               {% if children | length != 0 %}
@@ -56,7 +56,7 @@
                 {% endif %}
               {% endif %}
             {% else %}
-              {% if not(page.parent.parent.slug == 'pages') %}
+              {% if not(page.parent.template == 'sections') %}
                 <a class="btn btn-primary" href="{% if activetag %}{{ page.parent.url ~ '/tag:' ~ activetag }}{% else %}{{ page.parent.url }}{% endif %}">
                   <i class="fa fa-chevron-left"></i>
                   {{ page.parent.title }}</a>
@@ -76,7 +76,7 @@
                 </a>
               {% endif %}
             {% else %}
-              {% if not(page.parent.parent.slug == 'pages') %}
+              {% if not(page.parent.template == 'sections') %}
                 {% set siblings = page.collection({
                   items: {
                     '@page.children.visible': page.parent.parent.route
