@@ -1,3 +1,10 @@
+# v1.8.3
+## 06/05/2019
+
+1. [](#improved)
+    * Sections pages are now supported within a parent folder
+    * Updated demo pages in theme '_demo' folder
+
 # v1.8.2
 ## 06/03/2019
 
