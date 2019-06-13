@@ -1,3 +1,10 @@
+# v1.8.5
+## 06/13/2019
+
+1. [](#improved)
+    * Support for direct link to Presentation Markdown file when Presentation images are stored in a child folder
+    * Added custom Git Sync Link Text specific to embedded Presentations
+
 # v1.8.4
 ## 06/10/2019
 

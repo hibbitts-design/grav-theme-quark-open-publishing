@@ -1,5 +1,5 @@
 name: Quark Open Publishing
-version: 1.8.4
+version: 1.8.5
 description: "A custom version of the Quark theme for open publishing and blogging. Includes Git Sync and 'chromeless' content embedding."
 icon: unlock
 author:
@@ -27,7 +27,6 @@ dependencies:
 - git-sync
 - image-captions
 - login
-- markdown-fontawesome
 - markdown-notices
 - page-inject
 - pagination
@@ -122,7 +121,15 @@ form:
                             type: input.text
                             size: medium
                             label: Custom Git Sync Link Text
-                            description: Git Sync link text, e.g. 'View this Page in GitHub' or 'Save this Page as Markdown'.
+                            description: Link text, e.g. 'View Page in GitHub' or 'View Page as Markdown'.
+                            validate:
+                                type: text
+
+                        custom_git_sync_repo_presentation_link_text:
+                            type: input.text
+                            size: medium
+                            label: Custom Git Sync Presentation Link Text
+                            description: Link text, e.g. 'View Slides in GitHub' or 'View Slides as Markdown'.
                             validate:
                                 type: text
 
