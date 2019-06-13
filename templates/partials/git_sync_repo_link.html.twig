@@ -22,7 +22,11 @@
         {% if theme_var('custom_git_sync_repo_link_text')is empty %}
           {% set git_repo_link_text = 'View Content Repository' %}
         {% else %}
-          {% set git_repo_link_text = theme_var('custom_git_sync_repo_link_text') %}
+          {% if not presentationslides %}
+            {% set git_repo_link_text = theme_var('custom_git_sync_repo_link_text') %}
+          {% else %}
+            {% set git_repo_link_text = theme_var('custom_git_sync_repo_presentation_link_text') %}
+          {% endif %}
         {% endif %}
       {% endif %}
       <a class="newwindow external-link" href="{{ git_repo_link_url }}" title="{{ git_repo_link_text }}" target="_blank">
@@ -33,7 +37,7 @@
       {% else %}
         {% set git_repo_link_url = git_repo_link_url ~ ('/' ~ page.filePathClean) | replace({'/user/': '/'}) %}
       {% endif %}
-      {% if page.children.count %}
+      {% if (page.children.count) and (not presentationslides) %}
         {% set git_repo_link_url = (git_repo_link_url | replace({
           ('/' ~ page.template ~ '.md'): '/'
         })) %}
@@ -48,7 +52,11 @@
             {% set git_repo_link_text = 'Edit these Slides' %}
           {% endif %}
         {% else %}
-          {% set git_repo_link_text = theme_var('custom_git_sync_repo_link_text') %}
+          {% if not presentationslides %}
+            {% set git_repo_link_text = theme_var('custom_git_sync_repo_link_text') %}
+          {% else %}
+            {% set git_repo_link_text = theme_var('custom_git_sync_repo_presentation_link_text') %}
+          {% endif %}
         {% endif %}
       {% endif %}
       {% if presentationslides %}({% endif %}<a class="{{ link_classes }}" href="{{ git_repo_link_url }}" title="{{ git_repo_link_text }}" target="_blank"><i class="fa fa-{{ git_repo_link_icon }}" aria-hidden="true"></i>{{ git_repo_link_text }}</a>{% if presentationslides %}){% endif %}
@@ -88,12 +96,16 @@
           {% if theme_var('git_sync_repo_link_text')is empty %}
             {% set git_repo_link_text = 'View Content Repository' %}
           {% else %}
-            {% set git_repo_link_text = theme_var('custom_git_sync_repo_link_text') %}
+            {% if not presentationslides %}
+              {% set git_repo_link_text = theme_var('custom_git_sync_repo_link_text') %}
+            {% else %}
+              {% set git_repo_link_text = theme_var('custom_git_sync_repo_presentation_link_text') %}
+            {% endif %}
           {% endif %}
         {% endif %}
         {% if presentationslides %}({% endif %}<a class="{{ link_classes }}" href="{{ git_sync_repo_link}}" title="{{ git_repo_link_text }}" target="_blank"><i class="fa fa-{{ git_repo_link_icon }}" aria-hidden="true"></i>{{ git_repo_link_text }}</a>{% if presentationslides %}){% endif %}
       {% else %}
-        {% if page.children.count %}
+        {% if (page.children.count) and (not presentationslides) %}
           {% set git_repo_link_url = (git_repo_link_url | replace({
             ('/' ~ page.template ~ '.md'): '/'
           })) %}
@@ -108,7 +120,11 @@
             {% set git_repo_link_text = 'Edit these Slides' %}
           {% endif %}
           {% else %}
-            {% set git_repo_link_text = theme_var('custom_git_sync_repo_link_text') %}
+            {% if not presentationslides %}
+              {% set git_repo_link_text = theme_var('custom_git_sync_repo_link_text') %}
+            {% else %}
+              {% set git_repo_link_text = theme_var('custom_git_sync_repo_presentation_link_text') %}
+            {% endif %}
           {% endif %}
         {% endif %}
         {% if presentationslides %}({% endif %}<a class="{{ link_classes }}" href="{{ git_repo_link_url }}" title="{{ git_repo_link_text }}" target="_blank"><i class="fa fa-{{ git_repo_link_icon }}" aria-hidden="true"></i>{{ git_repo_link_text }}</a>{% if presentationslides %}){% endif %}
