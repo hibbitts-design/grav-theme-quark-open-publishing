@@ -1,5 +1,5 @@
 title: Custom Content List
-@extends:
+'@extends':
     type: default
     context: blueprints://pages
 
