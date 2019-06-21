@@ -1,3 +1,12 @@
+# v1.8.7
+## 06/21/2019
+
+1. [](#new)
+    * Support for modular page content on Blog listing pages
+1. [](#improved)
+    * Added notice color options for Alert modular pages
+    * Updated demo pages in theme '_demo' folder
+
 # v1.8.6
 ## 06/15/2019
 
