@@ -1,8 +1,15 @@
-{# new twig template file - hibbittsdesign.org #}
-<div class="notices yellow list-blog-header">
+{% if page.header.published %}
+{% if page.header.alert_color is defined %}
+  {% set alert_color = page.header.alert_color %}
+{% else %}
+  {% set alert_color = 'blue' %}
+{% endif %}
+
+<div class="notices {{ alert_color }} list-blog-header">
     <div class="list-blog-padding">
         <div class="listbullet">
             {{ page.content|raw }}
         </div>
     </div>
 </div>
+{% endif %}
