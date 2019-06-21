@@ -46,6 +46,15 @@
             {% embed 'partials/layout.html.twig' with {blog: page} %}
             {% block item %}
 
+            {# Added support for modular page content - hibbittsdesign.org #}
+            {% if page.collection('modular_content') is not empty %}
+              {% for module in page.collection('modular_content') %}
+                {% if (module.content|striptags)|trim %}
+                  <p>{{ module.content|raw }}</p>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+
             {% if ((page.header.bricklayer_layout is not defined) or (page.header.bricklayer_layout)) %}
             <div class="bricklayer">
                 {% else %}
