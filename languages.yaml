@@ -238,3 +238,27 @@ nl:
                 HEADLINE: Archieven
             SYNDICATE:
                 HEADLINE: Syndicatie
+
+ja:
+    THEME_QUARK:
+        BLOG:
+            ITEM:
+                CONTINUE_READING: 読み続ける
+                NEXT_POST: 次の記事
+                PREV_POST: 前の記事
+        SIDEBAR:
+            SIMPLE_SEARCH:
+                HEADLINE: 検索
+            RELATED_POSTS:
+                HEADLINE: 関連記事
+            RANDOM_ARTICLE:
+                HEADLINE: ランダム記事
+                FEELING_LUCKY: ラッキーな気分
+            SOME_TEXT_WIDGET:
+                HEADLINE: 何かのテキスト・ウィジェット
+            POPULAR_TAGS:
+                HEADLINE: 人気のタグ
+            ARCHIVES:
+                HEADLINE: アーカイブ
+            SYNDICATE:
+                HEADLINE: シンジケート
