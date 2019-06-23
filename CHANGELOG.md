@@ -1,3 +1,10 @@
+# v1.8.9
+## 06/23/2019
+
+1. [](#improved)
+    * Improved visual alignment for modular page content on Blog listing pages
+    * Updated demo pages in theme '_demo' folder
+
 # v1.8.8
 ## 06/23/2019
 
