@@ -1,3 +1,9 @@
+# v1.8.8
+## 06/23/2019
+
+1. [](#improved)
+    * Added Japanese translation [#24](https://github.com/hibbitts-design/grav-theme-quark-open-publishing/pull/24)
+
 # v1.8.7
 ## 06/21/2019
 
