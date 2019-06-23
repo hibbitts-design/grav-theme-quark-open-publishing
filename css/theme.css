@@ -116,3 +116,7 @@ h1.sections-page-title-template, h2.sections-page-title-template, h3.sections-pa
 .sections-page-title {
     margin-top: -2rem;
 }
+
+.bricklayermodulars {
+    padding-right: 25px;
+}
