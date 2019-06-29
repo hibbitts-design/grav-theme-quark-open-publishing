@@ -1,3 +1,9 @@
+# v1.9.1
+## 06/29/2019
+
+1. [](#bugfix)
+    * Sidebar Taxonomy List only includes child page taxonomy items
+
 # v1.9.0
 ## 06/24/2019
 
