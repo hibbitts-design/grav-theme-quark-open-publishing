@@ -1,5 +1,5 @@
 <p>
-{% if not page.find('/' ~ src ).header.hide_title %}<a class="newwindow external-link" href="{{ presentation_base_url }}/{{ src }}">{{ page.find('/' ~ src ).title }}</a>{% include 'partials/git_sync_repo_link.html.twig' with {presentationslides : true} %}{% endif %}
+{% if not page.find('/' ~ src ).header.hide_title %}<a class="newwindow external-link" href="{{ presentation_base_url }}/{{ src }}">{{ page.find('/' ~ src ).title }}</a>{% if theme_var('display_of_git_sync_repo_link') != 'none' %}{% include 'partials/git_sync_repo_link.html.twig' with {presentationslides : true} %}{% endif %}{% endif %}
 <div class="video-responsive video-responsive-4-3">
   <iframe src="{{ presentation_base_url }}/{{ src }}" frameborder="0" allowfullscreen="allowfullscreen" class="{{ class }}"></iframe>
 </div>
