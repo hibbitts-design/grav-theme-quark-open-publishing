@@ -29,8 +29,10 @@
           {% endif %}
         {% endif %}
       {% endif %}
+      {% if presentationslides %}({% endif %}
       <a class="newwindow external-link" href="{{ git_repo_link_url }}" title="{{ git_repo_link_text }}" target="_blank">
         <i class="fa fa-{{ git_repo_link_icon }}" aria-hidden="true"></i>{{ git_repo_link_text }}</a>
+      {% if presentationslides %}){% endif %}
     {% else %}
       {% if page.header.git_sync_repo_link %}
         {% set git_repo_link_url = page.header.git_sync_repo_link %}
@@ -59,13 +61,19 @@
           {% endif %}
         {% endif %}
       {% endif %}
-      {% if presentationslides %}({% endif %}<a class="{{ link_classes }}" href="{{ git_repo_link_url }}" title="{{ git_repo_link_text }}" target="_blank"><i class="fa fa-{{ git_repo_link_icon }}" aria-hidden="true"></i>{{ git_repo_link_text }}</a>{% if presentationslides %}){% endif %}
+      {% if presentationslides %}({% endif %}
+      <a class="{{ link_classes }}" href="{{ git_repo_link_url }}" title="{{ git_repo_link_text }}" target="_blank">
+        <i class="fa fa-{{ git_repo_link_icon }}" aria-hidden="true"></i>{{ git_repo_link_text }}</a>
+      {% if presentationslides %}){% endif %}
     {% endif %}
   {% endif %}
 {% else %}
   {% if config.plugins['git-sync'].enabled and config.plugins['git-sync'].repository is empty %}
     {% set admin_panel_appearance_url = grav.base_url ~ '/admin/plugins/git-sync' %}
-    {% if not presentationslides %}<a class="{{ link_classes }}" href="{{ admin_panel_appearance_url }}" title="Setup Git Sync"><i class="fa fa-cog" aria-hidden="true"></i>Setup Git Sync</a>{% endif %}
+    {% if not presentationslides %}
+      <a class="{{ link_classes }}" href="{{ admin_panel_appearance_url }}" title="Setup Git Sync">
+        <i class="fa fa-cog" aria-hidden="true"></i>Setup Git Sync</a>
+    {% endif %}
   {% else %}
     {% if not page.header.hide_git_sync_repo_link %}
       {% set git_sync_repo = config.plugins['git-sync'].repository %}
@@ -103,7 +111,10 @@
             {% endif %}
           {% endif %}
         {% endif %}
-        {% if presentationslides %}({% endif %}<a class="{{ link_classes }}" href="{{ git_sync_repo_link}}" title="{{ git_repo_link_text }}" target="_blank"><i class="fa fa-{{ git_repo_link_icon }}" aria-hidden="true"></i>{{ git_repo_link_text }}</a>{% if presentationslides %}){% endif %}
+        {% if presentationslides %}({% endif %}
+        <a class="{{ link_classes }}" href="{{ git_sync_repo_link}}" title="{{ git_repo_link_text }}" target="_blank">
+          <i class="fa fa-{{ git_repo_link_icon }}" aria-hidden="true"></i>{{ git_repo_link_text }}</a>
+        {% if presentationslides %}){% endif %}
       {% else %}
         {% if (page.children.count) and (not presentationslides) %}
           {% set git_repo_link_url = (git_repo_link_url | replace({
@@ -113,12 +124,12 @@
         {% if page.header.git_sync_repo_link_text %}
           {% set git_repo_link_text = page.header.git_sync_repo_link_text %}
         {% else %}
-        {% if theme_var('custom_git_sync_repo_link_text')is empty %}
-          {% if not presentationslides %}
-            {% set git_repo_link_text = 'Edit this Page' %}
-          {% else %}
-            {% set git_repo_link_text = 'Edit these Slides' %}
-          {% endif %}
+          {% if theme_var('custom_git_sync_repo_link_text')is empty %}
+            {% if not presentationslides %}
+              {% set git_repo_link_text = 'Edit this Page' %}
+            {% else %}
+              {% set git_repo_link_text = 'Edit these Slides' %}
+            {% endif %}
           {% else %}
             {% if not presentationslides %}
               {% set git_repo_link_text = theme_var('custom_git_sync_repo_link_text') %}
@@ -127,7 +138,10 @@
             {% endif %}
           {% endif %}
         {% endif %}
-        {% if presentationslides %}({% endif %}<a class="{{ link_classes }}" href="{{ git_repo_link_url }}" title="{{ git_repo_link_text }}" target="_blank"><i class="fa fa-{{ git_repo_link_icon }}" aria-hidden="true"></i>{{ git_repo_link_text }}</a>{% if presentationslides %}){% endif %}
+        {% if presentationslides %}({% endif %}
+        <a class="{{ link_classes }}" href="{{ git_repo_link_url }}" title="{{ git_repo_link_text }}" target="_blank">
+          <i class="fa fa-{{ git_repo_link_icon }}" aria-hidden="true"></i>{{ git_repo_link_text }}</a>
+        {% if presentationslides %}){% endif %}
       {% endif %}
     {% endif %}
   {% endif %}
