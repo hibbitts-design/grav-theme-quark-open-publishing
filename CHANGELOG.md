@@ -1,3 +1,14 @@
+# v1.9.4
+## 08/10/2019
+
+1. [](#bugfix)
+    * Fixed automatic Git Sync Link for Presentations in a Presentation List page
+1. [](#improved)
+    * Added support to hide Git Sync Link for each embedded Presentation
+    * Updated Presentation blueprint Git Sync options
+    * Fine tuning of automatic Git Sync Link for embedded Presentations
+    * Improved support for custom Git Sync Link text for pages and presentations
+
 # v1.9.3
 ## 07/24/2019
 
