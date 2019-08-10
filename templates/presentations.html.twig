@@ -13,9 +13,11 @@
             {{ page.content|raw }}
             {% set collection = page.collection() %}
             {% for child in collection %}
-              <div class="presentation-list-item">
-                <p>{% include 'partials/presentation_iframe.html.twig' with {'src': child.route|trim('/'),'fullpagepath':true } %}</p>
-              </div>
+              {% if child.template == 'presentation' %}
+                <div class="presentation-list-item">
+                  <p>{% include 'partials/presentation_iframe.html.twig' with {'src': child.route|trim('/'),'fullpagepath':true } %}</p>
+                </div>
+              {% endif %}
             {% endfor %}
 
         </div>
