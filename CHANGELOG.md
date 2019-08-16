@@ -1,3 +1,9 @@
+# v1.9.5
+## 08/16/2019
+
+1. [](#improved)
+    * Improved Twig 2.0 compatibility
+
 # v1.9.4
 ## 08/10/2019
 
