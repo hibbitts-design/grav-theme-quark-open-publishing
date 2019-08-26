@@ -1,3 +1,9 @@
+# v1.9.6
+## 08/26/2019
+
+1. [](#bugfix)
+    * Fixed support for blog item taxonomy tags in 'chromeless' blog list view
+
 # v1.9.5
 ## 08/16/2019
 
