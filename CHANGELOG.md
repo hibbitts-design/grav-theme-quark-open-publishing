@@ -1,3 +1,9 @@
+# v1.9.7
+## 09/12/2019
+
+1. [](#bugfix)    
+    * Support CTRL + click to open links in new tab as expected
+
 # v1.9.6
 ## 08/26/2019
 
