@@ -23,7 +23,11 @@ $(document).ready(function () {
                 newurl = newurl + "/hidepagetitle:true";
             }
 
-            window.location.href = newurl;
+            if (e.ctrlKey or e.metakey) {
+              window.open(newurl,'_blank');
+            } else {
+              window.location.href = newurl;
+            }
         }
     });
 });
