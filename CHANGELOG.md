@@ -1,3 +1,9 @@
+# v1.9.8
+## 09/14/2019
+
+1. [](#bugfix)    
+    * Updated JS to prevent possible conflict with Bricklayer CSS
+
 # v1.9.7
 ## 09/12/2019
 
