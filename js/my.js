@@ -23,7 +23,7 @@ $(document).ready(function () {
                 newurl = newurl + "/hidepagetitle:true";
             }
 
-            if (e.ctrlKey or e.metakey) {
+            if (e.ctrlKey || e.metakey) {
               window.open(newurl,'_blank');
             } else {
               window.location.href = newurl;
