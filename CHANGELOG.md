@@ -1,3 +1,11 @@
+# v1.9.9
+## 10/04/2019
+
+1. [](#bugfix)    
+    * Support proper RSS feed URL when 'Append URL extension' is set to '.html'
+1. [](#improved)
+    * Updated demo pages in theme '_demo' folder
+
 # v1.9.8
 ## 09/14/2019
 
