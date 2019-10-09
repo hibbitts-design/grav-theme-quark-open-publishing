@@ -1,5 +1,5 @@
 name: Quark Open Publishing
-version: 1.9.9
+version: 2.0.0
 description: "A custom version of the Quark theme for open publishing and blogging. Includes Git Sync and 'chromeless' content embedding."
 icon: unlock
 author:
@@ -261,18 +261,6 @@ form:
                                         _parent:             'Open in the parent frame'
                                         _top:                'Open in the full body of the window'
                                         _self:               'Open in the same frame as clicked'
-
-                        hidehomemenulink:
-                            type:                      toggle
-                            label:                     Include Homepage Link in Menubar
-                            help:                      Determines if the link to the Homepage is included in the menubar.
-                            default:                   0
-                            highlight:                 0
-                            options:
-                                0:                     Yes
-                                1:                     No
-                            validate:
-                                type:                  bool
 
                 theme_info:
                     type: tab

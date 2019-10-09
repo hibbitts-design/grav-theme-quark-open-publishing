@@ -1,33 +1,28 @@
-{% set hide_home_menu_link = theme_var('hidehomemenulink') %}
-
 {% macro nav_loop(page, hide_home_menu_link, home_alias) %}
     {% import _self as macros %}
     {% for p in page.children.visible %}
-        {# Supress home menu link - hibbittsdesign.org #}
-        {% if not((hide_home_menu_link) and p.home) %}
-            {% set active_page = (p.active or p.activeChild) ? 'active' : '' %}
-            {% if theme_var('dropdown.enabled') and p.children.visible.count > 0 %}
-                <li>
-                    <a href="{{ p.url }}" class="{{ active_page }}">
-                        {% if p.header.icon %}
-                            <i class="fa fa-{{ p.header.icon }}"></i>
-                        {% endif %}
-                        {{ p.menu }}
-                    </a>
-                    <ul>
-                        {{ macros.nav_loop(p) }}
-                    </ul>
-                </li>
-            {% else %}
-                <li>
-                    <a href="{{ p.url }}" class="{{ active_page }}">
-                        {% if p.header.icon %}
-                            <i class="fa fa-{{ p.header.icon }}"></i>
-                        {% endif %}
-                        {{ p.menu }}
-                    </a>
-                </li>
-            {% endif %}
+        {% set active_page = (p.active or p.activeChild) ? 'active' : '' %}
+        {% if theme_var('dropdown.enabled') and p.children.visible.count > 0 %}
+            <li>
+                <a href="{{ p.url }}" class="{{ active_page }}">
+                    {% if p.header.icon %}
+                        <i class="fa fa-{{ p.header.icon }}"></i>
+                    {% endif %}
+                    {{ p.menu }}
+                </a>
+                <ul>
+                    {{ macros.nav_loop(p) }}
+                </ul>
+            </li>
+        {% else %}
+            <li>
+                <a href="{{ p.url }}" class="{{ active_page }}">
+                    {% if p.header.icon %}
+                        <i class="fa fa-{{ p.header.icon }}"></i>
+                    {% endif %}
+                    {{ p.menu }}
+                </a>
+            </li>
         {% endif %}
     {% endfor %}
 {% endmacro %}
