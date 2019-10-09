@@ -1,3 +1,9 @@
+# v2.0.0
+## 10/09/2019
+
+1. [](#improved)
+    * Removed theme option to hide homepage in menubar (set the 'visible' option to 'false' on homepage for same functionality)
+
 # v1.9.9
 ## 10/04/2019
 
