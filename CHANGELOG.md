@@ -1,3 +1,9 @@
+# v2.0.1
+## 11/09/2019
+
+1. [](#new)
+    * Added experimental Markdown file Shortcode ([markdownfile url=""]) to embed external Markdown files (thanks to @OleVik for help along the way)
+
 # v2.0.0
 ## 10/09/2019
 
