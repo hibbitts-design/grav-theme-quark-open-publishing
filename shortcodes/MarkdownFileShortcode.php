@@ -28,6 +28,7 @@ class MarkdownFileShortcode extends Shortcode
                   }
 
                   $file = file_get_contents($markdownfileurl);
+                  $file = preg_replace('/---[\s\S]*---/', '', $file);
                   $markdown = Utils::processMarkdown($file);
 
                   return $markdown;
