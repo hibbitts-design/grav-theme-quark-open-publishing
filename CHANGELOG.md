@@ -1,3 +1,9 @@
+# v2.0.2
+## 11/22/2019
+
+1. [](#improved)
+    * Updated experimental Markdown file Shortcode ([markdownfile url=""]) to support displaying Grav Markdown pages (frontmatter is removed)
+
 # v2.0.1
 ## 11/09/2019
 
