@@ -1,3 +1,9 @@
+# v2.0.3
+## 11/27/2019
+
+1. [](#improved)
+    * Removed deprecated swipedeck template and shortcode
+
 # v2.0.2
 ## 11/22/2019
 
