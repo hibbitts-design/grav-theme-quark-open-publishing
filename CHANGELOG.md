@@ -1,3 +1,11 @@
+# v2.0.4
+## 12/08/2019
+
+1. [](#improved)
+  * Reorganized theme options for Git Sync Link and Custom Menu Items
+  * Renamed template/blueprint of CustomContentList to CustomPageTypes
+  * Removed deprecated swipedeck template partials
+
 # v2.0.3
 ## 11/27/2019
 
