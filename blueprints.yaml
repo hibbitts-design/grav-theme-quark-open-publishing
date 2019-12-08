@@ -1,5 +1,5 @@
 name: Quark Open Publishing
-version: 2.0.4
+version: 2.0.5
 description: "A custom version of the Quark theme for open publishing and blogging. Includes Git Sync and 'chromeless' content embedding."
 icon: unlock
 author:
@@ -59,7 +59,7 @@ form:
               underline: true
             chromeless.enabled:
               type: toggle
-              label: 'Hide Site Menubar, Sidebar and Footer'
+              label: 'Hide Site Menu, Sidebar and Footer'
               highlight: 1
               default: 0
               options:
@@ -125,13 +125,13 @@ form:
                   label: 'Additional CC License Text'
                   validate:
                     type: text
-            menubaroptions:
+            menuoptions:
               type: section
-              title: Menubar
+              title: Menu
               underline: true
             dropdown.enabled:
               type: toggle
-              label: 'Display Dropdowns in Menubar'
+              label: 'Display Dropdowns in Menu'
               highlight: 1
               default: 1
               options:
