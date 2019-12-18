@@ -215,6 +215,10 @@ form:
                     0: PLUGIN_ADMIN.DISABLED
                   validate:
                     type: bool
+                presentationtitleandlinks:
+                    type: section
+                    title: Presentation Title and Links
+                    underline: true
                 header.hide_title:
                     type: toggle
                     label: Display Presentation Title
@@ -226,6 +230,35 @@ form:
                         1:  No
                     validate:
                         type: bool
+                header.display_custom_links:
+                    type: toggle
+                    label: 'Display Custom Presentation Links'
+                    description: Custom presentation links (e.g. PDF file, etc.)
+                    help: 'Determines if any defined custom presentation links are displayed with embedded Presentation.'
+                    default: 0
+                    highlight: 1
+                    options:
+                      '1': Yes
+                      '0': No
+                    validate:
+                      type: bool
+                header.custom_links:
+                    name: links
+                    type: list
+                    label: 'Custom Presentation Links'
+                    fields:
+                      .text:
+                        type: text
+                        label: Text
+                        description: 'Text label for link.'
+                      .icon:
+                        type: text
+                        label: Icon
+                        description: 'Font Awesome icon for link.'
+                      .url:
+                        type: text
+                        label: URL
+                        description: 'URL for link.'
         advanced:
           type: tab
           fields:
