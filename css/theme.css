@@ -67,12 +67,14 @@ right: 0;
 img.left {
   display:inline;
   float:left;
-  margin:5px 15px 5px 0;
+  margin:1rem 15px 5px 0;
+  max-width: 50%;
 }
 
 img.right {
   float:right;
-  margin:5px 0 5px 15px;
+  margin:1rem 0 5px 15px;
+  max-width: 50%;;
 }
 
 img.center {
@@ -94,11 +96,13 @@ figure.image-caption figcaption {
 figure.figure-right {
     float:right;
     margin:5px 0 5px 15px;
+    max-width: 50%;
 }
 
 figure.figure-left {
     float: left;
     margin:5px 15px 5px 0;
+    max-width: 50%;
 }
 
 figure.caption-left figcaption {
