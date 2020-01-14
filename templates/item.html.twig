@@ -11,7 +11,12 @@
         {% set content %}
             <h1>{{ page.title }}</h1>
             <h2>{{ page.header.subtitle }}</h2>
-            {% include 'partials/blog/date.html.twig' %}
+            <p>
+                {% include 'partials/blog/date.html.twig' %}
+                {% if config.plugins.breadcrumbs.enabled %}
+                    {% include 'partials/blog/readingtime.html.twig' %}
+                {% endif %}
+            </p>
             {% include 'partials/blog/taxonomy.html.twig' %}
         {% endset %}
         {% include 'partials/hero.html.twig' with {id: 'blog-hero'} %}
