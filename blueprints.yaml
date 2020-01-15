@@ -41,6 +41,7 @@ dependencies:
 - shortcode-core
 - shortcode-ui
 - quark
+- readingtime
 
 form:
   validation: loose
