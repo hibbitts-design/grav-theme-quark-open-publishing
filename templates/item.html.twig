@@ -13,7 +13,9 @@
             <h2>{{ page.header.subtitle }}</h2>
             <p>
                 {% include 'partials/blog/date.html.twig' %}
-                {# TODO: include support for readingtime plugin :) #}
+                {% if config.plugins.breadcrumbs.enabled %}
+                    {% include 'partials/blog/readingtime.html.twig' %}
+                {% endif %}
             </p>
             {% include 'partials/blog/taxonomy.html.twig' %}
         {% endset %}
