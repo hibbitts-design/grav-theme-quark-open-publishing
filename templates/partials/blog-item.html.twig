@@ -7,7 +7,12 @@
                 {% if page.header.subtitle %}
                     <h3>{{ page.header.subtitle }}</h3>
                 {% endif %}
-                {% include 'partials/blog/date.html.twig' %}
+                <p>
+                  {% include 'partials/blog/date.html.twig' %}
+                  {% if config.plugins.readingtime.enabled %}
+                    <span class="blogitem__readingtime">{% include 'partials/blog/readingtime.html.twig' %}</span>
+                  {% endif %}
+                </p>
                 {% include 'partials/blog/taxonomy.html.twig' %}
             {% endif %}
         </div>

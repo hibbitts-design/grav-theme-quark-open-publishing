@@ -1,5 +1,5 @@
 name: Quark Open Publishing
-version: 2.0.7
+version: 2.0.8
 description: "A custom version of the Quark theme for open publishing and blogging. Includes Git Sync and 'chromeless' content embedding."
 icon: unlock
 author:
@@ -41,7 +41,6 @@ dependencies:
 - shortcode-core
 - shortcode-ui
 - quark
-- readingtime
 
 form:
   validation: loose
