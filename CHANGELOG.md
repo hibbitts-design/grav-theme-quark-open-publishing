@@ -1,4 +1,14 @@
 # v2.0.7
+## 01/21/2020
+
+1. [](#new)
+  * Support for ReadingTime Plugin (thanks to @B1gG for the initial PR)
+1. [](#improved)
+    * Updated demo pages in theme '_demo' folder
+1. [](#bugfix)
+  * Restored display of taxonomy tags on blog post pages (Sections pages now use the `filter` taxonomy item, which is also needed to be in Taxonomy `site.yaml` config)
+
+# v2.0.7
 ## 01/02/2020
 
 1. [](#improved)
