@@ -1,16 +1,28 @@
 {# no tab indents for Page Inject Plugin compatibility - hibbittsdesign.org #}
 {% if page.header.published %}
+{% if page.header.display_page_title is defined and not (displaypagetitle is defined)%}
+{% set displaypagetitle = page.header.display_page_title %}
+{% endif %}
+{% if page.header.display_embedly_card_title is defined and not (displaycontenttitle is defined)%}
+{% set displaycontenttitle = page.header.display_embedly_card_title %}
+{% endif %}
+{% if page.header.display_page_title_link is defined and not (displaypagetitlelink is defined)%}
+{% set displaypagetitlelink = page.header.display_page_title_link %}
+{% endif %}
 {% block content %}
 <div class="embedly-card-wrapper">
 <p>
-{{ page.content|raw }}
+{{page.content|raw}}
 {% if displaypagetitle is defined %}
 {% if displaypagetitle %}
-<strong>{{ page.title }}</strong>
-<br>
+{% if displaypagetitlelink %}
+<a href="{{ page.header.embedly_card_url}}">{{ page.title }}</a><br>
+{% else %}
+<strong>{{ page.title }}</strong><br>
 {% endif %}
 {% endif %}
-<a class="embedly-card" data-card-controls="0" data-card-align="{{ page.header.embedly_card_alignment }}" href="{{ page.header.embedly_card_url }}">{{ page.header.embedly_card_title }}</a>
+{% endif %}
+<a class="embedly-card" data-card-controls="0" data-card-align="{{page.header.embedly_card_alignment}}" href="{{ page.header.embedly_card_url}}" >{{ page.header.embedly_card_title }}</a>
 <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
 </p>
 </div>
