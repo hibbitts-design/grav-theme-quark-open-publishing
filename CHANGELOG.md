@@ -1,3 +1,9 @@
+# v2.1.1
+## 04/27/2020
+
+1. [](#new)
+  * Added support for optional display of title links for `embedlycard` page types
+
 # v2.1.0
 ## 02/13/2020
 
