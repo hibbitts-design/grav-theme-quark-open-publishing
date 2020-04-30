@@ -1,3 +1,9 @@
+# v2.1.2
+## 04/30/2020
+
+1. [](#bugfix)
+  * Added missing closing paragraph tag on `sections` page types (thanks to @lazybadger for finding the issue)
+
 # v2.1.1
 ## 04/27/2020
 
