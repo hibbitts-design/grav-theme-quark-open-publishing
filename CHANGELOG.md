@@ -1,3 +1,9 @@
+# v2.1.3
+## 05/23/2020
+
+1. [](#improved)
+    * Updated inherited theme file paths for multisite compatibility
+
 # v2.1.2
 ## 04/30/2020
 
