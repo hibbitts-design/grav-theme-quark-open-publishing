@@ -1,3 +1,11 @@
+# v2.1.4
+## 07/03/2020
+
+1. [](#new)
+    * Added GoogleSlides Shortcode ([googleslides url=""]), with aspect option ([googleslides url="" aspectratio="4-3"]), to display embedded Google Slides
+1. [](#updated)
+    * Updated demo pages in theme '_demo' folder
+
 # v2.1.3
 ## 05/23/2020
 
