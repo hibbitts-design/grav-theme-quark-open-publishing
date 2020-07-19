@@ -1,3 +1,9 @@
+# v2.1.5
+## 07/19/2020
+
+1. [](#bugfix)
+    * Fixed Section and Subsection blueprint error
+
 # v2.1.4
 ## 07/03/2020
 
