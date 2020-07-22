@@ -1,7 +1,7 @@
 {% if theme_var('git_sync_repo_link') %}
   {% if not (page.header.hide_git_sync_repo_link and not (presentationslides)) %}
     {% set git_repo_link_url = theme_var('git_sync_repo_link') %}
-    {% if theme_var('custom_git_sync_repo_link_icon')is empty %}
+    {% if theme_var('custom_git_sync_repo_link_icon') is empty %}
       {% if 'github' in git_repo_link_url %}
         {% set git_repo_link_icon = "github" %}
       {% elseif 'gitlab' in git_repo_link_url %}
@@ -14,11 +14,11 @@
     {% else %}
       {% set git_repo_link_icon = theme_var('custom_git_sync_repo_link_icon') %}
     {% endif %}
-    {% if theme_var('type_of_git_sync_repo_link') == 'view' or theme_var('type_of_git_sync_repo_link')is empty %}
+    {% if theme_var('type_of_git_sync_repo_link') == 'view' or theme_var('type_of_git_sync_repo_link') is empty %}
       {% if page.header.git_sync_repo_link_text %}
         {% set git_repo_link_text = page.header.git_sync_repo_link_text %}
       {% else %}
-        {% if theme_var('custom_git_sync_repo_link_text')is empty %}
+        {% if theme_var('custom_git_sync_repo_link_text') is empty %}
           {% set git_repo_link_text = 'View Content Repository' %}
         {% else %}
           {% if not presentationslides %}
@@ -49,13 +49,13 @@
         {% set git_repo_link_text = page.header.git_sync_repo_link_text %}
       {% else %}
         {% if not presentationslides %}
-          {% if theme_var('custom_git_sync_repo_link_text')is empty %}
+          {% if theme_var('custom_git_sync_repo_link_text') is empty %}
             {% set git_repo_link_text = 'Edit this Page' %}
           {% else %}
             {% set git_repo_link_text = theme_var('custom_git_sync_repo_link_text') %}
           {% endif %}
         {% else %}
-          {% if theme_var('custom_git_sync_repo_presentation_link_text')is empty %}
+          {% if theme_var('custom_git_sync_repo_presentation_link_text') is empty %}
             {% set git_repo_link_text = 'Edit these Slides' %}
           {% else %}
             {% set git_repo_link_text = theme_var('custom_git_sync_repo_presentation_link_text') %}
@@ -96,14 +96,14 @@
       {% else %}
         {% set git_repo_link_url = git_repo_link_url ~ ('/' ~ page.filePathClean) | replace({'/user/': '/'}) %}
       {% endif %}
-      {% if theme_var('custom_git_sync_repo_link_icon')is not empty %}
+      {% if theme_var('custom_git_sync_repo_link_icon') is not empty %}
         {% set git_repo_link_icon = theme_var('custom_git_sync_repo_link_icon') %}
       {% endif %}
-      {% if theme_var('type_of_git_sync_repo_link') == 'view' or theme_var('type_of_git_sync_repo_link')is empty %}
+      {% if theme_var('type_of_git_sync_repo_link') == 'view' or theme_var('type_of_git_sync_repo_link') is empty %}
         {% if page.header.git_sync_repo_link_text %}
           {% set git_repo_link_text = page.header.git_sync_repo_link_text %}
         {% else %}
-          {% if theme_var('git_sync_repo_link_text')is empty %}
+          {% if theme_var('git_sync_repo_link_text') is empty %}
             {% set git_repo_link_text = 'View Content Repository' %}
           {% else %}
             {% if not presentationslides %}
@@ -127,13 +127,13 @@
           {% set git_repo_link_text = page.header.git_sync_repo_link_text %}
         {% else %}
           {% if not presentationslides %}
-            {% if theme_var('custom_git_sync_repo_link_text')is empty %}
+            {% if theme_var('custom_git_sync_repo_link_text') is empty %}
               {% set git_repo_link_text = 'Edit this Page' %}
             {% else %}
               {% set git_repo_link_text = theme_var('custom_git_sync_repo_link_text') %}
             {% endif %}
           {% else %}
-            {% if theme_var('custom_git_sync_repo_presentation_link_text')is empty %}
+            {% if theme_var('custom_git_sync_repo_presentation_link_text') is empty %}
               {% set git_repo_link_text = 'Edit these Slides' %}
             {% else %}
               {% set git_repo_link_text = theme_var('custom_git_sync_repo_presentation_link_text') %}
