@@ -1,3 +1,9 @@
+# v2.1.6
+## 07/22/2020
+
+1. [](#bugfix)
+    * Updated templates for latest RC build (v.15)
+
 # v2.1.5
 ## 07/19/2020
 
