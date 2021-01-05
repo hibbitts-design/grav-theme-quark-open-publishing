@@ -19,8 +19,20 @@ class QuarkOpenPublishing extends Quark
             'onTwigLoader' => ['onTwigLoader', 0],
             'onShortcodeHandlers' => ['onShortcodeHandlers', 0],
             'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
-            'onTwigInitialized' => ['onTwigInitialized', 0]
+            'onTwigInitialized' => ['onTwigInitialized', 0],
+            'registerNextGenEditorPlugin' => ['registerNextGenEditorPluginShortcodes', 0]
         ];
+    }
+
+    public function registerNextGenEditorPluginShortcodes($event) {
+        $plugins = $event['plugins'];
+
+        $plugins['js'][] = 'user://themes/quark-open-publishing/nextgen-editor/shortcodes/googleslides.js';
+        $plugins['js'][] = 'user://themes/quark-open-publishing/nextgen-editor/shortcodes/h5p.js';
+        $plugins['js'][] = 'user://themes/quark-open-publishing/nextgen-editor/shortcodes/pdf.js';
+
+        $event['plugins']  = $plugins;
+        return $event;
     }
 
     // Add images to twig template paths to allow inclusion of SVG files
