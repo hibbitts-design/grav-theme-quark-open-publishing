@@ -24,7 +24,7 @@ This inherited theme is built with the [Spectre.css](https://picturepan2.github.
 * Lightweight and minimal for optimal performance
 * Spectre CSS Framework
 * Fully responsive with full-page mobile navigation
-* SCSS based CSS source files for easy customization
+* SCSS based CSS source files for easy customization (not supported in this inherited theme)
 * Built-in support for on-page navigation
 * Multiple page template types
 * Fontawesome icon support
