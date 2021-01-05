@@ -1,3 +1,11 @@
+# v2.1.7
+## 01/05/2021
+
+1. [](#new)
+    * Initial NextGen Editor support for GoogleSlides, H5P and PDF shortcodes
+1. [](#improved)
+    * Updated ReadMe with note about no support for SCSS in this inherited theme (thanks to @zaszlo for the heads-up)
+
 # v2.1.6
 ## 07/22/2020
 
