@@ -8,7 +8,7 @@ class GoogleSlidesShortcode extends Shortcode
 {
     public function init()
     {
-        $this->shortcode->getHandlers()->add('googleslides', function(ShortcodeInterface $sc) {
+        $this->shortcode->getRawHandlers()->add('googleslides', function(ShortcodeInterface $sc) {
 
             // Get shortcode content and parameters
             $str = $sc->getContent();
@@ -22,7 +22,7 @@ class GoogleSlidesShortcode extends Shortcode
             }
 
             if ($googleslidesurl) {
-                $output = '<p><div class="video-responsive video-responsive-'.$googleslidesratio.'"><iframe src="'.$googleslidesurl.'" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></div></p>';
+                $output = '<div class="video-responsive video-responsive-'.$googleslidesratio.'"><iframe src="'.$googleslidesurl.'" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></div>';
 
                 return $output;
 
@@ -30,7 +30,7 @@ class GoogleSlidesShortcode extends Shortcode
 
                 if ($str) {
 
-                    return '<p><div class="video-responsive video-responsive-'.$googleslidesratio.'"><iframe src="'.$str.'" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></div></p>';
+                    return '<div class="video-responsive video-responsive-'.$googleslidesratio.'"><iframe src="'.$str.'" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></div>';
 
                 }
 
