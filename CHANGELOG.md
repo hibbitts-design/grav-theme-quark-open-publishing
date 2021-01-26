@@ -1,3 +1,9 @@
+# v2.1.9
+## 01/26/2021
+
+1. [](#improved)
+    * Updated theme blueprints for Grav 1.7
+
 # v2.1.8
 ## 01/15/2021
 
