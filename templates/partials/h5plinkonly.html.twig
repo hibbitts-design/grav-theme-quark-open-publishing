@@ -1,0 +1,12 @@
+{% set h5pcontentid = page.header.h5p_content_id %}
+{% if h5pcontentid|contains('http') %}
+  {% set h5pcontenturl = h5pcontentid %}
+{% else %}
+{% if theme_var('h5pembedrootpath') %}
+  {% set h5pembedrootpath = theme_var('h5pembedrootpath') %}
+{% else %}
+  {% set h5pembedrootpath = 'https://h5p.org/h5p/embed/' %}
+{% endif %}
+{% set h5pcontenturl = h5pembedrootpath ~ h5pcontentid %}
+{% endif %}
+{% block content %}<a class="newwindow external-link" href="{{ h5pcontenturl }}"> {{ page.header.h5p_content_title }}</a>{% endblock %}
