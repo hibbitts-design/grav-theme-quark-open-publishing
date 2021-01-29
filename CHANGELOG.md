@@ -1,3 +1,11 @@
+# v2.2.0
+## 01/29/2021
+
+1. [](#bugfix)
+    * Removed unneeded <br> tags in Partial templates
+1. [](#new)
+    * Added H5P Partial templates for feature parity with Bootstrap4 Open Matter Theme
+
 # v2.1.9
 ## 01/26/2021
 
