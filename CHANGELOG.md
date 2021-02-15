@@ -1,3 +1,9 @@
+# v2.2.3
+## 02/15/2021
+
+1. [](#bugfix)
+    * Revised fix for compatibility issue with Shortcode Gallery++ Plugin (thanks @sal0max)
+
 # v2.2.2
 ## 02/15/2021
 
