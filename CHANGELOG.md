@@ -1,3 +1,9 @@
+# v2.2.2
+## 02/15/2021
+
+1. [](#bugfix)
+    * Removed compatibility issue with Shortcode Gallery++ Plugin due to unexpected issues on Blog listing page
+
 # v2.2.1
 ## 02/15/2021
 
