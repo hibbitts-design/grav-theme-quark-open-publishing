@@ -1,3 +1,11 @@
+# v2.2.1
+## 02/15/2021
+
+1. [](#bugfix)
+    * Fixed compatibility issue with Shortcode Gallery++ Plugin (thanks @sal0max)
+1. [](#improved)
+    * Shortcode formatting updated to use <span> tags and removed unneeded <p> tags
+
 # v2.2.0
 ## 01/29/2021
 
