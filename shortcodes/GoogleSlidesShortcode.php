@@ -22,7 +22,7 @@ class GoogleSlidesShortcode extends Shortcode
             }
 
             if ($googleslidesurl) {
-                $output = '<div class="video-responsive video-responsive-'.$googleslidesratio.'"><iframe src="'.$googleslidesurl.'" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></div>';
+                $output = '<span class="video-responsive video-responsive-'.$googleslidesratio.'"><iframe src="'.$googleslidesurl.'" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></span>';
 
                 return $output;
 
@@ -30,7 +30,7 @@ class GoogleSlidesShortcode extends Shortcode
 
                 if ($str) {
 
-                    return '<div class="video-responsive video-responsive-'.$googleslidesratio.'"><iframe src="'.$str.'" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></div>';
+                    return '<span class="video-responsive video-responsive-'.$googleslidesratio.'"><iframe src="'.$str.'" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></span>';
 
                 }
 

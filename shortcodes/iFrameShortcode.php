@@ -22,7 +22,7 @@ class iFrameShortcode extends Shortcode
             }
 
             if ($iframeurl) {
-                $output = '<div class="video-responsive video-responsive-'.$iframeaspectratio.'"><iframe src="'.$iframeurl.'" width="640" height="480"></iframe></div>';
+                $output = '<span class="video-responsive video-responsive-'.$iframeaspectratio.'"><iframe src="'.$iframeurl.'" width="640" height="480"></iframe></span>';
 
                 return $output;
             }
