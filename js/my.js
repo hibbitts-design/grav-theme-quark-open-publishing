@@ -5,7 +5,7 @@ $(document).ready(function () {
     $('a[target="_blank"]').addClass("external-link");
     $('a[target="_top"]').addClass("external-link");
 
-    $('#body-wrapper').on('click', 'a:not(.external-link):not([href^="#"]), a:not([class^="glightbox"])'), function (e) {
+    $('#body-wrapper').on('click', 'a:not(.external-link):not([href^="#"])', function (e) {
         if ($(this).attr('rel') != 'lightbox') {
             e.preventDefault();
             var url = window.location.href;
