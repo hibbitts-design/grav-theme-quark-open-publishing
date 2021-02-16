@@ -76,7 +76,7 @@ class QuarkOpenPublishing extends Quark
     public function onTwigSiteVariables()
     {
         if ($this->isAdmin() && ($this->grav['config']->get('plugins.shortcode-core.enabled'))) {
-            $this->grav['assets']->add('theme://editor-buttons/admin/js/shortcode-presentation.js');
+            $this->grav['assets']->add('theme://editor-buttons/admin/js/shortcode-pdf.js');
             $this->grav['assets']->add('theme://editor-buttons/admin/js/shortcode-h5p.js');
         }
     }

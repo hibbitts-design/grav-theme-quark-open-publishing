@@ -11,8 +11,8 @@
                 action: function(_ref) {
                     var codemirror = _ref.codemirror, button = _ref.button;
                     button.on('click.editor.shortcodes-h5p', function() {
-                      Instance.buttonStrategies.replaceSelections({ token: '$1', template: '[h5p id=""]$1', codemirror: codemirror});
-                      codemirror.setCursor(codemirror.getCursor().line,codemirror.getCursor().ch-2);
+                      Instance.buttonStrategies.replaceSelections({ token: '$1', template: '[h5p]$1[/h5p]', codemirror: codemirror});
+                      codemirror.setCursor(codemirror.getCursor().line,codemirror.getCursor().ch-6);
                     });
                 }
               }

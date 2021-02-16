@@ -11,8 +11,8 @@
                 action: function(_ref) {
                     var codemirror = _ref.codemirror, button = _ref.button;
                     button.on('click.editor.shortcodes-pdf', function() {
-                      Instance.buttonStrategies.replaceSelections({ token: '$1', template: '[pdf url=""]$1', codemirror: codemirror});
-                      codemirror.setCursor(codemirror.getCursor().line,codemirror.getCursor().ch-2);
+                      Instance.buttonStrategies.replaceSelections({ token: '$1', template: '[pdf]$1[/pdf]', codemirror: codemirror});
+                      codemirror.setCursor(codemirror.getCursor().line,codemirror.getCursor().ch-6);
                     });
                 }
               }
