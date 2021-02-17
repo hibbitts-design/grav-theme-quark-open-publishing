@@ -47,8 +47,8 @@
 {% endif %}
 {% if loopindex > 0 %} | {% endif %}
 {% if page.header.iframe_links | length == 1 %}({% endif %}
-<a class="newwindow external-link" href="{{ litem_source }}">
-<i class="fa {{litem.icon}}" aria-hidden="true"></i>{{litem.text}}</a>
+{% if litem.source %}<a class="newwindow external-link" href="{{ litem.source }}">{%endif%}
+{% if litem.icon %}<i class="fa {{litem.icon}}" aria-hidden="true"></i>{%endif%}{{litem.text}}{% if litem.source %}</a>{%endif%}
 {% if page.header.iframe_links | length == 1 %}){% endif %}
 {% set loopindex = loopindex + 1 %}
 {% endfor %}
