@@ -1,3 +1,9 @@
+# v2.2.5
+## 02/17/2021
+
+1. [](#bugfix)
+    * Fixed incorrect variable name in iFrame template
+
 # v2.2.4
 ## 02/16/2021
 
