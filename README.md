@@ -148,7 +148,7 @@ The text box provides a single option to control if any image found in the page 
 image_align: right
 ```
 
-# Further Customization
+## Further Customization
 
 As discovered by @awrog, it is possible to have a grid layout with 3 columns for Blog post listings. 
 
