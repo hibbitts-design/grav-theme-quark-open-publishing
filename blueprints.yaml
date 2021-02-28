@@ -1,7 +1,7 @@
 name: Quark Open Publishing
 type: theme
 slug: quark-open-publishing
-version: 2.2.5
+version: 2.2.6
 description: "A custom version of the Quark theme for open publishing and blogging. Includes Git Sync and 'chromeless' content embedding."
 icon: unlock
 author:
@@ -17,31 +17,17 @@ license: MIT
 
 dependencies:
 - { name: grav, version: '>=1.6.0' }
-- admin
-- auto-date
 - archives
 - breadcrumbs
-- email
-- error
 - external_links
 - feed
-- form
 - git-sync
-- image-captions
-- login
 - markdown-notices
 - page-inject
 - pagination
-- presentation
-- presentation-deckset
-- problems
-- relatedpages
 - simplesearch
-- taxonomylist
-- tntsearch
-- youtube
 - shortcode-core
-- shortcode-ui
+- taxonomylist
 - quark
 
 form:
