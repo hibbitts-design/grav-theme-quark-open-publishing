@@ -1,4 +1,10 @@
 # v2.2.5
+## 02/28/2021
+
+1. [](#improved)
+    * Reduced plugin dependencies, thanks to the new Grav Skeleton build process
+
+# v2.2.5
 ## 02/17/2021
 
 1. [](#bugfix)
