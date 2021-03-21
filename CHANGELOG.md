@@ -1,3 +1,9 @@
+# v2.2.7
+## 03/21/2021
+
+1. [](#improved)
+    * Updated demo pages in theme '_demo' folder
+
 # v2.2.6
 ## 02/28/2021
 
