@@ -1,3 +1,9 @@
+# v2.2.9
+## 09/27/2021
+
+1. [](#new)
+    * Added initial support for NextGen Editor custom media embeds
+
 # v2.2.8
 ## 08/06/2021
 
