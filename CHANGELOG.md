@@ -1,3 +1,9 @@
+# v2.3.0
+## 09/27/2021
+
+1. [](#bugfix)
+    * Added needed script load for embedly.com embeds
+
 # v2.2.9
 ## 09/27/2021
 
