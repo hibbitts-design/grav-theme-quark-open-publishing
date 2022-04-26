@@ -48,7 +48,7 @@
 </div>
 
 {# added check for content display flag - hibbittsdesign.org #}
-{% if not (grav.uri.param('chromeless') or grav.uri.param('embedded')) and not(theme_var('chromeless.enabled')) and not (grav.uri.param('summaryonly') or grav.uri.param('onlysummary')) %}
+{% if not (grav.uri.param('chromeless') or grav.uri.param('embedded') or grav.uri.param('standalone')) and not(theme_var('chromeless.enabled')) and not (grav.uri.param('summaryonly') or grav.uri.param('onlysummary')) %}
 
     <p class="prev-next text-center">
         {% if not page.isLast %}

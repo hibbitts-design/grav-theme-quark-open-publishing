@@ -19,6 +19,10 @@ $(document).ready(function () {
                 newurl = newurl + "/embedded:true";
             }
 
+            if (url.indexOf("standalone:true") >= 0) {
+                newurl = newurl + "/standalone:true";
+            }
+
             if (url.indexOf("hidepagetitle:true") >= 0) {
                 newurl = newurl + "/hidepagetitle:true";
             }
