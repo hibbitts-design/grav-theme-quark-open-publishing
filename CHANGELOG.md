@@ -1,3 +1,9 @@
+# v2.3.1
+## 04/26/2022
+
+1. [](#improved)
+    * Additional support of the alias 'standalone' for 'chromeless'
+
 # v2.3.0
 ## 09/27/2021
 
