@@ -32,7 +32,7 @@
     {{ macros.nav_loop(pages, hide_home_menu_link, home_alias ) }}
     {# custom menu items check and display - hibbittsdesign.org #}
     {% if theme_var('displaycustommenus.enabled') %}
-        {% for mitem in theme_var('menu') %}
+        {% for mitem in theme_var('custommenu') %}
             <li>
                 <a href="{{ mitem.url }}" target="{{ mitem.target }}">
                     {% if mitem.icon %}
