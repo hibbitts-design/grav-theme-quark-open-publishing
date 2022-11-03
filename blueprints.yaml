@@ -289,8 +289,8 @@ form:
                 '1': Yes
               validate:
                 type: bool
-            menu:
-              name: menu
+            custommenu:
+              name: custommenu
               type: list
               label: 'Custom Menu Items'
               fields:
