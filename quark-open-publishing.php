@@ -39,7 +39,7 @@ class QuarkOpenPublishing extends Quark
     public function onTwigLoader()
     {
         $theme_paths = Grav::instance()['locator']->findResources('theme://images');
-        foreach (array_reverse($theme_paths) as $images_path) {
+        foreach ($theme_paths as $images_path) {
             $this->grav['twig']->addPath($images_path, 'images');
         }
     }
