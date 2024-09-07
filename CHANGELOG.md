@@ -1,5 +1,5 @@
 # v2.3.2
-## 09/05/2022
+## 09/05/2024
 
 1. [](#bugfix)
     * Fixed support for custom logo (thanks to @pamtbaau for the PR)
