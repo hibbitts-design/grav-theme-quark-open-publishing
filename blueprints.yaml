@@ -1,15 +1,15 @@
 name: Quark Open Publishing
 type: theme
 slug: quark-open-publishing
-version: 2.3.2
+version: 2.3.3
 description: "A custom version of the Quark theme for open publishing and blogging. Includes Git Sync and 'chromeless' content embedding."
 icon: unlock
 author:
-    name: Hibbitts Design
+    name: HibbittsDesign.org
     email: hello@hibbittsdesign.org
-    url: http://hibbittsdesign.org
+    url: https://hibbittsdesign.org
 homepage: https://github.com/hibbitts-design/grav-theme-quark-open-publishing
-demo: http://demo.hibbittsdesign.org/grav-open-publishing-quark/
+demo: https://demo.hibbittsdesign.org/grav-open-publishing-quark/
 docs: https://github.com/hibbitts-design/grav-theme-quark-open-publishing/blob/master/README.md
 keywords: open, blog, gitsync, chromeless
 bugs: https://github.com/hibbitts-design/grav-theme-quark-open-publishing/issues

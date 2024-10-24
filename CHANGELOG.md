@@ -1,3 +1,9 @@
+# v2.3.3
+## XX/XX/2024
+
+1. [](#improved)
+    * Changed theme author information to HibbittsDesign.org
+
 # v2.3.2
 ## 09/05/2024
 
