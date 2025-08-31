@@ -19,14 +19,14 @@
               {% if image_creditlink %}
                 Image: <a class="newwindow external-link" href="{{ image_creditlink }}">
                 {{ image_credit }}</a></span>
-                <a href="{{ page.url }}"><img src="{{ image.cropZoom(1400,400).url }}" alt="{{ image_alt_text }}"></a>
+                <a href="{{ page.url }}"><img src="{{ image.fixOrientation.cropZoom(1400,400).url }}" alt="{{ image_alt_text }}"></a>
               {% else %}
                 Image: {{ image_credit }}</span>
-                <a href="{{ page.url }}"><img src="{{ image.cropZoom(1400,400).url }}" alt="{{ image_alt_text }}"></a>
+                <a href="{{ page.url }}"><img src="{{ image.fixOrientation.cropZoom(1400,400).url }}" alt="{{ image_alt_text }}"></a>
               {% endif %}
             </div>
           {% else %}
-            <a href="{{ page.url }}"><img src="{{ image.cropZoom(1400,400).url }}" alt="{{ image_alt_text }}"></a>
+            <a href="{{ page.url }}"><img src="{{ image.fixOrientation.cropZoom(1400,400).url }}" alt="{{ image_alt_text }}"></a>
           {% endif %}
 
       </div>
