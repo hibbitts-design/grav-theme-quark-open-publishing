@@ -1,8 +1,12 @@
 # v2.3.3
-## XX/XX/2024
+## 08/31/2025
 
 1. [](#improved)
     * Changed theme author information to HibbittsDesign.org
+    * Updated demo pages in theme '_demo' folder
+
+1. [](#bugfix)
+    * Support for system.images.auto_fix_orientation in blog listing and hero template (thanks to @Snickbrack for reporting the issue)
 
 # v2.3.2
 ## 09/05/2024
