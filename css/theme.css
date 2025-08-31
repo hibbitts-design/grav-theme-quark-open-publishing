@@ -1,3 +1,18 @@
+/* Load of Font Awesome for use by Presentation Plugin (place in custom.css and uncomment) */
+/*
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css');
+ */
+
+/* CSS to style Presentation Plugin slides (place in custom.css and uncomment) */
+/*
+.reveal .slides {
+    text-align: left;
+}
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+    text-transform: unset !important;
+}
+*/
+
 .fa {
   padding-right: 5px;
 }
