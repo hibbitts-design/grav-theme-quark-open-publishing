@@ -1,7 +1,7 @@
 name: Quark Open Publishing
 type: theme
 slug: quark-open-publishing
-version: 2.3.4
+version: 2.3.5
 description: "A customized version of the Quark theme for open publishing and blogging. Includes Git Sync and 'chromeless' content display for seamless embedding."
 icon: unlock
 author:
@@ -14,6 +14,8 @@ docs: https://github.com/hibbitts-design/grav-theme-quark-open-publishing/blob/m
 keywords: open, blog, gitsync, chromeless
 bugs: https://github.com/hibbitts-design/grav-theme-quark-open-publishing/issues
 license: MIT
+compatibility:
+  grav: ['1.7', '2.0']
 
 dependencies:
 - { name: grav, version: '>=1.6.0' }
