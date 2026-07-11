@@ -1,3 +1,12 @@
+# v2.3.6
+## XX/XX/2026
+
+1. [](#improved)
+    * Fix Grav 2 raw HTML/tagfilter escaping in Embedly, H5P, and Twitter shortcodes by moving embed scripts to the Assets API
+
+1. [](#new)
+    * Add self-hosted [linkpreviewcard] shortcode as a working replacement for legacy Embedly card
+
 # v2.3.5
 ## 07/09/2026
 
