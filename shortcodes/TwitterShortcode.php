@@ -20,9 +20,11 @@ class TwitterShortcode extends Shortcode
             $twitterheight = $sc->getParameter('height', $sc->getBbCode());
 
             if ($twitterurl) {
-                $output = '<div class="twitter-feed-wrapper"><a class="twitter-timeline" data-height="' . $twitterheight . '" data-theme="' . $twittertheme . '" data-chrome="noscrollbar" href="' . $twitterurl . '">' . $twittertext . '</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>';
+                $this->grav['assets']->addInlineJs(
+                    '!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");'
+                );
 
-                return $output;
+                return '<div class="twitter-feed-wrapper"><a class="twitter-timeline" data-height="' . $twitterheight . '" data-theme="' . $twittertheme . '" data-chrome="noscrollbar" href="' . $twitterurl . '">' . $twittertext . '</a></div>';
             }
 
         });

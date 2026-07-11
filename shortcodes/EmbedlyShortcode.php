@@ -17,9 +17,9 @@ class EmbedlyShortcode extends Shortcode
             $embedlycardurl = $sc->getParameter('url', $sc->getBbCode());
 
             if ($embedlycardurl) {
-                $output = '<a class="embedly-card" data-card-controls="0" data-card-align="left" href="' . $embedlycardurl . '" ></a><script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>';
+                $this->grav['assets']->addJs('//cdn.embedly.com/widgets/platform.js', ['loading' => 'async']);
 
-                return $output;
+                return '<a class="embedly-card" data-card-controls="0" data-card-align="left" href="' . $embedlycardurl . '" ></a>';
             }
 
         });

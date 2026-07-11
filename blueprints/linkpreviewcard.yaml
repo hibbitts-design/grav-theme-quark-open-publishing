@@ -1,0 +1,40 @@
+title: Link Preview Card Options
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        content:
+            fields:
+                header.title:
+                  replace@: true
+                  type: text
+                  size: long
+                  label: Page Title
+
+                header.linkpreview_card_url:
+                    ordering@: 2
+                    type: text
+                    size: long
+                    label: Link Preview Card Web Page URL
+                    validate:
+                      type: URL
+
+        options:
+          fields:
+            publishing:
+              fields:
+                header.published:
+                  default: 1
+
+        advanced:
+          fields:
+            overrides:
+              fields:
+                header.visible:
+                  default: 1

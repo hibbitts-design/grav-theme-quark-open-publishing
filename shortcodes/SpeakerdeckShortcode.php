@@ -17,7 +17,7 @@ class SpeakerdeckShortcode extends Shortcode
             $speakerdeckid = $sc->getParameter('id', $sc->getBbCode());
 
             if ($speakerdeckid) {
-                $output = '<script async class="speakerdeck-embed" data-id=".$speakerdeckid." data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>';
+                $output = '<script async class="speakerdeck-embed" data-id="' . $speakerdeckid . '" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>';
 
                 return $output;
             }

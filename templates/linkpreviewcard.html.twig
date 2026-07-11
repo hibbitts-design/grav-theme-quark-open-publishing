@@ -1,0 +1,11 @@
+{# no tab indents for Page Inject Plugin compatibility - hibbittsdesign.org #}
+{% if page.header.published %}
+{% block content %}
+<div class="link-preview-card-wrapper">
+<p>
+{{page.content|raw}}
+{{ ('[linkpreviewcard]' ~ page.header.linkpreview_card_url ~ '[/linkpreviewcard]') | shortcodes }}
+</p>
+</div>
+{% endblock %}
+{% endif %}
