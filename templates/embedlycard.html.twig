@@ -22,8 +22,8 @@
 {% endif %}
 {% endif %}
 {% endif %}
-<a class="embedly-card" data-card-controls="0" data-card-align="{{page.header.embedly_card_alignment}}" href="{{ page.header.embedly_card_url}}" >{{ page.header.embedly_card_title }}</a>
-{% do assets.addJs('//cdn.embedly.com/widgets/platform.js', {'loading': 'async'}) %}
+{% set embedlyTag = '[embedly url="' ~ page.header.embedly_card_url|e('html_attr') ~ '" title="' ~ page.header.embedly_card_title|e('html_attr') ~ '" align="' ~ page.header.embedly_card_alignment|e('html_attr') ~ '"]' %}
+{{ embedlyTag | shortcodes }}
 </p>
 </div>
 {% endblock %}
