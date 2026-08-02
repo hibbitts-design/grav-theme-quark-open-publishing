@@ -64,6 +64,7 @@ class LinkPreviewCardShortcode extends Shortcode
     {
         $linkData = [
             'ok' => false,
+            'fetched' => false,
             'title' => null,
             'description' => null,
             'image' => null,
@@ -77,6 +78,8 @@ class LinkPreviewCardShortcode extends Shortcode
             if ($response->getStatusCode() !== 200) {
                 return $linkData;
             }
+
+            $linkData['fetched'] = true;
 
             $html = $response->getContent();
 
@@ -198,6 +201,10 @@ class LinkPreviewCardShortcode extends Shortcode
         $safeUrl = htmlspecialchars($url, ENT_QUOTES);
 
         if (!$linkData['ok']) {
+            if (!($linkData['fetched'] ?? false)) {
+                return '<a href="' . $safeUrl . '" class="link-preview-fallback link-preview-unavailable" target="_blank" rel="nofollow noopener noreferrer">This linked content is no longer available</a>';
+            }
+
             return '<a href="' . $safeUrl . '" class="link-preview-fallback" style="word-break:break-all;">' . $safeUrl . '</a>';
         }
 
@@ -226,8 +233,8 @@ class LinkPreviewCardShortcode extends Shortcode
                 <span class="link-preview-card-sitename" style="font-size:0.7em;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;opacity:0.65;">{$siteName}</span>
             </div>
             {$imageHtml}
-            <div class="link-preview-card-body" style="padding:0.4em 0;">
-                <h3 class="link-preview-card-title" style="font-size:1.1em;font-weight:700;margin:0 0 0.4em;">{$title}</h3>
+            <div class="link-preview-card-body" style="padding:0.2em 0;">
+                <h3 class="link-preview-card-title" style="font-size:1.1em;font-weight:700;margin:0 0 0.2em;">{$title}</h3>
                 {$descriptionHtml}
                 <a href="{$safeUrl}" class="link-preview-card-cta" target="_blank" rel="nofollow noopener noreferrer" style="display:block;font-size:0.8em;font-weight:600;margin-top:0;">Read more on {$safeHost} &rsaquo;</a>
             </div>
@@ -240,7 +247,7 @@ class LinkPreviewCardShortcode extends Shortcode
         $safeImage = htmlspecialchars($imageUrl, ENT_QUOTES);
 
         return '<img src="' . $safeImage . '" class="link-preview-card-img" alt="' . $safeTitle . '"'
-            . ' style="display:block;width:100%;height:auto;margin-top:0.4em;">';
+            . ' style="display:block;width:100%;height:auto;margin:0.2em 0 0 0;">';
     }
 
     private function buildFaviconHtml(string $faviconUrl): string
@@ -248,6 +255,6 @@ class LinkPreviewCardShortcode extends Shortcode
         $safeFavicon = htmlspecialchars($faviconUrl, ENT_QUOTES);
 
         return '<img src="' . $safeFavicon . '" class="link-preview-card-favicon" alt="" onerror="this.remove()"'
-            . ' style="width:1em;height:1em;object-fit:contain;vertical-align:middle;">';
+            . ' style="width:1em;height:1em;object-fit:contain;vertical-align:middle;margin:0;">';
     }
 }
