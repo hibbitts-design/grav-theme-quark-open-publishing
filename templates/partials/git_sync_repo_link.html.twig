@@ -1,3 +1,9 @@
+{% if linkinmenu %}
+  {% set link_classes = "newwindow external-link nav-link" %}
+{% else %}
+  {% set link_classes = "newwindow external-link" %}
+{% endif %}
+
 {% if theme_var('git_sync_repo_link') %}
   {% if not (page.header.hide_git_sync_repo_link and not (presentationslides)) %}
     {% set git_repo_link_url = theme_var('git_sync_repo_link') %}
@@ -75,19 +81,20 @@
   {% else %}
     {% if not (page.header.hide_git_sync_repo_link and not (presentationslides)) %}
       {% set git_sync_repo = config.plugins['git-sync'].repository %}
-      {% set git_sync_repo_link = (git_sync_repo | replace({'.git': '/'})) %}
+      {% set git_sync_repo_link = (git_sync_repo | regex_replace('#([.]git)?/?$#', '')) ~ '/' %}
+      {% set git_sync_branch = config.plugins['git-sync'].remote.branch ?: 'master' %}
       {% if 'github' in git_sync_repo_link %}
         {% set git_repo_link_icon = "github" %}
-        {% set git_repo_link_url = (git_sync_repo | replace({'.git': '/'})) ~ 'blob/master' | replace({'user/': '/'}) %}
+        {% set git_repo_link_url = git_sync_repo_link ~ 'blob/' ~ git_sync_branch %}
       {% elseif 'gitlab' in git_sync_repo_link %}
         {% set git_repo_link_icon = "gitlab" %}
-        {% set git_repo_link_url = (git_sync_repo | replace({'.git': '/'})) ~ 'blob/master' | replace({'user/': '/'}) %}
+        {% set git_repo_link_url = git_sync_repo_link ~ 'blob/' ~ git_sync_branch %}
       {% elseif 'bitbucket' in git_sync_repo_link %}
         {% set git_repo_link_icon = "bitbucket" %}
-        {% set git_repo_link_url = (git_sync_repo | replace({'.git': '/'})) ~ 'src/master' | replace({'user/': '/'}) %}
+        {% set git_repo_link_url = git_sync_repo_link ~ 'src/' ~ git_sync_branch %}
       {% else %}
         {% set git_repo_link_icon = "git" %}
-        {% set git_repo_link_url = (git_sync_repo | replace({'.git': '/'})) ~ 'blob/master' | replace({'user/': '/'}) %}
+        {% set git_repo_link_url = git_sync_repo_link ~ 'blob/' ~ git_sync_branch %}
       {% endif %}
       {% if page.header.git_sync_repo_link %}
         {% set git_repo_link_url = page.header.git_sync_repo_link %}
