@@ -1,3 +1,15 @@
+# v2.4.2
+## XX/XX/2026
+
+1. [](#bugfix)
+    * Git Sync edit links now use the configured remote branch instead of always `master`
+    * Git Sync edit links now strip only a trailing `.git` from the repository URL (fixes repos such as `name.github.io`)
+    * Restore missing CSS classes on Git Sync links
+    * Fix unclosed wrapper `<div>` in iframe and PDF page templates
+    * Fix H5P content title not displaying
+    * Fix sidebar Atom/RSS feed links for subfolder installs and nested blogs
+    * Only show featured posts that belong to the current blog
+
 # v2.4.1
 ## 08/02/2026
 
