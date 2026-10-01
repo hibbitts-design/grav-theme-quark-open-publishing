@@ -1,6 +1,0 @@
-<p>
-{% if not page.find('/' ~ src ).header.hide_title %}<a class="newwindow external-link" href="{{ presentation_base_url }}/{{ src }}">{{ page.find('/' ~ src ).title }}</a>{% if page.find('/' ~ src ).header.display_custom_links %}{% for litem in page.find('/' ~ src ).header.custom_links %} | <a class="newwindow external-link" href="{{ litem.url }}">{% if litem.icon %}<i class="fa fa-{{ litem.icon }}"></i>{{ litem.text }}{% else %}{{ litem.text }}{% endif %}</a>{% endfor %}{% endif %}{% if (theme_var('display_of_git_sync_repo_link') != 'none' and not page.find('/' ~ src ).header.hide_git_sync_repo_link) %}{% include 'partials/git_sync_repo_link.html.twig' with {presentationslides: true, presentationpagepath: page.find('/' ~ src ).filepathclean | replace({'user/': '/'})} %}{% endif %}{% endif %}
-<div class="video-responsive video-responsive-4-3">
-  <iframe src="{{ presentation_base_url }}/{{ src }}" frameborder="0" allowfullscreen="allowfullscreen" class="{{ class }}"></iframe>
-</div>
-</p>
