@@ -1,6 +1,6 @@
 <div align="center">
 
-# ✍️ Quark Open Publishing
+# 🌐 Quark Open Publishing
 
 ### Designed to accompany the Open Publishing Space Skeleton
 
