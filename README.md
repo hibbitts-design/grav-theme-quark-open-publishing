@@ -16,6 +16,8 @@
 <img alt="Open Publishing Space blog with a mountain hero image, blog post cards, and a sidebar with tags and archives" src="https://raw.githubusercontent.com/hibbitts-design/grav-theme-quark-open-publishing/refs/heads/master/screenshots/screenshot.webp" width="100%">
 </a>
 
+<p>Open Publishing Space – Blog</p>
+
 </div>
 
 Quark Open Publishing adds what open, collaborative blogs and publishing sites need on top of the Quark theme: pages that embed cleanly in other systems, links that open each page's source in your Git repository, and a set of shortcodes and page types for rich content.
@@ -29,6 +31,20 @@ Quark Open Publishing adds what open, collaborative blogs and publishing sites n
 - **Content page types** – sections with side navigation, custom content lists, and dedicated H5P, iFrame, PDF, Embedly, and link preview card pages
 - **Built on Quark** – a lightweight, responsive Spectre.css design with hero images, modular pages, and full-page mobile navigation
 - **Open licensing and accessibility** – Creative Commons license display and hidden H1 page titles for screen readers
+
+## When is Quark Open Publishing a Good Candidate?
+
+Quark Open Publishing is a good fit when you:
+
+- Want an open blog or publishing site built on Grav's default Quark theme
+- Need to embed pages cleanly in an LMS or other site
+- Value Git-based, open authoring of your writing
+
+Other options might be better when you:
+
+- Need only a standard blog without these extras – the [Quark theme](https://github.com/getgrav/grav-theme-quark) is enough
+- Need comments, memberships, or newsletters built in
+- Want zero-server publishing directly from GitHub – consider [Docsify-This](https://docsify-this.net)
 
 ## Quick Start
 
