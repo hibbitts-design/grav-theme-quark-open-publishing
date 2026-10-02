@@ -1,5 +1,5 @@
 # v2.6.0
-## XX/XX/2026
+## 10/02/2026
 
 1. [](#new)
     * 2026 Refresh: added Dark Mode option (Off, On, Auto (System)) in Quark Options > Visual Style, with a dark palette designed to match Quark
