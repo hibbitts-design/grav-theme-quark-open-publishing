@@ -1,8 +1,15 @@
-# v2.5.1
+# v2.6.0
 ## XX/XX/2026
 
+1. [](#new)
+    * Added Dark Mode option (Off, On, Auto (System)) in Quark Options > Visual Style, with a dark palette based on Quark's colours
 1. [](#improved)
     * Rewrote README in streamlined style with single screenshot
+    * Brought overridden templates in line with the latest Quark theme (2.1.5)
+1. [](#bugfix)
+    * Blog posts now find their blog from the `blog_url` setting and show the sidebar, breadcrumbs, and pagination by default (from Quark)
+    * Popular Tags in the sidebar now lists only the current blog's tags, on both blog and post pages (from Quark)
+    * Login status no longer causes an error if its template is unavailable (from Quark)
 
 # v2.5.0
 ## 10/01/2026
