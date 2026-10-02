@@ -2,7 +2,7 @@
 ## XX/XX/2026
 
 1. [](#new)
-    * Added Dark Mode option (Off, On, Auto (System)) in Quark Options > Visual Style, with a dark palette based on Quark's colours
+    * 2026 Refresh: added Dark Mode option (Off, On, Auto (System)) in Quark Options > Visual Style, with a dark palette based on Grav's Quark 2 theme
 1. [](#improved)
     * Rewrote README in streamlined style with single screenshot
     * Brought overridden templates in line with the latest Quark theme (2.1.5)
