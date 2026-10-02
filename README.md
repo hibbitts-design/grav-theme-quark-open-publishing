@@ -12,11 +12,9 @@
 
 <p>A free, open-source child theme of <a href="https://github.com/getgrav/grav-theme-quark">Quark</a>, the default <a href="https://getgrav.org">Grav CMS</a> theme, with Markdown file-based content, a built-in Admin panel, and no database required. Used by the <a href="https://github.com/hibbitts-design/grav-skeleton-open-publishing-space">Open Publishing Space</a> skeleton package.</p>
 
-<a href="https://raw.githubusercontent.com/hibbitts-design/grav-theme-quark-open-publishing/refs/heads/master/screenshots/screenshot.webp">
-<img alt="Open Publishing Space blog with a mountain hero image, blog post cards, and a sidebar with tags and archives" src="https://raw.githubusercontent.com/hibbitts-design/grav-theme-quark-open-publishing/refs/heads/master/screenshots/screenshot.webp" width="100%">
-</a>
+<a href="https://raw.githubusercontent.com/hibbitts-design/grav-theme-quark-open-publishing/refs/heads/master/screenshots/screenshot.webp"><img alt="Open Publishing Space blog with a mountain hero image, blog post cards, and a sidebar with tags and archives, in light mode" src="https://raw.githubusercontent.com/hibbitts-design/grav-theme-quark-open-publishing/refs/heads/master/screenshots/screenshot.webp" width="49%"></a> <a href="https://raw.githubusercontent.com/hibbitts-design/grav-theme-quark-open-publishing/refs/heads/master/screenshots/screenshot-dark.webp"><img alt="Open Publishing Space blog with a mountain hero image, blog post cards, and a sidebar with tags and archives, in dark mode" src="https://raw.githubusercontent.com/hibbitts-design/grav-theme-quark-open-publishing/refs/heads/master/screenshots/screenshot-dark.webp" width="49%"></a>
 
-<p>Open Publishing Space – Blog</p>
+<p>Open Publishing Space – Blog in light mode (left) and dark mode (right)</p>
 
 </div>
 
