@@ -21,12 +21,20 @@ class EmbedlyShortcode extends Shortcode
 
             $embedlycardurl = $sc->getParameter('url', $sc->getBbCode());
 
-            if ($embedlycardurl) {
-                $title = $sc->getParameter('title', '');
-                $align = $sc->getParameter('align', 'left');
-
-                return static::renderCard($embedlycardurl, $this->config->get('theme.dark_mode.mode', 'disabled'), $align, $title);
+            if (!$embedlycardurl) {
+                $embedlycardurl = $str;
             }
+
+            if (!$embedlycardurl) {
+                return '';
+            }
+
+            // Values from the Embedly Card page type arrive HTML-escaped, so decode them before use
+            $embedlycardurl = trim(html_entity_decode($embedlycardurl, ENT_QUOTES | ENT_HTML5));
+            $title = html_entity_decode($sc->getParameter('title', ''), ENT_QUOTES | ENT_HTML5);
+            $align = html_entity_decode($sc->getParameter('align', 'left'), ENT_QUOTES | ENT_HTML5);
+
+            return static::renderCard($embedlycardurl, $this->config->get('theme.dark_mode.mode', 'disabled'), $align, $title);
 
         });
     }
@@ -78,7 +86,8 @@ class EmbedlyShortcode extends Shortcode
 
         try {
             $response = Client::getClient()->request('GET', $url, ['timeout' => 5]);
-            $isReachable = $response->getStatusCode() === 200;
+            // Only a missing page counts as unavailable; sites behind bot protection (e.g. Cloudflare) answer server requests with 403 even when the page exists
+            $isReachable = !in_array($response->getStatusCode(), [404, 410], true);
         } catch (\Exception $e) {
             $isReachable = false;
         }
