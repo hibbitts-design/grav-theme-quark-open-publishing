@@ -4,7 +4,7 @@
 1. [](#new)
     * 2026 Refresh: added Dark Mode option (Off, On, Auto (System)) in Quark Options > Visual Style, with a dark palette designed to match Quark
 1. [](#improved)
-    * Rewrote README in streamlined style with single screenshot
+    * Rewrote README in streamlined style with light and dark mode screenshots
     * Brought overridden templates in line with the latest Quark theme (2.1.5)
 1. [](#bugfix)
     * Blog posts now find their blog from the `blog_url` setting and show the sidebar, breadcrumbs, and pagination by default (from Quark)
