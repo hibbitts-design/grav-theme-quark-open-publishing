@@ -10,6 +10,9 @@
     * Blog posts now find their blog from the `blog_url` setting and show the sidebar, breadcrumbs, and pagination by default (from Quark)
     * Popular Tags in the sidebar now lists only the current blog's tags, on both blog and post pages (from Quark)
     * Login status no longer causes an error if its template is unavailable (from Quark)
+    * Embedly Card pages show their card again, instead of always reporting the link as no longer available
+    * Embedly cards for pages on sites with bot protection (e.g. Medium) are no longer hidden as unavailable; only missing pages are
+    * Embedly shortcode now also accepts the URL between tags (`[embedly]URL[/embedly]`), as in Bootstrap4 Open Matter
 
 # v2.5.0
 ## 10/01/2026
