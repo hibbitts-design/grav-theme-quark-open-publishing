@@ -68,6 +68,16 @@ hr,
     color: var(--qop-dark-muted) !important;
 }
 
+/* Keyboard focus: Quark removes link outlines, so show a clear ring for keyboard users only */
+
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+summary:focus-visible {
+    outline: 2px solid var(--qop-dark-link) !important;
+    outline-offset: 2px;
+}
+
 /* Header and menus (header is always dark in Dark Mode) */
 
 #header,
@@ -221,52 +231,118 @@ code[class*="language-"] {
     background: var(--qop-dark-recessed);
 }
 
+/* Mirrors the One Light selectors so none of its colours show through; red and comment grey lightened to meet WCAG AA (4.5:1) on the code background */
+
 .token.comment,
 .token.prolog,
-.token.cdata {
-    color: #7f848e;
+.token.cdata,
+.language-markdown .token.blockquote.punctuation,
+.language-markdown .token.hr.punctuation {
+    color: #969ba5;
 }
 
-.token.keyword,
-.token.atrule {
-    color: #c678dd;
+.token.doctype,
+.token.punctuation,
+.token.entity,
+.token.attr-value > .token.punctuation.attr-equals,
+.token.special-attr > .token.attr-value > .token.value.css,
+.language-css .token.property,
+.language-json .token.operator,
+.language-markdown .token.url,
+.language-markdown .token.url > .token.operator,
+.language-markdown .token.url-reference.url > .token.string {
+    color: #abb2bf;
 }
 
-.token.string,
-.token.char,
-.token.attr-value,
-.token.inserted {
-    color: #98c379;
-}
-
-.token.function,
-.token.class-name {
-    color: #61afef;
-}
-
-.token.number,
+.token.attr-name,
+.token.class-name,
 .token.boolean,
-.token.constant {
+.token.constant,
+.token.number,
+.token.atrule,
+.language-json .token.null.keyword,
+.language-markdown .token.bold .token.content {
     color: #d19a66;
 }
 
+.token.keyword,
+.language-css .token.important,
+.language-css .token.atrule .token.rule,
+.language-javascript .token.operator,
+.language-markdown .token.italic .token.content {
+    color: #c678dd;
+}
+
+.token.property,
+.token.tag,
+.token.symbol,
+.token.deleted,
+.token.important,
+.language-css .token.selector,
+.language-javascript .token.template-string > .token.interpolation > .token.interpolation-punctuation.punctuation,
+.language-markdown .token.strike .token.content,
+.language-markdown .token.strike .token.punctuation,
+.language-markdown .token.list.punctuation,
+.language-markdown .token.title.important > .token.punctuation {
+    color: #eb7d86;
+}
+
+.token.selector,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted,
+.token.regex,
+.token.attr-value,
+.token.attr-value > .token.punctuation,
+.language-css .token.url > .token.string.url,
+.language-markdown .token.code-snippet {
+    color: #98c379;
+}
+
+.token.variable,
 .token.operator,
-.token.entity,
+.token.function,
+.language-markdown .token.url > .token.content {
+    color: #61afef;
+}
+
 .token.url,
-.token.regex {
+.language-css .token.function,
+.language-css .token.url > .token.function,
+.language-markdown .token.url > .token.url,
+.language-markdown .token.url-reference.url {
     color: #56b6c2;
 }
 
-.token.tag,
-.token.property,
-.token.selector,
-.token.deleted,
-.token.attr-name {
-    color: #e06c75;
+.token.token.tab:not(:empty):before,
+.token.token.cr:before,
+.token.token.lf:before,
+.token.token.space:before {
+    color: rgba(171, 178, 191, 0.3);
 }
 
-.token.punctuation {
-    color: #abb2bf;
+.line-highlight.line-highlight {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Code toolbar (e.g. Copy button) */
+
+div.code-toolbar > .toolbar.toolbar > .toolbar-item > a,
+div.code-toolbar > .toolbar.toolbar > .toolbar-item > button,
+div.code-toolbar > .toolbar.toolbar > .toolbar-item > span {
+    background: rgba(255, 255, 255, 0.1);
+    color: #c0c4cc;
+}
+
+div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:hover,
+div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:focus,
+div.code-toolbar > .toolbar.toolbar > .toolbar-item > button:hover,
+div.code-toolbar > .toolbar.toolbar > .toolbar-item > button:focus,
+div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:hover,
+div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:focus {
+    background: rgba(255, 255, 255, 0.18);
+    color: var(--qop-dark-strong);
 }
 
 blockquote {
