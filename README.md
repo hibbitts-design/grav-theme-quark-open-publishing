@@ -30,6 +30,7 @@ Quark Open Publishing adds what open, collaborative blogs and publishing sites n
 - **Blogging extras** – featured (sticky) posts, an option to hide post summaries on full posts, and a Markdown-based sidebar
 - **Content page types** – sections with side navigation, custom content lists, and dedicated H5P, iFrame, PDF, Embedly, and link preview card pages
 - **Built on Quark** – a lightweight, responsive Spectre.css design with hero images, modular pages, and full-page mobile navigation
+- **2026 Refresh with Dark Mode** – off, on, or following the visitor's system setting, with a dark palette based on Grav's Quark 2 theme
 - **Open licensing and accessibility** – Creative Commons license display and hidden H1 page titles for screen readers
 
 ## When is Quark Open Publishing a Good Candidate?
@@ -70,7 +71,7 @@ The easiest way to get started is the [Open Publishing Space](https://github.com
 All options are available in the Admin Panel under **Themes → Quark Open Publishing**.
 
 - **Open Publishing Options** – chromeless site, H5P setup, Creative Commons license display, and menu dropdowns
-- **Quark Options** – production mode, grid size, custom logos, header and footer defaults, blog page and hero classes, and Spectre.css options
+- **Quark Options** – Dark Mode, production mode, grid size, custom logos, header and footer defaults, blog page and hero classes, and Spectre.css options
 - **Custom Menu Items** – text, icon, URL, and target for extra menu links
 - **Git Sync Link** – location, link type (view or edit), icon and text, and a custom Git repository URL
 
