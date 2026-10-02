@@ -1,7 +1,7 @@
 name: Quark Open Publishing
 type: theme
 slug: quark-open-publishing
-version: 2.5.1
+version: 2.6.0
 description: "A customized version of the Quark theme for open publishing and blogging. Includes Git Sync and 'chromeless' content display for seamless embedding."
 icon: unlock
 author:
@@ -133,6 +133,20 @@ form:
           type: tab
           title: 'Quark Options'
           fields:
+            visualstyle:
+              type: section
+              title: 'Visual Style'
+              underline: true
+            dark_mode.mode:
+              type: select
+              label: 'Dark Mode'
+              help: 'Off: never. On: always. Auto (System): follows visitor OS preference.'
+              size: medium
+              default: disabled
+              options:
+                disabled: 'Off'
+                enabled: 'On'
+                auto: 'Auto (System)'
             production-mode:
               type: toggle
               label: 'Production mode'

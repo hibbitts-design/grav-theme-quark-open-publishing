@@ -6,3 +6,5 @@ streams:
                 '':
                 - themes://quark-open-publishing
                 - themes://quark
+dark_mode:
+  mode: disabled

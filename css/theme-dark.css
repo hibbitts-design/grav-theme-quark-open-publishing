@@ -1,0 +1,384 @@
+/*
+===============================================================================================================================
+Dark Mode CSS for Quark Open Publishing (loaded when Dark Mode is On, or for Auto when the visitor's OS prefers dark).
+Palette based on Quark 2's dark surfaces, with Quark's blue lightened for links and accents.
+===============================================================================================================================
+*/
+
+:root {
+    --qop-dark-bg: #08090b;
+    --qop-dark-card: #1d1f25;
+    --qop-dark-recessed: #2a2d34;
+    --qop-dark-text: #f2f2f3;
+    --qop-dark-strong: #ffffff;
+    --qop-dark-muted: #9a9aa0;
+    --qop-dark-border: rgba(255, 255, 255, 0.14);
+    --qop-dark-divider: rgba(255, 255, 255, 0.1);
+    --qop-dark-link: #72acf3;
+    --qop-dark-link-hover: #9cc5f7;
+    color-scheme: dark;
+}
+
+/* Keep embedded pages (e.g. Embedly cards) transparent instead of on a white backdrop */
+iframe {
+    color-scheme: normal;
+}
+
+/* Base: page, text, links, headings */
+
+body {
+    background: var(--qop-dark-bg);
+    color: var(--qop-dark-text);
+}
+
+a,
+a:visited {
+    color: var(--qop-dark-link);
+}
+
+a:hover,
+a:focus,
+a:active {
+    color: var(--qop-dark-link-hover);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--qop-dark-strong);
+}
+
+hr,
+.divider {
+    border-color: var(--qop-dark-divider);
+}
+
+.divider {
+    border-top-color: var(--qop-dark-divider);
+}
+
+::selection {
+    background: rgba(114, 172, 243, 0.35);
+    color: var(--qop-dark-strong);
+}
+
+.bg-gray {
+    background: var(--qop-dark-card) !important;
+}
+
+.text-gray {
+    color: var(--qop-dark-muted) !important;
+}
+
+/* Header and menus (header is always dark in Dark Mode) */
+
+#header,
+.header-dark #header:not(.scrolled) {
+    background: var(--qop-dark-bg);
+    color: var(--qop-dark-text);
+    border-bottom-color: var(--qop-dark-divider);
+}
+
+.header-transparent #header:not(.scrolled),
+.header-dark.header-transparent #header:not(.scrolled) {
+    background: rgba(8, 9, 11, 0.35);
+}
+
+#header a,
+.header-dark #header:not(.scrolled) a {
+    color: rgba(242, 242, 243, 0.8) !important;
+}
+
+#header a.active,
+#header a:hover,
+.header-dark #header:not(.scrolled) a.active {
+    color: var(--qop-dark-strong) !important;
+}
+
+#header .logo svg path {
+    fill: var(--qop-dark-strong);
+}
+
+.dropmenu ul ul {
+    background: var(--qop-dark-card);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.header-dark #header:not(.scrolled) .dropmenu ul ul a,
+.dropmenu ul ul a {
+    color: var(--qop-dark-text) !important;
+}
+
+.dropmenu ul li a:hover,
+.dropmenu ul li a:focus,
+.dropmenu ul li a.active {
+    color: var(--qop-dark-link) !important;
+}
+
+.mobile-menu .button_container span {
+    background: var(--qop-dark-link);
+}
+
+.treemenu li {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.treemenu li a:hover,
+.treemenu li a:focus,
+.treemenu li a.active {
+    color: var(--qop-dark-link) !important;
+}
+
+.menu {
+    background: var(--qop-dark-card);
+    box-shadow: 0 0.05rem 0.4rem rgba(0, 0, 0, 0.5);
+}
+
+.menu .menu-item > a:hover {
+    background: var(--qop-dark-recessed);
+    color: var(--qop-dark-link);
+}
+
+/* Blog: cards, meta, tags, pagination, breadcrumbs, sidebar */
+
+.card {
+    background: var(--qop-dark-card);
+    border-color: var(--qop-dark-border);
+}
+
+.blog-listing .card {
+    box-shadow: 0 10px 45px -9px rgba(0, 0, 0, 0.6);
+}
+
+.label {
+    background: var(--qop-dark-recessed);
+    color: var(--qop-dark-text);
+}
+
+.label.label-secondary {
+    background: rgba(114, 172, 243, 0.15);
+    color: var(--qop-dark-link);
+}
+
+.label.label-primary,
+.pagination .page-item.active a {
+    background: var(--qop-dark-link);
+    color: var(--qop-dark-bg);
+}
+
+.pagination .page-item a {
+    color: var(--qop-dark-text);
+}
+
+.pagination .page-item a:hover {
+    color: var(--qop-dark-link);
+}
+
+.breadcrumb .breadcrumb-item:not(:last-child) a,
+.nav .nav-item a {
+    color: var(--qop-dark-muted);
+}
+
+.nav .nav-item.active > a,
+.nav .nav-item a:hover {
+    color: var(--qop-dark-text);
+}
+
+#breadcrumbs span:not(:first-child)::before,
+#breadcrumbs a:not(:first-child)::before {
+    color: var(--qop-dark-border);
+}
+
+#sidebar ul.related-pages li {
+    border-bottom-color: var(--qop-dark-divider);
+}
+
+#footer {
+    color: var(--qop-dark-muted);
+}
+
+/* Content: code, quotes, tables, notices, misc */
+
+code {
+    background: var(--qop-dark-recessed);
+    color: #f6a5ab;
+}
+
+pre code,
+pre code:not(.hljs):not([class*="language-"]) {
+    background: var(--qop-dark-recessed);
+    color: var(--qop-dark-text);
+}
+
+/* Syntax-highlighted code (Prism Highlight plugin): One Dark colours for the default One Light theme */
+
+pre[class*="language-"],
+code[class*="language-"] {
+    background: var(--qop-dark-recessed);
+    color: #abb2bf;
+    text-shadow: none;
+}
+
+:not(pre) > code[class*="language-"] {
+    background: var(--qop-dark-recessed);
+}
+
+.token.comment,
+.token.prolog,
+.token.cdata {
+    color: #7f848e;
+}
+
+.token.keyword,
+.token.atrule {
+    color: #c678dd;
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.inserted {
+    color: #98c379;
+}
+
+.token.function,
+.token.class-name {
+    color: #61afef;
+}
+
+.token.number,
+.token.boolean,
+.token.constant {
+    color: #d19a66;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.token.regex {
+    color: #56b6c2;
+}
+
+.token.tag,
+.token.property,
+.token.selector,
+.token.deleted,
+.token.attr-name {
+    color: #e06c75;
+}
+
+.token.punctuation {
+    color: #abb2bf;
+}
+
+blockquote {
+    border-left-color: var(--qop-dark-border);
+}
+
+.table td,
+.table th {
+    border-bottom-color: var(--qop-dark-divider);
+}
+
+.table.table-striped tbody tr:nth-of-type(odd) {
+    background: var(--qop-dark-card);
+}
+
+mark {
+    background: #5c4a14;
+    color: var(--qop-dark-strong);
+    border-bottom-color: #8a6d1d;
+}
+
+.chip,
+.empty {
+    background: var(--qop-dark-recessed);
+    color: var(--qop-dark-text);
+}
+
+.panel {
+    border-color: var(--qop-dark-border);
+}
+
+.notices.yellow {
+    background: rgba(240, 173, 78, 0.12);
+    color: #f5c27a;
+}
+
+.notices.red {
+    background: rgba(217, 83, 79, 0.12);
+    color: #f19a97;
+}
+
+.notices.blue {
+    background: rgba(91, 192, 222, 0.12);
+    color: #8fd3e8;
+}
+
+.notices.green {
+    background: rgba(92, 184, 92, 0.12);
+    color: #92d492;
+}
+
+.hero h1 {
+    color: var(--qop-dark-strong);
+}
+
+.hero h2 {
+    color: rgba(242, 242, 243, 0.8);
+}
+
+/* Forms: buttons and search */
+
+.btn {
+    background: transparent;
+    border-color: var(--qop-dark-link);
+    color: var(--qop-dark-link);
+}
+
+.btn:hover,
+.btn:focus {
+    background: rgba(114, 172, 243, 0.15);
+    border-color: var(--qop-dark-link-hover);
+    color: var(--qop-dark-link-hover);
+}
+
+.btn.btn-primary {
+    background: var(--qop-dark-link);
+    border-color: var(--qop-dark-link);
+    color: var(--qop-dark-bg);
+}
+
+.btn.btn-primary:hover,
+.btn.btn-primary:focus {
+    background: var(--qop-dark-link-hover);
+    border-color: var(--qop-dark-link-hover);
+    color: var(--qop-dark-bg);
+}
+
+.form-input,
+.search-wrapper .search-input {
+    background: var(--qop-dark-card);
+    border-color: var(--qop-dark-border);
+    color: var(--qop-dark-text);
+}
+
+.form-input::placeholder,
+.search-wrapper .search-input::placeholder {
+    color: var(--qop-dark-muted);
+}
+
+.form-input:focus,
+.search-wrapper .search-input:focus {
+    border-color: var(--qop-dark-link);
+    box-shadow: 0 0 0 0.1rem rgba(114, 172, 243, 0.25);
+}
+
+.search-submit {
+    background: var(--qop-dark-recessed);
+    border-color: var(--qop-dark-border);
+}
+
+/* Quark Open Publishing extras */
+
+.gitrepo-link-note {
+    color: var(--qop-dark-muted);
+}

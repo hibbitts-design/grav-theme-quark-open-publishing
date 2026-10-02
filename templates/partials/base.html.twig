@@ -22,6 +22,11 @@
     {% if theme_var('spectre.icons') %}{%  do assets.addCss('theme://css-compiled/spectre-icons'~compress) %}{% endif %}
     {% do assets.addCss('theme://css-compiled/theme'~compress) %}
     {% do assets.addCss('theme://css/theme.css',100) %}
+    {% if theme_var('dark_mode.mode') == 'enabled' %}
+      {% do assets.addCss('theme://css/theme-dark.css') %}
+    {% elseif theme_var('dark_mode.mode') == 'auto' and not config.system.assets.css_pipeline %}
+      {% do assets.addCss('theme://css/theme-dark.css', {media: '(prefers-color-scheme: dark)'}) %}
+    {% endif %}
     {% do assets.addCss('theme://css/custom.css') %}
     {% do assets.addCss('theme://css/line-awesome.min.css') %}
 {% endblock %}
@@ -35,6 +40,9 @@
 
 {% block assets deferred %}
     {{ assets.css()|raw }}
+    {% if theme_var('dark_mode.mode') == 'auto' and config.system.assets.css_pipeline %}
+      <link rel="stylesheet" href="{{ url('theme://css/theme-dark.css') }}" media="(prefers-color-scheme: dark)">
+    {% endif %}
     {{ assets.js()|raw }}
 {% endblock %}
 </head>
@@ -62,7 +70,7 @@
                         </nav>
 
                         {% if config.plugins.login.enabled and grav.user.username %}
-                            <span class="login-status-wrapper"><i class="fa fa-user"></i> {% include 'partials/login-status.html.twig' %}</span>
+                            <span class="login-status-wrapper"><i class="fa fa-user"></i> {% include 'partials/login-status.html.twig' ignore missing %}</span>
                         {% endif %}
 
                     </section>

@@ -25,7 +25,7 @@ class EmbedlyShortcode extends Shortcode
                 $title = $sc->getParameter('title', '');
                 $align = $sc->getParameter('align', 'left');
 
-                return static::renderCard($embedlycardurl, $align, $title);
+                return static::renderCard($embedlycardurl, $this->config->get('theme.dark_mode.mode', 'disabled'), $align, $title);
             }
 
         });
@@ -36,7 +36,7 @@ class EmbedlyShortcode extends Shortcode
      * URL isn't reachable. Shared by the shortcode and the standalone embedlycard
      * page type template, so both stay in sync automatically.
      */
-    public static function renderCard(string $embedlycardurl, string $align = 'left', string $title = ''): string
+    public static function renderCard(string $embedlycardurl, string $mode, string $align = 'left', string $title = ''): string
     {
         $safeUrl = htmlspecialchars($embedlycardurl, ENT_QUOTES);
 
@@ -46,10 +46,18 @@ class EmbedlyShortcode extends Shortcode
 
         $safeAlign = htmlspecialchars($align ?: 'left', ENT_QUOTES);
         $safeTitle = htmlspecialchars($title, ENT_QUOTES);
+        $darkAttr = ($mode === 'enabled') ? ' data-card-theme="dark"' : '';
 
         Grav::instance()['assets']->addJs('//cdn.embedly.com/widgets/platform.js', ['loading' => 'async']);
 
-        return '<a class="embedly-card" data-card-controls="0" data-card-align="' . $safeAlign . '" href="' . $safeUrl . '">' . $safeTitle . '</a>';
+        if ($mode === 'auto') {
+            Grav::instance()['assets']->addInlineJs(
+                "if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){document.querySelectorAll('a.embedly-card').forEach(function(e){e.setAttribute('data-card-theme','dark')})}",
+                ['group' => 'bottom']
+            );
+        }
+
+        return '<a class="embedly-card" data-card-controls="0" data-card-align="' . $safeAlign . '"' . $darkAttr . ' href="' . $safeUrl . '">' . $safeTitle . '</a>';
     }
 
     public static function isUrlReachable(string $url): bool
