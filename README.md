@@ -70,6 +70,15 @@ The easiest way to get started is the [Open Publishing Space](https://github.com
 > [!TIP]
 > Make your customizations in a child theme (the skeleton package includes one called `mytheme`), so they are kept when Quark Open Publishing is updated.
 
+### Updating an Existing Site
+
+Updating the theme keeps your pages and settings as they are, with the new features off until you turn them on. To use them:
+
+1. **New theme options** – replace the `form:` section of `user/themes/mytheme/blueprints.yaml` with the one from the theme's `blueprints.yaml`, so the Previous/Next Navigation Style option appears under **Themes → My Theme**
+2. **Search** – turn on the SimpleSearch plugin in **Plugins → SimpleSearch**; on sites set up with an earlier Open Publishing Space skeleton, also clear its **Category** filter (set to `blog`), or search finds only blog posts in that category
+3. **GitHub-style alerts** – install the [GitHub Markdown Alerts plugin](https://github.com/trilbymedia/grav-plugin-github-markdown-alerts) (Grav 2)
+4. **Multi-page content** – choose the Section List page type for a new page in the Admin Panel, or copy the `05.multi-page-content` example from the theme's `_demo/pages` folder
+
 ## Theme Options
 
 All options are available in the Admin Panel under **Themes → Quark Open Publishing**.
