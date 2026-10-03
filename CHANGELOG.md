@@ -1,3 +1,29 @@
+# v3.0.0
+## 10/03/2026
+
+1. [](#new)
+    * Section List page type for multi-page content, as in Helios Open Reader
+    * Reader settings (subtitle, cover image, author(s), edition, section labels and Learning Objectives), as in Helios Open Reader
+    * Reading progress, OER attribution and search box options for multi-page content
+    * Previous/Next Navigation Style theme option
+    * Callout shortcodes, as in Helios Open Reader (`[objectives]`, `[references]` and more)
+    * GitHub-style alerts, with the GitHub Markdown Alerts plugin
+    * Search with the SimpleSearch plugin (TNTSearch also supported)
+    * Print stylesheet
+    * Friendlier Page Not Found page
+1. [](#improved)
+    * `?embedded=true` and `?edit_link=false` URL parameters, as in Helios Open Reader
+    * `ratio` and `title` options for the iFrame, Google Slides, PDF and H5P shortcodes
+    * Search leaves out hidden top-level pages
+    * Long titles in the sections side navigation now wrap neatly
+    * Existing mytheme installations require manual update of mytheme/blueprints.yaml to surface the new theme option
+1. [](#bugfix)
+    * Embedly Card and Link Preview Card pages no longer show their HTML as text on Grav 2
+    * Google Slides shortcode no longer shows its HTML as text on Grav 2
+    * iFrame shortcode `aspectratio` option no longer ignored
+    * H5P embeds keep resizing when Grav's cache is enabled
+    * Cmd-click on internal links now opens a new tab
+
 # v2.6.0
 ## 10/02/2026
 
