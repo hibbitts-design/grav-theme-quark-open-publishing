@@ -23,7 +23,7 @@
 {% endif %}
 {% endif %}
 {% set embedlyTag = '[embedly url="' ~ page.header.embedly_card_url|e('html_attr') ~ '" title="' ~ page.header.embedly_card_title|e('html_attr') ~ '" align="' ~ page.header.embedly_card_alignment|e('html_attr') ~ '"]' %}
-{{ embedlyTag | shortcodes }}
+{{ embedlyTag | shortcodes | raw }}
 </p>
 </div>
 {% endblock %}

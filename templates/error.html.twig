@@ -1,0 +1,24 @@
+{# Error page (for example "page not found") as a Spectre empty state, with a way back home and a search box - hibbittsdesign.org #}
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    {% set error_code = page.header.http_response_code ?: 404 %}
+    <div id="error" class="empty">
+        <p class="empty-subtitle">{{ 'THEME_QUARK_OPEN_PUBLISHING.ERROR_CODE'|t(error_code) }}</p>
+        {% if error_code == 404 %}
+            <h1 class="empty-title h3">{{ 'THEME_QUARK_OPEN_PUBLISHING.ERROR_NOT_FOUND_TITLE'|t }}</h1>
+            <p class="empty-subtitle">{{ 'THEME_QUARK_OPEN_PUBLISHING.ERROR_NOT_FOUND_TEXT'|t }}</p>
+        {% else %}
+            <h1 class="empty-title h3">{{ 'THEME_QUARK_OPEN_PUBLISHING.ERROR_TITLE'|t }}</h1>
+            <p class="empty-subtitle">{{ page.content|raw }}</p>
+        {% endif %}
+        <div class="empty-action">
+            <a class="btn btn-primary" href="{{ base_url_relative ?: '/' }}">{{ 'THEME_QUARK_OPEN_PUBLISHING.ERROR_SITE_HOME'|t }}</a>
+        </div>
+        {% if config.plugins.tntsearch.enabled or config.plugins.simplesearch.enabled %}
+            <div class="empty-action error-search">
+                {% include 'partials/search_box.html.twig' %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

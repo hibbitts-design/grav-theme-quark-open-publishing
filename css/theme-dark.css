@@ -453,8 +453,75 @@ mark {
     border-color: var(--qop-dark-border);
 }
 
+/* Optional TNTSearch plugin: dark results dropdown and readable search word highlights */
+.tntsearch-dropdown ~ .tntsearch-results .row {
+    background: var(--qop-dark-card);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.tntsearch-results .info {
+    color: var(--qop-dark-muted);
+}
+
+.tntsearch-results em {
+    background-color: rgba(255, 183, 0, 0.35);
+    color: inherit;
+}
+
 /* Quark Open Publishing extras */
 
 .gitrepo-link-note {
     color: var(--qop-dark-muted);
+}
+
+/* Multi-page content (Section List page and its sections): Quark's dark greys, dark cards like the blog's, and the lighter link blue */
+.reader-section-label,
+.reader-subtitle,
+.reader-edition,
+.reader-progress-text,
+.reader-attribution,
+.reader-nav-label {
+    color: var(--qop-dark-muted);
+}
+
+.reader-header,
+.reader-attribution,
+.reader-nav-block {
+    border-color: var(--qop-dark-divider);
+}
+
+.reader-progress .bar {
+    background: var(--qop-dark-recessed);
+}
+
+.reader-progress .bar .bar-item {
+    background: var(--qop-dark-link);
+}
+
+.section-card,
+.reader-nav-tile {
+    background: var(--qop-dark-card);
+    box-shadow: 0 10px 45px -9px rgba(0, 0, 0, 0.6);
+}
+
+.section-card:hover,
+.reader-nav-tile:hover {
+    box-shadow: 0 12px 45px -9px rgba(0, 0, 0, 0.8), 0 0 0 0.05rem var(--qop-dark-border);
+}
+
+.reader-nav-tile .fa {
+    color: var(--qop-dark-muted);
+}
+
+.reader-nav-tile:hover .fa,
+.reader-nav-tile:focus .fa {
+    color: var(--qop-dark-link);
+}
+
+.section-card:focus-within {
+    outline-color: var(--qop-dark-link);
+}
+
+.reader-prev-next .reader-nav-tile:focus-visible {
+    outline-color: var(--qop-dark-link) !important;
 }

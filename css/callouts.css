@@ -1,0 +1,123 @@
+/*
+Callouts - GitHub-style alerts (> [!NOTE], > [!TIP], > [!IMPORTANT], > [!WARNING], > [!CAUTION]) from the GitHub Markdown
+Alerts plugin, and the course content shortcodes ([objectives], [key-takeaways] and so on) - hibbittsdesign.org
+Soft tinted boxes with a coloured edge, in Spectre's colours and corner size; the tints suit both light and Dark Mode.
+*/
+
+.md-alert {
+    background: rgba(48, 133, 238, 0.08);
+    border-left: 0.2rem solid #3085ee;
+    border-radius: 0.1rem;
+    margin: 0 0 1.2rem;
+    padding: 0.7rem 0.9rem;
+}
+
+.md-alert-title {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    margin: 0 0 0.3rem;
+}
+
+.md-alert-title svg,
+.md-alert-title .fa {
+    fill: currentColor;
+    margin-right: 0.45rem;
+}
+
+.md-alert-body > :last-child {
+    margin-bottom: 0;
+}
+
+/* Note = Spectre primary blue */
+.md-alert--note {
+    background: rgba(48, 133, 238, 0.08);
+    border-left-color: #3085ee;
+}
+
+.md-alert--note .md-alert-title svg,
+.md-alert--note .md-alert-title .fa {
+    color: #3085ee;
+}
+
+/* Tip = Spectre success green */
+.md-alert--tip {
+    background: rgba(50, 182, 67, 0.09);
+    border-left-color: #32b643;
+}
+
+.md-alert--tip .md-alert-title svg,
+.md-alert--tip .md-alert-title .fa {
+    color: #32b643;
+}
+
+/* Important = Spectre's original indigo */
+.md-alert--important {
+    background: rgba(87, 85, 217, 0.08);
+    border-left-color: #5755d9;
+}
+
+.md-alert--important .md-alert-title svg,
+.md-alert--important .md-alert-title .fa {
+    color: #5755d9;
+}
+
+/* Warning = Spectre warning amber */
+.md-alert--warning {
+    background: rgba(255, 183, 0, 0.12);
+    border-left-color: #ffb700;
+}
+
+.md-alert--warning .md-alert-title svg,
+.md-alert--warning .md-alert-title .fa {
+    color: #c98f00;
+}
+
+/* Caution = Spectre error orange */
+.md-alert--caution {
+    background: rgba(232, 86, 0, 0.09);
+    border-left-color: #e85600;
+}
+
+.md-alert--caution .md-alert-title svg,
+.md-alert--caution .md-alert-title .fa {
+    color: #e85600;
+}
+
+/* [references] shortcode - a list of sources under a small heading */
+.course-references {
+    border-top: 0.05rem solid rgba(127, 127, 127, 0.25);
+    padding-top: 0.6rem;
+    margin: 1.2rem 0;
+    font-size: 0.9em;
+}
+
+.course-references-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 0.4rem;
+}
+
+.course-references-body > :last-child {
+    margin-bottom: 0;
+}
+
+/* [excerpt] shortcode - a quoted passage */
+blockquote.excerpt {
+    border-left: 0.2rem solid rgba(127, 127, 127, 0.35);
+    padding: 0.2rem 0 0.2rem 0.8rem;
+    font-size: 1.05em;
+}
+
+blockquote.excerpt > :last-child {
+    margin-bottom: 0;
+}
+
+/* Search box on the "page not found" page */
+.error-search .search-box {
+    max-width: 20rem;
+    margin: 0 auto;
+}

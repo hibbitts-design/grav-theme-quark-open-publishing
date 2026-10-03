@@ -1,0 +1,6 @@
+{# Search box - uses the TNTSearch plugin when it is enabled, otherwise the SimpleSearch plugin - hibbittsdesign.org #}
+{% if config.plugins.tntsearch.enabled %}
+    {% include 'partials/tntsearch.html.twig' with { dropdown: true, placeholder: 'THEME_QUARK_OPEN_PUBLISHING.SEARCH_PLACEHOLDER'|t } %}
+{% elseif config.plugins.simplesearch.enabled %}
+    {% include 'partials/simplesearch_searchbox.html.twig' %}
+{% endif %}

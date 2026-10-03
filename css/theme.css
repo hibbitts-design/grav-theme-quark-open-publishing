@@ -121,6 +121,15 @@ h1.sections-page-title-template, h2.sections-page-title-template, h3.sections-pa
     margin-top: -2rem;
 }
 
+/* Sections side navigation: indent each item rather than its link, so long titles that wrap stay lined up - hibbittsdesign.org */
+#sections-nav .nav .nav-item {
+    padding-left: 0.4rem;
+}
+
+#sections-nav .nav .nav-item a {
+    padding-left: 0;
+}
+
 .bricklayermodulars {
     padding-right: 25px;
 }

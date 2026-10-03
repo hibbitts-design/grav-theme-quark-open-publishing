@@ -1,0 +1,107 @@
+/*
+Search results (SimpleSearch plugin) - groups of results as Spectre tiles in a card - hibbittsdesign.org
+Neutral colours and transparent backgrounds, so results suit light and Dark Mode.
+*/
+
+.search-page .search-box {
+    margin-bottom: 1rem;
+    max-width: 28rem;
+}
+
+.search-summary {
+    margin-bottom: 1.2rem;
+}
+
+.search-group {
+    margin-bottom: 1.4rem;
+}
+
+/* Small section label above each group */
+.search-group-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 0.4rem;
+}
+
+.search-results.card {
+    background: transparent;
+    padding: 0;
+}
+
+.search-results .tile.search-result {
+    color: inherit;
+    text-decoration: none;
+    padding: 0.7rem 0.9rem;
+    border-bottom: 0.05rem solid rgba(127, 127, 127, 0.2);
+}
+
+.search-results .tile.search-result:last-child {
+    border-bottom: 0;
+}
+
+.search-results .tile.search-result:hover,
+.search-results .tile.search-result:focus {
+    background: rgba(127, 127, 127, 0.07);
+}
+
+.search-results .tile.search-result:focus-visible {
+    outline: 0.1rem solid currentColor;
+    outline-offset: -0.1rem;
+}
+
+.search-result .tile-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 0.15rem;
+}
+
+.search-result:hover .tile-title,
+.search-result:focus .tile-title {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.search-result-trail {
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-bottom: 0.2rem;
+}
+
+.search-result .tile-subtitle {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    opacity: 0.9;
+    margin: 0;
+}
+
+.search-result .tile-action {
+    opacity: 0.5;
+}
+
+.search-result:hover .tile-action,
+.search-result:focus .tile-action {
+    opacity: 1;
+}
+
+/* Search words, readable in light and dark styles */
+.search-results mark {
+    background: rgba(255, 183, 0, 0.35);
+    color: inherit;
+    padding: 0 0.1em;
+    border-radius: 0.1rem;
+}
+
+.search-no-results ul {
+    margin-left: 1rem;
+}
+
+/* Note shown when a search is limited to a Multi-Page Content page */
+.search-scope {
+    font-size: 0.8rem;
+    margin: -0.8rem 0 1.2rem;
+    opacity: 0.85;
+}

@@ -31,3 +31,56 @@ form:
                     1:  No
                 validate:
                     type: bool
+
+            reader:
+                type: section
+                title: Reader Details
+                underline: true
+
+            header.section_number:
+              type: text
+              label: Section Number
+              toggleable: true
+              placeholder: 'e.g. 1 or 1.2'
+              help: 'Optional number shown with the Section Label (e.g. "Chapter 1.2"). Leave empty to use the section''s position.'
+
+            header.section_label:
+              type: text
+              size: medium
+              label: Section Label Override
+              toggleable: true
+              placeholder: 'e.g. Appendix 1, Introduction, Conclusion'
+              help: 'Custom label shown above this section''s title (and its subsections). Overrides the multi-section page''s Section Label and number. Leave empty to hide the label for this section only.'
+
+            header.learning_objectives:
+              type: textarea
+              label: Learning Objectives
+              toggleable: true
+              rows: 5
+              placeholder: "- Understand the key concepts\n- Apply the methods described\n- Evaluate the outcomes"
+              help: 'Learning objectives displayed at the top of this page as a styled block. Supports Markdown. Can also be added inline using the [objectives] shortcode.'
+
+            card:
+                type: section
+                title: Card Details
+                underline: true
+
+            card_info:
+              type: display
+              label: false
+              markdown: true
+              content: 'Shown on this section''s card when it is part of a Section List page.'
+
+            header.description:
+              type: textarea
+              label: Description
+              toggleable: true
+              rows: 3
+              placeholder: 'A short description for this section'
+              help: 'Short description shown on the section card.'
+
+            header.image:
+              type: pagemediaselect
+              label: Card Image
+              toggleable: true
+              help: 'Image from this page''s media folder to display on the section card.'

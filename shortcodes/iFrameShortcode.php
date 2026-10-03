@@ -1,7 +1,6 @@
 <?php
 namespace Grav\Plugin\Shortcodes;
 
-use Grav\Common\Utils;
 use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 
 class iFrameShortcode extends Shortcode
@@ -10,21 +9,22 @@ class iFrameShortcode extends Shortcode
     {
         $this->shortcode->getHandlers()->add('iframe', function(ShortcodeInterface $sc) {
 
-            // Get shortcode content and parameters
-            $str = $sc->getContent();
+            $iframeurl = $sc->getParameter('url', $sc->getBbCode());
 
-            $iframeurl= $sc->getParameter('url', $sc->getBbCode());
-
-            $iframeratio= $sc->getParameter('aspectratio', $sc->getBbCode());
-
-            if (empty($iframeaspectratio)) {
-              $iframeaspectratio = "";
+            // ratio="16:9" (the default), "4:3" or "1:1" (as in Helios), or the earlier aspectratio="4-3" or "1-1"
+            $ratio = $sc->getParameter('ratio', $sc->getParameter('aspectratio'));
+            $ratioClass = '';
+            if ($ratio === '4:3' || $ratio === '4-3') {
+                $ratioClass = ' video-responsive-4-3';
+            } elseif ($ratio === '1:1' || $ratio === '1-1') {
+                $ratioClass = ' video-responsive-1-1';
             }
 
-            if ($iframeurl) {
-                $output = '<span class="video-responsive video-responsive-'.$iframeaspectratio.'"><iframe src="'.$iframeurl.'" width="640" height="480"></iframe></span>';
+            // title="..." gives the embedded content an accessible name
+            $title = htmlspecialchars($sc->getParameter('title', 'Embedded content'), ENT_QUOTES, 'UTF-8');
 
-                return $output;
+            if ($iframeurl) {
+                return '<span class="video-responsive' . $ratioClass . '"><iframe src="' . $iframeurl . '" title="' . $title . '" width="640" height="480"></iframe></span>';
             }
 
         });

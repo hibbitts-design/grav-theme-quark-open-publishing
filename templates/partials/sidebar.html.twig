@@ -4,9 +4,9 @@
 {% set sidebar_page = pages.find('/sidebar') %}
 {% set sidebar_page_content =  sidebar_page.content %}
 
-{% if config.plugins.simplesearch.enabled %}
+{% if config.plugins.tntsearch.enabled or config.plugins.simplesearch.enabled %}
     <div class="sidebar-content">
-        {% include 'partials/simplesearch_searchbox.html.twig' %}
+        {% include 'partials/search_box.html.twig' %}
     </div>
 {% endif %}
 

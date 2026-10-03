@@ -10,15 +10,84 @@
 
   {% set activetag = uri.param('filter') %}
 
+  {# Reader details (the same page settings as Helios Open Reader) are set on the reader home: the Multi-Section page
+     or Section List page that this page belongs to - hibbittsdesign.org #}
+  {% set reader_home_templates = ['sections', 'section-list'] %}
+  {% if page.template in reader_home_templates %}
+    {% set reader_home = page %}
+  {% elseif page.parent.template in reader_home_templates %}
+    {% set reader_home = page.parent %}
+  {% else %}
+    {% set reader_home = page.parent.parent %}
+  {% endif %}
+  {% set reader_sections = reader_home.collection.visible() %}
+
+  {# The section this page belongs to, for its label (for example "Chapter 2") #}
+  {% set section_page = null %}
+  {% if page.template == 'section' %}
+    {% set section_page = page %}
+  {% elseif page.template == 'subsection' %}
+    {% set section_page = page.parent %}
+  {% endif %}
+
+  {% import 'macros/reader.html.twig' as reader %}
+  {% set section_heading_label = '' %}
+  {% if section_page %}
+    {# the section's position in the list of sections, for its number #}
+    {% set section_position = 0 %}
+    {% for section_item in reader_sections %}
+      {% if section_item.route == section_page.route %}
+        {% set section_position = loop.index %}
+      {% endif %}
+    {% endfor %}
+    {% set section_heading_label = reader.section_label(section_page, reader_home, section_position) %}
+  {% endif %}
+
   <div class="columns">
 
     <div id="sections-content" class="column col-9 col-md-12">
 
+      {# A link back to the Section List page, which has the section cards (hidden in embedded mode) #}
+      {% if reader_home.template == 'section-list' and page.route != reader_home.route and not embedded_mode %}
+        <p class="reader-back-link"><a href="{{ reader_home.url }}"><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ reader_home.title }}</a></p>
+      {% endif %}
+
       {% if not(page.header.hide_page_title) and not(grav.uri.param('hidepagetitle')) %}
+        {% if section_heading_label|length > 0 %}
+          <p class="reader-section-label">{{ section_heading_label }}</p>
+        {% endif %}
         <h3 class="sections-page-title-template">{{ page.title }}</h3>
       {% endif %}
 
+      {% if page.template == 'sections' %}
+        {% include 'partials/reader_header.html.twig' %}
+      {% endif %}
+
+      {# Learning objectives from the page settings, shown as an [objectives] callout #}
+      {% if page.header.learning_objectives %}
+        {{ ('[objectives]' ~ page.header.learning_objectives|markdown ~ '[/objectives]')|shortcodes|raw }}
+      {% endif %}
+
       {{ page.content|raw }}
+
+      {# Previous/Next navigation: tiles grouped with the reading progress (theme option, as in Helios Open Reader),
+         or the classic buttons - hibbittsdesign.org #}
+      {% if theme_var('sections_prev_next_style') == 'tiles' %}
+        {% if page.template != 'sections' %}
+          <div class="reader-nav-block">
+            {% if reader_home.header.show_reading_progress %}
+              {% include 'partials/reader_progress.html.twig' %}
+            {% endif %}
+            {% if not(hide_next_prev_page_buttons) %}
+              {% include 'partials/reader_prev_next.html.twig' %}
+            {% endif %}
+          </div>
+        {% endif %}
+      {% else %}
+
+      {% if reader_home.header.show_reading_progress and page.template != 'sections' %}
+        {% include 'partials/reader_progress.html.twig' %}
+      {% endif %}
 
       {% if not(hide_next_prev_page_buttons) %}
 
@@ -56,7 +125,7 @@
                 {% endif %}
               {% endif %}
             {% else %}
-              {% if not(page.parent.template == 'sections') %}
+              {% if not(page.parent.template in reader_home_templates) %}
                 <a class="btn btn-primary" href="{% if activetag %}{{ page.parent.url ~ '/filter:' ~ activetag }}{% else %}{{ page.parent.url }}{% endif %}">
                   <i class="fa fa-chevron-left"></i>
                   {{ page.parent.menu }}</a>
@@ -76,7 +145,7 @@
                 </a>
               {% endif %}
             {% else %}
-              {% if not(page.parent.template == 'sections') %}
+              {% if not(page.parent.template in reader_home_templates) %}
                 {% set siblings = page.collection({
                   items: {
                     '@page.children.visible': page.parent.parent.route
@@ -100,9 +169,23 @@
 
         {% endif %}
         </p>
+
+      {% endif %}
+
+        {% include 'partials/reader_attribution.html.twig' %}
+
       </div>
 
       <div id="sections-nav" class="column col-3 col-md-12">
+
+        {# A search box above the side list, on pages of a Section List page (its Show Search Box setting; hidden in embedded mode) #}
+        {% if reader_home.template == 'section-list'
+          and (reader_home.header.show_search_box is not defined or reader_home.header.show_search_box)
+          and (config.plugins.simplesearch.enabled or config.plugins.tntsearch.enabled) and not embedded_mode %}
+          <div class="reader-search">
+            {% include 'partials/search_box.html.twig' with { search_scope: reader_home } %}
+          </div>
+        {% endif %}
 
         <ul class="nav">
 

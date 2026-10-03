@@ -1,0 +1,20 @@
+{# Search page - uses the TNTSearch plugin when it is enabled, otherwise the SimpleSearch plugin - hibbittsdesign.org #}
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    <div class="search-page">
+        <h1>{{ page.title }}</h1>
+        {% if config.plugins.tntsearch.enabled %}
+            {{ page.content|raw }}
+            {% include 'partials/tntsearch.html.twig' with { in_page: true, placeholder: 'THEME_QUARK_OPEN_PUBLISHING.SEARCH_PLACEHOLDER'|t } %}
+        {% elseif config.plugins.simplesearch.enabled %}
+            {% include 'partials/simplesearch_results_list.html.twig' %}
+            {# the page text is shown until a search is made #}
+            {% if not query %}
+                {{ page.content|raw }}
+            {% endif %}
+        {% else %}
+            {{ page.content|raw }}
+        {% endif %}
+    </div>
+{% endblock %}

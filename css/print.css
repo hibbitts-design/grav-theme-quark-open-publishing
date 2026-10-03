@@ -1,0 +1,124 @@
+/*
+Print stylesheet - prints just the page content, in black on white, whatever the Dark Mode setting - hibbittsdesign.org
+Based on the Grav Helios Open Reader print stylesheet. To leave something out of print, add the no-print class (as in Helios).
+*/
+
+@page {
+    margin: 1.5cm 2cm;
+}
+
+@media print {
+    /* Hide the header, menus, hero image, sidebar, footer, page navigation and the Git Sync link */
+    #header,
+    .mobile-menu,
+    .mobile-container,
+    .modular-hero,
+    #sidebar,
+    #footer,
+    #listing-footer,
+    .prev-next,
+    .reader-progress,
+    .reader-prev-next,
+    .reader-back-link,
+    .reader-search,
+    .gitrepo-link-note,
+    .no-print {
+        display: none !important;
+    }
+
+    /* Embedded content (slides, videos, PDFs, H5P) can't be printed and would leave a blank box, so leave it out */
+    .video-responsive,
+    iframe {
+        display: none !important;
+    }
+
+    /* Content fills the page */
+    #item {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    #body-wrapper,
+    #start {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+
+    /* Black on white, whatever the Dark Mode setting */
+    html,
+    body {
+        background: #fff !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        color: #000 !important;
+        background-color: transparent !important;
+        text-shadow: none !important;
+        box-shadow: none !important;
+    }
+
+    /* With no background colours, outline callouts, cards and buttons */
+    .md-alert,
+    .card,
+    .btn {
+        border: 0.05rem solid #999 !important;
+    }
+
+    /* Show the address after links to other sites, but not on buttons or cards */
+    #item a[href^="http"]:not(.btn):not(.embedly-card)::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        word-break: break-all;
+    }
+
+    .link-preview-card a::after {
+        content: none !important;
+    }
+
+    /* Keep callouts, cards, images and similar blocks in one piece */
+    .md-alert,
+    .card,
+    .link-preview-card,
+    img,
+    figure,
+    pre,
+    blockquote,
+    table {
+        break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Keep headings with the content that follows, and avoid single stray lines */
+    h1, h2, h3, h4, h5, h6 {
+        break-after: avoid;
+    }
+
+    p, li {
+        orphans: 3;
+        widows: 3;
+    }
+
+    /* Repeat a table's header row on each printed page */
+    thead {
+        display: table-header-group;
+    }
+
+    /* Wrap long code lines rather than cutting them off */
+    pre,
+    code {
+        white-space: pre-wrap !important;
+        word-wrap: break-word;
+    }
+}

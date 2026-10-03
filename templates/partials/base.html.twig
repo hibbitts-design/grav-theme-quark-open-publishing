@@ -22,11 +22,18 @@
     {% if theme_var('spectre.icons') %}{%  do assets.addCss('theme://css-compiled/spectre-icons'~compress) %}{% endif %}
     {% do assets.addCss('theme://css-compiled/theme'~compress) %}
     {% do assets.addCss('theme://css/theme.css',100) %}
+    {# multi-page content (Section List and Multi-Section pages), loaded before Dark Mode so its colours can be changed there - hibbittsdesign.org #}
+    {% if page.template in ['sections', 'section', 'subsection', 'section-list'] %}
+      {% do assets.addCss('theme://css/reader.css') %}
+    {% endif %}
     {% if theme_var('dark_mode.mode') == 'enabled' %}
       {% do assets.addCss('theme://css/theme-dark.css') %}
     {% elseif theme_var('dark_mode.mode') == 'auto' and not config.system.assets.css_pipeline %}
       {% do assets.addCss('theme://css/theme-dark.css', {media: '(prefers-color-scheme: dark)'}) %}
     {% endif %}
+    {# callouts (GitHub-style alerts and the course content shortcodes) and printing - hibbittsdesign.org #}
+    {% do assets.addCss('theme://css/callouts.css') %}
+    {% do assets.addCss('theme://css/print.css') %}
     {% do assets.addCss('theme://css/custom.css') %}
     {% do assets.addCss('theme://css/line-awesome.min.css') %}
 {% endblock %}
@@ -53,7 +60,7 @@
     <h1 class="hidden">{{ page.title }}</h1>
 
     {# check content display flag - hibbittsdesign.org #}
-    {% if not (grav.uri.param('chromeless') or grav.uri.param('embedded') or grav.uri.param('standalone')) and not(theme_var('chromeless.enabled')) %}
+    {% if not embedded_mode and not(theme_var('chromeless.enabled')) %}
     {% block header deferred %}
         <section id="header" class="section">
             <section class="container {{ grid_size }}">
@@ -104,7 +111,7 @@
                     {% if theme_var('display_of_git_sync_repo_link') == 'page' and not (grav.uri.param('summaryonly') or grav.uri.param('onlysummary')) %}
                         <p>{% include 'partials/git_sync_repo_link_note.html.twig' %}</p>
                     {% endif %}
-                    {% if not (grav.uri.param('chromeless') or grav.uri.param('embedded') or grav.uri.param('standalone')) and not(theme_var('chromeless.enabled')) and (theme_var('cc_license.enabled') and not(page.header.hide_cc_license)) %}
+                    {% if not embedded_mode and not(theme_var('chromeless.enabled')) and (theme_var('cc_license.enabled') and not(page.header.hide_cc_license)) %}
                         <p>{% include 'partials/creative_commons_license.html.twig' %}</p>
                     {% endif %}
 
@@ -116,7 +123,7 @@
     </div>
 
     {# check content display flag - hibbittsdesign.org #}
-    {% if not (grav.uri.param('chromeless') or grav.uri.param('embedded') or grav.uri.param('standalone')) and (not theme_var('chromeless.enabled')) %}
+    {% if not embedded_mode and (not theme_var('chromeless.enabled')) %}
         {% block footer %}
             <section id="footer" class="section bg-gray">
                 <section class="container {{ grid_size }}">

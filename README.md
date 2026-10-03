@@ -18,18 +18,22 @@
 
 </div>
 
-Quark Open Publishing adds what open, collaborative blogs and publishing sites need on top of the Quark theme: pages that embed cleanly in other systems, links that open each page's source in your Git repository, and a set of shortcodes and page types for rich content.
+Quark Open Publishing adds what open, collaborative blogs and publishing sites need on top of the Quark theme: pages that embed cleanly in other systems, links that open each page's source in your Git repository, multi-page content such as a short guide or handbook, and a set of shortcodes and page types for rich content.
 
 ## What Sets It Apart
 
-- **Chromeless display for embedding** – add `/chromeless:true` to any page URL to show only its content, or hide the site menu, sidebar, and footer site-wide
+- **Multi-page content that carries over to Grav Helios Open Reader** – a Section List page type for a short guide or handbook alongside your blog, with section cards, section labels, Learning Objectives, reading progress, Previous/Next navigation, and OER attribution, using the same page settings as [Grav Helios Open Reader](https://github.com/hibbitts-design/grav-skeleton-helios-open-reader)
+- **Chromeless display for embedding** – add `/chromeless:true` or `?embedded=true` to any page URL to show only its content, or hide the site menu, sidebar, and footer site-wide
 - **Open authoring with Git Sync** – a "View Git Repository" or "View/Edit Page in Git Repository" link in the menu, footer, or page, with a custom icon and text
-- **Built-in shortcodes** – Button, Embedly, Google Slides, H5P, iFrame, Link Preview Card, Markdown File, PDF, SpeakerDeck, and Twitter
+- **Built-in shortcodes** – Button, Embedly, Google Slides, H5P, iFrame, Link Preview Card, Markdown File, PDF, SpeakerDeck, and Twitter, with `title` (and `ratio`) options for accessible, well-proportioned embeds
+- **Callout shortcodes** – `[objectives]`, `[key-takeaways]`, `[reflection]`, `[definition]`, `[example]`, `[case-study]`, `[project-brief]`, `[process-note]`, `[feedback-requested]`, `[announcement]`, `[exercise]`, `[references]`, and `[excerpt]`, plus GitHub-style alerts (`> [!NOTE]` etc.), with the same names and options as Grav Helios Open Reader
 - **Blogging extras** – featured (sticky) posts, an option to hide post summaries on full posts, and a Markdown-based sidebar
-- **Content page types** – sections with side navigation, custom content lists, and dedicated H5P, iFrame, PDF, Embedly, and link preview card pages
+- **Content page types** – multi-page content with section cards, sections with side navigation, custom content lists, and dedicated H5P, iFrame, PDF, Embedly, and link preview card pages
+- **Search** – with the SimpleSearch plugin, results grouped by section with the search words highlighted, and a search box on multi-page content that searches just that content
 - **Built on Quark** – a lightweight, responsive Spectre.css design with hero images, modular pages, and full-page mobile navigation
 - **2026 Refresh with Dark Mode** – off, on, or following the visitor's system setting, with a dark palette designed to match Quark
-- **Open licensing and accessibility** – Creative Commons license display and hidden H1 page titles for screen readers
+- **Open licensing and accessibility** – Creative Commons license display, OER attribution for multi-page content, and hidden H1 page titles for screen readers
+- **Print-friendly pages** – printed pages show just the content in black on white, with link addresses, whatever the Dark Mode setting
 
 ## When is Quark Open Publishing a Good Candidate?
 
@@ -38,9 +42,11 @@ Quark Open Publishing is a good fit when you:
 - Want an open blog or publishing site built on Grav's default Quark theme
 - Need to embed pages cleanly in an LMS or other site
 - Value Git-based, open authoring of your writing
+- Want to publish a short guide or handbook alongside your blog
 
 Other options might be better when you:
 
+- Want to publish substantial, standalone open content, such as an open textbook, or several readers on one site – consider [Grav Helios Open Reader](https://github.com/hibbitts-design/grav-skeleton-helios-open-reader)
 - Need only a standard blog without these extras – the [Quark theme](https://github.com/getgrav/grav-theme-quark) is enough
 - Need comments, memberships, or newsletters built in
 - Want zero-server publishing directly from GitHub – consider [Docsify-This](https://docsify-this.net)
@@ -68,27 +74,64 @@ The easiest way to get started is the [Open Publishing Space](https://github.com
 
 All options are available in the Admin Panel under **Themes → Quark Open Publishing**.
 
-- **Open Publishing Options** – chromeless site, H5P setup, Creative Commons license display, and menu dropdowns
+- **Open Publishing Options** – chromeless site, H5P setup, Creative Commons license display, menu dropdowns, and the Previous/Next navigation style for multi-page content (classic buttons, or tiles with the reading progress)
 - **Quark Options** – Dark Mode, production mode, grid size, custom logos, header and footer defaults, blog page and hero classes, and Spectre.css options
 - **Custom Menu Items** – text, icon, URL, and target for extra menu links
 - **Git Sync Link** – location, link type (view or edit), icon and text, and a custom Git repository URL
 
 ## Page URL Parameters
 
-Add these to any page URL, for example `https://yoursite.com/blog/my-post/chromeless:true`.
+Add these to any page URL, for example `https://yoursite.com/blog/my-post/chromeless:true` or `https://yoursite.com/blog/my-post?embedded=true`.
 
 | Parameter | Effect |
 |---|---|
 | `/chromeless:true` (or `/embedded:true`, `/standalone:true`) | Shows only the page content, with no site menu, sidebar, or footer – for embedding in other systems |
+| `?embedded=true` (or `?chromeless=true`, `?standalone=true`) | Same as `/chromeless:true`, using the same parameter as Grav Helios Open Reader; carried forward as you follow links |
+| `?edit_link=false` (or `?hidegitlink=true`) | Hides the Git Sync link on that page |
 | `/hidepagetitle:true` | Hides the visible page title, keeping it as a hidden heading for screen readers |
 | `/summaryonly:true` (or `/onlysummary:true`) | Shows only a post's summary, with a Continue Reading link when the post has one enabled |
-| `/filter:<tag>` | On Sections pages, limits the section navigation to pages with that tag |
+| `/filter:<tag>` | On Sections and Section List pages, limits the section navigation and section cards to pages with that tag |
+
+## Multi-Page Content
+
+The **Section List** page type (`section-list.md`) publishes a short guide or handbook as a set of pages: a home page with a card for each section, then each section (`section.md`) and its subsections (`subsection.md`). Section pages have a side list of the sections, Previous/Next navigation, a link back to the home page, and a search box. The earlier **Sections** page type (`sections.md`) remains available, with the side list on its home page instead of cards.
+
+Settings, in the Admin Panel page editor:
+
+- **Section List page** – subtitle, cover image, author(s), edition, section label (e.g. "Unit" or "Chapter"), Start button text, search box, reading progress, cards per row, and OER attribution (license, license URL, and attribution text)
+- **Section** – section number, a section label override, Learning Objectives, and a card description and image
+- **Subsection** – Learning Objectives
+
+### Moving to Grav Helios Open Reader
+
+When a guide grows into substantial, standalone content, it can move to [Grav Helios Open Reader](https://github.com/hibbitts-design/grav-skeleton-helios-open-reader) with little rework:
+
+1. Copy the Section List page folder into the Open Reader site's `pages` folder – it becomes one of its publications
+2. Rename each `subsection.md` to `section-page.md`
+3. Rename the section folders to `section-1`, `section-2`, and so on (for example `01.section-1`), as in the Open Reader demo
+4. Set a `section_number` on each section to keep its label (e.g. "Unit 2") at the top of its pages
+
+Page settings, callout shortcodes, GitHub-style alerts, and embed shortcodes carry over unchanged.
+
+## Search
+
+Search uses the [SimpleSearch plugin](https://github.com/getgrav/grav-plugin-simplesearch), included with the Open Publishing Space skeleton. Results are grouped by section, with the search words highlighted. On a Section List page and its section pages, the search box searches only that page and the pages inside it, with a link on the results page to search the whole site.
+
+The [TNTSearch plugin](https://github.com/trilbymedia/grav-plugin-tntsearch) can be used instead for fuzzy (i.e. approximate) searches with results shown as you type – install and enable it, and the Search page and search boxes use it in place of SimpleSearch.
+
+> [!NOTE]
+> Search limited to a Section List page works only with SimpleSearch. With TNTSearch enabled, the search box on a Section List page searches the whole site.
+
+## Printing
+
+To leave something out when a page is printed, add the `no-print` class (as in Grav Helios Open Reader).
 
 ## Requirements
 
 - PHP >= 8.0.2
 - Grav CMS 1.7 or 2.0
 - The [Quark theme](https://github.com/getgrav/grav-theme-quark) and required plugins, installed automatically as dependencies
+- Optional: the [SimpleSearch plugin](https://github.com/getgrav/grav-plugin-simplesearch) for search, and the [GitHub Markdown Alerts plugin](https://github.com/trilbymedia/grav-plugin-github-markdown-alerts) (Grav 2) for GitHub-style alerts
 
 ## Support
 

@@ -1,0 +1,54 @@
+{# Previous/Next tiles for section and subsection pages (theme option: Previous/Next Navigation Style = tiles), as in Helios Open Reader.
+   Follows the reading order: each section, then its subsections - the same order as the side navigation and the reading progress - hibbittsdesign.org #}
+
+{# The reading order, as one list of pages #}
+{% set reading_order = [] %}
+{% for section_item in reader_sections %}
+    {% set reading_order = reading_order|merge([section_item]) %}
+    {% for subsection_item in section_item.children.visible %}
+        {% set reading_order = reading_order|merge([subsection_item]) %}
+    {% endfor %}
+{% endfor %}
+
+{# The pages just before and just after this one #}
+{% set prev_page = null %}
+{% set next_page = null %}
+{% for item in reading_order %}
+    {% if item.route == page.route %}
+        {% if not loop.first %}
+            {% set prev_page = reading_order[loop.index0 - 1] %}
+        {% endif %}
+        {% if not loop.last %}
+            {% set next_page = reading_order[loop.index0 + 1] %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+{# Keep a tag filter (/filter:...) when moving between pages, as the side navigation does #}
+{% set filter_suffix = activetag ? '/filter:' ~ activetag : '' %}
+
+{% if prev_page or next_page %}
+    <nav class="reader-prev-next" aria-label="{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_PAGE_NAVIGATION'|t }}">
+        {% if prev_page %}
+            <a class="reader-nav-tile reader-nav-prev" href="{{ prev_page.url ~ filter_suffix }}">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                <span class="reader-nav-text">
+                    <span class="reader-nav-label">{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_PREVIOUS'|t }}</span>
+                    <span class="reader-nav-title">{{ prev_page.menu }}</span>
+                </span>
+            </a>
+        {% else %}
+            {# an empty space, so Next stays on the right #}
+            <span class="reader-nav-empty"></span>
+        {% endif %}
+        {% if next_page %}
+            <a class="reader-nav-tile reader-nav-next" href="{{ next_page.url ~ filter_suffix }}">
+                <span class="reader-nav-text">
+                    <span class="reader-nav-label">{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_NEXT'|t }}</span>
+                    <span class="reader-nav-title">{{ next_page.menu }}</span>
+                </span>
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </a>
+        {% endif %}
+    </nav>
+{% endif %}

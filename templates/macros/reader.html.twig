@@ -1,0 +1,12 @@
+{# Reader macros, shared by the Section List page and its section pages (as in Helios Open Reader) - hibbittsdesign.org #}
+
+{# The label shown above a section's title, for example "Chapter 2".
+   A section's own section_label replaces it (and an empty one hides it); otherwise the reader home's
+   section_label is used with the section's section_number, or (when that's empty) its position (1 for the first section, and so on). #}
+{% macro section_label(section_page, reader_home, position) -%}
+    {%- if section_page.header.section_label is defined -%}
+        {{- section_page.header.section_label -}}
+    {%- elseif reader_home.header.section_label -%}
+        {{- reader_home.header.section_label ~ ' ' ~ (section_page.header.section_number ?: position) -}}
+    {%- endif -%}
+{%- endmacro %}

@@ -1,0 +1,26 @@
+{# Reading progress through the reader home's sections and subsections, as a Spectre bar (as in Helios Open Reader) - hibbittsdesign.org #}
+{# Count the pages in the order of the side navigation, and note where this page is #}
+{% set progress_total = 0 %}
+{% set progress_current = 0 %}
+{% for section_item in reader_sections %}
+    {% set progress_total = progress_total + 1 %}
+    {% if section_item.route == page.route %}
+        {% set progress_current = progress_total %}
+    {% endif %}
+    {% for subsection_item in section_item.children.visible %}
+        {% set progress_total = progress_total + 1 %}
+        {% if subsection_item.route == page.route %}
+            {% set progress_current = progress_total %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+{% if progress_current > 0 %}
+    {% set progress_text = 'THEME_QUARK_OPEN_PUBLISHING.READER_PAGE_PROGRESS'|t(progress_current, progress_total) %}
+    <div class="reader-progress">
+        <div class="bar bar-sm" role="progressbar" aria-label="{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_PROGRESS'|t }}" aria-valuenow="{{ progress_current }}" aria-valuemin="1" aria-valuemax="{{ progress_total }}" aria-valuetext="{{ progress_text }}">
+            <div class="bar-item" style="width: {{ ((progress_current / progress_total) * 100)|round }}%"></div>
+        </div>
+        <p class="reader-progress-text" aria-hidden="true">{{ progress_text }}</p>
+    </div>
+{% endif %}

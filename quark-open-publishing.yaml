@@ -8,3 +8,4 @@ streams:
                 - themes://quark
 dark_mode:
   mode: disabled
+sections_prev_next_style: buttons

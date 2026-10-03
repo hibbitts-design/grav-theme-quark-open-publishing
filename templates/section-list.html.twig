@@ -1,0 +1,97 @@
+{# Section List page: a reader home with its details, a Start Reading button and a card for each section (as in Helios Open Reader).
+   Its sections and subsections use the same templates as the Multi-Section page - hibbittsdesign.org #}
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  {% import 'macros/reader.html.twig' as reader %}
+
+  {% set reader_home = page %}
+  {% set reader_sections = page.collection.visible() %}
+
+  {# Keep a tag filter (/filter:...) on the card and Start Reading links, as the side navigation does #}
+  {% set activetag = uri.param('filter') %}
+  {% set filter_suffix = activetag ? '/filter:' ~ activetag : '' %}
+
+  <div class="section-list-page">
+
+    {% if not(page.header.hide_page_title) and not(grav.uri.param('hidepagetitle')) %}
+      <h3 class="sections-page-title-template">{{ page.title }}</h3>
+    {% endif %}
+
+    {% include 'partials/reader_header.html.twig' %}
+
+    {{ page.content|raw }}
+
+    {# Start button, linking to the first section (an empty start_button_text hides it) #}
+    {% if page.header.start_button_text is defined %}
+      {% set start_text = page.header.start_button_text %}
+    {% else %}
+      {% set start_text = 'THEME_QUARK_OPEN_PUBLISHING.READER_START'|t %}
+    {% endif %}
+    {% set first_section = reader_sections|first %}
+
+    {# A search box beside the Start button (Show Search Box setting, on unless turned off; hidden in embedded mode) #}
+    {% set show_reader_search = (page.header.show_search_box is not defined or page.header.show_search_box)
+      and (config.plugins.simplesearch.enabled or config.plugins.tntsearch.enabled) and not embedded_mode %}
+
+    {% if (start_text and first_section) or show_reader_search %}
+      <div class="section-list-actions">
+        {% if start_text and first_section %}
+          <p class="section-list-start">
+            <a class="btn btn-primary" href="{{ first_section.url ~ filter_suffix }}">{{ start_text }} <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+          </p>
+        {% endif %}
+        {% if show_reader_search %}
+          <div class="reader-search">
+            {% include 'partials/search_box.html.twig' with { search_scope: reader_home } %}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {# A card for each section, 1, 2 or 3 per row (one per row on phones) #}
+    {% set cards_per_row = page.header.cards_per_row|default(1) %}
+    {% if cards_per_row == 3 %}
+      {% set card_column = 'col-4 col-md-6 col-sm-12' %}
+    {% elseif cards_per_row == 2 %}
+      {% set card_column = 'col-6 col-sm-12' %}
+    {% else %}
+      {% set card_column = 'col-12' %}
+    {% endif %}
+
+    {% if reader_sections|length > 0 %}
+      <ul class="section-cards columns">
+        {% for section_item in reader_sections %}
+          {# the label (for example "Unit 2") uses the card's position; don't loop over reader_sections again inside this loop #}
+          {% set label = reader.section_label(section_item, reader_home, loop.index) %}
+          {% set card_image = section_item.header.image ? section_item.media[section_item.header.image] : null %}
+          <li class="column {{ card_column }}">
+            <div class="card section-card">
+              {% if card_image %}
+                <div class="card-image">
+                  <img class="img-responsive" src="{{ card_image.cropZoom(800, 400).url }}" alt="">
+                </div>
+              {% endif %}
+              <div class="card-header">
+                {% if label|length > 0 %}
+                  <p class="reader-section-label">{{ label }}</p>
+                {% endif %}
+                {# the link covers the whole card (see css/reader.css) #}
+                <h4 class="card-title h5"><a class="section-card-link" href="{{ section_item.url ~ filter_suffix }}">{{ section_item.title }}</a></h4>
+              </div>
+              {% if section_item.header.description %}
+                <div class="card-body">
+                  <p class="section-card-description">{{ section_item.header.description }}</p>
+                </div>
+              {% endif %}
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% include 'partials/reader_attribution.html.twig' %}
+
+  </div>
+
+{% endblock %}

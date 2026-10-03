@@ -1,0 +1,54 @@
+{# SimpleSearch results, grouped by section with the best matches first and the search words highlighted (as in Helios) - hibbittsdesign.org #}
+{% do assets.addCss('theme://css/search.css') %}
+{% include 'partials/simplesearch_searchbox.html.twig' %}
+
+{% if query %}
+    {% set search_groups = open_publishing_search_groups(search_results, query) %}
+    {% set count = 0 %}
+    {% for group in search_groups %}{% set count = count + group.items|length %}{% endfor %}
+
+    {# announced to screen readers when the page loads #}
+    <p class="search-summary" role="status">
+        {% if count is same as(1) %}
+            {{ 'PLUGIN_SIMPLESEARCH.SEARCH_RESULTS_SUMMARY_SINGULAR'|t(query|e)|raw }}
+        {% else %}
+            {{ 'PLUGIN_SIMPLESEARCH.SEARCH_RESULTS_SUMMARY_PLURAL'|t(query|e, count)|raw }}
+        {% endif %}
+    </p>
+
+    {# When the search was limited to a Multi-Page Content page, say so, with a way to search the whole site #}
+    {% if search_scope_page %}
+        <p class="search-scope">
+            {{ 'THEME_QUARK_OPEN_PUBLISHING.SEARCH_SCOPE_NOTE'|t('<a href="' ~ search_scope_page.url ~ '">' ~ search_scope_page.title|e ~ '</a>')|raw }}
+            <a href="{{ base_url_relative ~ (search_route ?? '/search') ~ '?query=' ~ query|url_encode }}">{{ 'THEME_QUARK_OPEN_PUBLISHING.SEARCH_WHOLE_SITE'|t }}</a>
+        </p>
+    {% endif %}
+
+    {% for group in search_groups %}
+        <section class="search-group" aria-labelledby="search-group-{{ loop.index }}">
+            <h2 class="search-group-title" id="search-group-{{ loop.index }}">{{ group.title }}</h2>
+            <div class="card search-results">
+                {% for item in group.items %}
+                    <a class="tile search-result" href="{{ item.url }}">
+                        <span class="tile-content">
+                            <h3 class="tile-title">{{ item.title_html|raw }}</h3>
+                            {% if item.trail %}<span class="search-result-trail">{{ item.trail }}</span>{% endif %}
+                            {% if item.snippet_html %}<span class="tile-subtitle">{{ item.snippet_html|raw }}</span>{% endif %}
+                        </span>
+                        <span class="tile-action" aria-hidden="true">&rarr;</span>
+                    </a>
+                {% endfor %}
+            </div>
+        </section>
+    {% endfor %}
+
+    {% if count == 0 %}
+        <div class="search-no-results">
+            <p>{{ 'THEME_QUARK_OPEN_PUBLISHING.SEARCH_NO_RESULTS_TIPS'|t }}</p>
+            <ul>
+                <li>{{ 'THEME_QUARK_OPEN_PUBLISHING.SEARCH_TIP_SPELLING'|t }}</li>
+                <li>{{ 'THEME_QUARK_OPEN_PUBLISHING.SEARCH_TIP_FEWER_WORDS'|t }}</li>
+            </ul>
+        </div>
+    {% endif %}
+{% endif %}

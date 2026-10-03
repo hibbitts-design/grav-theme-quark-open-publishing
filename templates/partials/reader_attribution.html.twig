@@ -1,0 +1,20 @@
+{# OER attribution and license from the reader home's settings (Multi-Section or Section List page), shown on each of its pages when turned on (as in Helios Open Reader) - hibbittsdesign.org #}
+{% set attribution_text = reader_home.header.attribution_text %}
+{% set license = reader_home.header.license %}
+{% set license_url = reader_home.header.license_url %}
+{% if reader_home.header.show_oer_attribution and (attribution_text or license) and not embedded_mode %}
+    <div class="reader-attribution">
+        {% if attribution_text %}
+            <p>{{ attribution_text|raw }}</p>
+        {% endif %}
+        {% if license %}
+            <p>
+                {% if license_url %}
+                    <a href="{{ license_url|e('html_attr') }}" target="_blank" rel="noopener noreferrer">{{ license }}<span class="text-assistive"> {{ 'THEME_QUARK_OPEN_PUBLISHING.OPENS_IN_NEW_TAB'|t }}</span></a>
+                {% else %}
+                    {{ license }}
+                {% endif %}
+            </p>
+        {% endif %}
+    </div>
+{% endif %}

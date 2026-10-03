@@ -31,10 +31,14 @@ class H5PShortcode extends Shortcode
                 $h5psrc = $h5purl ?: $str;
             }
 
-            if ($h5psrc) {
-                $this->grav['assets']->addJs('https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js');
+            // title="..." gives the H5P content an accessible name (as in Helios)
+            $h5ptitle = htmlspecialchars($sc->getParameter('title', 'H5P interactive content'), ENT_QUOTES, 'UTF-8');
 
-                return '<span><iframe src="' . $h5psrc . '" width="400" height="300" frameborder="0" allowfullscreen="allowfullscreen"></iframe></span>';
+            if ($h5psrc) {
+                // added via shortcode-core so it is kept for cached pages
+                $this->shortcode->addAssets('js', 'https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js');
+
+                return '<span><iframe src="' . $h5psrc . '" title="' . $h5ptitle . '" width="400" height="300" frameborder="0" allowfullscreen="allowfullscreen"></iframe></span>';
             }
 
         });

@@ -1,7 +1,7 @@
 name: Quark Open Publishing
 type: theme
 slug: quark-open-publishing
-version: 2.6.0
+version: 3.0.0
 description: "A customized version of the Quark theme for open publishing and blogging. Includes Git Sync and 'chromeless' content display for seamless embedding."
 icon: unlock
 author:
@@ -129,6 +129,18 @@ form:
                 '1': Enabled
               validate:
                 type: bool
+            sectionsoptions:
+              type: section
+              title: 'Multi-Section and Section List Pages'
+              underline: true
+            sections_prev_next_style:
+              type: select
+              label: 'Previous/Next Navigation Style'
+              default: buttons
+              options:
+                buttons: 'Buttons (classic)'
+                tiles: 'Previous/Next tiles, with the reading progress (as in Helios Open Reader)'
+              help: 'How the Previous/Next navigation is shown on section and subsection pages. Tiles always keep Next on the right and follow the order of the side navigation.'
         theme_info:
           type: tab
           title: 'Quark Options'

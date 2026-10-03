@@ -79,3 +79,110 @@ form:
                     1:  No
                 validate:
                     type: bool
+
+        reader:
+          type: tab
+          title: Reader Details
+
+          fields:
+
+            reader_info:
+              type: display
+              label: false
+              markdown: true
+              content: 'Optional reader details, using the same page settings as Grav Helios Open Reader. Each one is shown only when it is filled in.'
+
+            header.subtitle:
+              type: text
+              label: Subtitle
+              toggleable: true
+              placeholder: 'e.g. An Open Course Guide'
+              help: 'Optional subtitle displayed below the title on this page.'
+
+            header.cover_image:
+              type: pagemediaselect
+              label: Cover Image
+              toggleable: true
+              help: 'Optional cover image displayed on this page.'
+
+            header.authors:
+              type: text
+              label: Author(s)
+              toggleable: true
+              placeholder: 'e.g. Jane Smith or Jane Smith & John Doe'
+              help: 'Author name(s) displayed on this page.'
+
+            header.edition:
+              type: text
+              label: Edition
+              toggleable: true
+              placeholder: 'e.g. First Edition, 2026'
+              help: 'Edition or version label displayed on this page.'
+
+            header.section_label:
+              type: text
+              size: medium
+              label: Section Label
+              toggleable: true
+              placeholder: 'e.g. Chapter, Project, Unit, Module'
+              help: 'Label shown above each section title with its number (e.g. "Chapter 1"). Leave empty to show no label.'
+
+            header.show_reading_progress:
+              type: toggle
+              label: Show Reading Progress
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+              help: 'Show a progress bar (e.g. "Page 3 of 8") above the Next/Prev buttons on section and subsection pages.'
+
+        attribution:
+          type: tab
+          title: Attribution
+
+          fields:
+
+            header.show_oer_attribution:
+              type: toggle
+              label: Show OER Attribution Block
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+              help: 'Display the attribution text and license at the bottom of this page and each of its sections and subsections.'
+
+            header.license:
+              type: select
+              label: License
+              toggleable: true
+              default: ''
+              options:
+                '': 'Not specified'
+                'CC BY 4.0': 'CC BY 4.0 – Attribution'
+                'CC BY-SA 4.0': 'CC BY-SA 4.0 – Attribution-ShareAlike'
+                'CC BY-NC 4.0': 'CC BY-NC 4.0 – Attribution-NonCommercial'
+                'CC BY-NC-SA 4.0': 'CC BY-NC-SA 4.0 – Attribution-NonCommercial-ShareAlike'
+                'CC BY-ND 4.0': 'CC BY-ND 4.0 – Attribution-NoDerivatives'
+                'CC BY-NC-ND 4.0': 'CC BY-NC-ND 4.0 – Attribution-NonCommercial-NoDerivatives'
+              help: 'Creative Commons license, shown as a badge on this page and in the OER attribution block.'
+
+            header.license_url:
+              type: text
+              label: License URL
+              toggleable: true
+              placeholder: 'e.g. https://creativecommons.org/licenses/by/4.0/'
+              help: 'URL to the full license text. Leave empty to omit the license link.'
+
+            header.attribution_text:
+              type: textarea
+              label: Attribution Text
+              toggleable: true
+              rows: 3
+              placeholder: 'e.g. This work by Jane Smith is licensed under CC BY 4.0.'
+              help: 'Full attribution statement displayed when the OER Attribution Block is shown. Supports basic HTML.'

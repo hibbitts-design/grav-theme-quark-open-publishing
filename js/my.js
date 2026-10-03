@@ -27,7 +27,20 @@ $(document).ready(function () {
                 newurl = newurl + "/hidepagetitle:true";
             }
 
-            if (e.ctrlKey || e.metakey) {
+            // carry forward ?embedded=true, ?chromeless=true or ?standalone=true (as in Helios) to internal links
+            var params = new URLSearchParams(window.location.search);
+            ["embedded", "chromeless", "standalone"].forEach(function (name) {
+                var value = params.get(name);
+                if (value && value !== "false" && value !== "0") {
+                    var target = new URL(newurl, window.location.href);
+                    if (target.origin === window.location.origin) {
+                        target.searchParams.set(name, value);
+                        newurl = target.pathname + target.search + target.hash;
+                    }
+                }
+            });
+
+            if (e.ctrlKey || e.metaKey) {
               window.open(newurl,'_blank');
             } else {
               window.location.href = newurl;

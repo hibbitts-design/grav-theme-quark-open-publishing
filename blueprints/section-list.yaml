@@ -1,0 +1,228 @@
+title: Section List Page Options
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        options:
+          type: tab
+
+          fields:
+
+            pagetitle:
+                type: section
+                title: Page Title
+                underline: true
+
+            header.hide_page_title:
+                type: toggle
+                label: Display Title at top of Page
+                help: Determines if the page title is displayed at the top of a page
+                default: 0
+                highlight: 0
+                options:
+                    0:  Yes
+                    1:  No
+                validate:
+                    type: bool
+
+            sectionpages:
+              type: tab
+              title: Section Pages
+
+        sectionpages:
+          type: tab
+          title: Sections Config
+
+          fields:
+
+            header.content.items:
+              type: hidden
+              default: '@self.children'
+
+            header.child_type:
+              type: hidden
+              default: section
+
+            header.content.order.by:
+              type: select
+              label: Order By
+              default: folder
+              options:
+                folder: Folder
+                title: Title
+                date: Date
+                default: Default
+
+            header.content.order.dir:
+              type: select
+              label: Order
+              default: asc
+              options:
+                asc: Ascending
+                desc: Descending
+                
+            appearance:
+              type: section
+              title: Appearance
+              underline: true
+
+            header.hide_next_prev_page_buttons:
+                type: toggle
+                label: Display Next/Prev Section Buttons
+                default: 0
+                highlight: 0
+                options:
+                    0:  Yes
+                    1:  No
+                validate:
+                    type: bool
+
+        reader:
+          type: tab
+          title: Reader Details
+
+          fields:
+
+            reader_info:
+              type: display
+              label: false
+              markdown: true
+              content: 'Optional reader details, using the same page settings as Grav Helios Open Reader. Each one is shown only when it is filled in.'
+
+            header.subtitle:
+              type: text
+              label: Subtitle
+              toggleable: true
+              placeholder: 'e.g. An Open Course Guide'
+              help: 'Optional subtitle displayed below the title on this page.'
+
+            header.cover_image:
+              type: pagemediaselect
+              label: Cover Image
+              toggleable: true
+              help: 'Optional cover image displayed on this page.'
+
+            header.authors:
+              type: text
+              label: Author(s)
+              toggleable: true
+              placeholder: 'e.g. Jane Smith or Jane Smith & John Doe'
+              help: 'Author name(s) displayed on this page.'
+
+            header.edition:
+              type: text
+              label: Edition
+              toggleable: true
+              placeholder: 'e.g. First Edition, 2026'
+              help: 'Edition or version label displayed on this page.'
+
+            header.section_label:
+              type: text
+              size: medium
+              label: Section Label
+              toggleable: true
+              placeholder: 'e.g. Chapter, Project, Unit, Module'
+              help: 'Label shown above each section title with its number (e.g. "Chapter 1"). Leave empty to show no label.'
+
+            header.start_button_text:
+              type: text
+              label: Start Button Text
+              toggleable: true
+              default: 'Start Reading'
+              placeholder: 'e.g. Start Reading, Browse Projects, View Guides'
+              help: 'Text for the button linking to the first section. Leave empty to hide the button.'
+
+            header.show_search_box:
+              type: toggle
+              label: Show Search Box
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+              help: 'Show a search box beside the Start button on this page, and above the side list on its section and subsection pages. Searches the whole site.'
+
+            header.show_reading_progress:
+              type: toggle
+              label: Show Reading Progress
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+              help: 'Show a progress bar (e.g. "Page 3 of 8") above the Next/Prev buttons on section and subsection pages.'
+
+        list_display:
+          type: tab
+          title: List Display
+
+          fields:
+
+            header.cards_per_row:
+              type: select
+              label: Cards Per Row
+              default: 1
+              options:
+                1: '1 (full width)'
+                2: '2 per row'
+                3: '3 per row'
+              help: 'Number of section cards displayed per row on this page (one per row on phones).'
+
+        attribution:
+          type: tab
+          title: Attribution
+
+          fields:
+
+            header.show_oer_attribution:
+              type: toggle
+              label: Show OER Attribution Block
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+              help: 'Display the attribution text and license at the bottom of this page and each of its sections and subsections.'
+
+            header.license:
+              type: select
+              label: License
+              toggleable: true
+              default: ''
+              options:
+                '': 'Not specified'
+                'CC BY 4.0': 'CC BY 4.0 – Attribution'
+                'CC BY-SA 4.0': 'CC BY-SA 4.0 – Attribution-ShareAlike'
+                'CC BY-NC 4.0': 'CC BY-NC 4.0 – Attribution-NonCommercial'
+                'CC BY-NC-SA 4.0': 'CC BY-NC-SA 4.0 – Attribution-NonCommercial-ShareAlike'
+                'CC BY-ND 4.0': 'CC BY-ND 4.0 – Attribution-NoDerivatives'
+                'CC BY-NC-ND 4.0': 'CC BY-NC-ND 4.0 – Attribution-NonCommercial-NoDerivatives'
+              help: 'Creative Commons license, shown as a badge on this page and in the OER attribution block.'
+
+            header.license_url:
+              type: text
+              label: License URL
+              toggleable: true
+              placeholder: 'e.g. https://creativecommons.org/licenses/by/4.0/'
+              help: 'URL to the full license text. Leave empty to omit the license link.'
+
+            header.attribution_text:
+              type: textarea
+              label: Attribution Text
+              toggleable: true
+              rows: 3
+              placeholder: 'e.g. This work by Jane Smith is licensed under CC BY 4.0.'
+              help: 'Full attribution statement displayed when the OER Attribution Block is shown. Supports basic HTML.'

@@ -1,4 +1,26 @@
 en:
+    THEME_QUARK_OPEN_PUBLISHING:
+        SEARCH_PLACEHOLDER: 'Search...'
+        SEARCH_RESULTS: 'Search Results'
+        SEARCH_SCOPE_PLACEHOLDER: 'Search this content...'
+        SEARCH_SCOPE_NOTE: 'Showing results from %s.'
+        SEARCH_WHOLE_SITE: 'Search the whole site'
+        SEARCH_NO_RESULTS_TIPS: 'No pages matched your search. You could:'
+        SEARCH_TIP_SPELLING: 'Check the spelling'
+        SEARCH_TIP_FEWER_WORDS: 'Try fewer or different words'
+        ERROR_CODE: 'Error %s'
+        ERROR_NOT_FOUND_TITLE: 'Page not found'
+        ERROR_NOT_FOUND_TEXT: 'Sorry, this page doesn''t exist or may have moved. You can go back to the home page, or search for what you were looking for.'
+        ERROR_TITLE: 'Something went wrong'
+        ERROR_SITE_HOME: 'Go to the Home page'
+        READER_COVER: '%s cover'
+        READER_START: 'Start Reading'
+        READER_PAGE_NAVIGATION: 'Page navigation'
+        READER_PREVIOUS: 'Previous'
+        READER_NEXT: 'Next'
+        READER_PROGRESS: 'Reading progress'
+        READER_PAGE_PROGRESS: 'Page %s of %s'
+        OPENS_IN_NEW_TAB: '(opens in new tab)'
     THEME_QUARK:
         BLOG:
             ITEM:

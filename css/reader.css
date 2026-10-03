@@ -1,0 +1,288 @@
+/*
+Multi-page content: Section List page and its sections (the same page settings as Grav Helios Open Reader) - hibbittsdesign.org
+Uses Quark's own visual language: blog-style cards (no border, soft shadow), Quark's greys for muted text and
+dividers, Spectre components (card, label, bar, btn), and link-style hover feedback. Dark Mode colours are in theme-dark.css.
+*/
+
+/* Small label above a section's title, for example "Unit 2" (styled like Quark's other small uppercase labels) */
+.reader-section-label {
+    color: #667189;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 0 0 0.2rem;
+}
+
+/* Cover image beside the subtitle, author(s), edition and license */
+.reader-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding-bottom: 1.2rem;
+    margin-bottom: 1.2rem;
+    border-bottom: 0.05rem solid #e7e9ed;
+}
+
+.reader-cover {
+    flex: 0 0 auto;
+    width: 8rem;
+    border-radius: 0.1rem;
+    box-shadow: 0 10px 45px -9px rgba(0, 0, 0, 0.2);
+}
+
+.reader-details p {
+    margin: 0 0 0.3rem;
+}
+
+.reader-subtitle {
+    color: #667189;
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+.reader-edition {
+    color: #667189;
+    font-size: 0.8rem;
+}
+
+/* The license uses Spectre's standard rounded label */
+.reader-license.label {
+    font-size: 0.7rem;
+}
+
+/* On phones, the cover image goes above the details */
+@media (max-width: 600px) {
+    .reader-header {
+        flex-direction: column;
+    }
+}
+
+/* Reading progress (Spectre bar), above the Previous/Next navigation */
+.reader-progress {
+    margin: 1.2rem 0 0.4rem;
+}
+
+.reader-progress-text {
+    color: #667189;
+    font-size: 0.7rem;
+    margin: 0.3rem 0 0;
+}
+
+/* OER attribution and license, below the Previous/Next navigation */
+.reader-attribution {
+    border-top: 0.05rem solid #e7e9ed;
+    color: #667189;
+    margin-top: 1.2rem;
+    padding-top: 0.8rem;
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+.reader-attribution p {
+    margin: 0 0 0.3rem;
+}
+
+/* Section List page: Start Reading button, search box and a card for each section */
+.section-list-start {
+    margin: 1.2rem 0;
+}
+
+.section-cards {
+    list-style: none;
+    margin: 0 -0.4rem 1.2rem;
+    padding: 0;
+}
+
+.section-cards > .column {
+    margin: 0 0 1.2rem;
+    padding: 0 0.4rem;
+}
+
+/* Section cards and Previous/Next tiles look like the blog's post cards: no border and a soft shadow.
+   On hover the shadow deepens slightly and the title is underlined, like a link. */
+.section-card,
+.reader-nav-tile {
+    border: 0;
+    border-radius: 0.1rem;
+    box-shadow: 0 10px 45px -9px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s;
+}
+
+.section-card:hover,
+.reader-nav-tile:hover {
+    box-shadow: 0 12px 45px -9px rgba(0, 0, 0, 0.2);
+}
+
+.section-card {
+    position: relative;
+    height: 100%;
+}
+
+.section-card .card-title {
+    margin: 0;
+}
+
+/* The title link covers the whole card, so the card can be clicked anywhere */
+.section-card-link::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.section-card:hover .section-card-link {
+    text-decoration: underline;
+}
+
+/* A visible focus ring for keyboard users (Quark removes the focus outline from links) */
+.section-card:focus-within {
+    outline: 0.1rem solid #3085ee;
+    outline-offset: 0.1rem;
+}
+
+.section-card .card-body {
+    padding-top: 0;
+}
+
+/* Up to three lines of description */
+.section-card-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    margin: 0;
+}
+
+/* Previous/Next tiles (theme option), grouped with the reading progress below the page text */
+.reader-nav-block {
+    border-top: 0.05rem solid #e7e9ed;
+    margin-top: 1.6rem;
+    padding-top: 0.2rem;
+}
+
+.reader-nav-block .reader-progress {
+    margin: 0.8rem 0 0;
+}
+
+.reader-prev-next {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin: 0.8rem 0 0;
+}
+
+.reader-nav-tile {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.8rem;
+    background: #fff;
+    text-decoration: none;
+}
+
+.reader-nav-tile:hover,
+.reader-nav-tile:focus {
+    text-decoration: none;
+}
+
+.reader-nav-tile:hover .reader-nav-title {
+    text-decoration: underline;
+}
+
+/* A visible focus ring for keyboard users (Quark removes the focus outline from links, so this needs !important) */
+.reader-prev-next .reader-nav-tile:focus-visible {
+    outline: 0.1rem solid #3085ee !important;
+    outline-offset: 0.1rem;
+}
+
+.reader-nav-next {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+/* The chevron is grey, and turns link blue on hover */
+.reader-nav-tile .fa {
+    flex: 0 0 auto;
+    color: #acb3c2;
+    transition: color 0.2s;
+}
+
+.reader-nav-tile:hover .fa,
+.reader-nav-tile:focus .fa {
+    color: #3085ee;
+}
+
+.reader-nav-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/* Small "Previous" or "Next" above the page title */
+.reader-nav-label {
+    color: #667189;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* Long titles wrap rather than running off the tile */
+.reader-nav-title {
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+/* On phones, the tiles stack, with Next first */
+@media (max-width: 600px) {
+    .reader-prev-next {
+        grid-template-columns: 1fr;
+    }
+
+    .reader-nav-next {
+        order: -1;
+    }
+
+    .reader-nav-empty {
+        display: none;
+    }
+}
+
+/* Link back to the Section List page, above a section's title (a plain link, like the rest of the theme) */
+.reader-back-link {
+    font-size: 0.75rem;
+    margin: 0 0 0.6rem;
+}
+
+.reader-back-link .fa {
+    font-size: 0.65rem;
+    margin-right: 0.15rem;
+}
+
+/* Search box beside the Start button, and above the side list on section pages */
+.section-list-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8rem 1.2rem;
+    margin: 1.2rem 0;
+}
+
+.section-list-actions .section-list-start {
+    margin: 0;
+}
+
+.section-list-actions .reader-search {
+    flex: 0 1 16rem;
+}
+
+#sections-nav .reader-search {
+    margin-bottom: 0.8rem;
+}
+
+.reader-search form {
+    margin: 0;
+}

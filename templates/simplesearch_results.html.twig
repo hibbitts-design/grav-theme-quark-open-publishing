@@ -1,0 +1,9 @@
+{# SimpleSearch results page, used when the site has no Search page of its own - hibbittsdesign.org #}
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    <div class="search-page">
+        <h1>{{ 'THEME_QUARK_OPEN_PUBLISHING.SEARCH_RESULTS'|t }}</h1>
+        {% include 'partials/simplesearch_results_list.html.twig' %}
+    </div>
+{% endblock %}

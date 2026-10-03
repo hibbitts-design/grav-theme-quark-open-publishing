@@ -1,3 +1,4 @@
+{% if not hide_git_link %}
 {% if linkinmenu %}
   {% set link_classes = "newwindow external-link nav-link" %}
 {% else %}
@@ -151,4 +152,5 @@
       {% endif %}
     {% endif %}
   {% endif %}
+{% endif %}
 {% endif %}

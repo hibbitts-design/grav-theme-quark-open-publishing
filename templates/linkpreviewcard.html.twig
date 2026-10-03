@@ -4,7 +4,7 @@
 <div class="link-preview-card-wrapper">
 <p>
 {{page.content|raw}}
-{{ ('[linkpreviewcard]' ~ page.header.linkpreview_card_url ~ '[/linkpreviewcard]') | shortcodes }}
+{{ ('[linkpreviewcard]' ~ page.header.linkpreview_card_url ~ '[/linkpreviewcard]') | shortcodes | raw }}
 </p>
 </div>
 {% endblock %}
