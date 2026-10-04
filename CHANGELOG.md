@@ -5,6 +5,7 @@
     * Small cover image is now the default Cover Image Layout for Section List pages
     * Larger text on phones now also covers the smaller text on Section List and section pages
     * Compact, centred reading progress bar, with the dividing line below it, as in Helios Open Reader
+    * Lighter layout below section pages, with a more visible progress track
 
 # v3.0.1
 ## 10/03/2026
