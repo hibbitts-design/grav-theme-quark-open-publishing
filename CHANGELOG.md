@@ -1,7 +1,17 @@
-# v3.0.3
-## XX/XX/2026
+# v3.1.0
+## 10/04/2026
 
+1. [](#new)
+    * Keep My Place for Section List pages: the Start button becomes Continue Reading for returning readers, as in Helios Open Reader
+    * Last Updated date for Section List pages, as in Helios Open Reader
+    * Parts, for grouping the sections of a Section List page under headings
+    * Prev/Next Page Controls Position option for Section List pages, with compact Previous/Next links at the top
+1. [](#improved)
+    * Markdown tables now use Spectre's table style
+    * Demo pages now use the Open Education Essentials guide
+    * README notes GitHub Markdown Alerts 1.1.1 for Grav 1.7
 1. [](#bugfix)
+    * Search limited to a Section List page now works when that page is the site's homepage
     * TNTSearch's search box on Section List pages now matches the theme's search box height
 
 # v3.0.2
