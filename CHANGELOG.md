@@ -1,3 +1,15 @@
+# v3.0.1
+## XX/XX/2026
+
+1. [](#new)
+    * Cover Image Layout option for Section List pages: large (full width, the new default) or small
+    * Text Size on Phones theme option, for larger body text on phones
+1. [](#improved)
+    * Larger small cover image
+    * Section List page options grouped into Details, Sections and Attribution tabs
+    * Multi-Section page options restored to their pre-3.0.0 tabs
+    * Existing mytheme installations require manual update of mytheme/blueprints.yaml to surface the new theme option
+
 # v3.0.0
 ## 10/03/2026
 
