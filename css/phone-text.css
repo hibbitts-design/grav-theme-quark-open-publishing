@@ -8,4 +8,19 @@ form fields and spacing keep their own sizes, so the layout is unchanged.
     body {
         font-size: 0.95rem;
     }
+
+    /* Smaller text on Section List and section pages has its own sizes, so scale it by about the same amount */
+    .reader-back-link,
+    .reader-attribution {
+        font-size: 0.9rem;
+    }
+
+    .reader-progress-text,
+    .reader-section-label {
+        font-size: 0.85rem;
+    }
+
+    .reader-nav-label {
+        font-size: 0.75rem;
+    }
 }
