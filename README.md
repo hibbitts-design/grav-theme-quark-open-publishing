@@ -120,7 +120,7 @@ When a guide grows into substantial, standalone content, it can move to [Grav He
 3. Rename the section folders to `section-1`, `section-2`, and so on (for example `01.section-1`), as in the Open Reader demo
 4. Set a `section_number` on each section to keep its label (e.g. "Unit 2") at the top of its pages
 
-Page settings, callout shortcodes, GitHub-style alerts, and embed shortcodes carry over unchanged. The large and small cover layouts (`cover_image_layout`) are Open Publishing's own, so check how the cover looks in Open Reader.
+Page settings, callout shortcodes, GitHub-style alerts, and embed shortcodes carry over unchanged. In Open Reader the cover image is always shown full width, like the large Cover Image Layout.
 
 ## Search
 
