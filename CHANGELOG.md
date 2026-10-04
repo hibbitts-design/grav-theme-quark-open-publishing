@@ -1,3 +1,14 @@
+# v3.2.0
+## 10/04/2026
+
+1. [](#new)
+    * Text below the section cards on Section List pages, after a line with just `===`, as in Helios Open Reader
+1. [](#improved)
+    * Small cover image now sits beside the guide's title and details, with a consistent 4:3 shape
+    * Headings below the section cards match the part headings
+    * OER attribution no longer repeats the license when the attribution text already names it
+    * Demo guide now has its own cover image, a small cover and a lighter introduction
+
 # v3.1.0
 ## 10/04/2026
 
