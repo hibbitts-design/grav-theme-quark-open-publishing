@@ -107,7 +107,7 @@ The **Section List** page type (`section-list.md`) publishes a short guide or ha
 
 Settings, in the Admin Panel page editor:
 
-- **Section List page** – subtitle, cover image (large, at the top, or small), author(s), edition, section label (e.g. "Unit" or "Chapter"), Start button text, search box, reading progress, cards per row, and OER attribution (license, license URL, and attribution text)
+- **Section List page** – subtitle, cover image (small, or large at the top), author(s), edition, section label (e.g. "Unit" or "Chapter"), Start button text, search box, reading progress, cards per row, and OER attribution (license, license URL, and attribution text)
 - **Section** – section number, a section label override, Learning Objectives, and a card description and image
 - **Subsection** – Learning Objectives
 

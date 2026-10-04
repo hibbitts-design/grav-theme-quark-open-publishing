@@ -60,11 +60,11 @@ form:
             header.cover_image_layout:
               type: select
               label: Cover Image Layout
-              default: large
+              default: small
               options:
-                large: 'Large (full width, at the top)'
                 small: 'Small (beside the details, below the title)'
-              help: 'How the cover image is shown on this page: large, across the full width of the page at the top, or small, beside the subtitle, author(s), edition and license.'
+                large: 'Large (full width, at the top)'
+              help: 'How the cover image is shown on this page: small, beside the subtitle, author(s), edition and license, or large, across the full width of the page at the top.'
 
             header.authors:
               type: text

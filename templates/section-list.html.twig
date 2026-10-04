@@ -12,10 +12,10 @@
   {% set activetag = uri.param('filter') %}
   {% set filter_suffix = activetag ? '/filter:' ~ activetag : '' %}
 
-  {# Cover Image Layout: by default the cover is shown large, across the full width of the content area at the top;
-     "small" shows a smaller cover beside the subtitle, author(s), edition and license, below the title #}
+  {# Cover Image Layout: by default a small cover is shown beside the subtitle, author(s), edition and license, below
+     the title; "large" shows it across the full width of the content area at the top #}
   {% set cover = page.header.cover_image ? page.media[page.header.cover_image] : null %}
-  {% set large_cover = cover and page.header.cover_image_layout != 'small' %}
+  {% set large_cover = cover and page.header.cover_image_layout == 'large' %}
 
   <div class="section-list-page">
 
