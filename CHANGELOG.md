@@ -3,6 +3,7 @@
 
 1. [](#improved)
     * Small cover image is now the default Cover Image Layout for Section List pages
+    * Larger text on phones now also covers the smaller text on Section List and section pages
 
 # v3.0.1
 ## 10/03/2026
