@@ -25,6 +25,7 @@
     {# multi-page content (Section List and Multi-Section pages), loaded before Dark Mode so its colours can be changed there - hibbittsdesign.org #}
     {% if page.template in ['sections', 'section', 'subsection', 'section-list'] %}
       {% do assets.addCss('theme://css/reader.css') %}
+      {% do assets.addJs('theme://js/reader.js', {group:'bottom'}) %}
     {% endif %}
     {% if theme_var('dark_mode.mode') == 'enabled' %}
       {% do assets.addCss('theme://css/theme-dark.css') %}

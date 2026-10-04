@@ -1,5 +1,6 @@
 {# Previous/Next tiles for section and subsection pages (theme option: Previous/Next Navigation Style = tiles), as in Helios Open Reader.
-   Follows the reading order: each section, then its subsections - the same order as the side navigation and the reading progress - hibbittsdesign.org #}
+   Follows the reading order: each section, then its subsections - the same order as the side navigation and the reading progress.
+   With position: 'top', a compact row of Previous/Next links is shown instead, at the top of the page - hibbittsdesign.org #}
 
 {# The reading order, as one list of pages #}
 {% set reading_order = [] %}
@@ -27,7 +28,21 @@
 {# Keep a tag filter (/filter:...) when moving between pages, as the side navigation does #}
 {% set filter_suffix = activetag ? '/filter:' ~ activetag : '' %}
 
-{% if prev_page or next_page %}
+{% if (prev_page or next_page) and position|default('bottom') == 'top' %}
+    {# Compact Previous/Next links at the top of the page (Prev/Next Page Controls Position: Top and bottom).
+       The page titles are shown when hovering, and read by screen readers. #}
+    <nav class="reader-prev-next-top" aria-label="{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_PAGE_NAVIGATION_TOP'|t }}">
+        {% if prev_page %}
+            <a href="{{ prev_page.url ~ filter_suffix }}" rel="prev" title="{{ prev_page.menu }}"><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ 'THEME_QUARK_OPEN_PUBLISHING.READER_PREVIOUS'|t }}<span class="text-assistive">: {{ prev_page.menu }}</span></a>
+        {% endif %}
+        {% if prev_page and next_page %}
+            <span class="reader-prev-next-top-divider" aria-hidden="true">&middot;</span>
+        {% endif %}
+        {% if next_page %}
+            <a href="{{ next_page.url ~ filter_suffix }}" rel="next" title="{{ next_page.menu }}">{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_NEXT'|t }}<span class="text-assistive">: {{ next_page.menu }}</span> <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+        {% endif %}
+    </nav>
+{% elseif prev_page or next_page %}
     <nav class="reader-prev-next" aria-label="{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_PAGE_NAVIGATION'|t }}">
         {% if prev_page %}
             <a class="reader-nav-tile reader-nav-prev" href="{{ prev_page.url ~ filter_suffix }}">

@@ -18,11 +18,11 @@
 
 </div>
 
-Quark Open Publishing adds what open, collaborative blogs and publishing sites need on top of the Quark theme: pages that embed cleanly in other systems, links that open each page's source in your Git repository, multi-page content such as a short guide or handbook, and a set of shortcodes and page types for rich content.
+Quark Open Publishing adds what open, collaborative blogs and publishing sites need on top of the Quark theme: pages that embed cleanly in other systems, links that open each page's source in your Git repository, guides with section cards and reading progress – even long ones, grouped into parts – and a set of shortcodes and page types for rich content.
 
 ## What Sets It Apart
 
-- **Multi-page content that carries over to Grav Helios Open Reader** – a Section List page type for a short guide or handbook alongside your blog, with section cards, section labels, Learning Objectives, reading progress, Previous/Next navigation, and OER attribution, using the same page settings as [Grav Helios Open Reader](https://github.com/hibbitts-design/grav-skeleton-helios-open-reader)
+- **Guides that carry over to Grav Helios Open Reader** – a Section List page type for guides alongside your blog, even long ones grouped into parts, with section cards, section labels, Learning Objectives, reading progress, Previous/Next navigation, Keep My Place, a last updated date, and OER attribution, using the same page settings as [Grav Helios Open Reader](https://github.com/hibbitts-design/grav-skeleton-helios-open-reader)
 - **Chromeless display for embedding** – add `/chromeless:true` or `?embedded=true` to any page URL to show only its content, or hide the site menu, sidebar, and footer site-wide
 - **Open authoring with Git Sync** – a "View Git Repository" or "View/Edit Page in Git Repository" link in the menu, footer, or page, with a custom icon and text
 - **Built-in shortcodes** – Button, Embedly, Google Slides, H5P, iFrame, Link Preview Card, Markdown File, PDF, SpeakerDeck, and Twitter, with `title` (and `ratio`) options for accessible, well-proportioned embeds
@@ -76,8 +76,8 @@ Updating the theme keeps your pages and settings as they are, with the new featu
 
 1. **New theme options** – replace the `form:` section of `user/themes/mytheme/blueprints.yaml` with the one from the theme's `blueprints.yaml`, so the Text Size on Phones option appears under **Themes → My Theme**
 2. **Search** – turn on the SimpleSearch plugin in **Plugins → SimpleSearch**; on sites set up with an earlier Open Publishing Space skeleton, also clear its **Category** filter (set to `blog`), or search finds only blog posts in that category
-3. **GitHub-style alerts** – install the [GitHub Markdown Alerts plugin](https://github.com/trilbymedia/grav-plugin-github-markdown-alerts) (Grav 2)
-4. **Multi-page content** – choose the Section List page type for a new page in the Admin Panel, or copy the `05.multi-page-content` example from the theme's `_demo/pages` folder
+3. **GitHub-style alerts** – install the [GitHub Markdown Alerts plugin](https://github.com/trilbymedia/grav-plugin-github-markdown-alerts): version 2 on Grav 2, or [version 1.1.1](https://github.com/trilbymedia/grav-plugin-github-markdown-alerts/releases/tag/1.1.1) on Grav 1.7 (download it and copy it to `user/plugins/github-markdown-alerts`)
+4. **Multi-page content** – choose the Section List page type for a new page in the Admin Panel, or copy the `01.open-education-essentials` example guide from the theme's `_demo/pages` folder
 
 ## Theme Options
 
@@ -103,21 +103,33 @@ Add these to any page URL, for example `https://yoursite.com/blog/my-post/chrome
 
 ## Multi-Page Content
 
-The **Section List** page type (`section-list.md`) publishes a short guide or handbook as a set of pages: a home page with a card for each section, then each section (`section.md`) and its subsections (`subsection.md`). Section pages have a side list of the sections, Previous/Next navigation, a link back to the home page, and a search box. The earlier **Sections** page type (`sections.md`) remains available, with the side list on its home page instead of cards; its **Sections Config** tab can switch its Next/Prev buttons to the same tiles. When embedded (for example with `?embedded=true`), Section List pages show only their content, as in Grav Helios Open Reader, while Sections pages keep their side list and buttons.
+The **Section List** page type (`section-list.md`) publishes a guide as a set of pages: a home page with a card for each section, then each section (`section.md`) and its subsections (`subsection.md`). Section pages have a side list of the sections, Previous/Next navigation, a link back to the home page, and a search box. The earlier **Sections** page type (`sections.md`) remains available, with the side list on its home page instead of cards; its **Sections Config** tab can switch its Next/Prev buttons to the same tiles. When embedded (for example with `?embedded=true`), Section List pages show only their content, as in Grav Helios Open Reader, while Sections pages keep their side list and buttons.
+
+For longer guides:
+
+- **Parts** – give sections the same **Part** setting to group them under a heading on the home page and a label in the side list; section numbers, Previous/Next and the reading progress continue across parts
+- **Keep My Place** – when a reader returns, the home page's Start button becomes **Continue Reading** and links to the last page they visited (remembered in their browser)
+- **Previous/Next at the top** – compact Previous/Next links beside the link back to the home page, as well as the tiles at the bottom
 
 Settings, in the Admin Panel page editor:
 
-- **Section List page** – subtitle, cover image (small, or large at the top), author(s), edition, section label (e.g. "Unit" or "Chapter"), Start button text, search box, reading progress, cards per row, and OER attribution (license, license URL, and attribution text)
-- **Section** – section number, a section label override, Learning Objectives, and a card description and image
+- **Section List page** – subtitle, cover image (small, or large at the top), author(s), edition, last updated date, section label (e.g. "Unit" or "Chapter"), Start button text, search box, reading progress, Keep My Place, Previous/Next position (bottom, or top and bottom), cards per row, and OER attribution (license, license URL, and attribution text)
+- **Section** – section number, a section label override, Part, Learning Objectives, and a card description and image
 - **Subsection** – Learning Objectives
 
 ### Moving to Grav Helios Open Reader
 
-When a guide grows into substantial, standalone content, it can move to [Grav Helios Open Reader](https://github.com/hibbitts-design/grav-skeleton-helios-open-reader) with little rework:
+Quark Open Publishing is for a site built around a blog and one or more guides – even long ones, grouped into parts – and is free and open source. [Grav Helios Open Reader](https://github.com/hibbitts-design/grav-skeleton-helios-open-reader) is for a site built for reading, such as open textbooks and course readers, and runs on Helios, a premium Grav theme. When a site becomes mainly about reading, its guides can move to Open Reader with little rework. Open Reader adds:
+
+- A table of contents on every page, highlighting where you are as you read
+- Several publications on one site, each with its own home page, gathered on a readers list
+- A plain-text version of each publication (`llms-full.txt`), for ebook tools, search and other uses
+
+To move a guide:
 
 1. Copy the Section List page folder into the Open Reader site's `pages` folder – it becomes one of its publications
 2. Rename each `subsection.md` to `section-page.md`
-3. Rename the section folders to `section-1`, `section-2`, and so on (for example `01.section-1`), as in the Open Reader demo
+3. Rename the section folders to `section-1`, `section-2`, and so on (for example `01.section-1`), as in the Open Reader demo. For a guide with parts, use `part-1-section-1`, `part-1-section-2`, `part-2-section-1`, and so on, and list the part titles in a `parts` block on the Section List page (see the Open Reader README); in Open Reader, Previous/Next and the reading progress stay within each part
 4. Set a `section_number` on each section to keep its label (e.g. "Unit 2") at the top of its pages
 
 Page settings, callout shortcodes, GitHub-style alerts, and embed shortcodes carry over unchanged. In Open Reader the cover image is always shown full width, like the large Cover Image Layout.
@@ -140,7 +152,7 @@ To leave something out when a page is printed, add the `no-print` class (as in G
 - PHP >= 8.0.2
 - Grav CMS 1.7 or 2.0
 - The [Quark theme](https://github.com/getgrav/grav-theme-quark) and required plugins, installed automatically as dependencies
-- Optional: the [SimpleSearch plugin](https://github.com/getgrav/grav-plugin-simplesearch) for search, and the [GitHub Markdown Alerts plugin](https://github.com/trilbymedia/grav-plugin-github-markdown-alerts) (Grav 2) for GitHub-style alerts
+- Optional: the [SimpleSearch plugin](https://github.com/getgrav/grav-plugin-simplesearch) for search, and the [GitHub Markdown Alerts plugin](https://github.com/trilbymedia/grav-plugin-github-markdown-alerts) for GitHub-style alerts (version 2 on Grav 2, version 1.1.1 on Grav 1.7)
 
 ## Support
 

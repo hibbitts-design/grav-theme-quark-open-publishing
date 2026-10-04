@@ -1,8 +1,8 @@
-{# Reader details on the reader home (Multi-Section or Section List page): subtitle, cover image, author(s), edition and license (as in Helios Open Reader) - hibbittsdesign.org #}
+{# Reader details on the reader home (Multi-Section or Section List page): subtitle, cover image, author(s), edition, last updated date and license (as in Helios Open Reader) - hibbittsdesign.org #}
 {# hide_cover leaves the cover out here, when the Section List page shows it large at the top instead #}
 {% set hide_cover = hide_cover ?? false %}
 {% set cover = (page.header.cover_image and not hide_cover) ? page.media[page.header.cover_image] : null %}
-{% if page.header.subtitle or cover or page.header.authors or page.header.edition or page.header.license %}
+{% if page.header.subtitle or cover or page.header.authors or page.header.edition or page.header.last_updated or page.header.license %}
     <div class="reader-header">
         {% if cover %}
             <img class="reader-cover img-responsive" src="{{ cover.url }}" alt="{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_COVER'|t(page.title) }}">
@@ -14,8 +14,14 @@
             {% if page.header.authors %}
                 <p class="reader-authors">{{ page.header.authors }}</p>
             {% endif %}
-            {% if page.header.edition %}
-                <p class="reader-edition">{{ page.header.edition }}</p>
+            {# the edition and last updated date share one line, for example "First Edition, 2026 · Updated Oct 4, 2026" #}
+            {% if page.header.edition or page.header.last_updated %}
+                <p class="reader-edition">
+                    {%- if page.header.edition %}{{ page.header.edition }}{% endif %}
+                    {#- the dot is only visual; screen readers hear a short pause (a hidden comma) instead of "middle dot" #}
+                    {%- if page.header.edition and page.header.last_updated %}<span class="text-assistive">,</span><span aria-hidden="true"> &middot; </span>{% endif %}
+                    {%- if page.header.last_updated %}{% set updated_date = '<time datetime="' ~ page.header.last_updated|date('Y-m-d') ~ '">' ~ page.header.last_updated|date('THEME_QUARK_OPEN_PUBLISHING.READER_DATE_FORMAT'|t) ~ '</time>' %}{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_UPDATED'|t(updated_date)|raw }}{% endif -%}
+                </p>
             {% endif %}
             {% if page.header.license %}
                 <p><span class="label label-rounded reader-license">{{ page.header.license }}</span></p>

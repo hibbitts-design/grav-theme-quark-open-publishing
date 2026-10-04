@@ -16,10 +16,14 @@ en:
         READER_COVER: '%s cover'
         READER_START: 'Start Reading'
         READER_PAGE_NAVIGATION: 'Page navigation'
+        READER_PAGE_NAVIGATION_TOP: 'Page navigation, top'
         READER_PREVIOUS: 'Previous'
         READER_NEXT: 'Next'
         READER_PROGRESS: 'Reading progress'
         READER_PAGE_PROGRESS: 'Page %s of %s'
+        READER_UPDATED: 'Updated %s'
+        READER_DATE_FORMAT: 'M j, Y'
+        READER_CONTINUE_READING: 'Continue Reading'
         OPENS_IN_NEW_TAB: '(opens in new tab)'
     THEME_QUARK:
         BLOG:

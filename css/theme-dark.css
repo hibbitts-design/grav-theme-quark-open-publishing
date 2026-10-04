@@ -350,7 +350,9 @@ blockquote {
 }
 
 .table td,
-.table th {
+.table th,
+#body-wrapper table:not([class]) td,
+#body-wrapper table:not([class]) th {
     border-bottom-color: var(--qop-dark-divider);
 }
 
@@ -485,8 +487,14 @@ mark {
 }
 
 .reader-header,
-.reader-prev-next {
+.reader-prev-next,
+.reader-part-heading {
     border-color: var(--qop-dark-divider);
+}
+
+#sections-nav .reader-part-label,
+.reader-prev-next-top-divider {
+    color: var(--qop-dark-muted);
 }
 
 .reader-progress .bar {

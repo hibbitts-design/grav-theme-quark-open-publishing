@@ -137,3 +137,25 @@ h1.sections-page-title-template, h2.sections-page-title-template, h3.sections-pa
 .blogitem__readingtime {
   padding-left: 10px;
 }
+
+/* Markdown tables, in Spectre's standard table style (Quark only styles tables given the "table" class) - hibbittsdesign.org */
+#body-wrapper table:not([class]) {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+#body-wrapper table:not([class]) th {
+  text-align: left;
+}
+
+#body-wrapper table:not([class]) td,
+#body-wrapper table:not([class]) th {
+  border-bottom: 0.05rem solid #e7e9ed;
+  padding: 0.6rem 0.4rem;
+}
+
+#body-wrapper table:not([class]) th {
+  border-bottom-width: 0.1rem;
+}

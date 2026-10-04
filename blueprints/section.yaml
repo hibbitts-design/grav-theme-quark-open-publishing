@@ -52,6 +52,14 @@ form:
               placeholder: 'e.g. Appendix 1, Introduction, Conclusion'
               help: 'Custom label shown above this section''s title (and its subsections). Overrides the multi-section page''s Section Label and number. Leave empty to hide the label for this section only.'
 
+            header.part:
+              type: text
+              size: medium
+              label: Part
+              toggleable: true
+              placeholder: 'e.g. Foundations'
+              help: 'Optional part title, for a section of a Section List page. Sections in a row with the same Part are grouped under it, with a heading above their cards and a label above them in the side list. Section numbers keep counting across parts.'
+
             header.learning_objectives:
               type: textarea
               label: Learning Objectives

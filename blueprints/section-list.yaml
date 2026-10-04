@@ -80,6 +80,12 @@ form:
               placeholder: 'e.g. First Edition, 2026'
               help: 'Edition or version label displayed on this page.'
 
+            header.last_updated:
+              type: datetime
+              label: Last Updated
+              toggleable: true
+              help: 'Optional date displayed after the edition on this page, so readers can see how current the content is.'
+
         sections:
           type: tab
           title: Sections
@@ -166,6 +172,27 @@ form:
               validate:
                 type: bool
               help: 'Show a progress bar (e.g. "Page 3 of 8") above the Next/Prev buttons on section and subsection pages.'
+
+            header.keep_my_place:
+              type: toggle
+              label: Keep My Place
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+              help: 'Remember the last section or subsection page each reader visited (in their own browser). When they return, the Start button on this page becomes "Continue Reading" and links to that page.'
+
+            header.prev_next_position:
+              type: select
+              label: Prev/Next Page Controls Position
+              default: bottom
+              options:
+                bottom: 'Bottom'
+                both: 'Top and bottom'
+              help: 'Where the Previous/Next navigation is shown on section and subsection pages. Top and bottom adds compact Previous/Next links at the top, beside the link back to this page.'
 
             header.hide_next_prev_page_buttons:
                 type: toggle

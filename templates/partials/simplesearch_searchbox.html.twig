@@ -12,6 +12,7 @@
 <form class="search-box" role="search" action="{{ search_action }}" method="get">
     <input class="form-input" type="search" name="query" value="{{ query|e }}" placeholder="{{ search_placeholder }}" aria-label="{{ search_placeholder }}" {% if search_min > 0 %}minlength="{{ search_min }}"{% endif %} required>
     {% if box_scope %}
-        <input type="hidden" name="scope" value="{{ box_scope.route|e('html_attr') }}">
+        {# rawRoute, for example /open-education-essentials, stays the same when the page is the site's home page (whose route is /) #}
+        <input type="hidden" name="scope" value="{{ box_scope.rawRoute|e('html_attr') }}">
     {% endif %}
 </form>

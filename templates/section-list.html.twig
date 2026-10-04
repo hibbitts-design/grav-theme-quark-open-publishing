@@ -46,8 +46,12 @@
     {% if (start_text and first_section) or show_reader_search %}
       <div class="section-list-actions">
         {% if start_text and first_section %}
+          {# Keep My Place (on unless turned off): when this reader has visited a section or subsection page before,
+             js/reader.js changes this button to Continue Reading, linking to that page, as in Helios Open Reader #}
+          {% set keep_my_place = page.header.keep_my_place is not defined or page.header.keep_my_place %}
           <p class="section-list-start">
-            <a class="btn btn-primary" href="{{ first_section.url ~ filter_suffix }}">{{ start_text }} <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+            <a class="btn btn-primary" href="{{ first_section.url ~ filter_suffix }}"
+              {%- if keep_my_place %} data-reader-home="{{ page.url }}" data-continue-text="{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_CONTINUE_READING'|t }}"{% endif %}><span class="section-list-start-text">{{ start_text }}</span> <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
           </p>
         {% endif %}
         {% if show_reader_search %}
@@ -68,11 +72,37 @@
       {% set card_column = 'col-12' %}
     {% endif %}
 
-    {% if reader_sections|length > 0 %}
+    {# Parts: sections in a row with the same Part setting are grouped under a heading with that title.
+       Sections without a Part have no heading. The numbers keep counting across parts (Unit 1, 2, 3, ...). #}
+    {% set part_groups = [] %}
+    {% set group_title = '' %}
+    {% set group_sections = [] %}
+    {% for section_item in reader_sections %}
+      {% set part_title = section_item.header.part ?? '' %}
+      {# a new group starts when the Part changes #}
+      {% if not loop.first and part_title != group_title %}
+        {% set part_groups = part_groups|merge([{ title: group_title, sections: group_sections }]) %}
+        {% set group_sections = [] %}
+      {% endif %}
+      {% set group_title = part_title %}
+      {% set group_sections = group_sections|merge([section_item]) %}
+      {% if loop.last %}
+        {% set part_groups = part_groups|merge([{ title: group_title, sections: group_sections }]) %}
+      {% endif %}
+    {% endfor %}
+
+    {# the card's number, counting across all parts #}
+    {% set card_number = 0 %}
+
+    {% for part_group in part_groups %}
+      {% if part_group.title %}
+        <h4 class="reader-part-heading">{{ part_group.title }}</h4>
+      {% endif %}
       <ul class="section-cards columns">
-        {% for section_item in reader_sections %}
+        {% for section_item in part_group.sections %}
+          {% set card_number = card_number + 1 %}
           {# the label (for example "Unit 2") uses the card's position; don't loop over reader_sections again inside this loop #}
-          {% set label = reader.section_label(section_item, reader_home, loop.index) %}
+          {% set label = reader.section_label(section_item, reader_home, card_number) %}
           {% set card_image = section_item.header.image ? section_item.media[section_item.header.image] : null %}
           <li class="column {{ card_column }}">
             <div class="card section-card">
@@ -85,8 +115,9 @@
                 {% if label|length > 0 %}
                   <p class="reader-section-label">{{ label }}</p>
                 {% endif %}
-                {# the link covers the whole card (see css/reader.css) #}
-                <h4 class="card-title h5"><a class="section-card-link" href="{{ section_item.url ~ filter_suffix }}">{{ section_item.title }}</a></h4>
+                {# the link covers the whole card (see css/reader.css); below a part's heading, the card title is one heading level lower #}
+                {% set card_heading = part_group.title ? 'h5' : 'h4' %}
+                <{{ card_heading }} class="card-title h5"><a class="section-card-link" href="{{ section_item.url ~ filter_suffix }}">{{ section_item.title }}</a></{{ card_heading }}>
               </div>
               {% if section_item.header.description %}
                 <div class="card-body">
@@ -97,7 +128,7 @@
           </li>
         {% endfor %}
       </ul>
-    {% endif %}
+    {% endfor %}
 
     {% include 'partials/reader_attribution.html.twig' %}
 

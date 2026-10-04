@@ -278,6 +278,54 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     margin: 0 0 0.6rem;
 }
 
+/* The back link, with the compact Previous/Next links on the right (Prev/Next Page Controls Position: Top and bottom) */
+.reader-top-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0 1.2rem;
+}
+
+.reader-prev-next-top {
+    font-size: 0.75rem;
+    margin: 0 0 0.6rem;
+    white-space: nowrap;
+}
+
+.reader-prev-next-top .fa {
+    font-size: 0.65rem;
+}
+
+.reader-prev-next-top-divider {
+    color: #acb3c2;
+    margin: 0 0.4rem;
+}
+
+/* Parts: a heading above each group of section cards, in the theme's heading style with its thin divider line */
+.reader-part-heading {
+    font-size: 1rem;
+    padding-bottom: 0.4rem;
+    margin: 1.6rem 0 1.2rem;
+    border-bottom: 0.05rem solid #e7e9ed;
+}
+
+/* Parts: a small label above each group of sections in the side list, styled like the section labels ("Unit 2") */
+#sections-nav .reader-part-label {
+    color: #667189;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    list-style: none;
+    margin: 0.8rem 0 0.2rem;
+    padding-left: 0.4rem; /* lined up with the side list's items */
+}
+
+#sections-nav .reader-part-label:first-child {
+    margin-top: 0;
+}
+
 .reader-back-link .fa {
     font-size: 0.65rem;
     margin-right: 0.15rem;

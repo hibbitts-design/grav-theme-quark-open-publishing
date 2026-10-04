@@ -47,13 +47,27 @@
      as in Helios Open Reader: no side list, back link, progress bar or Previous/Next. Multi-Section pages are unchanged. #}
   {% set content_only = reader_home.template == 'section-list' and (embedded_mode or theme_var('chromeless.enabled')) %}
 
+  {# Keep My Place: remember this page, so the Section List page's Start button can continue from it (see js/reader.js) #}
+  {% if reader_home.template == 'section-list' and page.route != reader_home.route
+    and (reader_home.header.keep_my_place is not defined or reader_home.header.keep_my_place) %}
+    <span class="reader-save-place" data-reader-home="{{ reader_home.url }}" data-url="{{ page.url }}" data-title="{{ page.title }}" hidden></span>
+  {% endif %}
+
   <div class="columns">
 
     <div id="sections-content" class="column {{ content_only ? 'col-12' : 'col-9 col-md-12' }}">
 
-      {# A link back to the Section List page, which has the section cards (hidden in embedded mode) #}
+      {# A link back to the Section List page, which has the section cards (hidden in embedded mode).
+         With the Section List page's Prev/Next Page Controls Position set to "Top and bottom", a compact
+         Previous/Next row sits on the same line, on the right ("top" alone, as in Helios Open Reader, works the same) #}
       {% if reader_home.template == 'section-list' and page.route != reader_home.route and not content_only %}
-        <p class="reader-back-link"><a href="{{ reader_home.url }}"><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ reader_home.title }}</a></p>
+        {% set show_top_prev_next = reader_home.header.prev_next_position in ['both', 'top'] and not(hide_next_prev_page_buttons) %}
+        <div class="reader-top-bar">
+          <p class="reader-back-link"><a href="{{ reader_home.url }}"><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ reader_home.title }}</a></p>
+          {% if show_top_prev_next %}
+            {% include 'partials/reader_prev_next.html.twig' with { position: 'top' } %}
+          {% endif %}
+        </div>
       {% endif %}
 
       {% if not(page.header.hide_page_title) and not(grav.uri.param('hidepagetitle')) %}
@@ -206,7 +220,18 @@
             {% endif %}
           {% endif %}
 
+          {# Parts (on a Section List page): a small label above each group of sections with the same Part setting #}
+          {% set previous_part = '' %}
+
           {% for p in collection %}
+
+            {% if reader_home.template == 'section-list' %}
+              {% set part_title = p.header.part ?? '' %}
+              {% if part_title and part_title != previous_part %}
+                <li class="reader-part-label">{{ part_title }}</li>
+              {% endif %}
+              {% set previous_part = part_title %}
+            {% endif %}
 
             {% set current_parent = p.active
               ? 'active'

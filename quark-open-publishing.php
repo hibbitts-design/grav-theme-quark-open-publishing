@@ -186,7 +186,7 @@ class QuarkOpenPublishing extends Quark
      */
     protected function getSearchScopePage()
     {
-        // The scope from the address, for example '/multi-page-content' (empty when there isn't one)
+        // The scope from the address, for example '/open-education-essentials' (empty when there isn't one)
         $scope = (string) $this->grav['uri']->query('scope');
 
         // No scope, or not a page address (page addresses start with /): search the whole site
@@ -216,13 +216,10 @@ class QuarkOpenPublishing extends Quark
      */
     protected function isPageOrChildOf($page, $parentPage)
     {
-        $route = $page->route();
-        $parentRoute = $parentPage->route();
-
-        // a parent page used as the site's home page has the route '/', and every page is inside it
-        if ($parentRoute === '/') {
-            return true;
-        }
+        // rawRoute() is the page's address from its folders, for example '/open-education-essentials'. Unlike route(), it
+        // stays the same when the page is the site's home page (whose route is '/', which every page would be inside)
+        $route = $page->rawRoute();
+        $parentRoute = $parentPage->rawRoute();
 
         // the parent page itself
         if ($route === $parentRoute) {
@@ -230,7 +227,7 @@ class QuarkOpenPublishing extends Quark
         }
 
         // a page inside it: its route starts with the parent's route and a slash,
-        // for example '/multi-page-content/writing-for-the-web' starts with '/multi-page-content/'
+        // for example '/open-education-essentials/what-is-open-education' starts with '/open-education-essentials/'
         $parentRouteWithSlash = $parentRoute . '/';
         $start = substr($route, 0, strlen($parentRouteWithSlash));
         if ($start === $parentRouteWithSlash) {
