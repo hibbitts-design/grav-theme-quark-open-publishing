@@ -319,3 +319,19 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     box-shadow: 0 10px 45px -9px rgba(0, 0, 0, 0.2);
     margin-bottom: 1.2rem;
 }
+
+/* The optional TNTSearch plugin's search box, sized like the theme's own search box (TNTSearch makes its field taller) */
+.reader-search .tntsearch-form .form-input {
+    height: 1.8rem;
+    padding-left: 0.4rem;
+}
+
+.reader-search #tntsearch-wrapper {
+    margin-bottom: 0;
+}
+
+.reader-search .tntsearch-clear {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    padding: 0 0.6rem;
+}
