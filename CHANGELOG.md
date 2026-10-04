@@ -1,3 +1,9 @@
+# v3.0.2
+## XX/XX/2026
+
+1. [](#improved)
+    * Small cover image is now the default Cover Image Layout for Section List pages
+
 # v3.0.1
 ## 10/03/2026
 
