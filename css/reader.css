@@ -58,15 +58,31 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     }
 }
 
-/* Reading progress (Spectre bar), above the Previous/Next navigation */
+/* Reading progress (Spectre bar), above the Previous/Next navigation: compact and centred, as in Helios Open Reader */
 .reader-progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 1.2rem 0 0.4rem;
+}
+
+.reader-progress .bar {
+    width: 80%;
+    max-width: 24rem;
+    height: 0.15rem;
+    border-radius: 5rem;
+    overflow: hidden;
+}
+
+.reader-progress .bar .bar-item {
+    border-radius: 5rem;
 }
 
 .reader-progress-text {
     color: #667189;
     font-size: 0.7rem;
     margin: 0.3rem 0 0;
+    text-align: center;
 }
 
 /* OER attribution and license, below the Previous/Next navigation */
@@ -158,20 +174,26 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
 
 /* Previous/Next tiles (theme option), grouped with the reading progress below the page text */
 .reader-nav-block {
-    border-top: 0.05rem solid #e7e9ed;
     margin-top: 1.6rem;
-    padding-top: 0.2rem;
 }
 
 .reader-nav-block .reader-progress {
     margin: 0.8rem 0 0;
 }
 
+/* A line between the reading progress (when shown) and the tiles */
 .reader-prev-next {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.8rem;
-    margin: 0.8rem 0 0;
+    border-top: 0.05rem solid #e7e9ed;
+    margin: 1.4rem 0 0;
+    padding-top: 0.8rem;
+}
+
+/* Without the reading progress, the tiles come first, so they need no extra space above the line */
+.reader-nav-block > .reader-prev-next:first-child {
+    margin-top: 0;
 }
 
 .reader-nav-tile {
