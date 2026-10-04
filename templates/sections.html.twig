@@ -43,12 +43,16 @@
     {% set section_heading_label = reader.section_label(section_page, reader_home, section_position) %}
   {% endif %}
 
+  {# In embedded mode (or with the site-wide chromeless setting), pages of a Section List page show only their content,
+     as in Helios Open Reader: no side list, back link, progress bar or Previous/Next. Multi-Section pages are unchanged. #}
+  {% set content_only = reader_home.template == 'section-list' and (embedded_mode or theme_var('chromeless.enabled')) %}
+
   <div class="columns">
 
-    <div id="sections-content" class="column col-9 col-md-12">
+    <div id="sections-content" class="column {{ content_only ? 'col-12' : 'col-9 col-md-12' }}">
 
       {# A link back to the Section List page, which has the section cards (hidden in embedded mode) #}
-      {% if reader_home.template == 'section-list' and page.route != reader_home.route and not embedded_mode %}
+      {% if reader_home.template == 'section-list' and page.route != reader_home.route and not content_only %}
         <p class="reader-back-link"><a href="{{ reader_home.url }}"><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ reader_home.title }}</a></p>
       {% endif %}
 
@@ -70,10 +74,13 @@
 
       {{ page.content|raw }}
 
-      {# Previous/Next navigation: tiles grouped with the reading progress (theme option, as in Helios Open Reader),
-         or the classic buttons - hibbittsdesign.org #}
-      {% if theme_var('sections_prev_next_style') == 'tiles' %}
-        {% if page.template != 'sections' %}
+      {# Previous/Next navigation: tiles grouped with the reading progress (as in Helios Open Reader), or the classic buttons.
+         Section List pages always use the tiles. Multi-Section pages use the classic buttons unless their
+         "Next/Prev Section Buttons Style" setting (or, for sites that set it in 3.0.x, the old theme-wide
+         sections_prev_next_style setting) is tiles - hibbittsdesign.org #}
+      {% set prev_next_style = reader_home.header.prev_next_style ?? theme_var('sections_prev_next_style') %}
+      {% if reader_home.template == 'section-list' or prev_next_style == 'tiles' %}
+        {% if page.template != 'sections' and not content_only %}
           <div class="reader-nav-block">
             {% if reader_home.header.show_reading_progress %}
               {% include 'partials/reader_progress.html.twig' %}
@@ -176,6 +183,7 @@
 
       </div>
 
+      {% if not content_only %}
       <div id="sections-nav" class="column col-3 col-md-12">
 
         {# A search box above the side list, on pages of a Section List page (its Show Search Box setting; hidden in embedded mode) #}
@@ -237,6 +245,7 @@
       </ul>
 
     </div>
+      {% endif %}
 
   </div>
 

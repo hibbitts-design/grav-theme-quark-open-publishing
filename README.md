@@ -74,7 +74,7 @@ The easiest way to get started is the [Open Publishing Space](https://github.com
 
 Updating the theme keeps your pages and settings as they are, with the new features off until you turn them on. To use them:
 
-1. **New theme options** – replace the `form:` section of `user/themes/mytheme/blueprints.yaml` with the one from the theme's `blueprints.yaml`, so the Previous/Next Navigation Style and Text Size on Phones options appear under **Themes → My Theme**
+1. **New theme options** – replace the `form:` section of `user/themes/mytheme/blueprints.yaml` with the one from the theme's `blueprints.yaml`, so the Text Size on Phones option appears under **Themes → My Theme**
 2. **Search** – turn on the SimpleSearch plugin in **Plugins → SimpleSearch**; on sites set up with an earlier Open Publishing Space skeleton, also clear its **Category** filter (set to `blog`), or search finds only blog posts in that category
 3. **GitHub-style alerts** – install the [GitHub Markdown Alerts plugin](https://github.com/trilbymedia/grav-plugin-github-markdown-alerts) (Grav 2)
 4. **Multi-page content** – choose the Section List page type for a new page in the Admin Panel, or copy the `05.multi-page-content` example from the theme's `_demo/pages` folder
@@ -83,7 +83,7 @@ Updating the theme keeps your pages and settings as they are, with the new featu
 
 All options are available in the Admin Panel under **Themes → Quark Open Publishing**.
 
-- **Open Publishing Options** – chromeless site, H5P setup, Creative Commons license display, menu dropdowns, and the Previous/Next navigation style for multi-page content (classic buttons, or tiles with the reading progress)
+- **Open Publishing Options** – chromeless site, H5P setup, Creative Commons license display, and menu dropdowns
 - **Quark Options** – Dark Mode, text size on phones, production mode, grid size, custom logos, header and footer defaults, blog page and hero classes, and Spectre.css options
 - **Custom Menu Items** – text, icon, URL, and target for extra menu links
 - **Git Sync Link** – location, link type (view or edit), icon and text, and a custom Git repository URL
@@ -103,7 +103,7 @@ Add these to any page URL, for example `https://yoursite.com/blog/my-post/chrome
 
 ## Multi-Page Content
 
-The **Section List** page type (`section-list.md`) publishes a short guide or handbook as a set of pages: a home page with a card for each section, then each section (`section.md`) and its subsections (`subsection.md`). Section pages have a side list of the sections, Previous/Next navigation, a link back to the home page, and a search box. The earlier **Sections** page type (`sections.md`) remains available, with the side list on its home page instead of cards.
+The **Section List** page type (`section-list.md`) publishes a short guide or handbook as a set of pages: a home page with a card for each section, then each section (`section.md`) and its subsections (`subsection.md`). Section pages have a side list of the sections, Previous/Next navigation, a link back to the home page, and a search box. The earlier **Sections** page type (`sections.md`) remains available, with the side list on its home page instead of cards; its **Sections Config** tab can switch its Next/Prev buttons to the same tiles. When embedded (for example with `?embedded=true`), Section List pages show only their content, as in Grav Helios Open Reader, while Sections pages keep their side list and buttons.
 
 Settings, in the Admin Panel page editor:
 

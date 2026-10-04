@@ -79,3 +79,12 @@ form:
                     1:  No
                 validate:
                     type: bool
+
+            header.prev_next_style:
+                type: select
+                label: Next/Prev Section Buttons Style
+                default: buttons
+                options:
+                    buttons: 'Buttons (classic)'
+                    tiles: 'Tiles, with the reading progress (as on Section List pages)'
+                help: 'How the Next/Prev navigation is shown on the section and subsection pages of this page. Tiles always keep Next on the right and follow the order of the side navigation.'
