@@ -4,7 +4,7 @@
 
 ### Designed to accompany the Open Publishing Space Skeleton
 
-<p><em>A Grav theme for open blogs and publishing spaces – embeddable anywhere, with Git-based open editing built in.</em></p>
+<p><em>A Grav theme for open guides and blogs – embeddable anywhere, with Git-based open editing built in.</em></p>
 
 [![Grav Discord Chat](https://img.shields.io/discord/501836936584101899.svg?logo=discord&colorB=728ADA&label=Grav%20Discord%20Chat)](https://chat.getgrav.org) [![Latest Release](https://img.shields.io/github/v/release/hibbitts-design/grav-theme-quark-open-publishing?style=flat-square&label=Release)](https://github.com/hibbitts-design/grav-theme-quark-open-publishing/releases/latest) [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://github.com/hibbitts-design/grav-theme-quark-open-publishing/blob/master/LICENSE) [![PHP](https://img.shields.io/badge/PHP-%3E%3D8.0.2-8892BF?style=flat-square&logo=php&logoColor=white)](https://learn.getgrav.org/17/basics/requirements)
 
@@ -105,6 +105,8 @@ Add these to any page URL, for example `https://yoursite.com/blog/my-post/chrome
 
 The **Section List** page type (`section-list.md`) publishes a guide as a set of pages: a home page with a card for each section, then each section (`section.md`) and its subsections (`subsection.md`). Section pages have a side list of the sections, Previous/Next navigation, a link back to the home page, and a search box. The earlier **Sections** page type (`sections.md`) remains available, with the side list on its home page instead of cards; its **Sections Config** tab can switch its Next/Prev buttons to the same tiles. When embedded (for example with `?embedded=true`), Section List pages show only their content, as in Grav Helios Open Reader, while Sections pages keep their side list and buttons.
 
+The Section List page's own text appears above the section cards. To show some of it below the cards, as in Grav Helios Open Reader, add a line with just `===` – the text after it appears below the cards.
+
 For longer guides:
 
 - **Parts** – give sections the same **Part** setting to group them under a heading on the home page and a label in the side list; section numbers, Previous/Next and the reading progress continue across parts
@@ -113,7 +115,7 @@ For longer guides:
 
 Settings, in the Admin Panel page editor:
 
-- **Section List page** – subtitle, cover image (small, or large at the top), author(s), edition, last updated date, section label (e.g. "Unit" or "Chapter"), Start button text, search box, reading progress, Keep My Place, Previous/Next position (bottom, or top and bottom), cards per row, and OER attribution (license, license URL, and attribution text)
+- **Section List page** – subtitle, cover image (small, beside the title and details, or large at the top), author(s), edition, last updated date, section label (e.g. "Unit" or "Chapter"), Start button text, search box, reading progress, Keep My Place, Previous/Next position (bottom, or top and bottom), cards per row, and OER attribution (license, license URL, and attribution text)
 - **Section** – section number, a section label override, Part, Learning Objectives, and a card description and image
 - **Subsection** – Learning Objectives
 

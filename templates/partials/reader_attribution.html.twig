@@ -7,7 +7,8 @@
         {% if attribution_text %}
             <p>{{ attribution_text|raw }}</p>
         {% endif %}
-        {% if license %}
+        {# the license on its own line, unless the attribution text already names it (as in "licensed under CC BY 4.0") #}
+        {% if license and not (attribution_text and license in attribution_text) %}
             <p>
                 {% if license_url %}
                     <a href="{{ license_url|e('html_attr') }}" target="_blank" rel="noopener noreferrer">{{ license }}<span class="text-assistive"> {{ 'THEME_QUARK_OPEN_PUBLISHING.OPENS_IN_NEW_TAB'|t }}</span></a>

@@ -12,10 +12,13 @@
   {% set activetag = uri.param('filter') %}
   {% set filter_suffix = activetag ? '/filter:' ~ activetag : '' %}
 
-  {# Cover Image Layout: by default a small cover is shown beside the subtitle, author(s), edition and license, below
-     the title; "large" shows it across the full width of the content area at the top #}
+  {# Cover Image Layout: by default a small cover is shown with the title, subtitle, author(s), edition and license
+     beside it; "large" shows it across the full width of the content area at the top, with the title below it #}
   {% set cover = page.header.cover_image ? page.media[page.header.cover_image] : null %}
   {% set large_cover = cover and page.header.cover_image_layout == 'large' %}
+  {% set show_title = not(page.header.hide_page_title) and not(grav.uri.param('hidepagetitle')) %}
+  {# with a small cover, the title goes beside it, at the top of the details, like a publication card #}
+  {% set title_beside_cover = cover and not large_cover %}
 
   <div class="section-list-page">
 
@@ -23,13 +26,28 @@
       <img class="reader-cover-large" src="{{ cover.url }}" alt="{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_COVER'|t(page.title) }}">
     {% endif %}
 
-    {% if not(page.header.hide_page_title) and not(grav.uri.param('hidepagetitle')) %}
+    {% if show_title and not title_beside_cover %}
       <h3 class="sections-page-title-template">{{ page.title }}</h3>
     {% endif %}
 
-    {% include 'partials/reader_header.html.twig' with { hide_cover: large_cover } %}
+    {% include 'partials/reader_header.html.twig' with { hide_cover: large_cover, show_title: show_title and title_beside_cover } %}
 
-    {{ page.content|raw }}
+    {# Text above and below the section cards, as in Helios Open Reader: a line with just === in the page's content
+       splits it, with the text before it above the cards and the text after it below them (=== is Grav's summary
+       delimiter, so the text above is the page's summary). Without ===, all of the text is above the cards. #}
+    {# (only when the summary really is the start of the text: === can also appear for other reasons, such as a
+       heading underlined with ===, and then the summary is a shortened copy and all of the text stays above) #}
+    {% set content_above = page.content %}
+    {% set content_below = '' %}
+    {% if '===' in page.rawMarkdown %}
+      {% set summary_text = page.summary %}
+      {% if page.content starts with summary_text %}
+        {% set content_above = summary_text %}
+        {% set content_below = page.content|slice(summary_text|length)|trim %}
+      {% endif %}
+    {% endif %}
+
+    {{ content_above|raw }}
 
     {# Start button, linking to the first section (an empty start_button_text hides it) #}
     {% if page.header.start_button_text is defined %}
@@ -129,6 +147,12 @@
         {% endfor %}
       </ul>
     {% endfor %}
+
+    {% if content_below %}
+      <div class="section-list-below">
+        {{ content_below|raw }}
+      </div>
+    {% endif %}
 
     {% include 'partials/reader_attribution.html.twig' %}
 

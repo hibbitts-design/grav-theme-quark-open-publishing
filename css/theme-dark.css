@@ -488,7 +488,10 @@ mark {
 
 .reader-header,
 .reader-prev-next,
-.reader-part-heading {
+.reader-part-heading,
+.section-list-below h2,
+.section-list-below h3,
+.section-list-below h4 {
     border-color: var(--qop-dark-divider);
 }
 

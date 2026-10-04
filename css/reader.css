@@ -58,6 +58,24 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     }
 }
 
+/* Section List page with a small cover: the cover always has the same 4:3 shape (cropped from the centre to fill it),
+   with the title at the top of the details beside it. On phones the cover is full width, above the details. */
+.section-list-page .reader-cover {
+    width: 12rem;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.reader-details .sections-page-title-template {
+    margin-top: 0;
+}
+
+@media (max-width: 600px) {
+    .section-list-page .reader-cover {
+        width: 100%;
+    }
+}
+
 /* Reading progress (Spectre bar), above the Previous/Next navigation: compact and centred, as in Helios Open Reader */
 .reader-progress {
     display: flex;
@@ -302,8 +320,12 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     margin: 0 0.4rem;
 }
 
-/* Parts: a heading above each group of section cards, in the theme's heading style with its thin divider line */
-.reader-part-heading {
+/* Parts: a heading above each group of section cards, in the theme's heading style with its thin divider line.
+   Headings in the text below the cards (after === in the Section List page's text) look the same. */
+.reader-part-heading,
+.section-list-below h2,
+.section-list-below h3,
+.section-list-below h4 {
     font-size: 1rem;
     padding-bottom: 0.4rem;
     margin: 1.6rem 0 1.2rem;
