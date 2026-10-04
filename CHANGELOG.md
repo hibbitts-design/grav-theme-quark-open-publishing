@@ -1,3 +1,9 @@
+# v3.0.3
+## XX/XX/2026
+
+1. [](#bugfix)
+    * TNTSearch's search box on Section List pages now matches the theme's search box height
+
 # v3.0.2
 ## 10/04/2026
 
