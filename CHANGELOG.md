@@ -1,3 +1,9 @@
+# v3.0.3
+## XX/XX/2026
+
+1. [](#improved)
+    * Updated favicon to the Grav 2 icon
+
 # v3.0.2
 ## 10/04/2026
 
