@@ -1,5 +1,7 @@
 {# Reader details on the reader home (Multi-Section or Section List page): subtitle, cover image, author(s), edition and license (as in Helios Open Reader) - hibbittsdesign.org #}
-{% set cover = page.header.cover_image ? page.media[page.header.cover_image] : null %}
+{# hide_cover leaves the cover out here, when the Section List page shows it large at the top instead #}
+{% set hide_cover = hide_cover ?? false %}
+{% set cover = (page.header.cover_image and not hide_cover) ? page.media[page.header.cover_image] : null %}
 {% if page.header.subtitle or cover or page.header.authors or page.header.edition or page.header.license %}
     <div class="reader-header">
         {% if cover %}

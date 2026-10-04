@@ -12,13 +12,22 @@
   {% set activetag = uri.param('filter') %}
   {% set filter_suffix = activetag ? '/filter:' ~ activetag : '' %}
 
+  {# Cover Image Layout: by default the cover is shown large, across the full width of the content area at the top;
+     "small" shows a smaller cover beside the subtitle, author(s), edition and license, below the title #}
+  {% set cover = page.header.cover_image ? page.media[page.header.cover_image] : null %}
+  {% set large_cover = cover and page.header.cover_image_layout != 'small' %}
+
   <div class="section-list-page">
+
+    {% if large_cover %}
+      <img class="reader-cover-large" src="{{ cover.url }}" alt="{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_COVER'|t(page.title) }}">
+    {% endif %}
 
     {% if not(page.header.hide_page_title) and not(grav.uri.param('hidepagetitle')) %}
       <h3 class="sections-page-title-template">{{ page.title }}</h3>
     {% endif %}
 
-    {% include 'partials/reader_header.html.twig' %}
+    {% include 'partials/reader_header.html.twig' with { hide_cover: large_cover } %}
 
     {{ page.content|raw }}
 

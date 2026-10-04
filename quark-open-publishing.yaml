@@ -9,3 +9,4 @@ streams:
 dark_mode:
   mode: disabled
 sections_prev_next_style: buttons
+phone_text_size: standard

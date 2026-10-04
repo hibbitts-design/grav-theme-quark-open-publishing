@@ -32,13 +32,57 @@ form:
                 validate:
                     type: bool
 
-            sectionpages:
-              type: tab
-              title: Section Pages
-
-        sectionpages:
+        details:
           type: tab
-          title: Sections Config
+          title: Details
+
+          fields:
+
+            reader_info:
+              type: display
+              label: false
+              markdown: true
+              content: 'Optional details for this page, using the same page settings as Grav Helios Open Reader. Each one is shown only when it is filled in.'
+
+            header.subtitle:
+              type: text
+              label: Subtitle
+              toggleable: true
+              placeholder: 'e.g. An Open Course Guide'
+              help: 'Optional subtitle displayed below the title on this page.'
+
+            header.cover_image:
+              type: pagemediaselect
+              label: Cover Image
+              toggleable: true
+              help: 'Optional cover image displayed on this page.'
+
+            header.cover_image_layout:
+              type: select
+              label: Cover Image Layout
+              default: large
+              options:
+                large: 'Large (full width, at the top)'
+                small: 'Small (beside the details, below the title)'
+              help: 'How the cover image is shown on this page: large, across the full width of the page at the top, or small, beside the subtitle, author(s), edition and license.'
+
+            header.authors:
+              type: text
+              label: Author(s)
+              toggleable: true
+              placeholder: 'e.g. Jane Smith or Jane Smith & John Doe'
+              help: 'Author name(s) displayed on this page.'
+
+            header.edition:
+              type: text
+              label: Edition
+              toggleable: true
+              placeholder: 'e.g. First Edition, 2026'
+              help: 'Edition or version label displayed on this page.'
+
+        sections:
+          type: tab
+          title: Sections
 
           fields:
 
@@ -49,6 +93,14 @@ form:
             header.child_type:
               type: hidden
               default: section
+
+            header.section_label:
+              type: text
+              size: medium
+              label: Section Label
+              toggleable: true
+              placeholder: 'e.g. Chapter, Project, Unit, Module'
+              help: 'Label shown above each section title with its number (e.g. "Chapter 1"). Leave empty to show no label.'
 
             header.content.order.by:
               type: select
@@ -67,69 +119,16 @@ form:
               options:
                 asc: Ascending
                 desc: Descending
-                
-            appearance:
-              type: section
-              title: Appearance
-              underline: true
 
-            header.hide_next_prev_page_buttons:
-                type: toggle
-                label: Display Next/Prev Section Buttons
-                default: 0
-                highlight: 0
-                options:
-                    0:  Yes
-                    1:  No
-                validate:
-                    type: bool
-
-        reader:
-          type: tab
-          title: Reader Details
-
-          fields:
-
-            reader_info:
-              type: display
-              label: false
-              markdown: true
-              content: 'Optional reader details, using the same page settings as Grav Helios Open Reader. Each one is shown only when it is filled in.'
-
-            header.subtitle:
-              type: text
-              label: Subtitle
-              toggleable: true
-              placeholder: 'e.g. An Open Course Guide'
-              help: 'Optional subtitle displayed below the title on this page.'
-
-            header.cover_image:
-              type: pagemediaselect
-              label: Cover Image
-              toggleable: true
-              help: 'Optional cover image displayed on this page.'
-
-            header.authors:
-              type: text
-              label: Author(s)
-              toggleable: true
-              placeholder: 'e.g. Jane Smith or Jane Smith & John Doe'
-              help: 'Author name(s) displayed on this page.'
-
-            header.edition:
-              type: text
-              label: Edition
-              toggleable: true
-              placeholder: 'e.g. First Edition, 2026'
-              help: 'Edition or version label displayed on this page.'
-
-            header.section_label:
-              type: text
-              size: medium
-              label: Section Label
-              toggleable: true
-              placeholder: 'e.g. Chapter, Project, Unit, Module'
-              help: 'Label shown above each section title with its number (e.g. "Chapter 1"). Leave empty to show no label.'
+            header.cards_per_row:
+              type: select
+              label: Cards Per Row
+              default: 1
+              options:
+                1: '1 (full width)'
+                2: '2 per row'
+                3: '3 per row'
+              help: 'Number of section cards displayed per row on this page (one per row on phones).'
 
             header.start_button_text:
               type: text
@@ -149,7 +148,12 @@ form:
                 0: PLUGIN_ADMIN.DISABLED
               validate:
                 type: bool
-              help: 'Show a search box beside the Start button on this page, and above the side list on its section and subsection pages. Searches the whole site.'
+              help: 'Show a search box beside the Start button on this page, and above the side list on its section and subsection pages. With the SimpleSearch plugin, it searches just this page and its sections.'
+
+            sectionpages:
+              type: section
+              title: Section Pages
+              underline: true
 
             header.show_reading_progress:
               type: toggle
@@ -163,21 +167,16 @@ form:
                 type: bool
               help: 'Show a progress bar (e.g. "Page 3 of 8") above the Next/Prev buttons on section and subsection pages.'
 
-        list_display:
-          type: tab
-          title: List Display
-
-          fields:
-
-            header.cards_per_row:
-              type: select
-              label: Cards Per Row
-              default: 1
-              options:
-                1: '1 (full width)'
-                2: '2 per row'
-                3: '3 per row'
-              help: 'Number of section cards displayed per row on this page (one per row on phones).'
+            header.hide_next_prev_page_buttons:
+                type: toggle
+                label: Display Next/Prev Section Buttons
+                default: 0
+                highlight: 0
+                options:
+                    0:  Yes
+                    1:  No
+                validate:
+                    type: bool
 
         attribution:
           type: tab

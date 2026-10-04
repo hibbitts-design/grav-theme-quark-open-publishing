@@ -1,0 +1,11 @@
+/*
+Larger body text on phones (theme option: Text Size on Phones = Larger) - hibbittsdesign.org
+Quark's body text is 12.8px on phone-sized screens; this raises it to about 15px. Headings, the menu, buttons,
+form fields and spacing keep their own sizes, so the layout is unchanged.
+*/
+
+@media (max-width: 600px) {
+    body {
+        font-size: 0.95rem;
+    }
+}

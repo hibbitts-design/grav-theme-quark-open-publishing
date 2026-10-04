@@ -74,7 +74,7 @@ The easiest way to get started is the [Open Publishing Space](https://github.com
 
 Updating the theme keeps your pages and settings as they are, with the new features off until you turn them on. To use them:
 
-1. **New theme options** – replace the `form:` section of `user/themes/mytheme/blueprints.yaml` with the one from the theme's `blueprints.yaml`, so the Previous/Next Navigation Style option appears under **Themes → My Theme**
+1. **New theme options** – replace the `form:` section of `user/themes/mytheme/blueprints.yaml` with the one from the theme's `blueprints.yaml`, so the Previous/Next Navigation Style and Text Size on Phones options appear under **Themes → My Theme**
 2. **Search** – turn on the SimpleSearch plugin in **Plugins → SimpleSearch**; on sites set up with an earlier Open Publishing Space skeleton, also clear its **Category** filter (set to `blog`), or search finds only blog posts in that category
 3. **GitHub-style alerts** – install the [GitHub Markdown Alerts plugin](https://github.com/trilbymedia/grav-plugin-github-markdown-alerts) (Grav 2)
 4. **Multi-page content** – choose the Section List page type for a new page in the Admin Panel, or copy the `05.multi-page-content` example from the theme's `_demo/pages` folder
@@ -84,7 +84,7 @@ Updating the theme keeps your pages and settings as they are, with the new featu
 All options are available in the Admin Panel under **Themes → Quark Open Publishing**.
 
 - **Open Publishing Options** – chromeless site, H5P setup, Creative Commons license display, menu dropdowns, and the Previous/Next navigation style for multi-page content (classic buttons, or tiles with the reading progress)
-- **Quark Options** – Dark Mode, production mode, grid size, custom logos, header and footer defaults, blog page and hero classes, and Spectre.css options
+- **Quark Options** – Dark Mode, text size on phones, production mode, grid size, custom logos, header and footer defaults, blog page and hero classes, and Spectre.css options
 - **Custom Menu Items** – text, icon, URL, and target for extra menu links
 - **Git Sync Link** – location, link type (view or edit), icon and text, and a custom Git repository URL
 
@@ -107,7 +107,7 @@ The **Section List** page type (`section-list.md`) publishes a short guide or ha
 
 Settings, in the Admin Panel page editor:
 
-- **Section List page** – subtitle, cover image, author(s), edition, section label (e.g. "Unit" or "Chapter"), Start button text, search box, reading progress, cards per row, and OER attribution (license, license URL, and attribution text)
+- **Section List page** – subtitle, cover image (large, at the top, or small), author(s), edition, section label (e.g. "Unit" or "Chapter"), Start button text, search box, reading progress, cards per row, and OER attribution (license, license URL, and attribution text)
 - **Section** – section number, a section label override, Learning Objectives, and a card description and image
 - **Subsection** – Learning Objectives
 
@@ -120,7 +120,7 @@ When a guide grows into substantial, standalone content, it can move to [Grav He
 3. Rename the section folders to `section-1`, `section-2`, and so on (for example `01.section-1`), as in the Open Reader demo
 4. Set a `section_number` on each section to keep its label (e.g. "Unit 2") at the top of its pages
 
-Page settings, callout shortcodes, GitHub-style alerts, and embed shortcodes carry over unchanged.
+Page settings, callout shortcodes, GitHub-style alerts, and embed shortcodes carry over unchanged. The large and small cover layouts (`cover_image_layout`) are Open Publishing's own, so check how the cover looks in Open Reader.
 
 ## Search
 

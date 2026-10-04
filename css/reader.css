@@ -26,7 +26,7 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
 
 .reader-cover {
     flex: 0 0 auto;
-    width: 8rem;
+    width: 10rem;
     border-radius: 0.1rem;
     box-shadow: 0 10px 45px -9px rgba(0, 0, 0, 0.2);
 }
@@ -285,4 +285,16 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
 
 .reader-search form {
     margin: 0;
+}
+
+/* Large cover (the Section List page's default Cover Image Layout): the full width of the content area, at the top,
+   as in Helios Open Reader. Only very tall images are trimmed (to 36rem high, centred), so the page text stays in view. */
+.reader-cover-large {
+    display: block;
+    width: 100%;
+    max-height: 36rem;
+    object-fit: cover;
+    border-radius: 0.1rem;
+    box-shadow: 0 10px 45px -9px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1.2rem;
 }
