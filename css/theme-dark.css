@@ -485,7 +485,6 @@ mark {
 }
 
 .reader-header,
-.reader-attribution,
 .reader-prev-next {
     border-color: var(--qop-dark-divider);
 }
