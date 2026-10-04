@@ -1,5 +1,5 @@
 # v3.0.1
-## XX/XX/2026
+## 10/03/2026
 
 1. [](#new)
     * Cover Image Layout option for Section List pages: large (full width, the new default) or small
