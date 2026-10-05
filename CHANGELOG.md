@@ -1,5 +1,5 @@
 # v3.3.1
-## XX/XX/2026
+## 10/05/2026
 
 1. [](#new)
     * Section Label (Plural) setting, for the Sections link on phones
