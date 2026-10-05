@@ -1,3 +1,9 @@
+# v3.3.2
+## XX/XX/2026
+
+1. [](#improved)
+    * The Embedly script now loads only on pages with an Embedly card
+
 # v3.3.1
 ## 10/05/2026
 
