@@ -107,11 +107,19 @@ The **Section List** page type (`section-list.md`) publishes a guide as a set of
 
 The Section List page's own text appears above the section cards. To show some of it below the cards, as in Grav Helios Open Reader, add a line with just `===` – the text after it appears below the cards.
 
+Footnotes (`[^1]`) need Grav's Markdown Extra. Turn it on for the whole site with **Markdown Extra** in the Admin Panel's System Configuration, or for one page by adding this to its front matter:
+
+```yaml
+markdown:
+    extra: true
+```
+
 For longer guides:
 
 - **Parts** – give sections the same **Part** setting to group them under a heading on the home page and a label in the side list; section numbers, Previous/Next and the reading progress continue across parts
 - **Keep My Place** – when a reader returns, a **Continue reading** bar above the section cards links to the last page they visited (remembered in their browser), as in Grav Helios Open Reader; its close button forgets the place
 - **Previous/Next at the top** – compact Previous/Next links beside the link back to the home page, as well as the tiles at the bottom
+- **Comfortable reading** – section pages keep lines to a comfortable length with slightly larger text, wide tables scroll sideways, footnotes sit as small notes below the text, and on phones a **Contents** link jumps to the list of sections
 
 Settings, in the Admin Panel page editor:
 
