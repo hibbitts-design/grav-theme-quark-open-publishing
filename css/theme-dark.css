@@ -505,6 +505,11 @@ mark {
     color: var(--qop-dark-muted);
 }
 
+.reader-attribution a:hover,
+.reader-attribution a:focus {
+    color: var(--qop-dark-text);
+}
+
 .reader-header,
 .reader-prev-next,
 .reader-part-heading,

@@ -131,6 +131,17 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     margin: 0 0 0.3rem;
 }
 
+/* its links stay muted, like the text, so the line reads as fine print (underlined, so they still look like links) */
+.reader-attribution a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.reader-attribution a:hover,
+.reader-attribution a:focus {
+    color: #3b4351;
+}
+
 /* Section List page: a card for each section */
 .section-cards {
     list-style: none;
@@ -347,6 +358,12 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     padding-bottom: 0.4rem;
     margin: 1.6rem 0 1.2rem;
     border-bottom: 0.05rem solid #e7e9ed;
+}
+
+/* part headings (and h2 below the cards) a step larger than the card titles, so the groups stand out */
+.reader-part-heading,
+.section-list-below h2 {
+    font-size: 1.2rem;
 }
 
 /* Parts: a small label above each group of sections in the side list, styled like the section labels ("Unit 2") */
