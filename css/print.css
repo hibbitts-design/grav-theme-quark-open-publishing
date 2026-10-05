@@ -20,6 +20,7 @@ Based on the Grav Helios Open Reader print stylesheet. To leave something out of
     .reader-progress,
     .reader-prev-next,
     .reader-back-link,
+    .reader-contents-link,
     .reader-prev-next-top,
     .reader-resume,
     .section-list-start,
@@ -36,7 +37,8 @@ Based on the Grav Helios Open Reader print stylesheet. To leave something out of
     }
 
     /* Content fills the page */
-    #item {
+    #item,
+    #sections-content {
         flex: 0 0 100% !important;
         max-width: 100% !important;
         width: 100% !important;

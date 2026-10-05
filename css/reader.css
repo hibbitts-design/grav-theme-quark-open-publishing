@@ -313,7 +313,8 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
 }
 
 /* Link back to the Section List page, above a section's title (a plain link, like the rest of the theme), at body text size */
-.reader-back-link {
+.reader-back-link,
+.reader-contents-link {
     font-size: 0.8rem;
     margin: 0 0 0.8rem;
 }
@@ -333,11 +334,13 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     white-space: nowrap;
 }
 
-.reader-prev-next-top .fa {
+.reader-prev-next-top .fa,
+.reader-contents-link .fa {
     font-size: 0.65rem;
 }
 
 .reader-back-link a,
+.reader-contents-link a,
 .reader-prev-next-top a {
     display: inline-block;
     padding: 0.2rem 0; /* a little taller, for easier tapping */
@@ -346,6 +349,32 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
 .reader-prev-next-top-divider {
     color: #acb3c2;
     margin: 0 0.4rem;
+}
+
+/* the Contents link is only needed when the side list sits below the page (phones and narrow windows) */
+@media (min-width: 841px) {
+    .reader-contents-link {
+        display: none;
+    }
+}
+
+/* Section pages: comfortable reading, as in a book - a line length of at most about 80 characters of text
+   (centred when the page is embedded, without its side list), and the page's text a little larger */
+#sections-content {
+    max-width: 34rem;
+}
+
+#sections-content.col-12 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.reader-content p,
+.reader-content li,
+.reader-content dd,
+.reader-content blockquote {
+    font-size: 0.85rem;
+    line-height: 1.6;
 }
 
 /* Parts: a heading above each group of section cards, in the theme's heading style with its thin divider line.

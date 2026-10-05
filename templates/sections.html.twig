@@ -64,6 +64,8 @@
         {% set show_top_prev_next = reader_home.header.prev_next_position in ['both', 'top'] and not(hide_next_prev_page_buttons) %}
         <div class="reader-top-bar">
           <p class="reader-back-link"><a href="{{ reader_home.url }}"><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ reader_home.title }}</a></p>
+          {# On phones and narrow windows, where the side list of sections sits below the page, a link that jumps to it #}
+          <p class="reader-contents-link"><a href="#sections-nav"><i class="fa fa-list" aria-hidden="true"></i> {{ 'THEME_QUARK_OPEN_PUBLISHING.READER_CONTENTS'|t }}</a></p>
           {% if show_top_prev_next %}
             {% include 'partials/reader_prev_next.html.twig' with { position: 'top' } %}
           {% endif %}
@@ -81,12 +83,15 @@
         {% include 'partials/reader_header.html.twig' %}
       {% endif %}
 
-      {# Learning objectives from the page settings, shown as an [objectives] callout #}
-      {% if page.header.learning_objectives %}
-        {{ ('[objectives]' ~ page.header.learning_objectives|markdown ~ '[/objectives]')|shortcodes|raw }}
-      {% endif %}
+      {# The page's text, set for comfortable reading (see css/reader.css) #}
+      <div class="reader-content">
+        {# Learning objectives from the page settings, shown as an [objectives] callout #}
+        {% if page.header.learning_objectives %}
+          {{ ('[objectives]' ~ page.header.learning_objectives|markdown ~ '[/objectives]')|shortcodes|raw }}
+        {% endif %}
 
-      {{ page.content|raw }}
+        {{ page.content|raw }}
+      </div>
 
       {# Previous/Next navigation: tiles grouped with the reading progress (as in Helios Open Reader), or the classic buttons.
          Section List pages always use the tiles. Multi-Section pages use the classic buttons unless their
