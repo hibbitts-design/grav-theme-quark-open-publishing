@@ -356,6 +356,23 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     .reader-contents-link {
         display: none;
     }
+
+    /* the side list stays in view below the header while reading a long page; when the list of sections is taller
+       than the window, it scrolls on its own */
+    #sections-nav {
+        position: sticky;
+        top: 5rem;
+        align-self: flex-start;
+        display: flex;
+        flex-direction: column;
+        max-height: calc(100vh - 6rem);
+    }
+
+    #sections-nav > ul.nav {
+        min-height: 0;
+        overflow-y: auto;
+        padding-bottom: 0.1rem; /* room for rounding, so a list that fits doesn't show a scroll bar */
+    }
 }
 
 /* Section pages: comfortable reading, as in a book - a line length of at most about 80 characters of text
