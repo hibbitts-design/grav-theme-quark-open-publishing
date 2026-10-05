@@ -123,7 +123,7 @@ form:
               type: toggle
               label: 'Display Dropdowns in Menu'
               highlight: 1
-              default: 1
+              default: 0
               options:
                 '0': Disabled
                 '1': Enabled
