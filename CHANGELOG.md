@@ -7,6 +7,8 @@
     * Section pages are easier to read: a comfortable line length, slightly larger text, a Contents link on phones, and the page title as the largest heading
     * Wide tables scroll sideways on section pages, and footnotes are smaller
     * The list of sections stays in view beside section pages on wider screens
+1. [](#bugfix)
+    * The Display Dropdowns in Menu setting now shows Disabled by default, matching how the theme behaves
 
 # v3.3.0
 ## 10/05/2026
