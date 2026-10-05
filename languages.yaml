@@ -16,7 +16,7 @@ en:
         READER_COVER: '%s cover'
         READER_START: 'Start Reading'
         READER_PAGE_NAVIGATION: 'Page navigation'
-        READER_CONTENTS: 'Contents'
+        READER_SECTIONS: 'Sections'
         SKIP_TO_CONTENT: 'Skip to content'
         PAGINATION_PREVIOUS: 'Previous page'
         PAGINATION_NEXT: 'Next page'

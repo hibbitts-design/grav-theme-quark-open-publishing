@@ -108,6 +108,14 @@ form:
               placeholder: 'e.g. Chapter, Project, Unit, Module'
               help: 'Label shown above each section title with its number (e.g. "Chapter 1"). Leave empty to show no label.'
 
+            header.section_label_plural:
+              type: text
+              size: medium
+              label: Section Label (Plural)
+              toggleable: true
+              placeholder: 'e.g. Chapters, Projects, Units, Modules'
+              help: 'A short plural for the Sections link on phones (e.g. Chapters, Units). Leave empty to use Sections.'
+
             header.content.order.by:
               type: select
               label: Order By

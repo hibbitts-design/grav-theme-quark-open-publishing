@@ -64,8 +64,10 @@
         {% set show_top_prev_next = reader_home.header.prev_next_position in ['both', 'top'] and not(hide_next_prev_page_buttons) %}
         <div class="reader-top-bar">
           <p class="reader-back-link"><a href="{{ reader_home.url }}"><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ reader_home.title }}</a></p>
-          {# On phones and narrow windows, where the side list of sections sits below the page, a link that jumps to it #}
-          <p class="reader-contents-link"><a href="#sections-nav"><i class="fa fa-list" aria-hidden="true"></i> {{ 'THEME_QUARK_OPEN_PUBLISHING.READER_CONTENTS'|t }}</a></p>
+          {# On phones and narrow windows, where the side list of sections sits below the page, a link that jumps to it.
+             It says "Sections", or the guide's own plural label (Section Label (Plural) setting, e.g. "Chapters") #}
+          {% set sections_link_text = reader_home.header.section_label_plural ?: 'THEME_QUARK_OPEN_PUBLISHING.READER_SECTIONS'|t %}
+          <p class="reader-sections-link"><a href="#sections-nav"><i class="fa fa-list" aria-hidden="true"></i> {{ sections_link_text }}</a></p>
           {% if show_top_prev_next %}
             {% include 'partials/reader_prev_next.html.twig' with { position: 'top' } %}
           {% endif %}

@@ -314,7 +314,7 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
 
 /* Link back to the Section List page, above a section's title (a plain link, like the rest of the theme), at body text size */
 .reader-back-link,
-.reader-contents-link {
+.reader-sections-link {
     font-size: 0.8rem;
     margin: 0 0 0.8rem;
 }
@@ -335,12 +335,12 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
 }
 
 .reader-prev-next-top .fa,
-.reader-contents-link .fa {
+.reader-sections-link .fa {
     font-size: 0.65rem;
 }
 
 .reader-back-link a,
-.reader-contents-link a,
+.reader-sections-link a,
 .reader-prev-next-top a {
     display: inline-block;
     padding: 0.2rem 0; /* a little taller, for easier tapping */
@@ -351,9 +351,9 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     margin: 0 0.4rem;
 }
 
-/* the Contents link is only needed when the side list sits below the page (phones and narrow windows) */
+/* the Sections link is only needed when the side list sits below the page (phones and narrow windows) */
 @media (min-width: 841px) {
-    .reader-contents-link {
+    .reader-sections-link {
         display: none;
     }
 
