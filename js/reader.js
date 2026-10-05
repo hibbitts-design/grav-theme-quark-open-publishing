@@ -3,6 +3,7 @@ Keep My Place for multi-page content (as in Grav Helios Open Reader) - hibbittsd
 On a section or subsection page, remember it in the reader's browser (localStorage).
 On its Section List page, show a "Continue reading" bar linking to that page; its close button forgets the saved place.
 Each Section List page has its own saved place.
+Also, on section pages, wide tables scroll sideways inside the text column instead of running past it.
 */
 (function () {
 
@@ -57,6 +58,21 @@ Each Section List page has its own saved place.
                     nextPlace.focus();
                 }
             });
+        }
+    }
+
+    // On a section page: put each table in the page's text inside a box that scrolls sideways when the table is too wide
+    var tables = document.querySelectorAll('.reader-content table');
+    for (var i = 0; i < tables.length; i++) {
+        var table = tables[i];
+        var scrollBox = document.createElement('div');
+        scrollBox.className = 'reader-table-scroll';
+        table.parentNode.insertBefore(scrollBox, table);
+        scrollBox.appendChild(table);
+
+        // when the table is too wide, keyboard users can reach the box with Tab and scroll it with the arrow keys
+        if (scrollBox.scrollWidth > scrollBox.clientWidth) {
+            scrollBox.tabIndex = 0;
         }
     }
 

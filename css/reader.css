@@ -377,6 +377,41 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     line-height: 1.6;
 }
 
+/* the section's title is the largest heading on the page, as in a book's chapter title,
+   and the headings in the page's text a step below it */
+#sections-content .sections-page-title-template {
+    font-size: 1.6rem;
+}
+
+.reader-content h2 {
+    font-size: 1.3rem;
+}
+
+.reader-content h3 {
+    font-size: 1.1rem;
+}
+
+.reader-content h4 {
+    font-size: 0.95rem;
+}
+
+/* wide tables scroll sideways inside the text column (js/reader.js puts each table in this box) */
+.reader-table-scroll {
+    overflow-x: auto;
+    margin-bottom: 1.2rem;
+}
+
+.reader-table-scroll table {
+    margin-bottom: 0;
+}
+
+/* footnotes (with Markdown Extra) as smaller, muted notes below the text */
+.reader-content .footnotes p,
+.reader-content .footnotes li {
+    font-size: 0.7rem;
+    color: #667189;
+}
+
 /* Parts: a heading above each group of section cards, in the theme's heading style with its thin divider line.
    Headings in the text below the cards (after === in the Section List page's text) look the same. */
 .reader-part-heading,

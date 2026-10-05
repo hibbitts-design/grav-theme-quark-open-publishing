@@ -501,7 +501,9 @@ mark {
 .reader-edition,
 .reader-progress-text,
 .reader-attribution,
-.reader-nav-label {
+.reader-nav-label,
+.reader-content .footnotes p,
+.reader-content .footnotes li {
     color: var(--qop-dark-muted);
 }
 

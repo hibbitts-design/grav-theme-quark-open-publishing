@@ -9,8 +9,22 @@ form fields and spacing keep their own sizes, so the layout is unchanged.
         font-size: 0.95rem;
     }
 
+    /* the text of section pages, which is a little larger than body text, scaled by about the same amount */
+    .reader-content p,
+    .reader-content li,
+    .reader-content dd,
+    .reader-content blockquote {
+        font-size: 1rem;
+    }
+
+    .reader-content .footnotes p,
+    .reader-content .footnotes li {
+        font-size: 0.85rem;
+    }
+
     /* Smaller text on Section List and section pages has its own sizes, so scale it by about the same amount */
     .reader-back-link,
+    .reader-contents-link,
     .reader-prev-next-top,
     .reader-attribution {
         font-size: 0.9rem;
