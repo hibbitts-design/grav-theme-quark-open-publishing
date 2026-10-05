@@ -4,6 +4,7 @@
 1. [](#improved)
     * Larger links above section pages, with spacing to match
     * Part headings stand out more from the section cards, and the OER attribution's links are muted
+    * Section pages are easier to read: a comfortable line length, slightly larger text, and a Contents link on phones
 
 # v3.3.0
 ## 10/05/2026
