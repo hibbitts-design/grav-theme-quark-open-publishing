@@ -8,5 +8,7 @@ streams:
                 - themes://quark
 dark_mode:
   mode: disabled
+dropdown:
+  enabled: false
 sections_prev_next_style: buttons
 phone_text_size: standard
