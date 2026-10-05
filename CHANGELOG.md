@@ -6,6 +6,7 @@
     * Part headings stand out more from the section cards, and the OER attribution's links are muted
     * Section pages are easier to read: a comfortable line length, slightly larger text, a Contents link on phones, and the page title as the largest heading
     * Wide tables scroll sideways on section pages, and footnotes are smaller
+    * The list of sections stays in view beside section pages on wider screens
 
 # v3.3.0
 ## 10/05/2026
