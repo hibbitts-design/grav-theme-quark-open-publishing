@@ -1,4 +1,4 @@
-{# Section List page: a reader home with its details, a Start Reading button and a card for each section (as in Helios Open Reader).
+{# Section List page: a reader home with its details and Start Reading button, and a card for each section (as in Helios Open Reader).
    Its sections and subsections use the same templates as the Multi-Section page - hibbittsdesign.org #}
 {% extends 'partials/base.html.twig' %}
 
@@ -27,10 +27,19 @@
     {% endif %}
 
     {% if show_title and not title_beside_cover %}
-      <h3 class="sections-page-title-template">{{ page.title }}</h3>
+      <h1 class="sections-page-title-template h3">{{ page.title }}</h1>
     {% endif %}
 
-    {% include 'partials/reader_header.html.twig' with { hide_cover: large_cover, show_title: show_title and title_beside_cover } %}
+    {# Start button, linking to the first section, at the end of the details (an empty start_button_text hides it) #}
+    {% if page.header.start_button_text is defined %}
+      {% set start_text = page.header.start_button_text %}
+    {% else %}
+      {% set start_text = 'THEME_QUARK_OPEN_PUBLISHING.READER_START'|t %}
+    {% endif %}
+    {% set first_section = reader_sections|first %}
+    {% set start_url = (start_text and first_section) ? first_section.url ~ filter_suffix : '' %}
+
+    {% include 'partials/reader_header.html.twig' with { hide_cover: large_cover, show_title: show_title and title_beside_cover, start_text: start_text, start_url: start_url } %}
 
     {# Text above and below the section cards, as in Helios Open Reader: a line with just === in the page's content
        splits it, with the text before it above the cards and the text after it below them (=== is Grav's summary
@@ -49,28 +58,24 @@
 
     {{ content_above|raw }}
 
-    {# Start button, linking to the first section (an empty start_button_text hides it) #}
-    {% if page.header.start_button_text is defined %}
-      {% set start_text = page.header.start_button_text %}
-    {% else %}
-      {% set start_text = 'THEME_QUARK_OPEN_PUBLISHING.READER_START'|t %}
-    {% endif %}
-    {% set first_section = reader_sections|first %}
-
-    {# A search box beside the Start button (Show Search Box setting, on unless turned off; hidden in embedded mode) #}
+    {# One row above the section cards for finding your place in this guide, full width and stacked on phones:
+       - Keep My Place (on unless turned off): for a reader who has visited a section or subsection page before, a
+         "Continue reading" bar links to that page, as in Helios Open Reader. js/reader.js fills it in from the
+         reader's browser and shows it; its close button forgets the saved place.
+       - A search box for this guide on the right (Show Search Box setting, on unless turned off; hidden in embedded
+         mode). #}
+    {% set show_reader_resume = page.header.keep_my_place is not defined or page.header.keep_my_place %}
     {% set show_reader_search = (page.header.show_search_box is not defined or page.header.show_search_box)
       and (config.plugins.simplesearch.enabled or config.plugins.tntsearch.enabled) and not embedded_mode %}
 
-    {% if (start_text and first_section) or show_reader_search %}
+    {% if show_reader_resume or show_reader_search %}
       <div class="section-list-actions">
-        {% if start_text and first_section %}
-          {# Keep My Place (on unless turned off): when this reader has visited a section or subsection page before,
-             js/reader.js changes this button to Continue Reading, linking to that page, as in Helios Open Reader #}
-          {% set keep_my_place = page.header.keep_my_place is not defined or page.header.keep_my_place %}
-          <p class="section-list-start">
-            <a class="btn btn-primary" href="{{ first_section.url ~ filter_suffix }}"
-              {%- if keep_my_place %} data-reader-home="{{ page.url }}" data-continue-text="{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_CONTINUE_READING'|t }}"{% endif %}><span class="section-list-start-text">{{ start_text }}</span> <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
-          </p>
+        {% if show_reader_resume %}
+          <div class="reader-resume" data-reader-home="{{ page.url }}" hidden>
+            <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+            <a class="reader-resume-link" href="#">{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_RESUME'|t }}: <span class="reader-resume-title"></span></a>
+            <button type="button" class="reader-resume-dismiss" aria-label="{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_RESUME_DISMISS'|t|e('html_attr') }}"><span aria-hidden="true">&times;</span></button>
+          </div>
         {% endif %}
         {% if show_reader_search %}
           <div class="reader-search">
@@ -114,7 +119,7 @@
 
     {% for part_group in part_groups %}
       {% if part_group.title %}
-        <h4 class="reader-part-heading">{{ part_group.title }}</h4>
+        <h2 class="reader-part-heading">{{ part_group.title }}</h2>
       {% endif %}
       <ul class="section-cards columns">
         {% for section_item in part_group.sections %}
@@ -133,8 +138,9 @@
                 {% if label|length > 0 %}
                   <p class="reader-section-label">{{ label }}</p>
                 {% endif %}
-                {# the link covers the whole card (see css/reader.css); below a part's heading, the card title is one heading level lower #}
-                {% set card_heading = part_group.title ? 'h5' : 'h4' %}
+                {# the link covers the whole card (see css/reader.css). Heading levels: the page title is h1, part headings h2,
+                   and card titles h2, or h3 below a part's heading (the h5 class keeps their size the same) #}
+                {% set card_heading = part_group.title ? 'h3' : 'h2' %}
                 <{{ card_heading }} class="card-title h5"><a class="section-card-link" href="{{ section_item.url ~ filter_suffix }}">{{ section_item.title }}</a></{{ card_heading }}>
               </div>
               {% if section_item.header.description %}

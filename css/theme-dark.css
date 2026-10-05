@@ -163,6 +163,25 @@ summary:focus-visible {
     color: var(--qop-dark-text);
 }
 
+/* Keep My Place: the "Continue reading" bar on the Section List page */
+.reader-resume {
+    background: rgba(114, 172, 243, 0.15);
+}
+
+.reader-resume > .fa,
+.reader-resume-title {
+    color: var(--qop-dark-link);
+}
+
+.reader-resume-dismiss:hover,
+.reader-resume-dismiss:focus {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.reader-resume-dismiss:focus-visible {
+    outline-color: var(--qop-dark-link);
+}
+
 .label.label-secondary {
     background: rgba(114, 172, 243, 0.15);
     color: var(--qop-dark-link);

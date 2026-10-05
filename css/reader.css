@@ -51,6 +51,11 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     font-size: 0.7rem;
 }
 
+/* the Start button at the end of the details (Section List pages) */
+.reader-details .section-list-start {
+    margin: 0.6rem 0 0;
+}
+
 /* On phones, the cover image goes above the details */
 @media (max-width: 600px) {
     .reader-header {
@@ -61,7 +66,7 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
 /* Section List page with a small cover: the cover always has the same 4:3 shape (cropped from the centre to fill it),
    with the title at the top of the details beside it. On phones the cover is full width, above the details. */
 .section-list-page .reader-cover {
-    width: 12rem;
+    width: 14.5rem;
     aspect-ratio: 4 / 3;
     object-fit: cover;
 }
@@ -116,11 +121,7 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     margin: 0 0 0.3rem;
 }
 
-/* Section List page: Start Reading button, search box and a card for each section */
-.section-list-start {
-    margin: 1.2rem 0;
-}
-
+/* Section List page: a card for each section */
 .section-cards {
     list-style: none;
     margin: 0 -0.4rem 1.2rem;
@@ -353,21 +354,108 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     margin-right: 0.15rem;
 }
 
-/* Search box beside the Start button, and above the side list on section pages */
+/* The row above the section cards: the "Continue reading" bar on the left and the guide's search box on the right
+   (stacked and full width on phones). The row is hidden when it has nothing to show. */
 .section-list-actions {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    gap: 0.8rem 1.2rem;
+    gap: 0.8rem;
     margin: 1.2rem 0;
 }
 
-.section-list-actions .section-list-start {
-    margin: 0;
+.section-list-actions:not(:has(> :not([hidden]))) {
+    display: none;
 }
 
 .section-list-actions .reader-search {
     flex: 0 1 16rem;
+    margin-left: auto; /* on the right, the same side as the search box on section pages */
+}
+
+@media (max-width: 600px) {
+    .section-list-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .section-list-actions .reader-search {
+        flex-basis: auto;
+        margin-left: 0;
+    }
+}
+
+/* Keep My Place: the "Continue reading" bar, as in Helios Open Reader. It uses Spectre's light tint of Quark's
+   blue (as on secondary labels), the height of the search box beside it, and a round close button like
+   Spectre's clear button. The icon, title and focus ring use a darker blue than Quark's, and the close button a
+   darker grey, for enough contrast on the tint. */
+.reader-resume {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    gap: 0.4rem;
+    min-height: 1.8rem;
+    padding: 0.2rem 0.3rem 0.2rem 0.6rem;
+    background: #e1edfd;
+    border-radius: 0.1rem;
+}
+
+.reader-resume[hidden] {
+    display: none;
+}
+
+.reader-resume > .fa {
+    color: #1565c0;
+    flex: 0 0 auto;
+}
+
+.reader-resume-link {
+    flex: 1;
+    min-width: 0;
+    color: inherit;
+}
+
+.reader-resume-title {
+    color: #1565c0;
+    font-weight: 600;
+}
+
+.reader-resume-link:hover,
+.reader-resume-link:focus {
+    color: inherit;
+    text-decoration: none;
+}
+
+.reader-resume-link:hover .reader-resume-title {
+    text-decoration: underline;
+}
+
+.reader-resume-dismiss {
+    flex: 0 0 auto;
+    width: 1.4rem;
+    height: 1.4rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: inherit;
+    font-size: 1rem;
+    line-height: 1;
+    opacity: 0.8;
+    cursor: pointer;
+    transition: background 0.2s, opacity 0.2s;
+}
+
+.reader-resume-dismiss:hover,
+.reader-resume-dismiss:focus {
+    background: rgba(255, 255, 255, 0.6);
+    opacity: 1;
+}
+
+.reader-resume-dismiss:focus-visible {
+    outline: 2px solid #1565c0;
+    outline-offset: 1px;
 }
 
 #sections-nav .reader-search {

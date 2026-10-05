@@ -1,7 +1,7 @@
 /*
 Keep My Place for multi-page content (as in Grav Helios Open Reader) - hibbittsdesign.org
 On a section or subsection page, remember it in the reader's browser (localStorage).
-On its Section List page, change the Start button to "Continue Reading", linking to that page.
+On its Section List page, show a "Continue reading" bar linking to that page; its close button forgets the saved place.
 Each Section List page has its own saved place.
 */
 (function () {
@@ -24,23 +24,39 @@ Each Section List page has its own saved place.
         }
     }
 
-    // On a Section List page: if a page was remembered, the Start button continues from it
-    var startButton = document.querySelector('.section-list-start a[data-reader-home]');
-    if (startButton) {
+    // On a Section List page: if a page was remembered, show the "Continue reading" bar
+    var resume = document.querySelector('.reader-resume');
+    if (resume) {
+        var key = savedPlaceKey(resume.dataset.readerHome);
         var saved = null;
         try {
-            saved = JSON.parse(localStorage.getItem(savedPlaceKey(startButton.dataset.readerHome)));
+            saved = JSON.parse(localStorage.getItem(key));
         } catch (e) {
             saved = null;
         }
 
         if (saved && saved.url) {
             // (js/my.js carries ?embedded=true forward when the link is followed, as for other links)
-            startButton.href = saved.url;
-            startButton.querySelector('.section-list-start-text').textContent = startButton.dataset.continueText;
-            // the page's title, shown when hovering over the button and read by screen readers
-            startButton.title = saved.title;
-            startButton.setAttribute('aria-label', startButton.dataset.continueText + ': ' + saved.title);
+            resume.querySelector('.reader-resume-link').href = saved.url;
+            resume.querySelector('.reader-resume-title').textContent = saved.title;
+            resume.hidden = false;
+
+            // the close button forgets the saved place and hides the bar
+            resume.querySelector('.reader-resume-dismiss').addEventListener('click', function () {
+                try {
+                    localStorage.removeItem(key);
+                } catch (e) {
+                    // nothing to forget
+                }
+                resume.hidden = true;
+
+                // the button has gone, so keyboard and screen reader users continue from the search box beside it,
+                // or the first section card when there's no search box
+                var nextPlace = document.querySelector('.section-list-actions .reader-search input:not([type="hidden"]), .section-card-link');
+                if (nextPlace) {
+                    nextPlace.focus();
+                }
+            });
         }
     }
 

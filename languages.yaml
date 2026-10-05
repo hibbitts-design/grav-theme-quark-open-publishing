@@ -16,6 +16,10 @@ en:
         READER_COVER: '%s cover'
         READER_START: 'Start Reading'
         READER_PAGE_NAVIGATION: 'Page navigation'
+        SKIP_TO_CONTENT: 'Skip to content'
+        PAGINATION_PREVIOUS: 'Previous page'
+        PAGINATION_NEXT: 'Next page'
+        PAGINATION_PAGE: 'Page %s'
         READER_PAGE_NAVIGATION_TOP: 'Page navigation, top'
         READER_PREVIOUS: 'Previous'
         READER_NEXT: 'Next'
@@ -23,7 +27,8 @@ en:
         READER_PAGE_PROGRESS: 'Page %s of %s'
         READER_UPDATED: 'Updated %s'
         READER_DATE_FORMAT: 'M j, Y'
-        READER_CONTINUE_READING: 'Continue Reading'
+        READER_RESUME: 'Continue reading'
+        READER_RESUME_DISMISS: 'Dismiss Continue reading'
         OPENS_IN_NEW_TAB: '(opens in new tab)'
     THEME_QUARK:
         BLOG:

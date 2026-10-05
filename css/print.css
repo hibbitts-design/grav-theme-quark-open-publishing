@@ -21,6 +21,8 @@ Based on the Grav Helios Open Reader print stylesheet. To leave something out of
     .reader-prev-next,
     .reader-back-link,
     .reader-prev-next-top,
+    .reader-resume,
+    .section-list-start,
     .reader-search,
     .gitrepo-link-note,
     .no-print {

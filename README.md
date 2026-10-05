@@ -110,12 +110,12 @@ The Section List page's own text appears above the section cards. To show some o
 For longer guides:
 
 - **Parts** – give sections the same **Part** setting to group them under a heading on the home page and a label in the side list; section numbers, Previous/Next and the reading progress continue across parts
-- **Keep My Place** – when a reader returns, the home page's Start button becomes **Continue Reading** and links to the last page they visited (remembered in their browser)
+- **Keep My Place** – when a reader returns, a **Continue reading** bar above the section cards links to the last page they visited (remembered in their browser), as in Grav Helios Open Reader; its close button forgets the place
 - **Previous/Next at the top** – compact Previous/Next links beside the link back to the home page, as well as the tiles at the bottom
 
 Settings, in the Admin Panel page editor:
 
-- **Section List page** – subtitle, cover image (small, beside the title and details, or large at the top), author(s), edition, last updated date, section label (e.g. "Unit" or "Chapter"), Start button text, search box, reading progress, Keep My Place, Previous/Next position (bottom, or top and bottom), cards per row, and OER attribution (license, license URL, and attribution text)
+- **Section List page** – subtitle, cover image (small, beside the title and details, or large at the top), author(s), edition, last updated date, Start button text (the button below the details, linking to the first section), section label (e.g. "Unit" or "Chapter"), search box, reading progress, Keep My Place, Previous/Next position (bottom, or top and bottom), cards per row, and OER attribution (license, license URL, and attribution text)
 - **Section** – section number, a section label override, Part, Learning Objectives, and a card description and image
 - **Subsection** – Learning Objectives
 

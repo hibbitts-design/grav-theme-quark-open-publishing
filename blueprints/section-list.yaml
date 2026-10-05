@@ -142,7 +142,7 @@ form:
               toggleable: true
               default: 'Start Reading'
               placeholder: 'e.g. Start Reading, Browse Projects, View Guides'
-              help: 'Text for the button linking to the first section. Leave empty to hide the button.'
+              help: 'Text for the button below the page details at the top, linking to the first section. Leave empty to hide the button.'
 
             header.show_search_box:
               type: toggle
@@ -183,7 +183,7 @@ form:
                 0: PLUGIN_ADMIN.DISABLED
               validate:
                 type: bool
-              help: 'Remember the last section or subsection page each reader visited (in their own browser). When they return, the Start button on this page becomes "Continue Reading" and links to that page.'
+              help: 'Remember the last section or subsection page each reader visited (in their own browser). When they return, a "Continue reading" bar above the section cards on this page links to that page, as in Helios Open Reader.'
 
             header.prev_next_position:
               type: select

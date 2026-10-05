@@ -61,8 +61,13 @@
 <body id="top" class="{% block body_classes %}{{ body_classes }}{% endblock %}">
     <div id="page-wrapper">
 
-    {# added hidden page title for screen readers - hibbittsdesign.org #}
+    {# The page title as a hidden h1 for screen readers - except on guide pages (Section List and Multi-Section pages and their
+       sections), which show their title as a visible h1, unless it's hidden - hibbittsdesign.org #}
+    {% set has_visible_h1 = page.template in ['section-list', 'sections', 'section', 'subsection']
+      and not page.header.hide_page_title and not grav.uri.param('hidepagetitle') %}
+    {% if not has_visible_h1 %}
     <h1 class="hidden">{{ page.title }}</h1>
+    {% endif %}
 
     {# check content display flag - hibbittsdesign.org #}
     {% if not embedded_mode and not(theme_var('chromeless.enabled')) %}

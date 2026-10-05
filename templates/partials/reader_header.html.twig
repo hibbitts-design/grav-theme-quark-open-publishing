@@ -1,17 +1,19 @@
 {# Reader details on the reader home (Multi-Section or Section List page): subtitle, cover image, author(s), edition, last updated date and license (as in Helios Open Reader) - hibbittsdesign.org #}
 {# hide_cover leaves the cover out here, when the Section List page shows it large at the top instead;
-   show_title puts the page title at the top of the details, beside a small cover (Section List pages) #}
+   show_title puts the page title at the top of the details, beside a small cover (Section List pages);
+   start_url and start_text add the Start button at the end of the details (Section List pages) #}
 {% set hide_cover = hide_cover ?? false %}
 {% set show_title = show_title ?? false %}
+{% set start_url = start_url ?? '' %}
 {% set cover = (page.header.cover_image and not hide_cover) ? page.media[page.header.cover_image] : null %}
-{% if page.header.subtitle or cover or page.header.authors or page.header.edition or page.header.last_updated or page.header.license %}
+{% if page.header.subtitle or cover or page.header.authors or page.header.edition or page.header.last_updated or page.header.license or start_url %}
     <div class="reader-header">
         {% if cover %}
             <img class="reader-cover img-responsive" src="{{ cover.url }}" alt="{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_COVER'|t(page.title) }}">
         {% endif %}
         <div class="reader-details">
             {% if show_title %}
-                <h3 class="sections-page-title-template">{{ page.title }}</h3>
+                <h1 class="sections-page-title-template h3">{{ page.title }}</h1>
             {% endif %}
             {% if page.header.subtitle %}
                 <p class="reader-subtitle">{{ page.header.subtitle }}</p>
@@ -30,6 +32,11 @@
             {% endif %}
             {% if page.header.license %}
                 <p><span class="label label-rounded reader-license">{{ page.header.license }}</span></p>
+            {% endif %}
+            {% if start_url %}
+                <p class="section-list-start">
+                    <a class="btn btn-primary" href="{{ start_url }}">{{ start_text }} <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                </p>
             {% endif %}
         </div>
     </div>
