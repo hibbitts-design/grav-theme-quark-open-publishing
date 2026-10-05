@@ -1,3 +1,13 @@
+# v3.3.0
+## 10/05/2026
+
+1. [](#new)
+    * Continue reading bar for returning readers on Section List pages, as in Helios Open Reader, replacing Continue Reading on the Start button
+1. [](#improved)
+    * Start button now sits below the guide's title and details, with a larger small cover image
+    * Search box now shares a row with the Continue reading bar
+    * Page titles on guide pages are now level 1 headings, with part and card headings below them
+
 # v3.2.0
 ## 10/04/2026
 
