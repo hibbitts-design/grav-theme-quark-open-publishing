@@ -4,14 +4,19 @@ Uses Quark's own visual language: blog-style cards (no border, soft shadow), Qua
 dividers, Spectre components (card, label, bar, btn), and link-style hover feedback. Dark Mode colours are in theme-dark.css.
 */
 
-/* Small label above a section's title, for example "Unit 2" (styled like Quark's other small uppercase labels) */
+/* Small label above a section's title, for example "Unit 2" (styled like Quark's other small uppercase labels);
+   smaller on the section cards */
 .reader-section-label {
     color: #667189;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     margin: 0 0 0.2rem;
+}
+
+.section-card .reader-section-label {
+    font-size: 0.7rem;
 }
 
 /* Cover image beside the subtitle, author(s), edition and license */
@@ -73,6 +78,11 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
 
 .reader-details .sections-page-title-template {
     margin-top: 0;
+}
+
+/* on section pages, more space below the title, as in Quark 2 Open Publishing */
+.reader-top-bar ~ .sections-page-title-template {
+    margin-bottom: 1.2rem;
 }
 
 @media (max-width: 600px) {
@@ -291,10 +301,10 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     }
 }
 
-/* Link back to the Section List page, above a section's title (a plain link, like the rest of the theme) */
+/* Link back to the Section List page, above a section's title (a plain link, like the rest of the theme), at body text size */
 .reader-back-link {
-    font-size: 0.75rem;
-    margin: 0 0 0.6rem;
+    font-size: 0.8rem;
+    margin: 0 0 0.8rem;
 }
 
 /* The back link, with the compact Previous/Next links on the right (Prev/Next Page Controls Position: Top and bottom) */
@@ -307,13 +317,19 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
 }
 
 .reader-prev-next-top {
-    font-size: 0.75rem;
-    margin: 0 0 0.6rem;
+    font-size: 0.8rem;
+    margin: 0 0 0.8rem;
     white-space: nowrap;
 }
 
 .reader-prev-next-top .fa {
     font-size: 0.65rem;
+}
+
+.reader-back-link a,
+.reader-prev-next-top a {
+    display: inline-block;
+    padding: 0.2rem 0; /* a little taller, for easier tapping */
 }
 
 .reader-prev-next-top-divider {
