@@ -165,7 +165,24 @@
 {# added global scripts - hibbittsdesign.org #}
 {% include 'partials/scripts.html.twig' %}
 
-<script async charset="utf-8" src="//cdn.embedly.com/widgets/platform.js"></script>
+<script>
+    // The Embedly script, only on pages with an Embedly card (from the [embedly] shortcode, an Embedly Card page,
+    // or embedded media), so other pages don't contact Embedly - hibbittsdesign.org
+    // This waits until the page has loaded, so any cards made by other scripts are there too.
+    document.addEventListener('DOMContentLoaded', function () {
+        var card = document.querySelector('a.embedly-card');
+
+        // the Embedly shortcode may have added the script already
+        var embedlyScript = document.querySelector('script[src*="cdn.embedly.com/widgets/platform.js"]');
+
+        if (card && !embedlyScript) {
+            var newScript = document.createElement('script');
+            newScript.src = 'https://cdn.embedly.com/widgets/platform.js';
+            newScript.async = true;
+            document.body.appendChild(newScript);
+        }
+    });
+</script>
 
 {% block bottom %}
     {{ assets.js('bottom')|raw }}

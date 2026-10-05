@@ -5,6 +5,9 @@ On its Section List page, show a "Continue reading" bar linking to that page; it
 Each Section List page has its own saved place.
 Also, on section pages, wide tables scroll sideways inside the text column instead of running past it.
 */
+
+// Everything is inside this function, which runs straight away, so its variable names
+// can't clash with other scripts on the page
 (function () {
 
     // The storage name for one Section List page's saved place
@@ -12,15 +15,19 @@ Also, on section pages, wide tables scroll sideways inside the text column inste
         return 'qop-last-page|' + readerHomeUrl;
     }
 
-    // On a section or subsection page: remember this page
+    // On a section or subsection page: remember this page.
+    // The template adds a hidden element with the page's details in data- attributes
+    // (data-reader-home, data-url and data-title, which JavaScript reads as dataset.readerHome and so on).
     var savePlace = document.querySelector('.reader-save-place');
     if (savePlace) {
+        var placeDetails = {
+            url: savePlace.dataset.url,
+            title: savePlace.dataset.title
+        };
         try {
-            localStorage.setItem(savedPlaceKey(savePlace.dataset.readerHome), JSON.stringify({
-                url: savePlace.dataset.url,
-                title: savePlace.dataset.title
-            }));
-        } catch (e) {
+            // localStorage only stores text, so the details are turned into text (JSON) first
+            localStorage.setItem(savedPlaceKey(savePlace.dataset.readerHome), JSON.stringify(placeDetails));
+        } catch (error) {
             // storage not available (for example in some private windows): nothing is remembered
         }
     }
@@ -31,8 +38,9 @@ Also, on section pages, wide tables scroll sideways inside the text column inste
         var key = savedPlaceKey(resume.dataset.readerHome);
         var saved = null;
         try {
+            // turn the stored text back into details (null when nothing was saved)
             saved = JSON.parse(localStorage.getItem(key));
-        } catch (e) {
+        } catch (error) {
             saved = null;
         }
 
@@ -43,17 +51,22 @@ Also, on section pages, wide tables scroll sideways inside the text column inste
             resume.hidden = false;
 
             // the close button forgets the saved place and hides the bar
-            resume.querySelector('.reader-resume-dismiss').addEventListener('click', function () {
+            var dismissButton = resume.querySelector('.reader-resume-dismiss');
+            dismissButton.addEventListener('click', function () {
                 try {
                     localStorage.removeItem(key);
-                } catch (e) {
+                } catch (error) {
                     // nothing to forget
                 }
                 resume.hidden = true;
 
-                // the button has gone, so keyboard and screen reader users continue from the search box beside it,
-                // or the first section card when there's no search box
-                var nextPlace = document.querySelector('.section-list-actions .reader-search input:not([type="hidden"]), .section-card-link');
+                // The button has gone, so keyboard and screen reader users continue from the search box beside it,
+                // or from the first section card when there's no search box
+                // (both the SimpleSearch and TNTSearch plugins give their search field the "form-input" class)
+                var nextPlace = document.querySelector('.section-list-actions .reader-search .form-input');
+                if (!nextPlace) {
+                    nextPlace = document.querySelector('.section-card-link');
+                }
                 if (nextPlace) {
                     nextPlace.focus();
                 }
@@ -65,12 +78,14 @@ Also, on section pages, wide tables scroll sideways inside the text column inste
     var tables = document.querySelectorAll('.reader-content table');
     for (var i = 0; i < tables.length; i++) {
         var table = tables[i];
+
+        // make the box, put it where the table is, then move the table into it
         var scrollBox = document.createElement('div');
         scrollBox.className = 'reader-table-scroll';
         table.parentNode.insertBefore(scrollBox, table);
         scrollBox.appendChild(table);
 
-        // when the table is too wide, keyboard users can reach the box with Tab and scroll it with the arrow keys
+        // when the table is wider than the box, keyboard users can reach the box with Tab and scroll it with the arrow keys
         if (scrollBox.scrollWidth > scrollBox.clientWidth) {
             scrollBox.tabIndex = 0;
         }
