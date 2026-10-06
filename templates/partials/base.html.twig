@@ -23,7 +23,7 @@
     {% do assets.addCss('theme://css-compiled/theme'~compress) %}
     {% do assets.addCss('theme://css/theme.css',100) %}
     {# multi-page content (Section List and Multi-Section pages), loaded before Dark Mode so its colours can be changed there - hibbittsdesign.org #}
-    {% if page.template in ['sections', 'section', 'subsection', 'section-list'] %}
+    {% if page.template in ['sections', 'section', 'subsection', 'section-page', 'section-list'] %}
       {% do assets.addCss('theme://css/reader.css') %}
       {% do assets.addJs('theme://js/reader.js', {group:'bottom'}) %}
     {% endif %}
@@ -63,7 +63,7 @@
 
     {# The page title as a hidden h1 for screen readers - except on guide pages (Section List and Multi-Section pages and their
        sections), which show their title as a visible h1, unless it's hidden - hibbittsdesign.org #}
-    {% set has_visible_h1 = page.template in ['section-list', 'sections', 'section', 'subsection']
+    {% set has_visible_h1 = page.template in ['section-list', 'sections', 'section', 'subsection', 'section-page']
       and not page.header.hide_page_title and not grav.uri.param('hidepagetitle') %}
     {% if not has_visible_h1 %}
     <h1 class="hidden">{{ page.title }}</h1>

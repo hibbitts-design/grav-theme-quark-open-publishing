@@ -103,7 +103,7 @@ Add these to any page URL, for example `https://yoursite.com/blog/my-post/chrome
 
 ## Multi-Page Content
 
-The **Section List** page type (`section-list.md`) publishes a guide as a set of pages: a home page with a card for each section, then each section (`section.md`) and its subsections (`subsection.md`). Section pages have a side list of the sections, Previous/Next navigation, a link back to the home page, and a search box. The earlier **Sections** page type (`sections.md`) remains available, with the side list on its home page instead of cards; its **Sections Config** tab can switch its Next/Prev buttons to the same tiles. When embedded (for example with `?embedded=true`), Section List pages show only their content, as in Grav Helios Open Reader, while Sections pages keep their side list and buttons.
+The **Section List** page type (`section-list.md`) publishes a guide as a set of pages: a home page with a card for each section, then each section (`section.md`) and its pages (`section-page.md`, as in Grav Helios Open Reader; the earlier `subsection.md` pages keep working). Section pages have a side list of the sections, Previous/Next navigation, a link back to the home page, and a search box. The earlier **Sections** page type (`sections.md`) remains available, with **Subsection** pages and the side list on its home page instead of cards; its **Sections Config** tab can switch its Next/Prev buttons to the same tiles. When embedded (for example with `?embedded=true`), Section List pages show only their content, as in Grav Helios Open Reader, while Sections pages keep their side list and buttons.
 
 The Section List page's own text appears above the section cards. To show some of it below the cards, as in Grav Helios Open Reader, add a line with just `===` – the text after it appears below the cards.
 
@@ -124,8 +124,25 @@ For longer guides:
 Settings, in the Admin Panel page editor:
 
 - **Section List page** – subtitle, cover image (small, beside the title and details, or large at the top), author(s), edition, last updated date, Start button text (the button below the details, linking to the first section), section label (e.g. "Unit" or "Chapter"), search box, reading progress, Keep My Place, Previous/Next position (bottom, or top and bottom), cards per row, and OER attribution (license, license URL, and attribution text)
-- **Section** – section number, a section label override, Part, Learning Objectives, and a card description and image
-- **Subsection** – Learning Objectives
+- **Section** – section number, a section label override, Part, Learning Objectives, and for its card a description, image, author(s) and a badge (such as "New" or "Draft")
+- **Section Page** – Learning Objectives
+
+A few more settings for the Section List page are left out of the Admin Panel to keep it simple. To use them, add them to the page's front matter (in the Admin Panel, switch the page editor to **Expert** mode):
+
+```yaml
+card_image_layout: side          # card images beside the text instead of on top
+card_description_lines: 3        # cut card descriptions to 2 or 3 lines
+section_label_plural: Units      # the Sections link on phones, e.g. "Units"
+```
+
+Sections can also be grouped into parts by their folder names, as in Grav Helios Open Reader: folders named `part-1-section-1`, `part-1-section-2`, `part-2-section-1` and so on are grouped under "Part 1", "Part 2" and so on (a section's **Part** setting still comes first). To change these headings, add to the Section List page's front matter:
+
+```yaml
+part_label: Theme                # "Theme 1", "Theme 2", ...
+parts:                           # or give each part its own title
+    - id: part-1
+      label: 'Foundations of Open Education'
+```
 
 ### Moving to Grav Helios Open Reader
 
@@ -137,12 +154,29 @@ Quark Open Publishing is for a site built around a blog and one or more guides �
 
 To move a guide:
 
-1. Copy the Section List page folder into the Open Reader site's `pages` folder – it becomes one of its publications
-2. Rename each `subsection.md` to `section-page.md`
-3. Rename the section folders to `section-1`, `section-2`, and so on (for example `01.section-1`), as in the Open Reader demo. For a guide with parts, use `part-1-section-1`, `part-1-section-2`, `part-2-section-1`, and so on, and list the part titles in a `parts` block on the Section List page (see the Open Reader README); in Open Reader, Previous/Next and the reading progress stay within each part
-4. Set a `section_number` on each section to keep its label (e.g. "Unit 2") at the top of its pages
+1. Copy the Section List page folder into the Open Reader site's `pages` folder – it becomes one of its publications, with its section folders and pages as they are
+2. Set a `section_number` on each section to show its label (e.g. "Unit 2") at the top of its pages – the section cards are numbered either way
+3. For a guide made with an earlier version of this theme, rename each `subsection.md` to `section-page.md`
+
+Two cases need more:
+
+- **A single-publication Open Reader site** (one publication at the site root, rather than the default list of publications) – move the section folders out of the guide's folder to the top of the `pages` folder, beside it, and point the site's home page (`home.alias` in `user/config/system.yaml`) to the guide. Then start each section folder's name with `section-1`, `section-2`, and so on (for example `01.section-1-what-is-open-education`), and add a Version Label for each in the Helios theme settings (see Single-Publication Alternative in the Open Reader README)
+- **A guide with parts** – Open Reader shows parts only in a single-publication site; in its default list of publications, the guide's sections appear as one list. In a single-publication site, name the section folders `part-1-section-1`, `part-1-section-2`, `part-2-section-1` (for example `01.part-1-section-1`) instead, and list the part titles in a `parts` block on the Section List page (see the Open Reader README); in Open Reader, Previous/Next and the reading progress stay within each part
 
 Page settings, callout shortcodes, GitHub-style alerts, and embed shortcodes carry over unchanged. In Open Reader the cover image is always shown full width, like the large Cover Image Layout.
+
+### Copying a Publication from Grav Helios Open Reader
+
+A publication from Open Reader works as a guide here without changing its files: copy the publication's folder (for example `02.open-education-essentials`) into the site's `pages` folder, giving it a new folder name if one is already in use. A single-publication Open Reader site keeps its section folders beside the reader home rather than inside it: make a folder for the guide, then move the reader home's `section-list.md` (with its images) and the section folders into it.
+
+Its page settings carry over, including section labels, badges, card image layout, the description line limit, and parts (from `part-1-section-1` folder names and a `parts` block). The cover image is shown small unless you set Cover Image Layout to large. Settings only Open Reader uses, such as section icons and readers list groups, are ignored.
+
+Open Reader's section cards have their images beside the text, with descriptions cut to 3 lines, unless set otherwise; here they have their images on top, with full descriptions. For Open Reader's look, add this to the Section List page's front matter:
+
+```yaml
+card_image_layout: side
+card_description_lines: 3
+```
 
 ## Search
 

@@ -20,13 +20,23 @@
   {% else %}
     {% set reader_home = page.parent.parent %}
   {% endif %}
-  {% set reader_sections = reader_home.collection.visible() %}
+  {# The guide's sections: the reader home's page collection, or for a Section List page whose collection
+     doesn't list its items (such as a publication copied from Grav Helios Open Reader), its child pages,
+     in the Order By and Order settings' order when set (as on the Section List page) #}
+  {% if reader_home.template == 'section-list' and reader_home.header.content.items is not defined %}
+    {% set reader_sections = reader_home.children.visible() %}
+    {% if reader_home.header.content.order.by is defined %}
+      {% set reader_sections = reader_sections.order(reader_home.header.content.order.by, reader_home.header.content.order.dir|default('asc')) %}
+    {% endif %}
+  {% else %}
+    {% set reader_sections = reader_home.collection.visible() %}
+  {% endif %}
 
   {# The section this page belongs to, for its label (for example "Chapter 2") #}
   {% set section_page = null %}
   {% if page.template == 'section' %}
     {% set section_page = page %}
-  {% elseif page.template == 'subsection' %}
+  {% elseif page.template in ['subsection', 'section-page'] %}
     {% set section_page = page.parent %}
   {% endif %}
 
@@ -218,22 +228,30 @@
 
         <ul class="nav">
 
-          {% set collection = page.collection.visible() %}
+          {# The sections for the side list: on a Section List page, the guide's sections (found above);
+             on a Multi-Section page, the nearest page collection, as before #}
+          {% if reader_home.template == 'section-list' %}
+            {% set collection = reader_sections %}
+          {% else %}
+            {% set collection = page.collection.visible() %}
 
-          {% if collection is empty %}
-            {% set collection = page.parent.collection.visible() %}
             {% if collection is empty %}
-              {% set collection = page.parent.parent.collection.visible() %}
+              {% set collection = page.parent.collection.visible() %}
+              {% if collection is empty %}
+                {% set collection = page.parent.parent.collection.visible() %}
+              {% endif %}
             {% endif %}
           {% endif %}
 
-          {# Parts (on a Section List page): a small label above each group of sections with the same Part setting #}
+          {# Parts (on a Section List page): a small label above each group of sections with the same part
+             (their Part setting, or part-N-section-M folders as in Open Reader) #}
           {% set previous_part = '' %}
 
           {% for p in collection %}
 
             {% if reader_home.template == 'section-list' %}
-              {% set part_title = p.header.part ?? '' %}
+              {# (trim turns the macro's result into plain text, so it can be compared with the previous title) #}
+              {% set part_title = reader.part_title(p, reader_home)|trim %}
               {% if part_title and part_title != previous_part %}
                 <li class="reader-part-label">{{ part_title }}</li>
               {% endif %}

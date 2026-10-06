@@ -17,6 +17,8 @@ en:
         READER_START: 'Start Reading'
         READER_PAGE_NAVIGATION: 'Page navigation'
         READER_SECTIONS: 'Sections'
+        READER_SECTION_LABEL: 'Section'
+        READER_PART_LABEL: 'Part'
         SKIP_TO_CONTENT: 'Skip to content'
         PAGINATION_PREVIOUS: 'Previous page'
         PAGINATION_NEXT: 'Next page'

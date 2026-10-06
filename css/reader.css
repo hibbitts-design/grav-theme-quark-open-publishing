@@ -202,6 +202,125 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     padding-top: 0;
 }
 
+/* Card Image Layout "side" (as in Grav Helios Open Reader): on wider screens the card becomes two columns, with its
+   image in a fixed-width column on the left (narrower with 2 cards per row) and the label, title and description on
+   the right, with an arrow after the title. On phones the image goes on top, at a fixed height. */
+@media (min-width: 600px) {
+    .section-card-image-side {
+        display: grid;
+        grid-template-columns: 10rem 1fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    .section-cards > .col-6 .section-card-image-side {
+        grid-template-columns: 7.5rem 1fr;
+    }
+
+    .section-card-image-side .card-image {
+        grid-row: 1 / 3;
+        position: relative;
+        min-height: 7.5rem;
+    }
+
+    /* the image is cropped to fill its column, however tall the text beside it is */
+    .section-card-image-side .card-image img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: auto;
+        object-fit: cover;
+    }
+
+    .section-card-image-side .card-header {
+        padding: 1.2rem 1.2rem 0;
+    }
+
+    .section-card-image-side .card-body {
+        padding: 0.6rem 1.2rem 1.2rem;
+    }
+}
+
+@media (max-width: 599px) {
+    .section-card-image-side .card-image img {
+        height: 8rem;
+        aspect-ratio: auto;
+        object-fit: cover;
+    }
+}
+
+/* the title and its arrow on one line, the arrow at the far right */
+.section-card-image-side .card-title {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+}
+
+.section-card-arrow {
+    margin-left: auto;
+    font-size: 0.8em;
+    opacity: 0.5;
+    transition: opacity 0.15s;
+    pointer-events: none; /* clicks pass through to the card's link, so the arrow opens the section too */
+}
+
+.section-card:hover .section-card-arrow {
+    opacity: 1;
+}
+
+/* Section badges (Badge Label and Badge Color settings, as in Grav Helios Open Reader): a small status tag such as
+   "New" or "Draft" beside the section label on a card, using Spectre's rounded label in a light tint of its colour */
+.section-card-label-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0 0 0.2rem;
+}
+
+.section-card-label-row .reader-section-label {
+    margin: 0;
+}
+
+.section-badge.label {
+    padding: 0.05rem 0.4rem;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: #1565c0;
+    background: #e1edfd;
+}
+
+.section-badge-blue.label { color: #1565c0; background: #e1edfd; }
+.section-badge-green.label { color: #1b6e2f; background: #e3f4e6; }
+.section-badge-yellow.label { color: #7a5a00; background: #fbf1cc; }
+.section-badge-red.label { color: #b3261e; background: #fbe4e2; }
+.section-badge-purple.label { color: #6a2ea0; background: #efe4f8; }
+
+.section-badge-plain.label {
+    color: #667189;
+    background: transparent;
+    box-shadow: inset 0 0 0 0.05rem #dadee4;
+}
+
+/* Description Line Limit (as in Open Reader): card descriptions cut to 2 or 3 lines, ending in "..." */
+.section-cards-lines-2 .section-card-description,
+.section-cards-lines-3 .section-card-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.section-cards-lines-2 .section-card-description {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+}
+
+.section-cards-lines-3 .section-card-description {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+}
+
 /* Up to three lines of description */
 .section-card-description {
     display: -webkit-box;
@@ -209,6 +328,17 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     -webkit-line-clamp: 3;
     overflow: hidden;
     margin: 0;
+}
+
+/* the section's Author(s), below its description */
+.section-card-author {
+    color: #667189;
+    font-size: 0.7rem;
+    margin: 0;
+}
+
+.section-card-description + .section-card-author {
+    margin-top: 0.4rem;
 }
 
 /* Previous/Next tiles (theme option), grouped with the reading progress below the page text */

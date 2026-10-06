@@ -6,7 +6,17 @@
   {% import 'macros/reader.html.twig' as reader %}
 
   {% set reader_home = page %}
-  {% set reader_sections = page.collection.visible() %}
+  {# The guide's sections: the page collection when it lists its items, or otherwise (such as a publication
+     copied from Grav Helios Open Reader) the child pages, in the Order By and Order settings' order when set.
+     (Saving in the Admin can add the order settings without the items, so the items are what's checked.) #}
+  {% if page.header.content.items is defined %}
+    {% set reader_sections = page.collection.visible() %}
+  {% else %}
+    {% set reader_sections = page.children.visible() %}
+    {% if page.header.content.order.by is defined %}
+      {% set reader_sections = reader_sections.order(page.header.content.order.by, page.header.content.order.dir|default('asc')) %}
+    {% endif %}
+  {% endif %}
 
   {# Keep a tag filter (/filter:...) on the card and Start Reading links, as the side navigation does #}
   {% set activetag = uri.param('filter') %}
@@ -95,13 +105,29 @@
       {% set card_column = 'col-12' %}
     {% endif %}
 
-    {# Parts: sections in a row with the same Part setting are grouped under a heading with that title.
-       Sections without a Part have no heading. The numbers keep counting across parts (Unit 1, 2, 3, ...). #}
+    {# Card Image Layout, as in Grav Helios Open Reader: "side" puts each card's image beside its text (on wider screens),
+       and "top" above it. With 3 cards per row the image is always on top. Without the setting, images are on top. #}
+    {% set card_image_layout = page.header.card_image_layout|default('top') %}
+    {% if cards_per_row == 3 %}
+      {% set card_image_layout = 'top' %}
+    {% endif %}
+
+    {# Description Line Limit, as in Open Reader: card descriptions are cut to 2 or 3 lines, or not at all (0, the default) #}
+    {% set card_description_lines = page.header.card_description_lines|default(0) %}
+    {% set section_cards_class = 'section-cards columns' %}
+    {% if card_description_lines == 2 or card_description_lines == 3 %}
+      {% set section_cards_class = section_cards_class ~ ' section-cards-lines-' ~ card_description_lines %}
+    {% endif %}
+
+    {# Parts: sections in a row with the same part (their Part setting, or part-N-section-M folders as in Open Reader)
+       are grouped under a heading with its title. Sections without a part have no heading.
+       The numbers keep counting across parts (Unit 1, 2, 3, ...). #}
     {% set part_groups = [] %}
     {% set group_title = '' %}
     {% set group_sections = [] %}
     {% for section_item in reader_sections %}
-      {% set part_title = section_item.header.part ?? '' %}
+      {# (trim turns the macro's result into plain text, so it can be compared with the previous title) #}
+      {% set part_title = reader.part_title(section_item, reader_home)|trim %}
       {# a new group starts when the Part changes #}
       {% if not loop.first and part_title != group_title %}
         {% set part_groups = part_groups|merge([{ title: group_title, sections: group_sections }]) %}
@@ -121,31 +147,53 @@
       {% if part_group.title %}
         <h2 class="reader-part-heading">{{ part_group.title }}</h2>
       {% endif %}
-      <ul class="section-cards columns">
+      <ul class="{{ section_cards_class }}">
         {% for section_item in part_group.sections %}
           {% set card_number = card_number + 1 %}
           {# the label (for example "Unit 2") uses the card's position; don't loop over reader_sections again inside this loop #}
           {% set label = reader.section_label(section_item, reader_home, card_number) %}
           {% set card_image = section_item.header.image ? section_item.media[section_item.header.image] : null %}
           <li class="column {{ card_column }}">
-            <div class="card section-card">
+            <div class="card section-card{% if card_image and card_image_layout == 'side' %} section-card-image-side{% endif %}">
               {% if card_image %}
                 <div class="card-image">
                   <img class="img-responsive" src="{{ card_image.cropZoom(800, 400).url }}" alt="">
                 </div>
               {% endif %}
               <div class="card-header">
-                {% if label|length > 0 %}
+                {# A status badge such as "New" or "Draft" (Badge Label and Badge Color settings, as in Grav Helios Open Reader),
+                   on the same line as the section label. Cards without a badge just show the label. #}
+                {% set badge_label = section_item.header.badge_label %}
+                {% set badge_color = section_item.header.badge_color %}
+                {% if badge_color not in ['blue', 'green', 'yellow', 'red', 'purple', 'plain'] %}
+                  {% set badge_color = 'default' %}
+                {% endif %}
+                {% if badge_label %}
+                  <div class="section-card-label-row">
+                    {% if label|length > 0 %}
+                      <p class="reader-section-label">{{ label }}</p>
+                    {% endif %}
+                    <span class="label label-rounded section-badge section-badge-{{ badge_color }}">{{ badge_label|e }}</span>
+                  </div>
+                {% elseif label|length > 0 %}
                   <p class="reader-section-label">{{ label }}</p>
                 {% endif %}
                 {# the link covers the whole card (see css/reader.css). Heading levels: the page title is h1, part headings h2,
                    and card titles h2, or h3 below a part's heading (the h5 class keeps their size the same) #}
                 {% set card_heading = part_group.title ? 'h3' : 'h2' %}
-                <{{ card_heading }} class="card-title h5"><a class="section-card-link" href="{{ section_item.url ~ filter_suffix }}">{{ section_item.title }}</a></{{ card_heading }}>
+                <{{ card_heading }} class="card-title h5"><a class="section-card-link" href="{{ section_item.url ~ filter_suffix }}">{{ section_item.title }}</a>
+                  {%- if card_image and card_image_layout == 'side' %} <i class="fa fa-arrow-right section-card-arrow" aria-hidden="true"></i>{% endif -%}
+                </{{ card_heading }}>
               </div>
-              {% if section_item.header.description %}
+              {% if section_item.header.description or section_item.header.author %}
                 <div class="card-body">
-                  <p class="section-card-description">{{ section_item.header.description }}</p>
+                  {% if section_item.header.description %}
+                    <p class="section-card-description">{{ section_item.header.description }}</p>
+                  {% endif %}
+                  {# the section's Author(s) setting, as in Grav Helios Open Reader #}
+                  {% if section_item.header.author %}
+                    <p class="section-card-author">{{ section_item.header.author }}</p>
+                  {% endif %}
                 </div>
               {% endif %}
             </div>

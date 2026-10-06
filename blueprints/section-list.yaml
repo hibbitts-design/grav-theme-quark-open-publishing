@@ -42,7 +42,7 @@ form:
               type: display
               label: false
               markdown: true
-              content: 'Optional details for this page, using the same page settings as Grav Helios Open Reader. Each one is shown only when it is filled in.'
+              content: 'Optional details for this page. Each one is shown only when it is filled in.'
 
             header.subtitle:
               type: text
@@ -108,14 +108,6 @@ form:
               placeholder: 'e.g. Chapter, Project, Unit, Module'
               help: 'Label shown above each section title with its number (e.g. "Chapter 1"). Leave empty to show no label.'
 
-            header.section_label_plural:
-              type: text
-              size: medium
-              label: Section Label (Plural)
-              toggleable: true
-              placeholder: 'e.g. Chapters, Projects, Units, Modules'
-              help: 'A short plural for the Sections link on phones (e.g. Chapters, Units). Leave empty to use Sections.'
-
             header.content.order.by:
               type: select
               label: Order By
@@ -162,7 +154,7 @@ form:
                 0: PLUGIN_ADMIN.DISABLED
               validate:
                 type: bool
-              help: 'Show a search box beside the Start button on this page, and above the side list on its section and subsection pages. With the SimpleSearch plugin, it searches just this page and its sections.'
+              help: 'Show a search box beside the Start button on this page, and above the side list on its sections and their pages. With the SimpleSearch plugin, it searches just this page and its sections.'
 
             sectionpages:
               type: section
@@ -179,7 +171,7 @@ form:
                 0: PLUGIN_ADMIN.DISABLED
               validate:
                 type: bool
-              help: 'Show a progress bar (e.g. "Page 3 of 8") above the Next/Prev buttons on section and subsection pages.'
+              help: 'Show a progress bar (e.g. "Page 3 of 8") above the Next/Prev buttons on its sections and their pages.'
 
             header.keep_my_place:
               type: toggle
@@ -191,7 +183,7 @@ form:
                 0: PLUGIN_ADMIN.DISABLED
               validate:
                 type: bool
-              help: 'Remember the last section or subsection page each reader visited (in their own browser). When they return, a "Continue reading" bar above the section cards on this page links to that page, as in Helios Open Reader.'
+              help: 'Remember the last page of this guide each reader visited (in their own browser). When they return, a "Continue reading" bar above the section cards on this page links to that page.'
 
             header.prev_next_position:
               type: select
@@ -200,7 +192,7 @@ form:
               options:
                 bottom: 'Bottom'
                 both: 'Top and bottom'
-              help: 'Where the Previous/Next navigation is shown on section and subsection pages. Top and bottom adds compact Previous/Next links at the top, beside the link back to this page.'
+              help: 'Where the Previous/Next navigation is shown on its sections and their pages. Top and bottom adds compact Previous/Next links at the top, beside the link back to this page.'
 
             header.hide_next_prev_page_buttons:
                 type: toggle
@@ -229,7 +221,7 @@ form:
                 0: PLUGIN_ADMIN.DISABLED
               validate:
                 type: bool
-              help: 'Display the attribution text and license at the bottom of this page and each of its sections and subsections.'
+              help: 'Display the attribution text and license at the bottom of this page and each of its sections and their pages.'
 
             header.license:
               type: select

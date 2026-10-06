@@ -4,9 +4,54 @@
    A section's own section_label replaces it (and an empty one hides it); otherwise the reader home's
    section_label is used with the section's section_number, or (when that's empty) its position (1 for the first section, and so on). #}
 {% macro section_label(section_page, reader_home, position) -%}
+    {# a guide copied from Grav Helios Open Reader may have Show Section Label turned on without a Section Label:
+       it then uses "Section", as in Open Reader (Section List pages only) #}
+    {%- if reader_home.header.section_label is defined -%}
+        {%- set home_label = reader_home.header.section_label -%}
+    {%- elseif reader_home.template == 'section-list' and reader_home.header.show_section_label -%}
+        {%- set home_label = 'THEME_QUARK_OPEN_PUBLISHING.READER_SECTION_LABEL'|t -%}
+    {%- else -%}
+        {%- set home_label = '' -%}
+    {%- endif -%}
+    {# Show Section Label turned off (as in Open Reader) hides these labels on a Section List page;
+       a section's own label, set on the section, still shows #}
+    {%- set show_home_label = true -%}
+    {%- if reader_home.template == 'section-list' and reader_home.header.show_section_label is defined and not reader_home.header.show_section_label -%}
+        {%- set show_home_label = false -%}
+    {%- endif -%}
     {%- if section_page.header.section_label is defined -%}
         {{- section_page.header.section_label -}}
-    {%- elseif reader_home.header.section_label -%}
-        {{- reader_home.header.section_label ~ ' ' ~ (section_page.header.section_number ?: position) -}}
+    {%- elseif home_label and show_home_label -%}
+        {{- home_label ~ ' ' ~ (section_page.header.section_number ?: position) -}}
+    {%- endif -%}
+{%- endmacro %}
+
+{# The title of the part a section belongs to (sections in a row with the same part are grouped under it).
+   A section's own Part setting is used first. Otherwise, a section in a folder named as in Grav Helios Open Reader,
+   part-N-section-M (for example part-2-section-1), is in part N: its title comes from the reader home's Part Titles,
+   or else is the Part Label with the part's number (for example "Part 2"). Other sections have no part. #}
+{% macro part_title(section_page, reader_home) -%}
+    {%- set folder_name = section_page.slug|lower -%}
+    {%- if section_page.header.part -%}
+        {{- section_page.header.part -}}
+    {%- elseif folder_name matches '/^part-[0-9]+-section-[0-9]+$/' -%}
+        {# "part-2-section-1" gives the part ID "part-2" and the part number "2" #}
+        {%- set part_id = folder_name|split('-section-')|first -%}
+        {%- set part_number = part_id|replace({'part-': ''}) -%}
+
+        {# a title set for this part in the reader home's Part Titles, if there is one #}
+        {%- set custom_title = '' -%}
+        {%- for custom_part in reader_home.header.parts|default([]) -%}
+            {%- if custom_part.id|lower|trim == part_id and custom_part.label -%}
+                {%- set custom_title = custom_part.label -%}
+            {%- endif -%}
+        {%- endfor -%}
+
+        {%- if custom_title -%}
+            {{- custom_title -}}
+        {%- else -%}
+            {%- set part_word = reader_home.header.part_label ?: 'THEME_QUARK_OPEN_PUBLISHING.READER_PART_LABEL'|t -%}
+            {{- part_word ~ ' ' ~ part_number -}}
+        {%- endif -%}
     {%- endif -%}
 {%- endmacro %}

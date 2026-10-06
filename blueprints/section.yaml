@@ -1,4 +1,4 @@
-title: Section Page Options
+title: Section Options
 '@extends':
     type: default
     context: blueprints://pages
@@ -50,7 +50,7 @@ form:
               label: Section Label Override
               toggleable: true
               placeholder: 'e.g. Appendix 1, Introduction, Conclusion'
-              help: 'Custom label shown above this section''s title (and its subsections). Overrides the multi-section page''s Section Label and number. Leave empty to hide the label for this section only.'
+              help: 'Custom label shown above this section''s title (and its pages). Overrides the Section Label and number set on the Section List or Multi-Section page. Leave empty to hide the label for this section only.'
 
             header.part:
               type: text
@@ -87,8 +87,38 @@ form:
               placeholder: 'A short description for this section'
               help: 'Short description shown on the section card.'
 
+            header.author:
+              type: text
+              label: Author(s)
+              toggleable: true
+              placeholder: 'e.g. Jane Smith, Sam Lee'
+              help: 'Author name(s) shown on the section card.'
+
             header.image:
               type: pagemediaselect
               label: Card Image
               toggleable: true
               help: 'Image from this page''s media folder to display on the section card.'
+
+            header.badge_label:
+              type: text
+              size: small
+              label: Badge Label
+              toggleable: true
+              placeholder: 'e.g. New, Updated, Draft'
+              help: 'A short status badge shown on the section card. Leave empty for no badge.'
+
+            header.badge_color:
+              type: select
+              label: Badge Color
+              toggleable: true
+              default: default
+              options:
+                default: Default
+                blue: Blue
+                green: Green
+                yellow: Yellow
+                red: Red
+                purple: Purple
+                plain: Plain
+              help: 'The badge colour.'
