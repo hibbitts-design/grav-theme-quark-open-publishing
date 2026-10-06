@@ -1,7 +1,13 @@
 # v3.3.2
-## XX/XX/2026
+## 10/06/2026
 
+1. [](#new)
+    * Section Page sub-pages, as in Helios Open Reader, so its publications can be copied in unchanged
+    * Badge Label and Badge Color settings for section cards, as in Helios Open Reader
+    * Section Author(s) setting, shown on section cards, as in Helios Open Reader
+    * Copied Helios Open Reader publications keep their card layout, badges and parts (from part-1-section-1 folder names)
 1. [](#improved)
+    * Section Label (Plural) moved to the page's front matter (see the README), to keep the Section List settings simple
     * The Embedly script now loads only on pages with an Embedly card
 1. [](#bugfix)
     * The Git Sync Link options display correctly in Admin 2
