@@ -40,10 +40,11 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     margin: 0 0 0.3rem;
 }
 
+/* the subtitle in a light weight, as under the heading of Quark's hero */
 .reader-subtitle {
     color: #667189;
     font-size: 1.1rem;
-    font-style: italic;
+    font-weight: 300;
 }
 
 .reader-edition {
