@@ -1,3 +1,9 @@
+# v3.3.3
+## 10/06/2026
+
+1. [](#improved)
+    * The Section List page's subtitle uses Quark's light style instead of italics
+
 # v3.3.2
 ## 10/06/2026
 
