@@ -167,7 +167,9 @@ Page settings, callout shortcodes, GitHub-style alerts, and embed shortcodes car
 
 ### Copying a Publication from Grav Helios Open Reader
 
-A publication from Open Reader works as a guide here without changing its files: copy the publication's folder (for example `02.open-education-essentials`) into the site's `pages` folder, giving it a new folder name if one is already in use. A single-publication Open Reader site keeps its section folders beside the reader home rather than inside it: make a folder for the guide, then move the reader home's `section-list.md` (with its images) and the section folders into it.
+A publication from Open Reader usually works as a guide here without changing its files: copy the publication's folder (for example `02.open-education-essentials`) into the site's `pages` folder, giving it a new folder name if one is already in use. A single-publication Open Reader site keeps its section folders beside the reader home rather than inside it: make a folder for the guide, then move the reader home's `section-list.md` (with its images) and the section folders into it.
+
+If a section's `section.md` redirects to its first page (`redirect: /section-1/...`), as in a converted or single-publication Open Reader site, add the guide's folder to the start of the address (for example `redirect: /my-guide/section-1/...`).
 
 Its page settings carry over, including section labels, badges, card image layout, the description line limit, and parts (from `part-1-section-1` folder names and a `parts` block). The cover image is shown small unless you set Cover Image Layout to large. Settings only Open Reader uses, such as section icons and readers list groups, are ignored.
 

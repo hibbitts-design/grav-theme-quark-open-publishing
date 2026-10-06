@@ -33,7 +33,12 @@
   <div class="section-list-page">
 
     {% if large_cover %}
-      <img class="reader-cover-large" src="{{ cover.url }}" alt="{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_COVER'|t(page.title) }}">
+      {# a portrait cover, such as a book cover, is shown whole at its own width, instead of trimmed to the full width #}
+      {% set cover_class = 'reader-cover-large' %}
+      {% if cover.get('height') > cover.get('width') %}
+        {% set cover_class = cover_class ~ ' reader-cover-large-portrait' %}
+      {% endif %}
+      <img class="{{ cover_class }}" src="{{ cover.url }}" alt="{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_COVER'|t(page.title) }}">
     {% endif %}
 
     {% if show_title and not title_beside_cover %}
@@ -153,8 +158,17 @@
           {# the label (for example "Unit 2") uses the card's position; don't loop over reader_sections again inside this loop #}
           {% set label = reader.section_label(section_item, reader_home, card_number) %}
           {% set card_image = section_item.header.image ? section_item.media[section_item.header.image] : null %}
+          {# a card with just a label and title (no image, description or author) gets equal space above and below
+             its title (see css/reader.css), instead of the space a description below would normally take #}
+          {% set card_class = 'card section-card' %}
+          {% if card_image and card_image_layout == 'side' %}
+            {% set card_class = card_class ~ ' section-card-image-side' %}
+          {% endif %}
+          {% if not card_image and not section_item.header.description and not section_item.header.author %}
+            {% set card_class = card_class ~ ' section-card-title-only' %}
+          {% endif %}
           <li class="column {{ card_column }}">
-            <div class="card section-card{% if card_image and card_image_layout == 'side' %} section-card-image-side{% endif %}">
+            <div class="{{ card_class }}">
               {% if card_image %}
                 <div class="card-image">
                   <img class="img-responsive" src="{{ card_image.cropZoom(800, 400).url }}" alt="">

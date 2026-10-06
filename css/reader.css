@@ -77,6 +77,16 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     object-fit: cover;
 }
 
+/* A portrait cover (such as a book cover) is shown whole, at its own shape and a narrower width, also on phones
+   (both class names are needed so this also replaces the full-width cover on phones). An unusually tall image
+   is kept to 15rem high, and narrows to keep its shape. */
+.section-list-page .reader-cover.reader-cover-portrait {
+    width: auto;
+    max-width: 9rem;
+    max-height: 15rem;
+    aspect-ratio: auto;
+}
+
 .reader-details .sections-page-title-template {
     margin-top: 0;
 }
@@ -201,6 +211,13 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
 
 .section-card .card-body {
     padding-top: 0;
+}
+
+/* A card with just a label and title: a little more space above and below the title, so it reads as a card
+   rather than a thin row (both class names are needed to replace Spectre's spacing for a card's last part) */
+.section-card.section-card-title-only .card-header {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 /* Card Image Layout "side" (as in Grav Helios Open Reader): on wider screens the card becomes two columns, with its
@@ -721,6 +738,14 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     border-radius: 0.1rem;
     box-shadow: 0 10px 45px -9px rgba(0, 0, 0, 0.2);
     margin-bottom: 1.2rem;
+}
+
+/* A portrait cover (such as a book cover): shown whole, at its own width up to the full width and at most
+   36rem high, instead of trimmed to fill the width */
+.reader-cover-large-portrait {
+    width: auto;
+    max-width: 100%;
+    height: auto;
 }
 
 /* The optional TNTSearch plugin's search box, sized like the theme's own search box (TNTSearch makes its field taller) */

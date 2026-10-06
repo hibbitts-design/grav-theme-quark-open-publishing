@@ -5,7 +5,11 @@
 {# The reading order, as one list of pages #}
 {% set reading_order = [] %}
 {% for section_item in reader_sections %}
-    {% set reading_order = reading_order|merge([section_item]) %}
+    {# a section that only redirects to its first page (as in books converted from Pressbooks) isn't a page of its own,
+       so it's left out; otherwise Previous from that first page would go to the section and straight back again #}
+    {% if not section_item.header.redirect %}
+        {% set reading_order = reading_order|merge([section_item]) %}
+    {% endif %}
     {% for subsection_item in section_item.children.visible %}
         {% set reading_order = reading_order|merge([subsection_item]) %}
     {% endfor %}

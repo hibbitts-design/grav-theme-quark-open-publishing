@@ -64,7 +64,7 @@ form:
               options:
                 small: 'Small (beside the details, below the title)'
                 large: 'Large (full width, at the top)'
-              help: 'How the cover image is shown on this page: small, beside the subtitle, author(s), edition and license, or large, across the full width of the page at the top.'
+              help: 'How the cover image is shown on this page: small, beside the subtitle, author(s), edition and license, or large, across the full width of the page at the top. Portrait images, such as book covers, are shown whole.'
 
             header.authors:
               type: text

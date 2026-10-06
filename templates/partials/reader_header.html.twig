@@ -9,7 +9,13 @@
 {% if page.header.subtitle or cover or page.header.authors or page.header.edition or page.header.last_updated or page.header.license or start_url %}
     <div class="reader-header">
         {% if cover %}
-            <img class="reader-cover img-responsive" src="{{ cover.url }}" alt="{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_COVER'|t(page.title) }}">
+            {# a portrait cover, such as a book cover, is shown whole on a Section List page, instead of cropped
+               to the usual 4:3 shape (see css/reader.css) #}
+            {% set cover_class = 'reader-cover img-responsive' %}
+            {% if cover.get('height') > cover.get('width') %}
+                {% set cover_class = cover_class ~ ' reader-cover-portrait' %}
+            {% endif %}
+            <img class="{{ cover_class }}" src="{{ cover.url }}" alt="{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_COVER'|t(page.title) }}">
         {% endif %}
         <div class="reader-details">
             {% if show_title %}
