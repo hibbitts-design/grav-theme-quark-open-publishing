@@ -139,7 +139,10 @@
                 <section class="container {{ grid_size }}">
                     {# check to display git sync link in footer or not yet defined by saving theme settings - hibbittsdesign.org #}
                     {% if theme_var('display_of_git_sync_repo_link') == 'footer' %}
-                        <br>{% include 'partials/git_sync_repo_link.html.twig' %}<br><br>
+                        {% set git_sync_link = include('partials/git_sync_repo_link.html.twig') %}
+                        {% if git_sync_link|trim %}
+                            <br>{{ git_sync_link|raw }}<br><br>
+                        {% endif %}
                     {% endif %}
                     {# display footer markdown page - hibbittsdesign.org #}
                     {% set content = pages.find('/footer').content %}
