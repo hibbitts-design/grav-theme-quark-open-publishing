@@ -110,9 +110,15 @@
       {% set card_column = 'col-12' %}
     {% endif %}
 
-    {# Card Image Layout, as in Grav Helios Open Reader: "side" puts each card's image beside its text (on wider screens),
-       and "top" above it. With 3 cards per row the image is always on top. Without the setting, images are on top. #}
-    {% set card_image_layout = page.header.card_image_layout|default('top') %}
+    {# Card Image Layout ("side" or "top", as in Grav Helios Open Reader). Without it: side with 1 card per row,
+       so full-width cards aren't too tall, otherwise top. 3 per row is always top. #}
+    {% if page.header.card_image_layout %}
+      {% set card_image_layout = page.header.card_image_layout %}
+    {% elseif cards_per_row == 1 %}
+      {% set card_image_layout = 'side' %}
+    {% else %}
+      {% set card_image_layout = 'top' %}
+    {% endif %}
     {% if cards_per_row == 3 %}
       {% set card_image_layout = 'top' %}
     {% endif %}
@@ -196,7 +202,8 @@
                    and card titles h2, or h3 below a part's heading (the h5 class keeps their size the same) #}
                 {% set card_heading = part_group.title ? 'h3' : 'h2' %}
                 <{{ card_heading }} class="card-title h5"><a class="section-card-link" href="{{ section_item.url ~ filter_suffix }}">{{ section_item.title }}</a>
-                  {%- if card_image and card_image_layout == 'side' %} <i class="fa fa-arrow-right section-card-arrow" aria-hidden="true"></i>{% endif -%}
+                  {#- an arrow on every section card, as in Grav Helios Open Reader: these open parts of the guide, unlike blog post cards -#}
+                  <i class="fa fa-arrow-right section-card-arrow" aria-hidden="true"></i>
                 </{{ card_heading }}>
               </div>
               {% if section_item.header.description or section_item.header.author %}
@@ -215,6 +222,13 @@
         {% endfor %}
       </ul>
     {% endfor %}
+
+    {# Start Reading again after the cards, as in Grav Helios Open Reader (only when the Start button shows) #}
+    {% if start_url %}
+      <p class="section-list-start-below">
+        <a href="{{ start_url }}">{{ start_text }} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+      </p>
+    {% endif %}
 
     {% if content_below %}
       <div class="section-list-below">

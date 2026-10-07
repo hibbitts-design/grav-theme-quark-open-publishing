@@ -1,6 +1,6 @@
 {% if not hide_git_link %}
 {% if not page.header.hide_git_sync_repo_link %}
-    {# the note is only shown when there's a link to go with it #}
+    {# include() gets the link first, so the note only shows when there is one #}
     {% set git_sync_link = include('partials/git_sync_repo_link.html.twig') %}
     {% if git_sync_link|trim %}
     <div class="gitrepo-link-note">

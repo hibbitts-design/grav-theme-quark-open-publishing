@@ -134,7 +134,7 @@ form:
                 1: '1 (full width)'
                 2: '2 per row'
                 3: '3 per row'
-              help: 'Number of section cards displayed per row on this page (one per row on phones).'
+              help: 'Number of section cards displayed per row on this page (one per row on phones). 3 per row suits cards with images; 1 or 2 per row suits cards without images or with long titles. With 1 per row, card images are shown beside the text.'
 
             header.start_button_text:
               type: text

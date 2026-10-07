@@ -139,6 +139,7 @@
                 <section class="container {{ grid_size }}">
                     {# check to display git sync link in footer or not yet defined by saving theme settings - hibbittsdesign.org #}
                     {% if theme_var('display_of_git_sync_repo_link') == 'footer' %}
+                        {# include() gets the link first, so the footer line is only added when there is one #}
                         {% set git_sync_link = include('partials/git_sync_repo_link.html.twig') %}
                         {% if git_sync_link|trim %}
                             <br>{{ git_sync_link|raw }}<br><br>

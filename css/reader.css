@@ -62,6 +62,17 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     margin: 0.6rem 0 0;
 }
 
+/* the Start Reading link after the section cards */
+.section-list-start-below {
+    margin: 1.2rem 0 0;
+    font-weight: 600;
+}
+
+.section-list-start-below .fa {
+    margin-left: 0.2rem;
+    font-size: 0.85em;
+}
+
 /* On phones, the cover image goes above the details */
 @media (max-width: 600px) {
     .reader-header {
@@ -268,14 +279,15 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     }
 }
 
-/* the title and its arrow on one line, the arrow at the far right */
-.section-card-image-side .card-title {
+/* the title and its arrow on one line, the arrow at the far right (a long title wraps beside it) */
+.section-card .card-title {
     display: flex;
     align-items: baseline;
     gap: 0.75rem;
 }
 
 .section-card-arrow {
+    flex-shrink: 0; /* keeps its size beside a long title */
     margin-left: auto;
     font-size: 0.8em;
     opacity: 0.5;
@@ -625,6 +637,7 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     margin: 1.2rem 0;
 }
 
+/* hide the row when everything in it is hidden (:has() checks the row's contents) */
 .section-list-actions:not(:has(> :not([hidden]))) {
     display: none;
 }
@@ -632,6 +645,13 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
 .section-list-actions .reader-search {
     flex: 0 1 16rem;
     margin-left: auto; /* on the right, the same side as the search box on section pages */
+}
+
+/* With no "Continue reading" bar, the search box moves to the left
+   ([hidden] matches the hidden bar; + means the element right after it) */
+.section-list-actions .reader-resume[hidden] + .reader-search,
+.section-list-actions > .reader-search:first-child {
+    margin-left: 0;
 }
 
 @media (max-width: 600px) {

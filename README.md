@@ -123,14 +123,14 @@ For longer guides:
 
 Settings, in the Admin Panel page editor:
 
-- **Section List page** – subtitle, cover image (small, beside the title and details, or large at the top), author(s), edition, last updated date, Start button text (the button below the details, linking to the first section), section label (e.g. "Unit" or "Chapter"), search box, reading progress, Keep My Place, Previous/Next position (bottom, or top and bottom), cards per row, and OER attribution (license, license URL, and attribution text)
+- **Section List page** – subtitle, cover image (small, beside the title and details, or large at the top), author(s), edition, last updated date, Start button text (the button below the details, linking to the first section), section label (e.g. "Unit" or "Chapter"), search box, reading progress, Keep My Place, Previous/Next position (bottom, or top and bottom), cards per row (3 suits cards with images; 1 or 2 suits cards without images or with long titles), and OER attribution (license, license URL, and attribution text)
 - **Section** – section number, a section label override, Part, Learning Objectives, and for its card a description, image, author(s) and a badge (such as "New" or "Draft")
 - **Section Page** – Learning Objectives
 
 A few more settings for the Section List page are left out of the Admin Panel to keep it simple. To use them, add them to the page's front matter (in the Admin Panel, switch the page editor to **Expert** mode):
 
 ```yaml
-card_image_layout: side          # card images beside the text instead of on top
+card_image_layout: side          # side: images beside the text (the default with 1 card per row); top: above it
 card_description_lines: 3        # cut card descriptions to 2 or 3 lines
 section_label_plural: Units      # the Sections link on phones, e.g. "Units"
 ```
@@ -173,7 +173,7 @@ If a section's `section.md` redirects to its first page (`redirect: /section-1/.
 
 Its page settings carry over, including section labels, badges, card image layout, the description line limit, and parts (from `part-1-section-1` folder names and a `parts` block). The cover image is shown small unless you set Cover Image Layout to large. Settings only Open Reader uses, such as section icons and readers list groups, are ignored.
 
-Open Reader's section cards have their images beside the text, with descriptions cut to 3 lines, unless set otherwise; here they have their images on top, with full descriptions. For Open Reader's look, add this to the Section List page's front matter:
+Open Reader's section cards have their images beside the text, with descriptions cut to 3 lines, unless set otherwise; here images are on top unless there's 1 card per row, with full descriptions. For Open Reader's look, add this to the Section List page's front matter:
 
 ```yaml
 card_image_layout: side
