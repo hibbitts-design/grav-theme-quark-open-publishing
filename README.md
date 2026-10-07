@@ -4,7 +4,7 @@
 
 ### Designed to accompany the Open Publishing Space Skeleton
 
-<p><em>A Grav theme for open guides and blogs – embeddable anywhere, with Git-based open editing built in.</em></p>
+<p><em>A Grav theme for open guides and books, with a blog and almost any other Grav page alongside them – embeddable anywhere, with Git-based open editing built in.</em></p>
 
 [![Grav Discord Chat](https://img.shields.io/discord/501836936584101899.svg?logo=discord&colorB=728ADA&label=Grav%20Discord%20Chat)](https://chat.getgrav.org) [![Latest Release](https://img.shields.io/github/v/release/hibbitts-design/grav-theme-quark-open-publishing?style=flat-square&label=Release)](https://github.com/hibbitts-design/grav-theme-quark-open-publishing/releases/latest) [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://github.com/hibbitts-design/grav-theme-quark-open-publishing/blob/master/LICENSE) [![PHP](https://img.shields.io/badge/PHP-%3E%3D8.0.2-8892BF?style=flat-square&logo=php&logoColor=white)](https://learn.getgrav.org/17/basics/requirements)
 
@@ -18,11 +18,11 @@
 
 </div>
 
-Quark Open Publishing adds what open, collaborative blogs and publishing sites need on top of the Quark theme: pages that embed cleanly in other systems, links that open each page's source in your Git repository, guides with section cards and reading progress – even long ones, grouped into parts – and a set of shortcodes and page types for rich content.
+Quark Open Publishing adds what open guides and books need on top of the Quark theme, while keeping everything else Quark can do, such as a blog and modular pages: guides with section cards and reading progress – even long ones, grouped into parts – pages that embed cleanly in other systems, links that open each page's source in your Git repository, and a set of shortcodes and page types for rich content.
 
 ## What Sets It Apart
 
-- **Guides that carry over to Grav Helios Open Reader** – a Section List page type for guides alongside your blog, even long ones grouped into parts, with section cards, section labels, Learning Objectives, reading progress, Previous/Next navigation, Keep My Place, a last updated date, and OER attribution, using the same page settings as [Grav Helios Open Reader](https://github.com/hibbitts-design/grav-skeleton-helios-open-reader)
+- **Guides that carry over to Grav Helios Open Reader** – a Section List page type for guides and books, even long ones grouped into parts, with section cards, section labels, Learning Objectives, reading progress, Previous/Next navigation, Keep My Place, a last updated date, and OER attribution, using the same page settings as [Grav Helios Open Reader](https://github.com/hibbitts-design/grav-skeleton-helios-open-reader)
 - **Chromeless display for embedding** – add `/chromeless:true` or `?embedded=true` to any page URL to show only its content, or hide the site menu, sidebar, and footer site-wide
 - **Open authoring with Git Sync** – a "View Git Repository" or "View/Edit Page in Git Repository" link in the menu, footer, or page, with a custom icon and text
 - **Built-in shortcodes** – Button, Embedly, Google Slides, H5P, iFrame, Link Preview Card, Markdown File, PDF, SpeakerDeck, and Twitter, with `title` (and `ratio`) options for accessible, well-proportioned embeds
@@ -39,14 +39,14 @@ Quark Open Publishing adds what open, collaborative blogs and publishing sites n
 
 Quark Open Publishing is a good fit when you:
 
-- Want an open blog or publishing site built on Grav's default Quark theme
+- Want to publish an open guide or book, with a blog and other pages alongside it, on Grav's default Quark theme
 - Need to embed pages cleanly in an LMS or other site
 - Value Git-based, open authoring of your writing
-- Want to publish a short guide or handbook alongside your blog
+- Want guides – even long ones, grouped into parts – that can move to Grav Helios Open Reader later
 
 Other options might be better when you:
 
-- Want to publish substantial, standalone open content, such as an open textbook, or several readers on one site – consider [Grav Helios Open Reader](https://github.com/hibbitts-design/grav-skeleton-helios-open-reader)
+- Want a dedicated reading site, with several publications on one site and a table of contents on every page – consider [Grav Helios Open Reader](https://github.com/hibbitts-design/grav-skeleton-helios-open-reader)
 - Need only a standard blog without these extras – the [Quark theme](https://github.com/getgrav/grav-theme-quark) is enough
 - Need comments, memberships, or newsletters built in
 - Want zero-server publishing directly from GitHub – consider [Docsify-This](https://docsify-this.net)
