@@ -2,7 +2,7 @@ name: Quark Open Publishing
 type: theme
 slug: quark-open-publishing
 version: 3.3.5
-description: "A customized version of the Quark theme for open guides and blogs: guides with section cards, parts and reading progress, alongside a full blog. Includes Git Sync links and chromeless display for embedding in an LMS or other site."
+description: "A customized version of the Quark theme for open guides and books, with a blog and almost any other Grav page alongside them: guides with section cards, parts and reading progress. Includes Git Sync links and chromeless display for embedding in an LMS or other site."
 icon: unlock
 author:
     name: HibbittsDesign.org
