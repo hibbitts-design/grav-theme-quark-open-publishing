@@ -5,6 +5,10 @@ namespace Grav\Plugin\Shortcodes;
 use Grav\Common\Utils;
 use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 
+/**
+ * Deprecated: [twitter] will be removed in a future release. It embeds a timeline from X (Twitter), which X has
+ * heavily restricted since 2023, so it often no longer displays. Use a plain link or [linkpreviewcard] instead - hibbittsdesign.org
+ */
 class TwitterShortcode extends Shortcode
 {
     public function init()
