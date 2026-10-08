@@ -1,3 +1,9 @@
+# v3.3.7
+## 10/08/2026
+
+1. [](#improved)
+    * Deprecated the [twitter] shortcode, as X has heavily restricted embedded timelines; it will be removed in a future release
+
 # v3.3.6
 ## 10/07/2026
 
