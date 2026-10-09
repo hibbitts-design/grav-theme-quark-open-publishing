@@ -159,3 +159,34 @@ h1.sections-page-title-template, h2.sections-page-title-template, h3.sections-pa
 #body-wrapper table:not([class]) th {
   border-bottom-width: 0.1rem;
 }
+
+/* The Git Sync link and Creative Commons license inside the content on standard, blog and guide pages, centred
+   (Location of Git Sync Link: Page) - hibbittsdesign.org */
+.page-extras {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.page-extras .gitrepo-link-note p {
+  margin-bottom: 0.5rem;
+}
+
+/* the Git Sync link note is quiet, like the attribution, so it doesn't compete with the page content: muted
+   (theme-dark.css sets its Dark Mode colour), underlined only on hover, with a clear outline for keyboard focus */
+.gitrepo-link-note {
+  color: #667189;
+}
+
+.gitrepo-link-note a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.gitrepo-link-note a:hover {
+  text-decoration: underline;
+}
+
+.gitrepo-link-note a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}

@@ -1,0 +1,17 @@
+{# After the page content: the Git Sync link (Location of Git Sync Link: Page) and the Creative Commons license
+   (not in embedded mode, or when only the summary is shown) - hibbittsdesign.org #}
+{# Standard, blog and guide pages include this file with inline, to place these inside their content or column,
+   centred. The base template adds them after the content only for other pages, which didn't. #}
+{% set summary_only = grav.uri.param('summaryonly') or grav.uri.param('onlysummary') %}
+{# get the extras first, so the inline wrapper is only added when there is something in it #}
+{% set extras %}
+{% if theme_var('display_of_git_sync_repo_link') == 'page' and not summary_only %}
+    {% include 'partials/git_sync_repo_link_note.html.twig' %}
+{% endif %}
+{% if not embedded_mode and not theme_var('chromeless.enabled') and theme_var('cc_license.enabled') and not page.header.hide_cc_license and not summary_only %}
+    {% include 'partials/creative_commons_license.html.twig' %}
+{% endif %}
+{% endset %}
+{% if extras|trim %}
+    {% if inline %}<div class="page-extras">{{ extras|raw }}</div>{% else %}{{ extras|raw }}{% endif %}
+{% endif %}

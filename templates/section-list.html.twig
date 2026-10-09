@@ -236,6 +236,8 @@
       </div>
     {% endif %}
 
+    {# the page links first, then the guide's attribution, as in Grav Helios Open Reader #}
+    {% include 'partials/page_extras.html.twig' with { inline: true } %}
     {% include 'partials/reader_attribution.html.twig' %}
 
   </div>

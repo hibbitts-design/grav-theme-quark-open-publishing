@@ -1,0 +1,8 @@
+{# Quark's standard page, with the page extras (the Git Sync link and the Creative Commons license) after the
+   content, centred - hibbittsdesign.org #}
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    {{ page.content|raw }}
+    {% include 'partials/page_extras.html.twig' with { inline: true } %}
+{% endblock %}

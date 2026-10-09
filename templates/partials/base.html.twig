@@ -115,14 +115,13 @@
                     {% block messages %}
                         {% include 'partials/messages.html.twig' ignore missing %}
                     {% endblock %}
-                    {% block content %}{% endblock %}
-
-                    {# check to display CC License - hibbittsdesign.org #} {# check to display git sync link in page - hibbittsdesign.org #}
-                    {% if theme_var('display_of_git_sync_repo_link') == 'page' and not (grav.uri.param('summaryonly') or grav.uri.param('onlysummary')) %}
-                        <p>{% include 'partials/git_sync_repo_link_note.html.twig' %}</p>
-                    {% endif %}
-                    {% if not embedded_mode and not(theme_var('chromeless.enabled')) and (theme_var('cc_license.enabled') and not(page.header.hide_cc_license)) %}
-                        <p>{% include 'partials/creative_commons_license.html.twig' %}</p>
+                    {# the Git Sync link and Creative Commons license after the content, unless the page placed them
+                       itself, inside its content (class "page-extras") - hibbittsdesign.org #}
+                    {# {% set name %}...{% endset %} saves the content as text first, so it can be checked before it's shown #}
+                    {% set main_content %}{% block content %}{% endblock %}{% endset %}
+                    {{ main_content|raw }}
+                    {% if 'class="page-extras"' not in main_content %}
+                        {% include 'partials/page_extras.html.twig' %}
                     {% endif %}
 
                 </section>

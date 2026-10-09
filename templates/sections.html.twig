@@ -72,7 +72,8 @@
          Previous/Next row sits on the same line, on the right ("top" alone, as in Helios Open Reader, works the same) #}
       {% if reader_home.template == 'section-list' and page.route != reader_home.route and not content_only %}
         {% set show_top_prev_next = reader_home.header.prev_next_position in ['both', 'top'] and not(hide_next_prev_page_buttons) %}
-        <div class="reader-top-bar">
+        {# a nav, as these are navigation links (Grav 2's Markdown output also leaves navigation out) #}
+        <nav class="reader-top-bar" aria-label="{{ reader_home.title }}">
           <p class="reader-back-link"><a href="{{ reader_home.url }}"><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ reader_home.title }}</a></p>
           {# On phones and narrow windows, where the side list of sections sits below the page, a link that jumps to it.
              It says "Sections", or the guide's own plural label (Section Label (Plural) setting, e.g. "Chapters") #}
@@ -81,7 +82,7 @@
           {% if show_top_prev_next %}
             {% include 'partials/reader_prev_next.html.twig' with { position: 'top' } %}
           {% endif %}
-        </div>
+        </nav>
       {% endif %}
 
       {% if not(page.header.hide_page_title) and not(grav.uri.param('hidepagetitle')) %}
@@ -210,6 +211,8 @@
 
       {% endif %}
 
+        {# the page links first, then the guide's attribution, as in Grav Helios Open Reader #}
+        {% include 'partials/page_extras.html.twig' with { inline: true } %}
         {% include 'partials/reader_attribution.html.twig' %}
 
       </div>

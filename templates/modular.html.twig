@@ -64,11 +64,6 @@
         <div id="{{ macro.pageLinkName(module.menu) }}"></div>
         {{ module.content|raw }}
     {% endfor %}
-    {# check to display CC License - hibbittsdesign.org #} {# check to display git sync link in page - hibbittsdesign.org #}
-    {% if theme_var('display_of_git_sync_repo_link') == 'page' and not (grav.uri.param('summaryonly') or grav.uri.param('onlysummary')) %}
-        {% include 'partials/git_sync_repo_link_note.html.twig' %}
-    {% endif %}
-    {% if not embedded_mode and not(theme_var('chromeless.enabled')) and (theme_var('cc_license.enabled') and not(page.header.hide_cc_license)) %}
-        {% include 'partials/creative_commons_license.html.twig' %}
-    {% endif %}
+    {# the Git Sync link and Creative Commons license after the modules - hibbittsdesign.org #}
+    {% include 'partials/page_extras.html.twig' %}
 {% endblock %}

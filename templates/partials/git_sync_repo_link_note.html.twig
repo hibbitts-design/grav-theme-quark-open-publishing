@@ -3,11 +3,12 @@
     {# include() gets the link first, so the note only shows when there is one #}
     {% set git_sync_link = include('partials/git_sync_repo_link.html.twig') %}
     {% if git_sync_link|trim %}
-    <div class="gitrepo-link-note">
+    {# an aside: secondary information about the page, which Grav 2's Markdown output also leaves out #}
+    <aside class="gitrepo-link-note" aria-label="Page source">
         <p>{{ theme_var('git_sync_edit_note_text') }}
             {{ git_sync_link|raw }}
         </p>
-    </div>
+    </aside>
     {% endif %}
 {% endif %}
 {% endif %}

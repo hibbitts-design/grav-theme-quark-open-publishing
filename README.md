@@ -83,10 +83,12 @@ Updating the theme keeps your pages and settings as they are, with the new featu
 
 All options are available in the Admin Panel under **Themes → Quark Open Publishing**.
 
-- **Open Publishing Options** – chromeless site, H5P setup, Creative Commons license display, and menu dropdowns
+- **Open Publishing Options** – Creative Commons license display, chromeless site, menu dropdowns, and H5P setup
 - **Quark Options** – Dark Mode, text size on phones, production mode, grid size, custom logos, header and footer defaults, blog page and hero classes, and Spectre.css options
 - **Custom Menu Items** – text, icon, URL, and target for extra menu links
 - **Git Sync Link** – location, link type (view or edit), icon and text, and a custom Git repository URL
+
+**Reuse Pages as Markdown** (a "This page as Markdown (.md)" link on pages) is only in [Quark 2 Open Publishing](https://github.com/hibbitts-design/grav-theme-quark2-open-publishing), as it uses Grav 2's Markdown output. Grav 1.7 can't serve pages as Markdown, so this theme ignores those settings if a site's config includes them.
 
 ## Page URL Parameters
 

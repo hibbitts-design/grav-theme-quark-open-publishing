@@ -149,6 +149,11 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     text-align: center;
 }
 
+/* after the page links, the attribution sits close below them, as one block (as in Grav Helios Open Reader) */
+.page-extras + .reader-attribution {
+    margin-top: 1rem;
+}
+
 .reader-attribution p {
     margin: 0 0 0.3rem;
 }

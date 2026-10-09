@@ -1,7 +1,7 @@
 name: Quark Open Publishing
 type: theme
 slug: quark-open-publishing
-version: 3.3.7
+version: 3.3.8
 description: "A customized version of the Quark theme for open guides and books, with a blog and almost any other Grav page alongside them: guides with section cards, parts and reading progress. Includes Git Sync links and chromeless display for embedding in an LMS or other site."
 icon: unlock
 author:
@@ -43,33 +43,6 @@ form:
           type: tab
           title: 'Open Publishing Options'
           fields:
-            chromelessoptions:
-              type: section
-              title: 'Chromeless Site (i.e. Embedded)'
-              underline: true
-            chromeless.enabled:
-              type: toggle
-              label: 'Hide Site Menu, Sidebar and Footer'
-              highlight: 1
-              default: 0
-              options:
-                '0': No
-                '1': Yes
-              validate:
-                type: bool
-            h5psetup:
-              type: section
-              title: 'H5P Setup'
-              underline: true
-            h5pembedrootpath:
-              type: text
-              size: long
-              label: 'H5P Embed Source URL'
-              default: 'https://h5p.org/h5p/embed/'
-              help: 'Enter the embed source URL path up to, but not including, the H5P Content ID.'
-              description: 'H5P embed source URL path up to, but not including, the Content ID. For example, ''https://h5p.org/h5p/embed/'' or ''https://[organization].h5p.com/content/''.'
-              validate:
-                type: URL
             displaycclicense:
               type: section
               title: 'Creative Commons License'
@@ -115,6 +88,20 @@ form:
                   label: 'Additional CC License Text'
                   validate:
                     type: text
+            chromelessoptions:
+              type: section
+              title: 'Chromeless Site (i.e. Embedded)'
+              underline: true
+            chromeless.enabled:
+              type: toggle
+              label: 'Hide Site Menu, Sidebar and Footer'
+              highlight: 1
+              default: 0
+              options:
+                '0': No
+                '1': Yes
+              validate:
+                type: bool
             menuoptions:
               type: section
               title: Menu
@@ -129,6 +116,19 @@ form:
                 '1': Enabled
               validate:
                 type: bool
+            h5psetup:
+              type: section
+              title: 'H5P Setup'
+              underline: true
+            h5pembedrootpath:
+              type: text
+              size: long
+              label: 'H5P Embed Source URL'
+              default: 'https://h5p.org/h5p/embed/'
+              help: 'Enter the embed source URL path up to, but not including, the H5P Content ID.'
+              description: 'H5P embed source URL path up to, but not including, the Content ID. For example, ''https://h5p.org/h5p/embed/'' or ''https://[organization].h5p.com/content/''.'
+              validate:
+                type: URL
         theme_info:
           type: tab
           title: 'Quark Options'
@@ -383,7 +383,7 @@ form:
               type: text
               size: long
               label: 'Custom Link Text'
-              description: 'Link text, e.g. ''View Page in GitHub'' or ''View Page as Markdown''.'
+              description: 'Link text, e.g. ''View Page in GitHub'' or ''View Page Source''.'
               validate:
                 type: text
             git_sync_edit_note_text:
