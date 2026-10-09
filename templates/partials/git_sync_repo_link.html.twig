@@ -74,16 +74,13 @@
   {% endif %}
 {% else %}
   {# Without a link set in the theme options, the link comes from the Git Sync plugin: no link when the plugin
-     is turned off (or not installed), a "Setup Git Sync" link when it's on but has no repository yet,
+     is turned off (or not installed) or has no repository yet,
      and otherwise a link to the repository - hibbittsdesign.org #}
   {% if not config.plugins['git-sync'].enabled %}
     {# Git Sync is turned off: no link #}
   {% elseif config.plugins['git-sync'].repository is empty %}
-    {% set admin_panel_appearance_url = grav.base_url ~ '/admin/plugins/git-sync' %}
-    {% if not presentationslides %}
-      <a class="{{ link_classes }}" href="{{ admin_panel_appearance_url }}" title="Setup Git Sync">
-        <i class="fa fa-cog" aria-hidden="true"></i>Setup Git Sync</a>
-    {% endif %}
+    {# Git Sync is on but not connected to a repository yet: no link, so visitors don't see
+       an unfinished setup step (it's set up in Admin → Plugins → Git Sync) #}
   {% else %}
     {% if not (page.header.hide_git_sync_repo_link and not (presentationslides)) %}
       {% set git_sync_repo = config.plugins['git-sync'].repository %}
