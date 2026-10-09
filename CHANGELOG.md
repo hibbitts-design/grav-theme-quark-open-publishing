@@ -1,3 +1,13 @@
+# v3.3.8
+## 10/09/2026
+
+1. [](#improved)
+    * The Git Sync link (Page location) and Creative Commons license now sit inside the content, centred, on standard, blog and guide pages
+    * Open Publishing Options reordered: Creative Commons License first, H5P Setup last
+    * A quieter Git Sync link (muted, underlined on hover)
+1. [](#bugfix)
+    * Valid HTML for the Git Sync link and Creative Commons license (no longer a block inside a paragraph)
+
 # v3.3.7
 ## 10/08/2026
 
