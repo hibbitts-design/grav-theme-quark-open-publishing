@@ -1,3 +1,9 @@
+# v3.4.1
+## XX/XX/2026
+
+1. [](#improved)
+    * Demo content: the home page introduces Grav Open Publishing Space and its theme, with the sample guide as an example
+
 # v3.4.0
 ## 10/09/2026
 
