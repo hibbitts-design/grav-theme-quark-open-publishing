@@ -1,3 +1,9 @@
+# v3.4.2
+## XX/XX/2026
+
+1. [](#improved)
+    * README: converting a Pressbooks book with Grav Open Publishing Space as the destination fixes its section redirects and links
+
 # v3.4.1
 ## 10/09/2026
 
