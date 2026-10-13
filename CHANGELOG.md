@@ -1,3 +1,10 @@
+# v3.4.3
+## XX/XX/2026
+
+1. [](#bugfix)
+    * In chromeless mode (/chromeless:true), links to other sites and email links work
+    * In chromeless mode, links with # or ? and links to files such as PDFs open the right address
+
 # v3.4.2
 ## 10/13/2026
 
