@@ -29,8 +29,8 @@ form:
                     default: 0
                     highlight: 1
                     options:
-                        1:  Yes
-                        0:  No
+                        1:  'Yes'
+                        0:  'No'
                     validate:
                         type: bool
 
