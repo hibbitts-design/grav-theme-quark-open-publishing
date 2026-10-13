@@ -1,8 +1,10 @@
 # v3.4.2
-## XX/XX/2026
+## 10/13/2026
 
 1. [](#improved)
     * README: converting a Pressbooks book with Grav Open Publishing Space as the destination fixes its section redirects and links
+1. [](#bugfix)
+    * Yes/No switches in the theme and page settings show their labels in Admin on hosts with PHP's native YAML extension
 
 # v3.4.1
 ## 10/09/2026
