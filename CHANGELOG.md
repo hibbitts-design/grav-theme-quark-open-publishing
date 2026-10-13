@@ -1,5 +1,5 @@
 # v3.4.3
-## XX/XX/2026
+## 10/13/2026
 
 1. [](#bugfix)
     * In chromeless mode (/chromeless:true), links to other sites and email links work
