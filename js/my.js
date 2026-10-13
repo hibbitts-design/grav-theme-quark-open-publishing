@@ -7,38 +7,42 @@ $(document).ready(function () {
 
     $('#body-wrapper').on('click', 'a:not(.external-link, [href^="#"], [class^="glightbox"])', function (e) {
         if (($(this).attr('rel') != 'lightbox') && ($(this).attr('href') != null)) {
+            var target = new URL($(this).attr('href'), window.location.href);
+
+            // only links to this site carry the display options forward (not other sites, mailto: or tel:)
+            if (target.origin !== window.location.origin) {
+                return;
+            }
+
             e.preventDefault();
             var url = window.location.href;
-            var newurl = $(this).attr('href');
 
-            if (url.indexOf("chromeless:true") >= 0) {
-                newurl = newurl + "/chromeless:true";
+            // carry forward /chromeless:true, /embedded:true, /standalone:true and /hidepagetitle:true,
+            // added to the page path (before any ? or #), but not to links to files such as PDFs
+            var lastPart = target.pathname.split("/").pop();
+            var isFile = lastPart.indexOf(".") >= 0;
+            if (!isFile) {
+                ["chromeless", "embedded", "standalone", "hidepagetitle"].forEach(function (name) {
+                    var param = name + ":true";
+                    if (url.indexOf(param) >= 0 && target.pathname.indexOf(param) < 0) {
+                        if (target.pathname.slice(-1) !== "/") {
+                            target.pathname = target.pathname + "/";
+                        }
+                        target.pathname = target.pathname + param;
+                    }
+                });
             }
 
-            if (url.indexOf("embedded:true") >= 0) {
-                newurl = newurl + "/embedded:true";
-            }
-
-            if (url.indexOf("standalone:true") >= 0) {
-                newurl = newurl + "/standalone:true";
-            }
-
-            if (url.indexOf("hidepagetitle:true") >= 0) {
-                newurl = newurl + "/hidepagetitle:true";
-            }
-
-            // carry forward ?embedded=true, ?chromeless=true or ?standalone=true (as in Helios) to internal links
+            // carry forward ?embedded=true, ?chromeless=true or ?standalone=true (as in Helios)
             var params = new URLSearchParams(window.location.search);
             ["embedded", "chromeless", "standalone"].forEach(function (name) {
                 var value = params.get(name);
                 if (value && value !== "false" && value !== "0") {
-                    var target = new URL(newurl, window.location.href);
-                    if (target.origin === window.location.origin) {
-                        target.searchParams.set(name, value);
-                        newurl = target.pathname + target.search + target.hash;
-                    }
+                    target.searchParams.set(name, value);
                 }
             });
+
+            var newurl = target.pathname + target.search + target.hash;
 
             if (e.ctrlKey || e.metaKey) {
               window.open(newurl,'_blank');
