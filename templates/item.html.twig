@@ -27,7 +27,8 @@
     <section id="body-wrapper" class="section blog-listing">
         <section class="container {{ grid_size }}">
 
-            {% if show_breadcrumbs and config.plugins.breadcrumbs.enabled %}
+            {# no breadcrumbs when embedded (for example in an LMS) #}
+            {% if show_breadcrumbs and config.plugins.breadcrumbs.enabled and not embedded_mode and not theme_var('chromeless.enabled') %}
                 {% include 'partials/breadcrumbs.html.twig' %}
             {% endif %}
 
