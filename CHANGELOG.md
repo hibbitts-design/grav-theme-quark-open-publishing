@@ -1,3 +1,9 @@
+# v3.4.5
+## 10/14/2026
+
+1. [](#bugfix)
+    * Blog posts and the blog list page leave out their breadcrumbs when embedded
+
 # v3.4.4
 ## 10/14/2026
 
