@@ -1,3 +1,9 @@
+# v3.4.6
+## 10/14/2026
+
+1. [](#bugfix)
+    * Embedded blog posts show their title and date (as Quark 2 Open Publishing does), and leave out their tags
+
 # v3.4.5
 ## 10/14/2026
 
