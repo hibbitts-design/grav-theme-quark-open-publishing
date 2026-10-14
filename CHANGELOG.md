@@ -1,3 +1,11 @@
+# v3.4.4
+## 10/14/2026
+
+1. [](#bugfix)
+    * Printed blog posts include their title, subtitle and date
+    * The blog's title prints at the top of the blog list
+    * The Copy as Markdown button is left out of print
+
 # v3.4.3
 ## 10/13/2026
 
