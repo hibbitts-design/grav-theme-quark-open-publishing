@@ -8,7 +8,7 @@ Based on the Grav Helios Open Reader print stylesheet. To leave something out of
 }
 
 @media print {
-    /* Hide the header, menus, hero image, sidebar, footer, page navigation and the Git Sync link */
+    /* Hide the header, menus, hero image, sidebar, footer, page navigation, the Git Sync link and the Copy as Markdown button */
     #header,
     .mobile-menu,
     .mobile-container,
@@ -26,8 +26,67 @@ Based on the Grav Helios Open Reader print stylesheet. To leave something out of
     .section-list-start,
     .reader-search,
     .gitrepo-link-note,
+    .smb-wrapper,
     .no-print {
         display: none !important;
+    }
+
+    /* The blog's hero holds the blog and post titles (and a post's date), so print it as plain
+       text instead of hiding it: no image, overlay, arrow or tags (#blog-hero is the blog and
+       post hero; other heroes stay hidden) */
+    #blog-hero {
+        display: block !important;
+        background: none !important;
+        min-height: 0 !important;
+        height: auto !important;
+        padding: 0 0 0.75rem !important;
+        color: #000 !important;
+    }
+
+    #blog-hero .image-overlay,
+    #blog-hero #to-start,
+    #blog-hero .tags,
+    #blog-hero::before,
+    #blog-hero::after {
+        display: none !important;
+    }
+
+    #blog-hero .container {
+        text-align: left !important;
+        padding: 0 !important;
+    }
+
+    #blog-hero h1,
+    #blog-hero h2,
+    #blog-hero .blog-date {
+        color: #000 !important;
+        text-shadow: none !important;
+    }
+
+    /* the size of a page title, rather than the hero's large display size */
+    #blog-hero h1 {
+        font-size: 1.75rem !important;
+        font-weight: 700 !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    #blog-hero h1 strong {
+        font-weight: inherit !important;
+    }
+
+    #blog-hero h2:empty {
+        display: none !important;
+    }
+
+    #blog-hero h2 {
+        font-size: 1.15rem !important;
+    }
+
+    /* a post's subtitle (Quark 2's .lead) lines up under the title instead of being centred */
+    #blog-hero .lead {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        max-width: none !important;
     }
 
     /* Embedded content (slides, videos, PDFs, H5P) can't be printed and would leave a blank box, so leave it out */
