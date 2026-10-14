@@ -1,3 +1,9 @@
+# v3.4.8
+## 10/14/2026
+
+1. [](#improved)
+    * Demo pages: the blog, Standard Page and unpublished examples are numbered 15–19, so a converted Pressbooks book (numbered 10.) appears right after the sample guide, and the hidden Search page has no number, as in Grav Open Publishing Space 2.5.2
+
 # v3.4.7
 ## 10/14/2026
 
