@@ -1,8 +1,16 @@
+{# true unless the page is embedded or the whole site is chromeless #}
+{% set site_chrome = not embedded_mode and not theme_var('chromeless.enabled') %}
 <div class="content-item h-entry">
 
     {% if not hero_image_name %}
         <div class="content-title text-center">
-            {% include 'partials/blog/title.html.twig' with {title_level: 'h2'} %}
+            {# embedded (for example in an LMS), the title is plain text rather than a link to this same page;
+               a link post keeps its title link, which goes to the article it shares #}
+            {% if site_chrome or page.header.link %}
+                {% include 'partials/blog/title.html.twig' with {title_level: 'h2'} %}
+            {% elseif not grav.uri.param('hidepagetitle') %}
+                <h2 class="p-name mt-1">{{ page.title }}</h2>
+            {% endif %}
             {% if not (grav.uri.param('hidepagetitle')) %}
                 {% if page.header.subtitle %}
                     <h3>{{ page.header.subtitle }}</h3>
@@ -13,7 +21,10 @@
                     <span class="blogitem__readingtime">{% include 'partials/blog/readingtime.html.twig' %}</span>
                   {% endif %}
                 </p>
-                {% include 'partials/blog/taxonomy.html.twig' %}
+                {# the tags link to the blog's lists, which is site navigation, so they're left out when embedded #}
+                {% if site_chrome %}
+                    {% include 'partials/blog/taxonomy.html.twig' %}
+                {% endif %}
             {% endif %}
         </div>
     {% endif %}

@@ -3,7 +3,12 @@
 {% set show_breadcrumbs = header_var('show_breadcrumbs', [page, blog])|defined(true) %}
 {% set show_sidebar = header_var('show_sidebar', [page, blog])|defined(true)  %}
 {% set show_pagination = header_var('show_pagination', [page, blog])|defined(true) %}
-{% set hero_image_name = page.header.hero_image %}
+{% set site_chrome = not embedded_mode and not theme_var('chromeless.enabled') %}
+{# without the hero (embedded mode), the title is shown above the post instead, as in Quark 2 Open Publishing #}
+{% set hero_image_name = null %}
+{% if site_chrome %}
+    {% set hero_image_name = page.header.hero_image %}
+{% endif %}
 
 {% block hero %}
     {% if hero_image_name %}
