@@ -28,7 +28,11 @@ class QuarkOpenPublishing extends Quark
             'onShortcodeHandlers' => ['onShortcodeHandlers', -10],
             'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
             'onTwigInitialized' => ['onTwigInitialized', 0],
-            'onPagesInitialized' => ['onSearchPagesInitialized', 10],
+            'onPagesInitialized' => [
+                ['onSearchPagesInitialized', 10],
+                // first, before anything opens the page (Grav makes a page's redirect when it opens it)
+                ['onEmbeddedRedirect', 1000]
+            ],
             'onSimpleSearchCollection' => ['onSimpleSearchCollection', 0]
         ];
     }
@@ -119,6 +123,85 @@ class QuarkOpenPublishing extends Quark
             $this->grav['assets']->add('theme://editor-buttons/admin/js/shortcode-pdf.js');
             $this->grav['assets']->add('theme://editor-buttons/admin/js/shortcode-h5p.js');
         }
+    }
+
+    /**
+     * Keep the embedded view through a page's redirect: a section with no text of its own (as the Pressbooks
+     * Converter makes) redirects to its first page, and Grav's own redirect would leave out ?embedded=true or
+     * /chromeless:true, showing the whole site again. This runs before Grav makes that redirect.
+     */
+    public function onEmbeddedRedirect()
+    {
+        if ($this->isAdmin()) {
+            return;
+        }
+        $uri = $this->grav['uri'];
+
+        // Step 1: the embedded parts of this address, to carry across
+        $params = '';
+        foreach (['chromeless', 'embedded', 'standalone', 'hidepagetitle'] as $name) {
+            if ($this->isTrueParam($uri->param($name))) {
+                $params .= '/' . $name . ':' . $uri->param($name);
+            }
+        }
+        $query = '';
+        foreach (['embedded', 'chromeless', 'standalone'] as $name) {
+            if ($query === '' && $this->isTrueParam($uri->query($name))) {
+                $query = '?' . $name . '=' . rawurlencode($uri->query($name));
+            }
+        }
+        // not embedded: Grav redirects as usual
+        if ($params === '' && $query === '') {
+            return;
+        }
+
+        // Step 2: the page being opened, and where it redirects to (if anywhere)
+        $page = $this->grav['pages']->find($uri->route());
+        if (!$page || !$page->redirect()) {
+            return;
+        }
+        $target = $page->redirect();
+
+        // a redirect to another site is left to Grav (embedded mode only applies to this site)
+        if (preg_match('#^https?://#', $target)) {
+            return;
+        }
+
+        // a redirect can end with its own status code, for example "/book/section-1/intro[301]"
+        $code = (int) $this->config->get('system.pages.redirect_default_code', 302);
+        if (preg_match('/^(.*)\[(\d{3})\]$/', $target, $match)) {
+            $target = $match[1];
+            $code = (int) $match[2];
+        }
+
+        // Step 3: the same redirect, with the embedded parts added to the page's address
+        // (before any # or ? already in the target)
+        $hash = '';
+        $hashPosition = strpos($target, '#');
+        if ($hashPosition !== false) {
+            $hash = substr($target, $hashPosition);
+            $target = substr($target, 0, $hashPosition);
+        }
+        $existingQuery = '';
+        $queryPosition = strpos($target, '?');
+        if ($queryPosition !== false) {
+            $existingQuery = substr($target, $queryPosition + 1);
+            $target = substr($target, 0, $queryPosition);
+        }
+        if ($existingQuery !== '') {
+            if ($query === '') {
+                $query = '?' . $existingQuery;
+            } else {
+                $query = $query . '&' . $existingQuery;
+            }
+        }
+        // Grav's own redirect would otherwise still happen later in this request, whenever something asks
+        // for the current page (such as the Admin plugin's page popularity count), and replace this one;
+        // setting the current page here means Grav doesn't open it, or redirect, a second time
+        unset($this->grav['page']);
+        $this->grav['page'] = $page;
+
+        $this->grav->redirectLangSafe(rtrim($target, '/') . $params . $query . $hash, $code);
     }
 
     /**
