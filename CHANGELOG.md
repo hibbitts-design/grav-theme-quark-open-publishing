@@ -1,3 +1,9 @@
+# v3.4.9
+## 10/15/2026
+
+1. [](#new)
+    * A "Skip to content" link, shown when it gets keyboard focus, takes keyboard users past the header to the page content, as in Quark 2 Open Publishing (not on embedded or chromeless pages); with the fixed header, the content stops below it
+
 # v3.4.8
 ## 10/14/2026
 
