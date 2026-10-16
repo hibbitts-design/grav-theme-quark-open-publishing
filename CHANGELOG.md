@@ -6,7 +6,8 @@
     * Image captions written in HTML (`<figure>` and `<figcaption>`, as from the Pressbooks Converter) are shown the same way, as in Grav Helios Open Reader
     * Cover Image Alt Text setting on a guide's home page, to describe the cover for screen readers (without it, the alt text is still "<title> cover")
 1. [](#improved)
-    * README: the cover image alt text
+    * On a guide's first page, the left arrow key goes back to the guide's home page, so presenting with the arrow keys works both ways
+    * README: the cover image alt text and the left arrow key on a guide's first page
 
 # v3.4.10
 ## 10/16/2026
