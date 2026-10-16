@@ -1,3 +1,10 @@
+# v3.4.11
+## XX/XX/2026
+
+1. [](#new)
+    * Captions for images in guide pages: an italic line right after an image on its own line (such as `*Photo by …*`) shows as a caption – small, centred and just below the image – so photo credits and captions need no HTML
+    * Image captions written in HTML (`<figure>` and `<figcaption>`, as from the Pressbooks Converter) are shown the same way, as in Grav Helios Open Reader
+
 # v3.4.10
 ## 10/16/2026
 
