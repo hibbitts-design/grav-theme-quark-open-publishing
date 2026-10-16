@@ -1,5 +1,5 @@
 # v3.4.11
-## XX/XX/2026
+## 10/16/2026
 
 1. [](#new)
     * Captions for images in guide pages: an italic line right after an image on its own line (such as `*Photo by …*`) shows as a caption – small, centred and just below the image – so photo credits and captions need no HTML
