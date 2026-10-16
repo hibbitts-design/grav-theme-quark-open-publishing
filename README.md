@@ -126,7 +126,7 @@ For longer guides:
 
 Settings, in the Admin Panel page editor:
 
-- **Section List page** – subtitle, cover image (small, beside the title and details, or large at the top), author(s), edition, last updated date, Start button text (the button below the details, linking to the first section), section label (e.g. "Unit" or "Chapter"), search box, reading progress, Keep My Place, Previous/Next position (bottom, or top and bottom), cards per row (3 suits cards with images; 1 or 2 suits cards without images or with long titles), and OER attribution (license, license URL, and attribution text)
+- **Section List page** – subtitle, cover image (small, beside the title and details, or large at the top) and its alt text, author(s), edition, last updated date, Start button text (the button below the details, linking to the first section), section label (e.g. "Unit" or "Chapter"), search box, reading progress, Keep My Place, Previous/Next position (bottom, or top and bottom), cards per row (3 suits cards with images; 1 or 2 suits cards without images or with long titles), and OER attribution (license, license URL, and attribution text)
 - **Section** – section number, a section label override, Part, Learning Objectives, and for its card a description, image, author(s) and a badge (such as "New" or "Draft")
 - **Section Page** – Learning Objectives
 

@@ -38,7 +38,9 @@
       {% if cover.get('height') > cover.get('width') %}
         {% set cover_class = cover_class ~ ' reader-cover-large-portrait' %}
       {% endif %}
-      <img class="{{ cover_class }}" src="{{ cover.url }}" alt="{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_COVER'|t(page.title) }}">
+      {# the Cover Image Alt Text setting describes the picture for screen readers; without it, "<title> cover" #}
+      {% set cover_alt = page.header.cover_image_alt ?: 'THEME_QUARK_OPEN_PUBLISHING.READER_COVER'|t(page.title) %}
+      <img class="{{ cover_class }}" src="{{ cover.url }}" alt="{{ cover_alt }}">
     {% endif %}
 
     {% if show_title and not title_beside_cover %}

@@ -57,6 +57,12 @@ form:
               toggleable: true
               help: 'Optional cover image displayed on this page.'
 
+            header.cover_image_alt:
+              type: text
+              label: Cover Image Alt Text
+              toggleable: true
+              help: 'Describes the cover image for screen readers.'
+
             header.cover_image_layout:
               type: select
               label: Cover Image Layout
