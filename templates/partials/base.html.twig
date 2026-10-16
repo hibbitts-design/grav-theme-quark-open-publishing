@@ -71,6 +71,8 @@
 
     {# check content display flag - hibbittsdesign.org #}
     {% if not embedded_mode and not(theme_var('chromeless.enabled')) %}
+    {# A "Skip to content" link first in the header, shown when it gets keyboard focus; it goes to the page's content (#start) #}
+    <a class="skip-link" href="#start">{{ 'THEME_QUARK_OPEN_PUBLISHING.SKIP_TO_CONTENT'|t }}</a>
     {% block header deferred %}
         <section id="header" class="section">
             <section class="container {{ grid_size }}">

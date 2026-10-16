@@ -1,6 +1,7 @@
 en:
     THEME_QUARK_OPEN_PUBLISHING:
         SEARCH_PLACEHOLDER: 'Search...'
+        SKIP_TO_CONTENT: 'Skip to content'
         SEARCH_RESULTS: 'Search Results'
         SEARCH_SCOPE_PLACEHOLDER: 'Search this content...'
         SEARCH_SCOPE_NOTE: 'Showing results from %s.'

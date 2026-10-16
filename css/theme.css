@@ -190,3 +190,38 @@ h1.sections-page-title-template, h2.sections-page-title-template, h3.sections-pa
   outline: 2px solid currentColor;
   outline-offset: 2px;
 }
+
+/* "Skip to content": hidden until it gets keyboard focus, then shown at the top left. While hidden it's clipped to an
+   invisible 1px box (the usual way to hide text from view but not from screen readers), which works in every browser.
+   ".skip-link:focus" is listed too because Quark's own a:focus style would otherwise recolour and underline it, and
+   a border is used because Quark removes shadows from focused links */
+.skip-link,
+.skip-link:focus {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 1000;
+    padding: 0.5rem 1rem;
+    border: 2px solid #212529;
+    border-radius: 0.3rem;
+    background: #fff;
+    color: #212529;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* With the fixed header (header-fixed), the content "Skip to content" goes to (#start) stops below the header, not under it */
+.header-fixed #start {
+    scroll-margin-top: 5rem;
+}
+
+.skip-link:not(:focus) {
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
