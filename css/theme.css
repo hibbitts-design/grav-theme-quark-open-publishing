@@ -225,3 +225,65 @@ h1.sections-page-title-template, h2.sections-page-title-template, h3.sections-pa
     white-space: nowrap;
     border: 0;
 }
+
+
+/* [topics] shortcode: the A-Z index and its letter headings - hibbittsdesign.org
+   Semi-transparent greys are used so the same rules suit light and dark modes */
+/* the letters start at the left and wrap onto a new line when needed (justify-content is set because
+   Quark 2 spaces out the items in a nav across its full width) */
+.topics-index {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.3rem;
+    margin: 0 0 1.5rem;
+}
+
+/* each letter is a box about 36px square - comfortably above the 24px minimum target size (WCAG 2.2),
+   so it's easy to tap on a phone or click with less precise pointing. The letters are large and bold
+   (about 19px), which counts as large text, so the theme's link colour has enough contrast (3:1) */
+.topics-index a,
+.topics-index .topics-index-empty {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+    margin: 0;
+    padding: 0 0.4rem;
+    border: 1px solid rgba(127, 127, 127, 0.35);
+    border-radius: 0.3rem;
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* a clear outline around the letter that has keyboard focus (!important is needed because
+   Quark Open Publishing's base theme removes focus outlines from links with !important) */
+.topics-index a:focus-visible {
+    outline: 2px solid currentColor !important;
+    outline-offset: 2px;
+}
+
+/* a letter with no topics */
+.topics-index .topics-index-empty {
+    opacity: 0.35;
+}
+
+/* no accent bar above the letter headings (Quark 2 adds one to h2 headings) */
+h2.topics-letter::before {
+    display: none;
+}
+
+/* each letter heading, as a soft label; after jumping to it from the index, it stops below a fixed header */
+h2.topics-letter {
+    scroll-margin-top: 5rem;
+    display: inline-block;
+    min-width: 2.25em;
+    padding: 0.2em 0.6em;
+    margin: 1.5rem 0 0.5rem;
+    border-radius: 0.3rem;
+    background: rgba(127, 127, 127, 0.16);
+    font-size: 1.25rem;
+    text-align: center;
+}

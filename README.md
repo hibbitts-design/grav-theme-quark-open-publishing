@@ -25,7 +25,7 @@ Quark Open Publishing adds what open guides and books need on top of the Quark t
 - **Guides that carry over to Grav Helios Open Reader** – a Section List page type for guides and books, even long ones grouped into parts, with section cards, section labels, Learning Objectives, reading progress, Previous/Next navigation, Keep My Place, a last updated date, and OER attribution, using the same page settings as [Grav Helios Open Reader](https://github.com/hibbitts-design/grav-skeleton-helios-open-reader)
 - **Chromeless display for embedding** – add `/chromeless:true` or `?embedded=true` to any page URL to show only its content, or hide the site menu, sidebar, and footer site-wide
 - **Open authoring with Git Sync** – a "View Git Repository" or "View/Edit Page in Git Repository" link in the menu, footer, or page, with a custom icon and text
-- **Built-in shortcodes** – Button, Embedly, Google Slides, H5P, iFrame, Link Preview Card, Markdown File, PDF, and SpeakerDeck, with `title` (and `ratio`) options for accessible, well-proportioned embeds
+- **Built-in shortcodes** – Button, Embedly, Google Slides, H5P, iFrame, Link Preview Card, Markdown File, PDF, SpeakerDeck, and Topics (an A–Z topics index, as in Open Course Hub), with `title` (and `ratio`) options for accessible, well-proportioned embeds
 - **Callout shortcodes** – `[objectives]`, `[key-takeaways]`, `[reflection]`, `[definition]`, `[example]`, `[case-study]`, `[project-brief]`, `[process-note]`, `[feedback-requested]`, `[announcement]`, `[exercise]`, `[references]`, and `[excerpt]`, plus GitHub-style alerts (`> [!NOTE]` etc.), with the same names and options as Grav Helios Open Reader
 - **Blogging extras** – featured (sticky) posts, an option to hide post summaries on full posts, and a Markdown-based sidebar
 - **Content page types** – multi-page content with section cards, sections with side navigation, custom content lists, and dedicated H5P, iFrame, PDF, Embedly, and link preview card pages
@@ -120,6 +120,7 @@ For longer guides:
 
 - **Parts** – give sections the same **Part** setting to group them under a heading on the home page and a label in the side list; section numbers, Previous/Next and the reading progress continue across parts
 - **Keep My Place** – when a reader returns, a **Continue reading** bar above the section cards links to the last page they visited (remembered in their browser), as in Grav Helios Open Reader; its close button forgets the place
+- **Arrow keys** – on guide pages, ← and → go to the previous and next page (→ on a guide's home page starts reading), handy when presenting a guide by screen sharing
 - **Previous/Next at the top** – compact Previous/Next links beside the link back to the home page, as well as the tiles at the bottom
 - **Comfortable reading** – section pages keep lines to a comfortable length with slightly larger text, wide tables scroll sideways, footnotes sit as small notes below the text, and on phones a **Sections** link jumps to the list of sections
 
