@@ -91,4 +91,34 @@ Also, on section pages, wide tables scroll sideways inside the text column inste
         }
     }
 
+    // On guide pages, the left and right arrow keys go to the previous and next page - as when presenting slides,
+    // for example by screen sharing. On a Section List page, the right arrow key follows its Start Reading button.
+    document.addEventListener('keydown', function (event) {
+        // leave the keys alone with a modifier key held, so browser shortcuts still work
+        if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
+            return;
+        }
+        // and while typing, or in a box that scrolls sideways (such as a wide table), where the arrow keys scroll it
+        var target = event.target;
+        var typingTags = ['INPUT', 'TEXTAREA', 'SELECT'];
+        if (target.isContentEditable || typingTags.indexOf(target.tagName) !== -1) {
+            return;
+        }
+        if (target.closest && target.closest('.reader-table-scroll')) {
+            return;
+        }
+
+        // the page's own Previous/Next links (tiles at the bottom, or the compact links at the top)
+        var link = null;
+        if (event.key === 'ArrowLeft') {
+            link = document.querySelector('.reader-nav-prev, .reader-prev-next-top a[rel="prev"]');
+        }
+        if (event.key === 'ArrowRight') {
+            link = document.querySelector('.reader-nav-next, .reader-prev-next-top a[rel="next"], .section-list-start a');
+        }
+        if (link) {
+            window.location.href = link.href;
+        }
+    });
+
 })();

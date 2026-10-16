@@ -788,3 +788,18 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     line-height: 1.8rem;
     padding: 0 0.6rem;
 }
+
+/* Images in a guide page's text are no taller than a little over half the screen, so an image and the text around
+   it fit on screen together - for reading, and when presenting by screen sharing. A shortened image keeps its shape,
+   and an image on its own line (".reader-content p > img:only-child") is centred */
+.reader-content img {
+    max-height: 55vh;
+    width: auto;
+    max-width: 100%;
+}
+
+.reader-content p > img:only-child {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
