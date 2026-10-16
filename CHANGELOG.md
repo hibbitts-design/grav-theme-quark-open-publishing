@@ -8,6 +8,8 @@
 1. [](#improved)
     * On a guide's first page, the left arrow key goes back to the guide's home page, so presenting with the arrow keys works both ways
     * README: the cover image alt text and the left arrow key on a guide's first page
+1. [](#bugfix)
+    * The "Skip to content" text was listed twice in the theme's language file, which stricter YAML readers reject
 
 # v3.4.10
 ## 10/16/2026
