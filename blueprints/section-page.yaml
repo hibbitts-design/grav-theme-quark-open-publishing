@@ -44,3 +44,26 @@ form:
               rows: 5
               placeholder: "- Understand the key concepts\n- Apply the methods described\n- Evaluate the outcomes"
               help: 'Learning objectives displayed at the top of this page as a styled block. Supports Markdown. Can also be added inline using the [objectives] shortcode.'
+
+            header.badge_label:
+              type: text
+              size: small
+              label: Badge Label
+              toggleable: true
+              placeholder: 'e.g. New, Updated, Draft'
+              help: 'A short status badge shown beside the section label on this page. Leave empty for no badge.'
+
+            header.badge_color:
+              type: select
+              label: Badge Color
+              toggleable: true
+              default: default
+              options:
+                default: Default
+                blue: Blue
+                green: Green
+                yellow: Yellow
+                red: Red
+                purple: Purple
+                plain: Plain
+              help: 'The badge colour.'

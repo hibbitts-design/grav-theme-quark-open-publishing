@@ -31,11 +31,24 @@
             {% endif %}
             {# the edition and last updated date share one line, for example "First Edition, 2026 · Updated Oct 4, 2026" #}
             {% if page.header.edition or page.header.last_updated %}
+                {# the last updated date, as a <time> tag with the date in a form computers can read (2026-10-04),
+                   shown in the language's date format (Oct 4, 2026), inside the "Updated ..." text #}
+                {% set updated_text = '' %}
+                {% if page.header.last_updated %}
+                    {% set updated_date = '<time datetime="' ~ page.header.last_updated|date('Y-m-d') ~ '">' ~ page.header.last_updated|date('THEME_QUARK_OPEN_PUBLISHING.READER_DATE_FORMAT'|t) ~ '</time>' %}
+                    {% set updated_text = 'THEME_QUARK_OPEN_PUBLISHING.READER_UPDATED'|t(updated_date) %}
+                {% endif %}
+                {# with both, a dot between them that is only visual: screen readers hear a short pause (a hidden comma)
+                   instead of "middle dot" #}
+                {% set separator = '' %}
+                {% if page.header.edition and updated_text %}
+                    {% set separator = '<span class="text-assistive">,</span><span aria-hidden="true"> &middot; </span>' %}
+                {% endif %}
+                {# |raw keeps the theme's own HTML (the <time> tag and the dot), while |e makes the edition plain text, as Twig does
+                   for other settings when autoescape is on. (The - in {{- and -}} removes the spaces and line breaks around
+                   the text, so the line has no extra space.) #}
                 <p class="reader-edition">
-                    {%- if page.header.edition %}{{ page.header.edition }}{% endif %}
-                    {#- the dot is only visual; screen readers hear a short pause (a hidden comma) instead of "middle dot" #}
-                    {%- if page.header.edition and page.header.last_updated %}<span class="text-assistive">,</span><span aria-hidden="true"> &middot; </span>{% endif %}
-                    {%- if page.header.last_updated %}{% set updated_date = '<time datetime="' ~ page.header.last_updated|date('Y-m-d') ~ '">' ~ page.header.last_updated|date('THEME_QUARK_OPEN_PUBLISHING.READER_DATE_FORMAT'|t) ~ '</time>' %}{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_UPDATED'|t(updated_date)|raw }}{% endif -%}
+                    {{- (page.header.edition|e ~ separator ~ updated_text)|raw -}}
                 </p>
             {% endif %}
             {% if page.header.license %}

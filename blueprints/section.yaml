@@ -106,7 +106,7 @@ form:
               label: Badge Label
               toggleable: true
               placeholder: 'e.g. New, Updated, Draft'
-              help: 'A short status badge shown on the section card. Leave empty for no badge.'
+              help: 'A short status badge shown on the section card and page. Leave empty for no badge.'
 
             header.badge_color:
               type: select

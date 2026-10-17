@@ -86,7 +86,21 @@
       {% endif %}
 
       {% if not(page.header.hide_page_title) and not(grav.uri.param('hidepagetitle')) %}
-        {% if section_heading_label|length > 0 %}
+        {# The page's own status badge, such as "Draft" (its Badge Label and Badge Color settings, also shown on its section
+           card), beside the section label, so readers see it on the page too #}
+        {% set page_badge_label = page.header.badge_label %}
+        {% set page_badge_color = page.header.badge_color %}
+        {% if page_badge_color not in ['blue', 'green', 'yellow', 'red', 'purple', 'plain'] %}
+          {% set page_badge_color = 'default' %}
+        {% endif %}
+        {% if page_badge_label %}
+          <div class="section-card-label-row reader-page-label-row">
+            {% if section_heading_label|length > 0 %}
+              <p class="reader-section-label">{{ section_heading_label }}</p>
+            {% endif %}
+            <span class="label label-rounded section-badge section-badge-{{ page_badge_color }}">{{ page_badge_label|e }}</span>
+          </div>
+        {% elseif section_heading_label|length > 0 %}
           <p class="reader-section-label">{{ section_heading_label }}</p>
         {% endif %}
         <h1 class="sections-page-title-template h3">{{ page.title }}</h1>
@@ -94,6 +108,11 @@
 
       {% if page.template == 'sections' %}
         {% include 'partials/reader_header.html.twig' %}
+      {% endif %}
+
+      {# On phones and narrow windows, where the side list comes after the page: the page's own sections, above its text #}
+      {% if not content_only %}
+        {% include 'partials/reader_page_sections.html.twig' with { show_above_content: true } %}
       {% endif %}
 
       {# The page's text, set for comfortable reading (see css/reader.css) #}
@@ -267,6 +286,10 @@
             <li class="nav-item  {{ current_parent }}">
               <a href="{% if activetag %}{{ p.url ~ '/filter:' ~ activetag }}{% else %}{{ p.url }}{% endif %}">{{ p.menu }}</a>
             </li>
+            {# the current page's own sections, under it in the side list #}
+            {% if p.route == page.route %}
+              {% include 'partials/reader_page_sections.html.twig' %}
+            {% endif %}
 
             {% if p.children.visible.count != 0 %}
 
@@ -281,11 +304,17 @@
                         <li class="nav-item {{ current_child }}">
                           <a href="{% if activetag %}{{ child.url  ~ '/filter:' ~ activetag }}{% else %}{{ child.url }}{% endif %}">{{ child.menu }}</a>
                         </li>
+                        {% if child.route == page.route %}
+                          {% include 'partials/reader_page_sections.html.twig' %}
+                        {% endif %}
                       {% endif %}
                     {% else %}
                       <li class="nav-item {{ current_child }}">
                         <a href="{% if activetag %}{{ child.url  ~ '/filter:' ~ activetag }}{% else %}{{ child.url }}{% endif %}">{{ child.menu }}</a>
                       </li>
+                      {% if child.route == page.route %}
+                        {% include 'partials/reader_page_sections.html.twig' %}
+                      {% endif %}
                     {% endif %}
                   {% endfor %}
                 </ul>

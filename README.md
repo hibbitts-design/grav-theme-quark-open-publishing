@@ -22,10 +22,10 @@ Quark Open Publishing adds what open guides and books need on top of the Quark t
 
 ## What Sets It Apart
 
-- **Guides that carry over to Grav Helios Open Reader** – a Section List page type for guides and books, even long ones grouped into parts, with section cards, section labels, Learning Objectives, reading progress, Previous/Next navigation, Keep My Place, a last updated date, and OER attribution, using the same page settings as [Grav Helios Open Reader](https://github.com/hibbitts-design/grav-skeleton-helios-open-reader)
+- **Guides that carry over to Grav Helios Open Reader** – a Section List page type for guides and books, even long ones grouped into parts, with section cards, section labels, Learning Objectives, reading progress, Previous/Next navigation, Keep My Place, a last updated date and OER attribution, plus a Guides List page with a card for each guide, using the same page settings as [Grav Helios Open Reader](https://github.com/hibbitts-design/grav-skeleton-helios-open-reader)
 - **Chromeless display for embedding** – add `/chromeless:true` or `?embedded=true` to any page URL to show only its content, or hide the site menu, sidebar, and footer site-wide
 - **Open authoring with Git Sync** – a "View Git Repository" or "View/Edit Page in Git Repository" link in the menu, footer, or page, with a custom icon and text
-- **Built-in shortcodes** – Button, Embedly, Google Slides, H5P, iFrame, Link Preview Card, Markdown File, PDF, SpeakerDeck, and Topics (an A–Z topics index, as in Open Course Hub), with `title` (and `ratio`) options for accessible, well-proportioned embeds
+- **Built-in shortcodes** – Badge, Button, Embedly, Google Slides, H5P, iFrame, Link Preview Card, Markdown File, PDF, SpeakerDeck, Topics (an A–Z topics index, as in Open Course Hub), and Show/Hide If Embedded, with `title` (and `ratio`) options for accessible, well-proportioned embeds
 - **Callout shortcodes** – `[objectives]`, `[key-takeaways]`, `[reflection]`, `[definition]`, `[example]`, `[case-study]`, `[project-brief]`, `[process-note]`, `[feedback-requested]`, `[announcement]`, `[exercise]`, `[references]`, and `[excerpt]`, plus GitHub-style alerts (`> [!NOTE]` etc.), with the same names and options as Grav Helios Open Reader
 - **Blogging extras** – featured (sticky) posts, an option to hide post summaries on full posts, and a Markdown-based sidebar
 - **Content page types** – multi-page content with section cards, sections with side navigation, custom content lists, and dedicated H5P, iFrame, PDF, Embedly, and link preview card pages
@@ -103,6 +103,10 @@ Add these to any page URL, for example `https://yoursite.com/blog/my-post/chrome
 | `/summaryonly:true` (or `/onlysummary:true`) | Shows only a post's summary, with a Continue Reading link when the post has one enabled |
 | `/filter:<tag>` | On Sections and Section List pages, limits the section navigation and section cards to pages with that tag |
 
+To show content only on the site, or only when a page is embedded, wrap it in `[hideifembedded]...[/hideifembedded]` or `[showifembedded]...[/showifembedded]` – for example, to hide links that would take readers out of an LMS. They work on whole paragraphs, lists or lines, not on words within a sentence, and use the same names as Grav Open Course Hub and Grav Helios Course Hub.
+
+For a small label in the text, such as "Draft" or "Due Friday", use `[badge label="Draft"]`, with an optional `color` (`default`, `blue`, `green`, `yellow`, `red`, `purple` or `plain`) or Grav Open Course Hub's `type` names (`success`, `warning`, …), and `url` to make it a link – the same options as Grav Open Course Hub and Grav Helios Course Hub. A page that also uses the `[badge]Draft[/badge]` form needs a closing slash on its other badges (`[badge label="Draft" /]`), as Grav otherwise pairs them up.
+
 ## Multi-Page Content
 
 The **Section List** page type (`section-list.md`) publishes a guide as a set of pages: a home page with a card for each section, then each section (`section.md`) and its pages (`section-page.md`, as in Grav Helios Open Reader; the earlier `subsection.md` pages keep working). Section pages have a side list of the sections, Previous/Next navigation, a link back to the home page, and a search box. The earlier **Sections** page type (`sections.md`) remains available, with **Subsection** pages and the side list on its home page instead of cards; its **Sections Config** tab can switch its Next/Prev buttons to the same tiles. When embedded (for example with `?embedded=true`), Section List pages show only their content, as in Grav Helios Open Reader, while Sections pages keep their side list and buttons.
@@ -122,13 +126,13 @@ For longer guides:
 - **Keep My Place** – when a reader returns, a **Continue reading** bar above the section cards links to the last page they visited (remembered in their browser), as in Grav Helios Open Reader; its close button forgets the place
 - **Arrow keys** – on guide pages, ← and → go to the previous and next page (→ on a guide's home page starts reading, and ← on its first page goes back to the home page), handy when presenting a guide by screen sharing
 - **Previous/Next at the top** – compact Previous/Next links beside the link back to the home page, as well as the tiles at the bottom
-- **Comfortable reading** – section pages keep lines to a comfortable length with slightly larger text, wide tables scroll sideways, footnotes sit as small notes below the text, and on phones a **Sections** link jumps to the list of sections
+- **Comfortable reading** – section pages keep lines to a comfortable length with slightly larger text, wide tables scroll sideways, footnotes sit as small notes below the text, and on phones a **Sections** link jumps to the list of sections; with the [Page TOC plugin](https://github.com/trilbymedia/grav-plugin-page-toc), the side list also shows the current page's sections (its headings), with an "On this page" box above the text on phones, as on Grav Open Course Hub's module pages
 
 Settings, in the Admin Panel page editor:
 
-- **Section List page** – subtitle, cover image (small, beside the title and details, or large at the top) and its alt text, author(s), edition, last updated date, Start button text (the button below the details, linking to the first section), section label (e.g. "Unit" or "Chapter"), search box, reading progress, Keep My Place, Previous/Next position (bottom, or top and bottom), cards per row (3 suits cards with images; 1 or 2 suits cards without images or with long titles), and OER attribution (license, license URL, and attribution text)
-- **Section** – section number, a section label override, Part, Learning Objectives, and for its card a description, image, author(s) and a badge (such as "New" or "Draft")
-- **Section Page** – Learning Objectives
+- **Section List page** – subtitle, cover image (small, beside the title and details, or large at the top) and its alt text, author(s), edition, last updated date, Start button text (the button below the details, linking to the first section), section label (e.g. "Unit" or "Chapter"), search box, reading progress, Keep My Place, Previous/Next position (bottom, or top and bottom), cards per row (3 suits cards with images; 1 or 2 suits cards without images or with long titles), OER attribution (license, license URL, and attribution text), and for its card on a Guides List page a group and a badge
+- **Section** – section number, a section label override, Part, Learning Objectives, and for its card a description, image, author(s) and a badge (such as "New" or "Draft"), also shown beside the section label on its page
+- **Section Page** – Learning Objectives, and a badge shown beside the section label (such as "Draft")
 
 A few more settings for the Section List page are left out of the Admin Panel to keep it simple. To use them, add them to the page's front matter (in the Admin Panel, switch the page editor to **Expert** mode):
 
@@ -147,12 +151,17 @@ parts:                           # or give each part its own title
       label: 'Foundations of Open Education'
 ```
 
+### Guides List
+
+For a site with more than one guide, the **Guides List** page type (`reader-list.md`, the same as Grav Helios Open Reader's readers list) shows a card for each guide: every top-level Section List page that is published and visible (its folder name starts with a number, such as `02.my-guide`), in the site's page order. Each card shows the guide's cover image, subtitle, author(s), edition and last updated date. On the Section List page's **Details** tab, **Guides List Group** puts a guide under a heading with that name (guides without a group come first), and **Badge Label** and **Badge Color** add a badge such as "Draft" to its card.
+
+The Guides List page has a subtitle, cards per row, card image layout (beside the text or on top) and a description line limit (3 lines by default), and, as on a Section List page, a line with just `===` in its text puts the text after it below the cards.
+
 ### Moving to Grav Helios Open Reader
 
 Quark Open Publishing is for a site built around a blog and one or more guides – even long ones, grouped into parts – and is free and open source. [Grav Helios Open Reader](https://github.com/hibbitts-design/grav-skeleton-helios-open-reader) is for a site built for reading, such as open textbooks and course readers, and runs on Helios, a premium Grav theme. When a site becomes mainly about reading, its guides can move to Open Reader with little rework. Open Reader adds:
 
 - A table of contents on every page, highlighting where you are as you read
-- Several publications on one site, each with its own home page, gathered on a readers list
 - A plain-text version of each publication (`llms-full.txt`), for ebook tools, search and other uses
 
 To move a guide:
@@ -174,7 +183,7 @@ A publication from Open Reader usually works as a guide here without changing it
 
 If a section's `section.md` redirects to its first page (`redirect: /section-1/...`), as in a converted or single-publication Open Reader site, add the guide's folder to the start of the address (for example `redirect: /my-guide/section-1/...`). For a Pressbooks book, converting it with **Grav Open Publishing Space** as the [Pressbooks Converter](https://pressbooks-converter.hibbittsdesign.org/)'s destination does this for you, links between chapters included.
 
-Its page settings carry over, including section labels, badges, card image layout, the description line limit, and parts (from `part-1-section-1` folder names and a `parts` block). The cover image is shown small unless you set Cover Image Layout to large. Settings only Open Reader uses, such as section icons and readers list groups, are ignored.
+Its page settings carry over, including section labels, badges, card image layout, the description line limit, readers list groups, and parts (from `part-1-section-1` folder names and a `parts` block). An Open Reader readers list page (`reader-list.md`) works as a Guides List page. The cover image is shown small unless you set Cover Image Layout to large. Settings only Open Reader uses, such as section icons, are ignored.
 
 Open Reader's section cards have their images beside the text, with descriptions cut to 3 lines, unless set otherwise; here images are on top unless there's 1 card per row, with full descriptions. For Open Reader's look, add this to the Section List page's front matter:
 
@@ -201,7 +210,7 @@ To leave something out when a page is printed, add the `no-print` class (as in G
 - PHP >= 8.0.2
 - Grav CMS 1.7 or 2.0
 - The [Quark theme](https://github.com/getgrav/grav-theme-quark) and required plugins, installed automatically as dependencies
-- Optional: the [SimpleSearch plugin](https://github.com/getgrav/grav-plugin-simplesearch) for search, and the [GitHub Markdown Alerts plugin](https://github.com/trilbymedia/grav-plugin-github-markdown-alerts) for GitHub-style alerts (version 2 on Grav 2, version 1.1.1 on Grav 1.7)
+- Optional: the [Page TOC plugin](https://github.com/trilbymedia/grav-plugin-page-toc) for a page's sections in the side list (version 4 on Grav 2, or version 3.2.5 on Grav 1.7), the [SimpleSearch plugin](https://github.com/getgrav/grav-plugin-simplesearch) for search, and the [GitHub Markdown Alerts plugin](https://github.com/trilbymedia/grav-plugin-github-markdown-alerts) for GitHub-style alerts (version 2 on Grav 2, version 1.1.1 on Grav 1.7)
 
 ## Support
 

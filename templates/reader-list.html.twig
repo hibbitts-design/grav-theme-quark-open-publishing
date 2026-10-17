@@ -1,0 +1,192 @@
+{# Guides List page (Readers List in Grav Helios Open Reader, with the same page type and settings): a card for each
+   guide on the site - each top-level Section List page that is published and visible - hibbittsdesign.org #}
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+  {% set show_title = not(page.header.hide_page_title) and not(grav.uri.param('hidepagetitle')) %}
+
+  {# The guides: top-level Section List pages (pages is the site's root page), in the site's page order, as in Helios Open Reader.
+     Hidden (not visible) and unpublished guides are left out. #}
+  {% set guide_pages = [] %}
+  {% for child_page in pages.children.visible.published %}
+    {% if child_page.template == 'section-list' %}
+      {% set guide_pages = guide_pages|merge([child_page]) %}
+    {% endif %}
+  {% endfor %}
+
+  <div class="section-list-page reader-list-page">
+
+    {% if show_title %}
+      <h1 class="sections-page-title-template h3">{{ page.title }}</h1>
+    {% endif %}
+    {% if page.header.subtitle %}
+      <p class="reader-subtitle">{{ page.header.subtitle }}</p>
+    {% endif %}
+
+    {# Text above and below the guide cards, as on Section List pages: a line with just === in the page's content
+       splits it, with the text before it above the cards and the text after it below them (=== is Grav's summary
+       delimiter, so the text above is the page's summary). Without ===, all of the text is above the cards. #}
+    {% set content_above = page.content %}
+    {% set content_below = '' %}
+    {% if '===' in page.rawMarkdown %}
+      {% set summary_text = page.summary %}
+      {% if page.content starts with summary_text %}
+        {% set content_above = summary_text %}
+        {% set content_below = page.content|slice(summary_text|length)|trim %}
+      {% endif %}
+    {% endif %}
+
+    {{ content_above|raw }}
+
+    {# A card for each guide, 1, 2 or 3 per row (one per row on phones) #}
+    {% set cards_per_row = page.header.cards_per_row|default(1) %}
+    {% if cards_per_row == 3 %}
+      {% set card_column = 'col-4 col-md-6 col-sm-12' %}
+    {% elseif cards_per_row == 2 %}
+      {% set card_column = 'col-6 col-sm-12' %}
+    {% else %}
+      {% set card_column = 'col-12' %}
+    {% endif %}
+
+    {# Card Image Layout ("side" or "top"), as on Section List pages: without it, side with 1 card per row,
+       so full-width cards aren't too tall, otherwise top. 3 per row is always top. #}
+    {% if page.header.card_image_layout %}
+      {% set card_image_layout = page.header.card_image_layout %}
+    {% elseif cards_per_row == 1 %}
+      {% set card_image_layout = 'side' %}
+    {% else %}
+      {% set card_image_layout = 'top' %}
+    {% endif %}
+    {% if cards_per_row == 3 %}
+      {% set card_image_layout = 'top' %}
+    {% endif %}
+
+    {# Description Line Limit: card descriptions are cut to 2 or 3 lines (3, the default, as in Helios Open Reader), or not at all (0) #}
+    {% set card_description_lines = page.header.card_description_lines ?? 3 %}
+    {% set section_cards_class = 'section-cards columns' %}
+    {% if card_description_lines == 2 or card_description_lines == 3 %}
+      {% set section_cards_class = section_cards_class ~ ' section-cards-lines-' ~ card_description_lines %}
+    {% endif %}
+
+    {# Groups, as in Helios Open Reader: guides with a Group setting are shown under a heading with its name, in the
+       order the groups first appear. Guides without a group come first, with no heading. #}
+    {# (the group names are collected in a list first, rather than used as keys, since Twig would renumber a
+       group name that is a number, such as 2026) #}
+    {% set ungrouped_guides = [] %}
+    {% set group_names = [] %}
+    {% for guide_page in guide_pages %}
+      {% set group_name = guide_page.header.group|default('') %}
+      {% if not group_name %}
+        {% set ungrouped_guides = ungrouped_guides|merge([guide_page]) %}
+      {% elseif group_name not in group_names %}
+        {% set group_names = group_names|merge([group_name]) %}
+      {% endif %}
+    {% endfor %}
+    {% set guide_groups = [] %}
+    {% if ungrouped_guides|length > 0 %}
+      {% set guide_groups = guide_groups|merge([{ title: '', guides: ungrouped_guides }]) %}
+    {% endif %}
+    {% for group_name in group_names %}
+      {% set group_guides = [] %}
+      {% for guide_page in guide_pages %}
+        {% if guide_page.header.group == group_name %}
+          {% set group_guides = group_guides|merge([guide_page]) %}
+        {% endif %}
+      {% endfor %}
+      {% set guide_groups = guide_groups|merge([{ title: group_name, guides: group_guides }]) %}
+    {% endfor %}
+
+    {% for guide_group in guide_groups %}
+      {% if guide_group.title %}
+        <h2 class="reader-part-heading">{{ guide_group.title }}</h2>
+      {% endif %}
+      <ul class="{{ section_cards_class }}">
+        {% for guide_page in guide_group.guides %}
+          {# the guide's Cover Image, Subtitle (or Description), Author(s), Edition and Last Updated settings #}
+          {% set card_image = guide_page.header.cover_image ? guide_page.media[guide_page.header.cover_image] : null %}
+          {% set card_description = guide_page.header.subtitle ?: guide_page.header.description %}
+          {% set card_class = 'card section-card' %}
+          {% if card_image and card_image_layout == 'side' %}
+            {% set card_class = card_class ~ ' section-card-image-side' %}
+          {% endif %}
+          {% if not card_image and not card_description and not guide_page.header.authors
+            and not guide_page.header.edition and not guide_page.header.last_updated %}
+            {% set card_class = card_class ~ ' section-card-title-only' %}
+          {% endif %}
+          <li class="column {{ card_column }}">
+            <div class="{{ card_class }}">
+              {% if card_image %}
+                <div class="card-image">
+                  <img class="img-responsive" src="{{ card_image.cropZoom(800, 400).url }}" alt="">
+                </div>
+              {% endif %}
+              <div class="card-header">
+                {# the guide's status badge such as "New" or "Draft" (its Badge Label and Badge Color settings, as in Helios Open Reader) #}
+                {% set badge_label = guide_page.header.badge_label %}
+                {% set badge_color = guide_page.header.badge_color %}
+                {% if badge_color not in ['blue', 'green', 'yellow', 'red', 'purple', 'plain'] %}
+                  {% set badge_color = 'default' %}
+                {% endif %}
+                {% if badge_label %}
+                  <div class="section-card-label-row">
+                    <span class="label label-rounded section-badge section-badge-{{ badge_color }}">{{ badge_label|e }}</span>
+                  </div>
+                {% endif %}
+                {# the link covers the whole card (see css/reader.css). Card titles are h2, or h3 below a group's heading
+                   (the h5 class keeps their size the same) #}
+                {% set card_heading = guide_group.title ? 'h3' : 'h2' %}
+                <{{ card_heading }} class="card-title h5"><a class="section-card-link" href="{{ guide_page.url }}">{{ guide_page.title }}</a>
+                  {#- an arrow on every guide card, as on section cards -#}
+                  <i class="fa fa-arrow-right section-card-arrow" aria-hidden="true"></i>
+                </{{ card_heading }}>
+              </div>
+              {% if card_description or guide_page.header.authors or guide_page.header.edition or guide_page.header.last_updated %}
+                <div class="card-body">
+                  {% if card_description %}
+                    <p class="section-card-description">{{ card_description }}</p>
+                  {% endif %}
+                  {% if guide_page.header.authors %}
+                    <p class="section-card-author">{{ guide_page.header.authors }}</p>
+                  {% endif %}
+                  {# the edition and last updated date share one line, as on the guide's home page #}
+                  {% if guide_page.header.edition or guide_page.header.last_updated %}
+                    {# the last updated date, as a <time> tag with the date in a form computers can read (2026-10-04),
+                       shown in the language's date format (Oct 4, 2026), inside the "Updated ..." text #}
+                    {% set updated_text = '' %}
+                    {% if guide_page.header.last_updated %}
+                      {% set updated_date = '<time datetime="' ~ guide_page.header.last_updated|date('Y-m-d') ~ '">' ~ guide_page.header.last_updated|date('THEME_QUARK_OPEN_PUBLISHING.READER_DATE_FORMAT'|t) ~ '</time>' %}
+                      {% set updated_text = 'THEME_QUARK_OPEN_PUBLISHING.READER_UPDATED'|t(updated_date) %}
+                    {% endif %}
+                    {# with both, a dot between them that is only visual: screen readers hear a short pause (a hidden comma)
+                       instead of "middle dot" #}
+                    {% set separator = '' %}
+                    {% if guide_page.header.edition and updated_text %}
+                      {% set separator = '<span class="text-assistive">,</span><span aria-hidden="true"> &middot; </span>' %}
+                    {% endif %}
+                    {# |raw keeps the theme's own HTML (the <time> tag and the dot), while |e makes the edition plain text, as Twig does
+                       for other settings when autoescape is on. (The - in {{- and -}} removes the spaces and line breaks around
+                       the text, so the line has no extra space.) #}
+                    <p class="section-card-author">
+                      {{- (guide_page.header.edition|e ~ separator ~ updated_text)|raw -}}
+                    </p>
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
+
+    {% if content_below %}
+      <div class="section-list-below">
+        {{ content_below|raw }}
+      </div>
+    {% endif %}
+
+    {% include 'partials/page_extras.html.twig' with { inline: true } %}
+
+  </div>
+
+{% endblock %}

@@ -571,3 +571,12 @@ mark {
 .reader-prev-next .reader-nav-tile:focus-visible {
     outline-color: var(--qop-dark-link) !important;
 }
+
+/* [badge] shortcode in Dark mode: the same lighter colours as the section card badges above */
+.content-badge,
+.content-badge-blue { color: var(--qop-dark-link); background: rgba(114, 172, 243, 0.15); }
+.content-badge-green { color: #86efac; background: rgba(134, 239, 172, 0.12); }
+.content-badge-yellow { color: #fde047; background: rgba(253, 224, 71, 0.12); }
+.content-badge-red { color: #fca5a5; background: rgba(252, 165, 165, 0.12); }
+.content-badge-purple { color: #d8b4fe; background: rgba(216, 180, 254, 0.12); }
+.content-badge-plain { color: var(--qop-dark-muted); background: transparent; box-shadow: inset 0 0 0 1px var(--qop-dark-border); }

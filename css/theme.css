@@ -287,3 +287,40 @@ h2.topics-letter {
     font-size: 1.25rem;
     text-align: center;
 }
+
+/* [showifembedded] content is hidden on the site; embedded pages show it, and hide [hideifembedded] content
+   instead (those two rules are added in templates/partials/base.html.twig) - hibbittsdesign.org */
+.chromeless-show {
+    display: none;
+}
+
+/* [badge] shortcode: a small label in the text, such as "Draft" or "New", in the same colours as the section card
+   badges (css/reader.css), here on any page - hibbittsdesign.org */
+.content-badge {
+    display: inline-block;
+    padding: 0.1em 0.55em;
+    border-radius: 999px;
+    font-size: 0.8em;
+    font-weight: 600;
+    line-height: 1.4;
+    vertical-align: 0.1em;
+    color: #1565c0;
+    background: #e1edfd;
+}
+
+.content-badge-blue { color: #1565c0; background: #e1edfd; }
+.content-badge-green { color: #1b6e2f; background: #e3f4e6; }
+.content-badge-yellow { color: #7a5a00; background: #fbf1cc; }
+.content-badge-red { color: #b3261e; background: #fbe4e2; }
+.content-badge-purple { color: #6a2ea0; background: #efe4f8; }
+
+.content-badge-plain {
+    color: #667189;
+    background: transparent;
+    box-shadow: inset 0 0 0 1px #dadee4;
+}
+
+/* a badge that is a link keeps the badge look (no underline) */
+a.content-badge-link {
+    text-decoration: none;
+}

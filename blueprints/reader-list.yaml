@@ -1,0 +1,82 @@
+title: Guides List Page Options
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        options:
+          type: tab
+
+          fields:
+
+            pagetitle:
+                type: section
+                title: Page Title
+                underline: true
+
+            header.hide_page_title:
+                type: toggle
+                label: Display Title at top of Page
+                help: Determines if the page title is displayed at the top of a page
+                default: 0
+                highlight: 0
+                options:
+                    0:  'Yes'
+                    1:  'No'
+                validate:
+                    type: bool
+
+        guides:
+          type: tab
+          title: Guides
+
+          fields:
+
+            guides_info:
+              type: display
+              label: false
+              markdown: true
+              content: 'A card is shown for each top-level Section List page that is published and visible.'
+
+            header.subtitle:
+              type: text
+              label: Subtitle
+              toggleable: true
+              placeholder: 'e.g. Open Guides and Books'
+              help: 'Optional subtitle displayed below the title.'
+
+            header.cards_per_row:
+              type: select
+              label: Cards Per Row
+              default: 1
+              options:
+                1: '1 (full width)'
+                2: '2 per row'
+                3: '3 per row'
+              help: 'Guide cards per row (one per row on phones).'
+
+            header.card_image_layout:
+              type: select
+              label: Card Image Layout
+              toggleable: true
+              default: side
+              options:
+                side: 'Side (left of content)'
+                top: 'Top (above content)'
+              help: 'Where cover images go on the cards. Always top with 3 per row.'
+
+            header.card_description_lines:
+              type: select
+              label: Description Line Limit
+              default: 3
+              options:
+                0: 'No limit'
+                2: '2 lines'
+                3: '3 lines'
+              help: 'Lines of each guide''s subtitle shown on its card.'

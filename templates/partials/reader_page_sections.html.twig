@@ -1,0 +1,36 @@
+{# The current page's sections: its h2 headings when it has two or more, otherwise its h3s - as in Grav Open Course Hub's
+   module pages. Shown under the current page in the side list, or, with show_above_content, as an "On this page" box above
+   the content on phones and narrow windows (where the side list comes after the page). Needs the Page TOC plugin, which
+   also gives each heading the anchor these links jump to; without it, nothing is shown - hibbittsdesign.org #}
+{% if config.plugins['page-toc'].enabled %}
+  {# toc_items(content, first heading level, number of levels): here, one level of h2s #}
+  {% set sections = toc_items(page.content, 2, 1) %}
+  {% if sections.children|length < 2 %}
+    {% set sections = toc_items(page.content, 3, 1) %}
+  {% endif %}
+
+  {# a single heading isn't worth a list #}
+  {% if sections.children|length >= 2 %}
+    {% set on_this_page = 'THEME_QUARK_OPEN_PUBLISHING.READER_ON_THIS_PAGE'|t %}
+    {% if show_above_content is defined and show_above_content %}
+      {# phones and narrow windows only (see css/reader.css): a short list that opens when tapped #}
+      <details class="reader-page-sections-above">
+        <summary>{{ on_this_page }}</summary>
+        <ul>
+          {% for section in sections.children %}
+            <li><a href="{{ section.uri }}">{{ section.label }}</a></li>
+          {% endfor %}
+        </ul>
+      </details>
+    {% else %}
+      {# wider screens only, as on phones the list is above the content instead (see css/reader.css) #}
+      <li class="reader-page-sections-item">
+        <ul class="nav reader-page-sections" aria-label="{{ on_this_page }}">
+          {% for section in sections.children %}
+            <li class="nav-item"><a href="{{ section.uri }}">{{ section.label }}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
+    {% endif %}
+  {% endif %}
+{% endif %}
