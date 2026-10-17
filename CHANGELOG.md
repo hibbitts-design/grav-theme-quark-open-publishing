@@ -1,3 +1,9 @@
+# v3.4.16
+## 10/17/2026
+
+1. [](#bugfix)
+    * On phones, a page whose text starts with a heading no longer has a larger gap below the "On this page" box than above it
+
 # v3.4.15
 ## 10/17/2026
 
