@@ -254,6 +254,8 @@ class QuarkOpenPublishing extends Quark
                 $pagesToRemove[] = $page;
             } elseif ($this->isInHiddenTopLevelPage($page)) {
                 $pagesToRemove[] = $page;
+            } elseif ($this->isInsideUnpublishedPage($page)) {
+                $pagesToRemove[] = $page;
             } elseif ($scopePage && !$this->isPageOrChildOf($page, $scopePage)) {
                 $pagesToRemove[] = $page;
             }
@@ -338,6 +340,22 @@ class QuarkOpenPublishing extends Quark
         $header = $topLevelPage->header();
         if (isset($header->visible) && $header->visible === false) {
             return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Is the page inside an unpublished page? (for example, a section of an example guide that ships turned off).
+     * Grav still counts pages inside an unpublished page as published, so without this they would be found by search
+     * although the page they belong to is off.
+     */
+    protected function isInsideUnpublishedPage($page)
+    {
+        foreach ($this->getParentPages($page) as $parent) {
+            if (!$parent->published()) {
+                return true;
+            }
         }
 
         return false;
