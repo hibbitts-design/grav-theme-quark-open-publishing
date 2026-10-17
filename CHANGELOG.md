@@ -1,5 +1,5 @@
 # v3.4.13
-## XX/XX/2026
+## 10/17/2026
 
 1. [](#new)
     * Hide from Menu setting on guides (`hide_from_menu: true`, which works on any page): the page is left out of the site menu but stays visible, so a guide keeps its card on a Guides List page (`visible: false` still leaves a guide off the list, as in Grav Helios Open Reader)
