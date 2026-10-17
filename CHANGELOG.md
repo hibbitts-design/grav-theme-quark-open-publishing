@@ -1,3 +1,9 @@
+# v3.4.15
+## 10/17/2026
+
+1. [](#bugfix)
+    * "On this page" sections in the side list are easier to read and use: the same colour as the page names (the lighter shade was under 4.5:1 contrast), slightly larger text, and links at least 24px tall
+
 # v3.4.14
 ## 10/17/2026
 
