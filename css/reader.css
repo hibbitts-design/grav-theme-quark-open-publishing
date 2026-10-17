@@ -866,17 +866,13 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     margin: 0;
 }
 
+/* the same colour as the page names (no lighter shade, which fell below 4.5:1 contrast), a little smaller, and at least
+   24px tall each, so they're easy to read, tap and click (WCAG 2.2 target size) */
 .reader-page-sections a {
-    font-size: 0.875em;
-    line-height: 1.3;
-    /* a little lighter than the page names, while keeping enough contrast */
-    opacity: 0.85;
-}
-
-/* full strength on hover or focus, so the section being pointed at stands out */
-.reader-page-sections a:hover,
-.reader-page-sections a:focus {
-    opacity: 1;
+    display: inline-block;
+    padding: 0.2rem 0;
+    font-size: 0.9375em;
+    line-height: 1.35;
 }
 
 .reader-page-sections-above {
