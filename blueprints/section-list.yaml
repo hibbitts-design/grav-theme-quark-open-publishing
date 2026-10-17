@@ -32,6 +32,24 @@ form:
                 validate:
                     type: bool
 
+        # Hide from Menu goes on Grav's own Advanced tab, right after its Visible setting (ordering@ places it there)
+        advanced:
+          fields:
+            overrides:
+              fields:
+                header.hide_from_menu:
+                  ordering@: header.visible
+                  type: toggle
+                  toggleable: true
+                  label: Hide from Menu
+                  help: 'Leaves this guide out of the site menu, but keeps its card on a Guides List page.'
+                  highlight: 1
+                  options:
+                    1: PLUGIN_ADMIN.ENABLED
+                    0: PLUGIN_ADMIN.DISABLED
+                  validate:
+                    type: bool
+
         details:
           type: tab
           title: Details

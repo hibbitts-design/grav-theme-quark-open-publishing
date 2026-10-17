@@ -1,6 +1,9 @@
+{# A page with hide_from_menu: true is left out of the menu but stays visible, so (unlike visible: false) a guide can
+   still have its card on a Guides List page, as in Grav Helios Open Reader - hibbittsdesign.org #}
 {% macro nav_loop(page, hide_home_menu_link, home_alias) %}
     {% import _self as macros %}
     {% for p in page.children.visible %}
+        {% if not p.header.hide_from_menu %}
         {% set active_page = (p.active or p.activeChild) ? 'active' : '' %}
         {% if theme_var('dropdown.enabled') and p.children.visible.count > 0 %}
             <li>
@@ -23,6 +26,7 @@
                     {{ p.menu }}
                 </a>
             </li>
+        {% endif %}
         {% endif %}
     {% endfor %}
 {% endmacro %}
