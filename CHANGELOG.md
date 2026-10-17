@@ -1,3 +1,17 @@
+# v3.4.12
+## 10/17/2026
+
+1. [](#new)
+    * [hideifembedded]...[/hideifembedded] and [showifembedded]...[/showifembedded] shortcodes: content shown only on the site, or only when a page is embedded (for example in an LMS), the same as in Grav Open Course Hub and Grav Helios Course Hub
+    * "On this page": with the Page TOC plugin, a guide page's sections (its headings) appear under it in the side list, and in an "On this page" box above the text on phones, as on Grav Open Course Hub's module pages; without the plugin, nothing changes
+    * [badge] shortcode: a small label in the text, such as "Draft" or "Due Friday", in the same colours as section card badges, with the same options as Grav Open Course Hub and Grav Helios Course Hub
+    * A page's Badge Label (such as "Draft") now also shows beside its section label on the page, and section pages have Badge Label and Badge Color settings too
+    * Guides List page type (`reader-list.md`, the same as Grav Helios Open Reader's readers list): a card for each guide on the site, with its cover image, subtitle, author(s), edition and last updated date, optional group headings and badges (new Guides List Group, Badge Label and Badge Color settings on Section List pages), and cards per row, card image layout and description line limit settings
+1. [](#improved)
+    * README: the Show/Hide If Embedded shortcodes, the Page TOC plugin for a page's sections, badges, and the Guides List page
+1. [](#bugfix)
+    * Search leaves out the pages inside an unpublished page, such as the sections of an example guide that is turned off (Grav still counts them as published)
+
 # v3.4.11
 ## 10/16/2026
 
