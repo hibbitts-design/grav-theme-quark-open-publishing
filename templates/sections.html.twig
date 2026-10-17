@@ -57,6 +57,14 @@
      as in Helios Open Reader: no side list, back link, progress bar or Previous/Next. Multi-Section pages are unchanged. #}
   {% set content_only = reader_home.template == 'section-list' and (embedded_mode or theme_var('chromeless.enabled')) %}
 
+  {# Previous/Next position and reading progress, from the guide's home page settings. When a Section List guide doesn't
+     set them, Previous/Next is at the top and bottom, with the reading progress, as in Helios Open Reader; Multi-Section
+     pages keep Previous/Next at the bottom only, without the progress. (?? only uses the default when a setting isn't
+     there at all, so a guide set to "bottom" or with the progress turned off keeps its choice.) #}
+  {% set is_guide = reader_home.template == 'section-list' %}
+  {% set prev_next_position = reader_home.header.prev_next_position ?? (is_guide ? 'both' : 'bottom') %}
+  {% set show_reading_progress = reader_home.header.show_reading_progress ?? is_guide %}
+
   {# Keep My Place: remember this page, so the Section List page's Start button can continue from it (see js/reader.js) #}
   {% if reader_home.template == 'section-list' and page.route != reader_home.route
     and (reader_home.header.keep_my_place is not defined or reader_home.header.keep_my_place) %}
@@ -71,7 +79,7 @@
          With the Section List page's Prev/Next Page Controls Position set to "Top and bottom", a compact
          Previous/Next row sits on the same line, on the right ("top" alone, as in Helios Open Reader, works the same) #}
       {% if reader_home.template == 'section-list' and page.route != reader_home.route and not content_only %}
-        {% set show_top_prev_next = reader_home.header.prev_next_position in ['both', 'top'] and not(hide_next_prev_page_buttons) %}
+        {% set show_top_prev_next = prev_next_position in ['both', 'top'] and not(hide_next_prev_page_buttons) %}
         {# a nav, as these are navigation links (Grav 2's Markdown output also leaves navigation out) #}
         <nav class="reader-top-bar" aria-label="{{ reader_home.title }}">
           <p class="reader-back-link"><a href="{{ reader_home.url }}"><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ reader_home.title }}</a></p>
@@ -133,7 +141,7 @@
       {% if reader_home.template == 'section-list' or prev_next_style == 'tiles' %}
         {% if page.template != 'sections' and not content_only %}
           <div class="reader-nav-block">
-            {% if reader_home.header.show_reading_progress %}
+            {% if show_reading_progress %}
               {% include 'partials/reader_progress.html.twig' %}
             {% endif %}
             {% if not(hide_next_prev_page_buttons) %}
@@ -143,7 +151,7 @@
         {% endif %}
       {% else %}
 
-      {% if reader_home.header.show_reading_progress and page.template != 'sections' %}
+      {% if show_reading_progress and page.template != 'sections' %}
         {% include 'partials/reader_progress.html.twig' %}
       {% endif %}
 
