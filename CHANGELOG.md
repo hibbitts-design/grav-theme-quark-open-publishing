@@ -1,3 +1,10 @@
+# v3.4.14
+## 10/17/2026
+
+1. [](#improved)
+    * Guides show Previous/Next at the top and bottom of their pages, and the reading progress, unless their home page sets otherwise, as in Grav Helios Open Reader (the Prev/Next Page Controls Position and Show Reading Progress settings); to keep the earlier look, set Prev/Next Page Controls Position to Bottom and turn off Show Reading Progress. Multi-Section pages are unchanged
+    * README: the new Previous/Next and reading progress defaults
+
 # v3.4.13
 ## 10/17/2026
 
