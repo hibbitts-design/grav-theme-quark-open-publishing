@@ -909,3 +909,11 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
         display: none;
     }
 }
+
+/* On phones, when the page's text starts with a heading right after the "On this page" box, the heading doesn't add its
+   own larger space above (the box's margin is enough), so the gap below the box matches the gap above it */
+@media (max-width: 959px) {
+    .reader-page-sections-above + .reader-content > :is(h2, h3, h4):first-child {
+        margin-top: 0;
+    }
+}
