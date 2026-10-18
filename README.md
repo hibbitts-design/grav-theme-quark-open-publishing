@@ -214,6 +214,10 @@ To leave something out when a page is printed, add the `no-print` class (as in G
 - The [Quark theme](https://github.com/getgrav/grav-theme-quark) and required plugins, installed automatically as dependencies
 - Optional: the [Page TOC plugin](https://github.com/trilbymedia/grav-plugin-page-toc) for a page's sections in the side list (version 4 on Grav 2, or version 3.2.5 on Grav 1.7), the [SimpleSearch plugin](https://github.com/getgrav/grav-plugin-simplesearch) for search, and the [GitHub Markdown Alerts plugin](https://github.com/trilbymedia/grav-plugin-github-markdown-alerts) for GitHub-style alerts (version 2 on Grav 2, version 1.1.1 on Grav 1.7)
 
+## Languages
+
+English, French and German are complete. The theme's other languages (Spanish, Italian, Romanian, Russian, Ukrainian, Croatian, Dutch and Japanese) are partial, with any missing text shown in English – translations are welcome, in `languages.yaml`.
+
 ## Support
 
 ### Contact and Support
