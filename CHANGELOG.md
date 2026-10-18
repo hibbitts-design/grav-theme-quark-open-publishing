@@ -1,5 +1,5 @@
 # v3.4.17
-## XX/XX/2026
+## 10/18/2026
 
 1. [](#bugfix)
     * Search finds the pages of the site's home page even when it's set to visible: false to keep it out of the menu (for example a guide that is the home page); other top-level pages set to visible: false are still left out
