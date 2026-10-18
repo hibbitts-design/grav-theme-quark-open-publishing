@@ -1,14 +1,19 @@
 # v3.4.18
-## XX/XX/2026
+## 10/18/2026
 
 1. [](#new)
     * On guide pages, the / key jumps to the guide's search box, ready to type (as on GitHub and many documentation sites)
     * With the Page TOC plugin, the side list marks the section you're reading as you scroll, as in Grav Helios Open Reader (screen readers hear it as the current location)
     * Keep My Place also remembers the section you were reading, so Continue reading goes back to it rather than the top of the page (when its headings have ids, as with the Page TOC plugin)
+    * On phones, Previous/Next sit in a compact bar fixed to the bottom of the screen, in place of the links at the top and the tiles at the end of the page, as in Grav Helios Open Reader and Quark 2 Open Publishing (the guide's Show Sticky Prev/Next Bar setting, the same as in Open Reader, on by default). It steps aside while typing in a box such as the search box and while the menu is open, keeps links reached with the Tab key above it, and isn't used on phones turned sideways
 1. [](#improved)
-    * README: the / key for search, and the section you're reading marked in the side list
     * The side list takes the room left beside the page (up to 18rem) rather than a fixed quarter of the width, which left empty space on its right, so longer page titles wrap less
+    * On phones, search boxes have 16px text (iPhones zoom the whole page in when a box with smaller text is tapped) and are taller, so they're easier to tap
+    * On phones, the side list's rows are taller (about 42px), so they're easier to tap
+    * The links at the top of section pages (back to the guide, Sections, and Previous/Next) are the same size as the page's text, a little larger than before
+    * README: the / key for search, and the section you're reading marked in the side list
     * README: Keep My Place remembers the section you were reading
+    * README: the Previous/Next bar on phones
 
 # v3.4.17
 ## 10/18/2026
