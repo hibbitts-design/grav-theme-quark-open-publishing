@@ -124,7 +124,8 @@
       {% endif %}
 
       {# The page's text, set for comfortable reading (see css/reader.css) #}
-      <div class="reader-content">
+      {# (the labels are for js/reader.js, which lets readers tap an image to see it larger) #}
+      <div class="reader-content" data-image-larger-label="{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_IMAGE_LARGER'|t|e('html_attr') }}" data-image-close-label="{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_IMAGE_CLOSE'|t|e('html_attr') }}">
         {# Learning objectives from the page settings, shown as an [objectives] callout #}
         {% if page.header.learning_objectives %}
           {{ ('[objectives]' ~ page.header.learning_objectives|markdown ~ '[/objectives]')|shortcodes|raw }}

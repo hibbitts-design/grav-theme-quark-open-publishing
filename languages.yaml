@@ -35,6 +35,8 @@ en:
         READER_DATE_FORMAT: 'M j, Y'
         READER_RESUME: 'Continue reading'
         READER_RESUME_DISMISS: 'Dismiss Continue reading'
+        READER_IMAGE_LARGER: 'Show image larger'
+        READER_IMAGE_CLOSE: 'Close'
         OPENS_IN_NEW_TAB: '(opens in new tab)'
     THEME_QUARK:
         BLOG:

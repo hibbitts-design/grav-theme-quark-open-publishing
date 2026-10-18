@@ -21,6 +21,8 @@
     {% if theme_var('spectre.exp') %}{% do assets.addCss('theme://css-compiled/spectre-exp'~compress)  %}{% endif %}
     {% if theme_var('spectre.icons') %}{%  do assets.addCss('theme://css-compiled/spectre-icons'~compress) %}{% endif %}
     {% do assets.addCss('theme://css-compiled/theme'~compress) %}
+    {# link colours with enough contrast, after Quark's own styles and before Dark Mode's - hibbittsdesign.org #}
+    {% do assets.addCss('theme://css/links.css') %}
     {% do assets.addCss('theme://css/theme.css',100) %}
     {# multi-page content (Section List and Multi-Section pages), loaded before Dark Mode so its colours can be changed there - hibbittsdesign.org #}
     {% if page.template in ['sections', 'section', 'subsection', 'section-page', 'section-list', 'reader-list'] %}

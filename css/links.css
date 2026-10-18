@@ -1,0 +1,66 @@
+/*
+Link colours with enough contrast for reading - hibbittsdesign.org
+*/
+
+/* Link blue with enough contrast: Quark's blue (#3085ee, from Spectre) is 3.7:1 against white, below the 4.5:1 that
+   text needs, so links, outline buttons and text on blue use a slightly darker blue, #1d6ac9 (5.3:1 on white, and at
+   least 4.5:1 on the theme's light grey backgrounds), with a darker one again on hover. Things that aren't text, such as
+   the menu icon and the reading progress bar, keep Quark's blue. (This file loads right after Quark's own styles, so it
+   can change them, and before Dark Mode, which has its own link colours in css/theme-dark.css.) */
+a,
+a:visited,
+.btn,
+.btn-link,
+.text-primary,
+.menu .menu-item > a.active,
+.tab .tab-item a.active,
+.tab .tab-item.active a {
+    color: #1d6ac9;
+}
+
+/* the current page and hovered links in the site menu (Quark sets these with !important, so this needs it too) - except
+   with Quark's dark header over a hero image, whose links stay white until the page is scrolled */
+body:not(.header-dark) .dropmenu ul li a.active,
+body:not(.header-dark) .dropmenu ul li a:hover,
+body:not(.header-dark) .dropmenu ul li a:focus,
+.header-dark #header.scrolled .dropmenu ul li a.active,
+.header-dark #header.scrolled .dropmenu ul li a:hover,
+.header-dark #header.scrolled .dropmenu ul li a:focus {
+    color: #1d6ac9 !important;
+}
+
+/* tag labels (such as on blog posts) sit on a light blue background, so their text is a little darker again */
+.label.label-rounded {
+    color: #17539d;
+}
+
+a:hover,
+a:focus,
+a:active,
+.btn:hover,
+.btn:focus,
+.btn-link:hover,
+.btn-link:focus {
+    color: #17539d;
+}
+
+.btn {
+    border-color: #1d6ac9;
+}
+
+/* buttons and labels with white text on blue, such as Start Reading */
+.btn.btn-primary,
+.label.label-primary,
+span.label.label-rounded {
+    background: #1d6ac9;
+    border-color: #1d6ac9;
+    color: #fff;
+}
+
+.btn.btn-primary:hover,
+.btn.btn-primary:focus,
+.btn.btn-primary:active {
+    background: #17539d;
+    border-color: #17539d;
+    color: #fff;
+}
