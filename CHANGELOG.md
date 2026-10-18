@@ -3,6 +3,7 @@
 
 1. [](#bugfix)
     * Search finds the pages of the site's home page even when it's set to visible: false to keep it out of the menu (for example a guide that is the home page); other top-level pages set to visible: false are still left out
+    * Search boxes: a clearer border (at least 3:1 contrast) and easier-to-read placeholder text (at least 4.5:1), which now says "Search these pages…" instead of "Search this content..." (screen readers hear the same words without the "…"), as in Quark 2 Open Publishing
 
 # v3.4.16
 ## 10/17/2026
