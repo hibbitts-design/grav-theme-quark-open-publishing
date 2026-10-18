@@ -326,6 +326,8 @@ class QuarkOpenPublishing extends Quark
      * Is the page a top-level page set to visible: false, or inside one? (for example, an older demo page kept
      * at its address but hidden from the menu). Only an explicit visible: false counts, so top-level pages
      * that are hidden just because their folder has no number (such as "readme") are still searched.
+     * The site's home page is never counted as hidden: hiding it from the menu with visible: false is common,
+     * and its pages (for example a guide that is the home page) should still be found.
      */
     protected function isInHiddenTopLevelPage($page)
     {
@@ -334,6 +336,11 @@ class QuarkOpenPublishing extends Quark
         $parents = $this->getParentPages($page);
         if (count($parents) > 0) {
             $topLevelPage = $parents[0];
+        }
+
+        // the home page (and the pages inside it) is always searched
+        if ($topLevelPage->home()) {
+            return false;
         }
 
         // hidden only when its settings say visible: false
