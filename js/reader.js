@@ -91,6 +91,34 @@ Also, on section pages, wide tables scroll sideways inside the text column inste
         }
     }
 
+    // On guide pages, the / key jumps to the guide's search box, ready to type - as on GitHub and many documentation sites.
+    // It's left alone while typing (so a / can still be typed) and with Ctrl, Alt or Cmd held; Shift is fine, as some
+    // keyboards need it to type a /.
+    document.addEventListener('keydown', function (event) {
+        if (event.key !== '/' || event.ctrlKey || event.altKey || event.metaKey) {
+            return;
+        }
+        var target = event.target;
+        if (target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].indexOf(target.tagName) !== -1) {
+            return;
+        }
+        // nothing while the phone menu is open (Quark adds mobile-nav-open to the page then), as the box is behind it
+        if (document.body.classList.contains('mobile-nav-open')) {
+            return;
+        }
+        // the guide's search box that can be seen (on its home page, or in the side list on its other pages);
+        // offsetParent is empty for a box that isn't shown
+        var boxes = document.querySelectorAll('.reader-search input[type="search"]');
+        for (var i = 0; i < boxes.length; i++) {
+            if (boxes[i].offsetParent !== null) {
+                // stop the / from being typed into the box
+                event.preventDefault();
+                boxes[i].focus();
+                return;
+            }
+        }
+    });
+
     // On guide pages, the left and right arrow keys go to the previous and next page - as when presenting slides,
     // for example by screen sharing. On a Section List page, the right arrow key follows its Start Reading button,
     // and on the guide's first page the left arrow key goes back to the guide's home page.
@@ -126,4 +154,58 @@ Also, on section pages, wide tables scroll sideways inside the text column inste
         }
     });
 
+})();
+
+/*
+The section being read: with the Page TOC plugin, the side list shows the current page's sections, and the one you're
+reading is marked as you scroll (as in Grav Helios Open Reader's table of contents). It's the last section whose heading
+has scrolled up to near the top of the window, or the first section before then, and the last one at the very end of the
+page. Screen readers hear it as the current location (aria-current) - hibbittsdesign.org
+*/
+(function () {
+    // each link in the side list's "On this page" list, with the heading it jumps to
+    var sections = [];
+    var links = document.querySelectorAll('.reader-page-sections a');
+    for (var i = 0; i < links.length; i++) {
+        var heading = document.getElementById(decodeURIComponent(links[i].hash.slice(1)));
+        if (heading) {
+            sections.push({ link: links[i], heading: heading });
+        }
+    }
+    if (sections.length === 0) {
+        return;
+    }
+
+    // a heading counts as reached a little below the top of the window, under the site header (headings reached from
+    // these links also stop about this far down - see css/reader.css)
+    var reachedAt = 120;
+    var current = null;
+
+    function update() {
+        var reading = sections[0];
+        for (var i = 0; i < sections.length; i++) {
+            if (sections[i].heading.getBoundingClientRect().top <= reachedAt) {
+                reading = sections[i];
+            }
+        }
+        // at the very end of the page the last section is being read, even if its heading never reaches the top
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+            reading = sections[sections.length - 1];
+        }
+        if (reading === current) {
+            return;
+        }
+        if (current) {
+            current.link.classList.remove('is-current');
+            current.link.removeAttribute('aria-current');
+        }
+        reading.link.classList.add('is-current');
+        reading.link.setAttribute('aria-current', 'location');
+        current = reading;
+    }
+
+    // checked on every scroll - a quick check of a few headings ("passive" tells the browser this never stops scrolling)
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
 })();

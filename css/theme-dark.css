@@ -589,3 +589,8 @@ mark {
 .search-box .form-input::placeholder {
     color: var(--qop-dark-muted);
 }
+
+/* the section being read in the side list, in Dark Mode (see css/reader.css) */
+#sections-nav .reader-page-sections a.is-current {
+    color: var(--qop-dark-text);
+}

@@ -875,6 +875,13 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     line-height: 1.35;
 }
 
+/* the section being read (marked by js/reader.js as you scroll): darker and bold, so it stands out without relying on
+   colour alone (Dark Mode has its own colour in css/theme-dark.css) */
+#sections-nav .reader-page-sections a.is-current {
+    color: #303742;
+    font-weight: 600;
+}
+
 .reader-page-sections-above {
     margin: 0 0 1.25rem;
     padding: 0.5rem 0.875rem;
