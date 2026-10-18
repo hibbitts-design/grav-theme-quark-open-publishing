@@ -324,3 +324,14 @@ h2.topics-letter {
 a.content-badge-link {
     text-decoration: none;
 }
+
+/* Search boxes: a clearer edge than Spectre's light form border, at least 3:1 against the page or card behind them, and
+   placeholder text ("Search these pages…") at least 4.5:1, as it's the box's only visible label. With keyboard focus,
+   Spectre's own focus colour takes over. (Dark Mode has its own colours in css/theme-dark.css.) */
+.search-box .form-input:not(:focus) {
+    border-color: #8a93a3;
+}
+
+.search-box .form-input::placeholder {
+    color: #667189;
+}

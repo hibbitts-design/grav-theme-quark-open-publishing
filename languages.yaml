@@ -1,9 +1,11 @@
 en:
     THEME_QUARK_OPEN_PUBLISHING:
-        SEARCH_PLACEHOLDER: 'Search...'
+        SEARCH_PLACEHOLDER: 'Search…'
+        SEARCH_LABEL: 'Search'
         SKIP_TO_CONTENT: 'Skip to content'
         SEARCH_RESULTS: 'Search Results'
-        SEARCH_SCOPE_PLACEHOLDER: 'Search this content...'
+        SEARCH_SCOPE_PLACEHOLDER: 'Search these pages…'
+        SEARCH_SCOPE_LABEL: 'Search these pages'
         SEARCH_SCOPE_NOTE: 'Showing results from %s.'
         SEARCH_WHOLE_SITE: 'Search the whole site'
         SEARCH_NO_RESULTS_TIPS: 'No pages matched your search. You could:'
