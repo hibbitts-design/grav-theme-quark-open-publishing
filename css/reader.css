@@ -522,6 +522,16 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
         display: none;
     }
 
+    /* the side list takes the room left beside the page (rather than a fixed quarter of the width, which left empty
+       space on its right), up to 18rem wide, so longer page titles wrap less */
+    #sections-nav {
+        flex: 1 1 0;
+        width: auto;
+        min-width: 0;
+        max-width: 18rem;
+        margin-left: auto;
+    }
+
     /* the side list stays in view below the header while reading a long page; when the list of sections is taller
        than the window, it scrolls on its own */
     #sections-nav {
