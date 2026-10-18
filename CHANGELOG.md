@@ -1,3 +1,12 @@
+# v3.4.18
+## XX/XX/2026
+
+1. [](#new)
+    * On guide pages, the / key jumps to the guide's search box, ready to type (as on GitHub and many documentation sites)
+    * With the Page TOC plugin, the side list marks the section you're reading as you scroll, as in Grav Helios Open Reader (screen readers hear it as the current location)
+1. [](#improved)
+    * README: the / key for search, and the section you're reading marked in the side list
+
 # v3.4.17
 ## 10/18/2026
 
