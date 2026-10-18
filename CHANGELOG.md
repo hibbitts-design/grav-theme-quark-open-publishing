@@ -6,6 +6,7 @@
     * With the Page TOC plugin, the side list marks the section you're reading as you scroll, as in Grav Helios Open Reader (screen readers hear it as the current location)
 1. [](#improved)
     * README: the / key for search, and the section you're reading marked in the side list
+    * The side list takes the room left beside the page (up to 18rem) rather than a fixed quarter of the width, which left empty space on its right, so longer page titles wrap less
 
 # v3.4.17
 ## 10/18/2026
