@@ -4,9 +4,11 @@
 1. [](#new)
     * On guide pages, the / key jumps to the guide's search box, ready to type (as on GitHub and many documentation sites)
     * With the Page TOC plugin, the side list marks the section you're reading as you scroll, as in Grav Helios Open Reader (screen readers hear it as the current location)
+    * Keep My Place also remembers the section you were reading, so Continue reading goes back to it rather than the top of the page (when its headings have ids, as with the Page TOC plugin)
 1. [](#improved)
     * README: the / key for search, and the section you're reading marked in the side list
     * The side list takes the room left beside the page (up to 18rem) rather than a fixed quarter of the width, which left empty space on its right, so longer page titles wrap less
+    * README: Keep My Place remembers the section you were reading
 
 # v3.4.17
 ## 10/18/2026
