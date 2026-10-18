@@ -123,7 +123,7 @@ markdown:
 For longer guides:
 
 - **Parts** – give sections the same **Part** setting to group them under a heading on the home page and a label in the side list; section numbers, Previous/Next and the reading progress continue across parts
-- **Keep My Place** – when a reader returns, a **Continue reading** bar above the section cards links to the last page they visited (remembered in their browser), as in Grav Helios Open Reader; its close button forgets the place
+- **Keep My Place** – when a reader returns, a **Continue reading** bar above the section cards links to the last page they visited (remembered in their browser), as in Grav Helios Open Reader, and to the section they were reading on it (when its headings have ids, as with the Page TOC plugin); its close button forgets the place
 - **Arrow keys** – on guide pages, ← and → go to the previous and next page (→ on a guide's home page starts reading, and ← on its first page goes back to the home page), handy when presenting a guide by screen sharing, and **/** jumps to the guide's search box
 - **Previous/Next at the top** – compact Previous/Next links beside the link back to the home page, as well as the tiles at the bottom
 - **Comfortable reading** – section pages keep lines to a comfortable length with slightly larger text, wide tables scroll sideways, footnotes sit as small notes below the text, and on phones a **Sections** link jumps to the list of sections; with the [Page TOC plugin](https://github.com/trilbymedia/grav-plugin-page-toc), the side list also shows the current page's sections (its headings), marking the one you're reading as you scroll, with an "On this page" box above the text on phones, as on Grav Open Course Hub's module pages

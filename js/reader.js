@@ -2,7 +2,8 @@
 Keep My Place for multi-page content (as in Grav Helios Open Reader) - hibbittsdesign.org
 On a section or subsection page, remember it in the reader's browser (localStorage).
 On its Section List page, show a "Continue reading" bar linking to that page; its close button forgets the saved place.
-Each Section List page has its own saved place.
+Each Section List page has its own saved place. The section being read on that page (the last heading scrolled up
+near the top of the window) is remembered too, so "Continue reading" goes back to it rather than the top of the page.
 Also, on section pages, wide tables scroll sideways inside the text column instead of running past it.
 */
 
@@ -24,11 +25,63 @@ Also, on section pages, wide tables scroll sideways inside the text column inste
             url: savePlace.dataset.url,
             title: savePlace.dataset.title
         };
+        var placeKey = savedPlaceKey(savePlace.dataset.readerHome);
+        var rememberPlace = function () {
+            try {
+                // localStorage only stores text, so the details are turned into text (JSON) first
+                localStorage.setItem(placeKey, JSON.stringify(placeDetails));
+            } catch (error) {
+                // storage not available (for example in some private windows): nothing is remembered
+            }
+        };
+
+        // The section being read: the last heading (with an id to link to, as the Page TOC plugin gives them) that has
+        // scrolled up to near the top of the window, under the site header - the same point as the side list uses to
+        // mark the section you're reading. Before the first heading, no section is remembered (the top of the page).
+        var placeHeadings = document.querySelectorAll('.reader-content h2[id], .reader-content h3[id]');
+
+        // A page opened at one of its headings (from "Continue reading" or a link ending in # and the heading's id)
+        // starts with that section, as the page loads before the browser has scrolled to it
+        var linkedHeading = null;
         try {
-            // localStorage only stores text, so the details are turned into text (JSON) first
-            localStorage.setItem(savedPlaceKey(savePlace.dataset.readerHome), JSON.stringify(placeDetails));
+            linkedHeading = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
         } catch (error) {
-            // storage not available (for example in some private windows): nothing is remembered
+            // a # part that isn't valid (such as a stray %) is left alone, so the rest of the page still works
+        }
+        for (var h = 0; h < placeHeadings.length; h++) {
+            if (placeHeadings[h] === linkedHeading) {
+                placeDetails.section = linkedHeading.id;
+            }
+        }
+        rememberPlace();
+
+        if (placeHeadings.length > 0) {
+            var checkPending = false;
+            var rememberSection = function () {
+                checkPending = false;
+                var section = '';
+                for (var i = 0; i < placeHeadings.length; i++) {
+                    if (placeHeadings[i].getBoundingClientRect().top <= 120) {
+                        section = placeHeadings[i].id;
+                    }
+                }
+                // at the very end of the page the last section is being read, even if its heading never reaches the top
+                if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+                    section = placeHeadings[placeHeadings.length - 1].id;
+                }
+                // only saved when the section changes, rather than on every scroll
+                if (section !== (placeDetails.section || '')) {
+                    placeDetails.section = section;
+                    rememberPlace();
+                }
+            };
+            // checked at most twice a second while scrolling ("passive" tells the browser this never stops scrolling)
+            window.addEventListener('scroll', function () {
+                if (!checkPending) {
+                    checkPending = true;
+                    setTimeout(rememberSection, 500);
+                }
+            }, { passive: true });
         }
     }
 
@@ -46,7 +99,12 @@ Also, on section pages, wide tables scroll sideways inside the text column inste
 
         if (saved && saved.url) {
             // (js/my.js carries ?embedded=true forward when the link is followed, as for other links)
-            resume.querySelector('.reader-resume-link').href = saved.url;
+            // the saved page, at the section being read when there is one (# and the heading's id)
+            var resumeUrl = saved.url;
+            if (saved.section) {
+                resumeUrl = resumeUrl + '#' + encodeURIComponent(saved.section);
+            }
+            resume.querySelector('.reader-resume-link').href = resumeUrl;
             resume.querySelector('.reader-resume-title').textContent = saved.title;
             resume.hidden = false;
 
