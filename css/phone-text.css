@@ -23,11 +23,15 @@ form fields and spacing keep their own sizes, so the layout is unchanged.
     }
 
     /* Smaller text on Section List and section pages has its own sizes, so scale it by about the same amount */
-    .reader-back-link,
-    .reader-sections-link,
-    .reader-prev-next-top,
     .reader-attribution {
         font-size: 0.9rem;
+    }
+
+    /* the links at the top of section pages, at the size of the page's text */
+    .reader-back-link,
+    .reader-sections-link,
+    .reader-prev-next-top {
+        font-size: 1rem;
     }
 
     .reader-progress-text,

@@ -1,6 +1,7 @@
 {# Previous/Next tiles for section and subsection pages (theme option: Previous/Next Navigation Style = tiles), as in Helios Open Reader.
    Follows the reading order: each section, then its subsections - the same order as the side navigation and the reading progress.
-   With position: 'top', a compact row of Previous/Next links is shown instead, at the top of the page - hibbittsdesign.org #}
+   With position: 'top', a compact row of Previous/Next links is shown instead, at the top of the page, and with
+   position: 'bar', a bar fixed to the bottom of the screen on phones - hibbittsdesign.org #}
 
 {# The reading order, as one list of pages #}
 {% set reading_order = [] %}
@@ -44,6 +45,33 @@
         {% endif %}
         {% if next_page %}
             <a href="{{ next_page.url ~ filter_suffix }}" rel="next" title="{{ next_page.menu }}">{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_NEXT'|t }}<span class="text-assistive">: {{ next_page.menu }}</span> <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+        {% endif %}
+    </nav>
+{% elseif (prev_page or next_page) and position|default('bottom') == 'bar' %}
+    {# A compact Previous/Next bar fixed to the bottom of the screen on phones and narrow windows, as in Grav Helios Open
+       Reader. There it takes the place of the Previous/Next links at the top of the page and the tiles at its end, which
+       are hidden, so it's the page's one Previous/Next navigation; wider screens hide the bar instead (see css/reader.css). #}
+    <nav class="reader-prev-next-bar" aria-label="{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_PAGE_NAVIGATION'|t }}">
+        {% if prev_page %}
+            <a class="reader-bar-link reader-bar-prev" href="{{ prev_page.url ~ filter_suffix }}" rel="prev">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                <span class="reader-bar-text">
+                    <span class="reader-bar-label">{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_PREVIOUS'|t }}</span>
+                    <span class="reader-bar-title">{{ prev_page.menu }}</span>
+                </span>
+            </a>
+        {% else %}
+            {# an empty space, so Next stays on the right #}
+            <span class="reader-bar-empty"></span>
+        {% endif %}
+        {% if next_page %}
+            <a class="reader-bar-link reader-bar-next" href="{{ next_page.url ~ filter_suffix }}" rel="next">
+                <span class="reader-bar-text">
+                    <span class="reader-bar-label">{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_NEXT'|t }}</span>
+                    <span class="reader-bar-title">{{ next_page.menu }}</span>
+                </span>
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </a>
         {% endif %}
     </nav>
 {% elseif prev_page or next_page %}

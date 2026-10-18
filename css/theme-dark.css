@@ -594,3 +594,23 @@ mark {
 #sections-nav .reader-page-sections a.is-current {
     color: var(--qop-dark-text);
 }
+
+/* the Previous/Next bar at the bottom of the screen on phones (see css/reader.css) */
+.reader-prev-next-bar {
+    background: var(--qop-dark-card);
+    border-top-color: var(--qop-dark-divider);
+}
+
+.reader-bar-prev {
+    border-right-color: var(--qop-dark-divider);
+}
+
+.reader-bar-label,
+.reader-bar-link .fa {
+    color: var(--qop-dark-muted);
+}
+
+.reader-bar-link:hover .fa,
+.reader-bar-link:focus .fa {
+    color: var(--qop-dark-link);
+}

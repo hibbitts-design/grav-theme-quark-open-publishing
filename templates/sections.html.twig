@@ -148,6 +148,12 @@
               {% include 'partials/reader_prev_next.html.twig' %}
             {% endif %}
           </div>
+          {# the Previous/Next bar fixed to the bottom of the screen on phones, on guides (Section List pages): the guide's
+             Show Sticky Prev/Next Bar setting, on unless turned off (the same setting as in Grav Helios Open Reader) #}
+          {% if is_guide and not(hide_next_prev_page_buttons)
+            and (reader_home.header.show_sticky_nav is not defined or reader_home.header.show_sticky_nav) %}
+            {% include 'partials/reader_prev_next.html.twig' with { position: 'bar' } %}
+          {% endif %}
         {% endif %}
       {% else %}
 

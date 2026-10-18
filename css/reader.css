@@ -477,10 +477,11 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     }
 }
 
-/* Link back to the Section List page, above a section's title (a plain link, like the rest of the theme), at body text size */
+/* Link back to the Section List page, above a section's title (a plain link, like the rest of the theme), at the size of
+   the page's text, so these links at the top of the page are easy to read and tap */
 .reader-back-link,
 .reader-sections-link {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     margin: 0 0 0.8rem;
 }
 
@@ -494,7 +495,7 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
 }
 
 .reader-prev-next-top {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     margin: 0 0 0.8rem;
     white-space: nowrap;
 }
@@ -933,4 +934,163 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     .reader-page-sections-above + .reader-content > :is(h2, h3, h4):first-child {
         margin-top: 0;
     }
+}
+
+/* ---------- Phones ---------- */
+
+/* Search boxes on phones and narrow windows: text at least 16px, as iPhones zoom the whole page in when a box with
+   smaller text is tapped (and leave it zoomed). On phones, the box is also taller, so it's easier to tap (wider screens
+   keep its height, so it lines up with the "Continue reading" bar beside it on a guide's home page) */
+@media (max-width: 840px) {
+    .search-box .form-input,
+    .reader-search .tntsearch-form .form-input {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .search-box .form-input,
+    .reader-search .tntsearch-form .form-input {
+        height: 2.5rem;
+    }
+}
+
+/* The side list of sections, below the page on phones: taller rows, easier to tap with a thumb */
+@media (max-width: 840px) {
+    #sections-nav .nav .nav-item {
+        margin-top: 0;
+    }
+
+    #sections-nav .nav .nav-item a {
+        display: block;
+        padding-top: 0.6rem;
+        padding-bottom: 0.6rem;
+    }
+}
+
+/* The Previous/Next bar fixed to the bottom of the screen, on phones and narrow windows (where the side list moves below
+   the page), as in Grav Helios Open Reader and Quark 2 Open Publishing: Previous on the left and Next on the right, each
+   with its page title on one line. There it takes the place of the Previous/Next links at the top of the page and the
+   tiles at its end, which are hidden; wider screens hide the bar. Very short screens (phones turned sideways, under 500px
+   tall) keep the links and tiles instead, as the bar would take too much of the screen there. (Dark Mode has its own
+   colours in css/theme-dark.css.) */
+.reader-prev-next-bar {
+    display: none;
+}
+
+@media (max-width: 840px) and (min-height: 500px) {
+    .reader-prev-next-bar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        /* above the page, below the site header */
+        z-index: 1;
+        background: #fff;
+        border-top: 1px solid #dadee4;
+        /* room for the iPhone's home bar, when the browser leaves it to the page */
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    /* the other Previous/Next navigation, while the bar is there (:has matches a page that has the bar) */
+    body:has(.reader-prev-next-bar) .reader-prev-next-top,
+    body:has(.reader-prev-next-bar) .reader-prev-next {
+        display: none;
+    }
+
+    /* room below the page for the bar, so it never covers the end of the page. Quark's page is a column of the page and
+       its footer (for its sticky footer), so the room is an empty space added after them (::after) */
+    body:has(.reader-prev-next-bar)::after {
+        content: "";
+        flex: 0 0 auto;
+        height: calc(3.75rem + env(safe-area-inset-bottom));
+    }
+
+    /* links and buttons reached with the Tab key, and places jumped to, are kept above the bar rather than behind it
+       (the browser leaves this much room at the bottom of the screen when it scrolls to them) */
+    html:has(.reader-prev-next-bar) {
+        scroll-padding-bottom: calc(3.75rem + env(safe-area-inset-bottom));
+    }
+
+    /* while typing in a box, such as the search box (whose on-screen keyboard some phones place the bar above), and while
+       the phone menu is open (Quark adds mobile-nav-open to the page then), the bar steps aside.
+       (input:not(...) matches text boxes, leaving out checkboxes and buttons) */
+    body:has(input:not([type="checkbox"], [type="radio"], [type="button"], [type="submit"], [type="reset"]):focus, textarea:focus) .reader-prev-next-bar,
+    body.mobile-nav-open .reader-prev-next-bar {
+        display: none;
+    }
+}
+
+/* each half of the bar: an arrow and a small label above the page title */
+.reader-bar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+    min-height: 3.5rem;
+    padding: 0.4rem 0.8rem;
+    text-decoration: none;
+}
+
+.reader-bar-link:hover,
+.reader-bar-link:focus {
+    text-decoration: none;
+}
+
+.reader-bar-link:hover .reader-bar-title {
+    text-decoration: underline;
+}
+
+/* a visible focus ring for keyboard users (Quark removes the focus outline from links, so this needs !important) */
+.reader-bar-link:focus-visible {
+    outline: 0.1rem solid #3085ee !important;
+    outline-offset: -0.1rem;
+}
+
+/* a thin line between Previous and Next */
+.reader-bar-prev {
+    border-right: 1px solid #dadee4;
+}
+
+.reader-bar-next {
+    grid-column: 2;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.reader-bar-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/* Small "Previous" or "Next" above the page title, a little larger than on the tiles so it's easy to read at a glance */
+.reader-bar-label {
+    color: #667189;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* the page title on one line, cut with "…" when it's too long (as in Grav Helios Open Reader; "Previous" and "Next"
+   say where each goes, and the full title is on the page itself) */
+.reader-bar-title {
+    overflow: hidden;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* The chevron is grey, and turns link blue on hover, as on the tiles */
+.reader-bar-link .fa {
+    flex: 0 0 auto;
+    color: #acb3c2;
+}
+
+.reader-bar-link:hover .fa,
+.reader-bar-link:focus .fa {
+    color: #3085ee;
 }
