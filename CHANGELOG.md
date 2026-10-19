@@ -1,5 +1,5 @@
 # v3.4.20
-## XX/XX/2026
+## 10/18/2026
 
 1. [](#improved)
     * French and German translations are complete, for every text the theme shows readers (search, guide pages, Previous/Next, Keep My Place, error pages and more), using the same words as Grav Helios Open Reader where they overlap
