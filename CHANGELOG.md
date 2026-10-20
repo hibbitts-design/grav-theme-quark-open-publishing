@@ -1,3 +1,9 @@
+# v3.4.21
+## 10/20/2026
+
+1. [](#improved)
+    * The small icons in the back link, Sections link and top Previous/Next links are centred on their text, rather than sitting low
+
 # v3.4.20
 ## 10/18/2026
 
