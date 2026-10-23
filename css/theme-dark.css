@@ -614,3 +614,27 @@ mark {
 .reader-bar-link:focus .fa {
     color: var(--qop-dark-link);
 }
+
+/* Code blocks in dark mode: the Prism Highlight plugin uses one colour theme in both modes (One Light by default),
+   so these switch code blocks to the matching One Dark colours (with comments a little lighter, to be easier to read).
+   ":root body" lets them win over the plugin's colours for particular languages, such as .language-css .token.property */
+:root body code[class*="language-"],
+:root body pre[class*="language-"] {
+    background: hsl(220, 13%, 18%);
+    color: hsl(220, 14%, 71%);
+    text-shadow: none;
+}
+
+:root body .token.comment, :root body .token.prolog, :root body .token.cdata { color: hsl(220, 10%, 60%); }
+:root body .token.doctype, :root body .token.punctuation, :root body .token.entity { color: hsl(220, 14%, 71%); }
+:root body .token.attr-name, :root body .token.class-name, :root body .token.boolean, :root body .token.constant, :root body .token.number, :root body .token.atrule { color: hsl(29, 54%, 61%); }
+:root body .token.keyword { color: hsl(286, 60%, 67%); }
+:root body .token.property, :root body .token.tag, :root body .token.symbol, :root body .token.deleted, :root body .token.important { color: hsl(355, 65%, 65%); }
+:root body .token.selector, :root body .token.string, :root body .token.char, :root body .token.builtin, :root body .token.inserted, :root body .token.regex, :root body .token.attr-value { color: hsl(95, 38%, 62%); }
+:root body .token.variable, :root body .token.operator, :root body .token.function { color: hsl(207, 82%, 66%); }
+:root body .token.url { color: hsl(187, 47%, 55%); }
+
+:root body div.code-toolbar > .toolbar .toolbar-item > button {
+    background: hsl(220, 13%, 26%);
+    color: hsl(220, 14%, 71%);
+}
