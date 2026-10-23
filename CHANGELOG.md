@@ -1,8 +1,11 @@
 # v3.4.22
-## 10/XX/2026
+## 10/23/2026
 
 1. [](#improved)
     * Demo content: a Mermaid flowchart on the Getting Started with OER page and a LaTeX Correcting a Formula example on the Maintaining an Open Reader page, matching the skeleton (drawn when the Mermaid and LaTeX Math plugins are installed)
+1. [](#bugfix)
+    * An iFrame page shown as a link with Page Inject (template=partials/iframelinkonly) now links to its iFrame Source address, instead of an empty link; a site address starting with / gets the site's base URL, as in Open Matter
+    * The PDF and SpeakerDeck link-only templates no longer start their link address with a space
 
 # v3.4.21
 ## 10/20/2026
