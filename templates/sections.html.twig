@@ -341,6 +341,23 @@
 
       </ul>
 
+        {# Side Box: Markdown shown under the side list - the page's own Side Box setting, or the guide home's, which
+           shows on every page of the guide (false hides it on a page, or on a section and its pages). The same setting as
+           in Grav Helios Open Reader, so it moves with a guide - hibbittsdesign.org #}
+        {% set side_box = page.header.side_box is defined ? page.header.side_box : reader_home.header.side_box %}
+        {# a section set to false hides it on its own pages too (unless a page has its own Side Box) #}
+        {% set side_box_section = page.parent %}
+        {% if page.header.side_box is not defined and page.route != reader_home.route and side_box_section.route != reader_home.route
+              and side_box_section.header.side_box is defined and (not side_box_section.header.side_box or side_box_section.header.side_box == 'false') %}
+          {% set side_box = false %}
+        {% endif %}
+        {# ("false" as text too, as Admin saves it) #}
+        {% if side_box and side_box != 'false' %}
+          <div class="reader-side-box">
+            {{ side_box|markdown|shortcodes|raw }}
+          </div>
+        {% endif %}
+
     </div>
       {% endif %}
 

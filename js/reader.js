@@ -349,3 +349,32 @@ hibbittsdesign.org
         }
     }
 })();
+
+/*
+Side Box: when the side list and the Side Box under it fit in the window together, the side list stays in view while
+reading (as it does without a Side Box); when they don't, both scroll with the page, so neither is cut off. The CSS
+keeps the side list in view only while it has the reader-side-box-fits class - hibbittsdesign.org
+*/
+(function () {
+    var nav = document.getElementById('sections-nav');
+    if (!nav || !nav.querySelector('.reader-side-box')) {
+        return;
+    }
+
+    function checkFit() {
+        // the side list's full height, as it is when it scrolls with the page
+        nav.classList.remove('reader-side-box-fits');
+        var fullHeight = nav.offsetHeight;
+        // the most room it has while staying in view (its max-height in css/reader.css; none on narrow screens)
+        nav.classList.add('reader-side-box-fits');
+        var room = parseFloat(getComputedStyle(nav).maxHeight);
+        if (!(fullHeight <= room)) {
+            nav.classList.remove('reader-side-box-fits');
+        }
+    }
+
+    checkFit();
+    window.addEventListener('resize', checkFit);
+    // again once images (in the Side Box, for example) have loaded and changed its height
+    window.addEventListener('load', checkFit);
+})();

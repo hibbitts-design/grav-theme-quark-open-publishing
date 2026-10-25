@@ -552,6 +552,44 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
         overflow-y: auto;
         padding-bottom: 0.1rem; /* room for rounding, so a list that fits doesn't show a scroll bar */
     }
+
+    /* with a Side Box, the side list and the box simply follow each other and scroll with the page (no sticky list
+       scrolling on its own), so the whole list shows and the box comes into view as the reader scrolls - unless they
+       fit in the window together, when js/reader.js adds the reader-side-box-fits class and the side list stays in view */
+    #sections-nav:has(> .reader-side-box):not(.reader-side-box-fits) {
+        position: static;
+        max-height: none;
+    }
+
+    #sections-nav:has(> .reader-side-box):not(.reader-side-box-fits) > ul.nav {
+        overflow-y: visible;
+    }
+}
+
+/* Side Box: the author's Markdown under the side list, after a thin line and with no fill, so it never looks like a
+   callout on the page or competes with the current section (Dark Mode has its line colour in css/theme-dark.css) */
+.reader-side-box {
+    margin-top: 0.4rem; /* with the last row's own space below it, about the same space as below the line */
+    padding-top: 0.8rem;
+    border-top: 1px solid #dadee4;
+}
+
+.reader-side-box > :first-child {
+    margin-top: 0;
+}
+
+.reader-side-box > :last-child {
+    margin-bottom: 0;
+}
+
+.reader-side-box img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* lists use less of the side list's narrow width */
+.reader-side-box :is(ul, ol) {
+    margin: 0.4rem 0 0.4rem 1rem;
 }
 
 /* Section pages: comfortable reading, as in a book - a line length of at most about 80 characters of text

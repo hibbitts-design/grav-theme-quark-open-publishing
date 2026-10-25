@@ -44,3 +44,10 @@ form:
               rows: 5
               placeholder: "- Understand the key concepts\n- Apply the methods described\n- Evaluate the outcomes"
               help: 'Learning objectives displayed at the top of this page as a styled block. Supports Markdown. Can also be added inline using the [objectives] shortcode.'
+
+            header.side_box:
+              type: textarea
+              label: Side Box
+              toggleable: true
+              rows: 4
+              help: 'Markdown shown under the side list on this page, in place of the guide''s Side Box (false hides it).'
