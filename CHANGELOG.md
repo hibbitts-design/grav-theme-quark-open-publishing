@@ -1,3 +1,11 @@
+# v3.4.24
+## XX/XX/2026
+
+1. [](#new)
+    * Side Box: Markdown shown under a guide's side list, such as a call to action or a download link – set once in the guide's Section List page settings for every page, replaced on any page, or hidden with `false` on a page (or a section and its pages). The same `side_box` setting as in Grav Helios Open Reader, so it moves with a guide. When the side list and the Side Box fit in the window together, the side list stays in view while reading; otherwise both scroll with the page
+1. [](#bugfix)
+    * A guide's side list is no longer printed with the page, as in Quark 2 Open Publishing
+
 # v3.4.23
 ## 10/23/2026
 
