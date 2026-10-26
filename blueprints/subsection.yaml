@@ -51,3 +51,7 @@ form:
               toggleable: true
               rows: 4
               help: 'Markdown shown under the side list on this page, in place of the guide''s Side Box (false hides it).'
+
+            # Grav's Taxonomies, moved from the top of this tab to the end, below the guide settings
+            taxonomies:
+              ordering@: header.side_box
