@@ -96,7 +96,8 @@
         {% set show_top_prev_next = prev_next_position in ['both', 'top'] and not(hide_next_prev_page_buttons) %}
         {# a nav, as these are navigation links (Grav 2's Markdown output also leaves navigation out) #}
         <nav class="reader-top-bar" aria-label="{{ reader_home.title }}">
-          <p class="reader-back-link"><a href="{{ reader_home.url }}"><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ reader_home.title }}</a></p>
+          {# the guide's menu label when it has one (a shorter name for a long title), otherwise its title #}
+          <p class="reader-back-link"><a href="{{ reader_home.url }}"><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ reader_home.menu }}</a></p>
           {# On phones and narrow windows, where the side list of sections sits below the page, a link that jumps to it.
              It says "Sections", or the guide's own plural label (Section Label (Plural) setting, e.g. "Chapters") #}
           {% set sections_link_text = reader_home.header.section_label_plural ?: 'THEME_QUARK_OPEN_PUBLISHING.READER_SECTIONS'|t %}
