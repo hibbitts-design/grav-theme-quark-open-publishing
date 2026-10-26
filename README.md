@@ -83,7 +83,7 @@ Updating the theme keeps your pages and settings as they are, with the new featu
 
 All options are available in the Admin Panel under **Themes → Quark Open Publishing**.
 
-- **Open Publishing Options** – Creative Commons license display, chromeless site, menu dropdowns, and H5P setup
+- **Open Publishing Options** – Creative Commons license display, chromeless site, menu dropdowns, **Hide Sidebar Button** (on by default: readers can hide a guide's side list on wider screens), and H5P setup
 - **Quark Options** – Dark Mode, text size on phones, production mode, grid size, custom logos, header and footer defaults, blog page and hero classes, and Spectre.css options
 - **Custom Menu Items** – text, icon, URL, and target for extra menu links
 - **Git Sync Link** – location, link type (view or edit), icon and text, and a custom Git repository URL
@@ -128,6 +128,7 @@ For longer guides:
 - **Previous/Next at the top** – compact Previous/Next links beside the link back to the home page, as well as the tiles at the bottom
 - **Comfortable reading** – section pages keep lines to a comfortable length with slightly larger text, wide tables scroll sideways, footnotes sit as small notes below the text, an image shown smaller than its full size can be tapped to see it larger, and on phones a **Sections** link jumps to the list of sections; with the [Page TOC plugin](https://github.com/trilbymedia/grav-plugin-page-toc), the side list also shows the current page's sections (its headings), marking the one you're reading as you scroll, with an "On this page" box above the text on phones, as on Grav Open Course Hub's module pages; on phones, Previous/Next sit in a compact bar at the bottom of the screen, as in Grav Helios Open Reader (the guide's Show Sticky Prev/Next Bar setting)
 - **Side Box** – Markdown under the side list, such as a call to action: set it on the Section List page for every page of the guide, change it on any section or page, or enter `false` to hide it on a page (or a section and its pages); when the side list and the Side Box fit in the window together, the side list stays in view while reading
+- **Hide sidebar** – on wider screens, readers can hide a guide's side list to focus on the page, with the button in the same top corner to show it again; their choice is remembered. Turn it off with the **Hide Sidebar Button** theme option
 
 Settings, in the Admin Panel page editor:
 

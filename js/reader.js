@@ -378,3 +378,43 @@ keeps the side list in view only while it has the reader-side-box-fits class - h
     // again once images (in the Side Box, for example) have loaded and changed its height
     window.addEventListener('load', checkFit);
 })();
+
+/*
+Hide sidebar: on wider screens, a button at the top of the guide's side list collapses the sidebar (the side list, its
+search box and Side Box) to a slim tab in the same corner, so readers can focus on the page, or expands it again. The
+choice is remembered in the reader's browser (localStorage) for every guide on the site, and applied before the page is
+drawn (see templates/sections.html.twig). Phones keep the side list below the page either way - hibbittsdesign.org
+*/
+(function () {
+    var button = document.querySelector('.reader-sidebar-toggle');
+    var nav = document.getElementById('sections-nav');
+    if (!button || !nav) {
+        return;
+    }
+    var root = document.documentElement;
+    var hideLabel = button.querySelector('.reader-sidebar-toggle-hide').textContent.trim();
+    var showLabel = button.querySelector('.reader-sidebar-toggle-show').textContent.trim();
+
+    // collapse or expand, tell screen readers whether the sidebar is expanded (aria-expanded), and show the button's
+    // name on hover
+    function setHidden(hidden) {
+        root.classList.toggle('reader-sections-hidden', hidden);
+        button.setAttribute('aria-expanded', hidden ? 'false' : 'true');
+        button.setAttribute('title', hidden ? showLabel : hideLabel);
+        // the side list's own layout (such as the Side Box check above) is worked out again for its new state
+        window.dispatchEvent(new Event('resize'));
+    }
+
+    setHidden(root.classList.contains('reader-sections-hidden'));
+    button.hidden = false;
+
+    button.addEventListener('click', function () {
+        var hidden = !root.classList.contains('reader-sections-hidden');
+        setHidden(hidden);
+        try {
+            localStorage.setItem('qop-sections-hidden', hidden ? '1' : '0');
+        } catch (error) {
+            // without storage the choice still works on this page, it just isn't remembered
+        }
+    });
+})();

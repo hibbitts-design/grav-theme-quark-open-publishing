@@ -520,6 +520,114 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     margin: 0 0.4rem;
 }
 
+/* The Hide/Show sidebar button: only on wider screens, where the side list sits beside the page. In its own row at the
+   top right of the side list (not beside the search box, where it would look like a search button), in the page's text
+   colour, at least 40px tall: "Hide sidebar »" while expanded, and just « in the collapsed tab, its name then read by
+   screen readers and shown on hover (see js/reader.js; Dark Mode has its colours in css/theme-dark.css) */
+.reader-sidebar-toggle-row {
+    display: none;
+}
+
+.reader-sidebar-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-width: 2rem;
+    min-height: 2rem;
+    margin: 0;
+    padding: 0 0.4rem;
+    border: 1px solid transparent;
+    border-radius: 0.2rem;
+    background: none;
+    font: inherit;
+    font-size: 0.85rem; /* the same size as the top Previous/Next links */
+    color: #3b4351;
+    cursor: pointer;
+}
+
+.reader-sidebar-toggle[hidden] {
+    display: none;
+}
+
+.reader-sidebar-toggle:hover,
+.reader-sidebar-toggle:focus {
+    background: #f1f3f5;
+    color: #1d6ac9;
+}
+
+.reader-sidebar-toggle:focus-visible {
+    outline: 2px solid #1d6ac9;
+    outline-offset: 2px;
+}
+
+.reader-sidebar-toggle-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* the words: "Hide sidebar" shown while expanded; while collapsed, "Show sidebar" is for screen readers only */
+html:not(.reader-sections-hidden) .reader-sidebar-toggle-show,
+.reader-sections-hidden .reader-sidebar-toggle-hide {
+    display: none;
+}
+
+.reader-sidebar-toggle-show {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (min-width: 841px) {
+    /* lined up with the back link and top Previous/Next links beside it, at the top of the page */
+    .reader-sidebar-toggle-row {
+        display: flex;
+        justify-content: flex-end;
+        margin: -0.27rem 0 0.4rem;
+    }
+
+    /* Collapsed: the side list becomes just the button, in exactly the same top corner, with a light outline so it reads
+       as a control, still staying in view while reading; the page is centred, at the same comfortable width. (It always
+       stays in view, even with a Side Box, hence !important over the Side Box's "scroll with the page" rule) */
+    .reader-sections-hidden #sections-nav {
+        flex: 0 0 auto;
+        position: sticky !important;
+        max-height: none;
+    }
+
+    .reader-sections-hidden #sections-nav > :not(.reader-sidebar-top),
+    .reader-sections-hidden #sections-nav .reader-search {
+        display: none !important;
+    }
+
+    .reader-sections-hidden #sections-content {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .reader-sections-hidden .reader-sidebar-toggle {
+        border-color: #dadee4;
+    }
+
+    /* the arrows point back («) to expand */
+    .reader-sections-hidden .reader-sidebar-toggle-icon {
+        transform: rotate(180deg);
+    }
+}
+
+/* on phones and narrow windows, where the button isn't shown, a guide without a search box has nothing in the side
+   list's top area, so it's left out */
+@media (max-width: 840.98px) {
+    #sections-nav .reader-sidebar-top:not(:has(.reader-search)) {
+        display: none;
+    }
+}
+
 /* the Sections link is only needed when the side list sits below the page (phones and narrow windows) */
 @media (min-width: 841px) {
     .reader-sections-link {

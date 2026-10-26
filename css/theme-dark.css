@@ -42,6 +42,25 @@ a:active {
     color: var(--qop-dark-link-hover);
 }
 
+/* the Hide/Show sidebar button at the top of a guide's side list */
+.reader-sidebar-toggle {
+    color: var(--qop-dark-text);
+}
+
+.reader-sidebar-toggle:hover,
+.reader-sidebar-toggle:focus {
+    background: var(--qop-dark-recessed);
+    color: var(--qop-dark-link-hover);
+}
+
+.reader-sidebar-toggle:focus-visible {
+    outline-color: var(--qop-dark-link);
+}
+
+.reader-sections-hidden .reader-sidebar-toggle {
+    border-color: var(--qop-dark-divider);
+}
+
 h1, h2, h3, h4, h5, h6 {
     color: var(--qop-dark-strong);
 }

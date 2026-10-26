@@ -73,6 +73,20 @@
 
   <div class="columns">
 
+    {# The reader's saved choice to hide the side list (see js/reader.js), applied here, before the page is drawn, so the
+       side list doesn't appear and then disappear. Only on the pages with the Hide/Show sidebar button (a guide's pages,
+       below, when the theme's Hide Sidebar Button option is on), so a page without the button, such as a Multi-Section
+       page, always keeps its side list #}
+    {% if theme_var('sidebar_hide_button', true) and reader_home.template == 'section-list' and page.route != reader_home.route and not content_only %}
+      <script>
+        try {
+          if (localStorage.getItem('qop-sections-hidden') === '1') {
+            document.documentElement.classList.add('reader-sections-hidden');
+          }
+        } catch (error) {}
+      </script>
+    {% endif %}
+
     <div id="sections-content" class="column {{ content_only ? 'col-12' : 'col-9 col-md-12' }}">
 
       {# A link back to the Section List page, which has the section cards (hidden in embedded mode).
@@ -254,12 +268,33 @@
       {% if not content_only %}
       <div id="sections-nav" class="column col-3 col-md-12">
 
-        {# A search box above the side list, on pages of a Section List page (its Show Search Box setting; hidden in embedded mode) #}
-        {% if reader_home.template == 'section-list'
+        {# The top of the side list: on a guide's pages, the Hide/Show sidebar button, and a search box (on pages of a Section
+           List page: its Show Search Box setting; hidden in embedded mode) #}
+        {% set show_side_search = reader_home.template == 'section-list'
           and (reader_home.header.show_search_box is not defined or reader_home.header.show_search_box)
           and (config.plugins.simplesearch.enabled or config.plugins.tntsearch.enabled) and not embedded_mode %}
-          <div class="reader-search">
-            {% include 'partials/search_box.html.twig' with { search_scope: reader_home } %}
+        {# (the button can be turned off with the theme's Hide Sidebar Button option) #}
+        {% set show_sidebar_toggle = theme_var('sidebar_hide_button', true) and reader_home.template == 'section-list' and page.route != reader_home.route and not content_only %}
+        {% if show_side_search or show_sidebar_toggle %}
+          <div class="reader-sidebar-top">
+            {# On wider screens: a button, in its own row at the top of the sidebar, that collapses the sidebar (the side
+               list, search box and Side Box) to a slim tab in this same corner, so readers can focus on the page, or
+               expands it again. Hidden until js/reader.js sets it up, so it only appears when it works; the arrows point to
+               the edge (») to collapse, back («) to expand #}
+            {% if show_sidebar_toggle %}
+              <div class="reader-sidebar-toggle-row">
+                <button type="button" class="reader-sidebar-toggle" aria-controls="sections-nav" aria-expanded="true" hidden>
+                  <span class="reader-sidebar-toggle-hide">{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_HIDE_SIDEBAR'|t }}</span>
+                  <span class="reader-sidebar-toggle-show">{{ 'THEME_QUARK_OPEN_PUBLISHING.READER_SHOW_SIDEBAR'|t }}</span>
+                  <svg class="reader-sidebar-toggle-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 17l5-5-5-5M6 17l5-5-5-5"/></svg>
+                </button>
+              </div>
+            {% endif %}
+            {% if show_side_search %}
+              <div class="reader-search">
+                {% include 'partials/search_box.html.twig' with { search_scope: reader_home } %}
+              </div>
+            {% endif %}
           </div>
         {% endif %}
 
