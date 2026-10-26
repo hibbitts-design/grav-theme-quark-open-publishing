@@ -1,3 +1,9 @@
+# v3.4.25
+## XX/XX/2026
+
+1. [](#new)
+    * Hide sidebar: on wider screens, a "Hide sidebar" button at the top right of a guide's side list hides it (with its search box and Side Box), leaving a small button in the same place to show it again, so readers can focus on the page; the page is centred at the same comfortable width. The choice is remembered in the reader's browser, and phones are unchanged. It can be turned off with the new Hide Sidebar Button theme option, as in Quark 2 Open Publishing
+
 # v3.4.24
 ## 10/26/2026
 
