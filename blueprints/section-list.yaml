@@ -260,13 +260,6 @@ form:
                 type: bool
               help: 'On phones, show Previous/Next in a bar at the bottom of the screen, in place of the links at the top and the tiles at the end of the page.'
 
-            header.side_box:
-              type: textarea
-              label: Side Box
-              toggleable: true
-              rows: 5
-              help: 'Markdown shown under the side list on every page of this guide.'
-
             header.hide_next_prev_page_buttons:
                 type: toggle
                 label: Display Next/Prev Section Buttons
@@ -277,6 +270,13 @@ form:
                     1:  'No'
                 validate:
                     type: bool
+
+            header.side_box:
+              type: textarea
+              label: Side Box
+              toggleable: true
+              rows: 5
+              help: 'Markdown shown under the side list on every page of this guide.'
 
         attribution:
           type: tab
