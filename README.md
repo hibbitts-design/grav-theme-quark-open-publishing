@@ -83,7 +83,7 @@ Updating the theme keeps your pages and settings as they are, with the new featu
 
 All options are available in the Admin Panel under **Themes → Quark Open Publishing**.
 
-- **Open Publishing Options** – Creative Commons license display, chromeless site, menu dropdowns, **Hide Sidebar Button** (on by default: readers can hide a guide's side list on wider screens), **Sections Link on Phones** (off by default: a link at the top of guide pages that jumps to the section list), and H5P setup
+- **Open Publishing Options** – Creative Commons license display, chromeless site, menu dropdowns, **Hide Sidebar Button** (on by default: readers can hide a guide's side list on wider screens), **Sections Link on Phones** (off by default: a link at the top of guide pages that jumps to the section list, useful for long guides with many sections), and H5P setup
 - **Quark Options** – Dark Mode, text size on phones, production mode, grid size, custom logos, header and footer defaults, blog page and hero classes, and Spectre.css options
 - **Custom Menu Items** – text, icon, URL, and target for extra menu links
 - **Git Sync Link** – location, link type (view or edit), icon and text, and a custom Git repository URL
