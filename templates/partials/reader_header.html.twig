@@ -38,11 +38,11 @@
                     {% set updated_date = '<time datetime="' ~ page.header.last_updated|date('Y-m-d') ~ '">' ~ page.header.last_updated|date('THEME_QUARK_OPEN_PUBLISHING.READER_DATE_FORMAT'|t) ~ '</time>' %}
                     {% set updated_text = 'THEME_QUARK_OPEN_PUBLISHING.READER_UPDATED'|t(updated_date) %}
                 {% endif %}
-                {# with both, a dot between them that is only visual: screen readers hear a short pause (a hidden comma)
+                {# with both, a dot between them that is only visual: screen readers hear a short pause (a hidden comma, with a space so the page's Markdown version reads "2026, Updated")
                    instead of "middle dot" #}
                 {% set separator = '' %}
                 {% if page.header.edition and updated_text %}
-                    {% set separator = '<span class="text-assistive">,</span><span aria-hidden="true"> &middot; </span>' %}
+                    {% set separator = '<span class="text-assistive">, </span><span aria-hidden="true"> &middot; </span>' %}
                 {% endif %}
                 {# |raw keeps the theme's own HTML (the <time> tag and the dot), while |e makes the edition plain text, as Twig does
                    for other settings when autoescape is on. (The - in {{- and -}} removes the spaces and line breaks around
