@@ -1,3 +1,9 @@
+# v3.4.27
+## 10/26/2026
+
+1. [](#bugfix)
+    * Guide home: the edition and last updated date no longer run together in the page's Markdown version ("2026,Updated" is now "2026, Updated")
+
 # v3.4.26
 ## 10/26/2026
 
