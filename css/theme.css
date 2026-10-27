@@ -335,3 +335,26 @@ a.content-badge-link {
 .search-box .form-input::placeholder {
     color: #667189;
 }
+
+/* The divider before a guide's own menu items (such as Topics and Resources), while reading that guide: a short
+   vertical line in the desktop menu, and a line across the phone menu */
+.dropmenu .guide-menu-divider {
+    display: inline-block;
+    align-self: center;
+    vertical-align: middle;
+    width: 1px;
+    height: 1.25rem;
+    margin: 0 0.5rem;
+    padding: 0;
+    background: currentColor;
+    opacity: 0.3;
+}
+
+.overlay-menu .guide-menu-divider {
+    width: auto;
+    height: 1px;
+    margin: 0.75rem 0;
+    padding: 0;
+    background: currentColor;
+    opacity: 0.3;
+}

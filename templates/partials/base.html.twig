@@ -28,6 +28,10 @@
     {% if page.template in ['sections', 'section', 'subsection', 'section-page', 'section-list', 'reader-list'] %}
       {% do assets.addCss('theme://css/reader.css') %}
       {% do assets.addJs('theme://js/reader.js', {group:'bottom'}) %}
+    {% elseif page.parent.template == 'section-list' %}
+      {# another page in a guide's folder (such as Topics): the styles only, for its link back to the guide - the
+         guide script's arrow keys are for reading the guide in order #}
+      {% do assets.addCss('theme://css/reader.css') %}
     {% endif %}
     {% if theme_var('dark_mode.mode') == 'enabled' %}
       {% do assets.addCss('theme://css/theme-dark.css') %}

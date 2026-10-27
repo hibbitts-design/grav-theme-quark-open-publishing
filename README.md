@@ -160,6 +160,17 @@ To leave a guide out of the site menu but keep its card – for example when the
 
 The Guides List page has a subtitle, cards per row, card image layout (beside the text or on top) and a description line limit (3 lines by default), and, as on a Section List page, a line with just `===` in its text puts the text after it below the cards.
 
+### Pages for a Guide
+
+A guide can have its own pages outside its reading order, such as Topics or Resources:
+
+1. Add a folder **without a number** inside the guide's folder, such as `02.my-guide/topics`, with a standard page (`default.md`)
+2. While reading that guide, the page appears in the site menu after a thin divider, with a link back to the guide at the top of the page
+3. To set their order, use **Menu Order** on the page's **Advanced** tab (`menu_order: 1`) – lowest first, otherwise by folder name
+
+> [!TIP]
+> A numbered folder would make the page one of the guide's sections instead. **Hide from Menu** (also on the **Advanced** tab) leaves a page out of the menu.
+
 ### Moving to Grav Helios Open Reader
 
 Quark Open Publishing is for a site built around a blog and one or more guides – even long ones, grouped into parts – and is free and open source. [Grav Helios Open Reader](https://github.com/hibbitts-design/grav-skeleton-helios-open-reader) is for a site built for reading, such as open textbooks and course readers, and runs on Helios, a premium Grav theme. When a site becomes mainly about reading, its guides can move to Open Reader with little rework. Open Reader adds:

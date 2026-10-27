@@ -5,9 +5,10 @@
     {% for p in page.children.visible %}
         {% if not p.header.hide_from_menu %}
         {% set active_page = (p.active or p.activeChild) ? 'active' : '' %}
+        {# the highlight also marks the section the current page is in; aria-current tells screen readers which item is the current page itself #}
         {% if theme_var('dropdown.enabled') and p.children.visible.count > 0 %}
             <li>
-                <a href="{{ p.url }}" class="{{ active_page }}">
+                <a href="{{ p.url }}" class="{{ active_page }}"{% if p.active %} aria-current="page"{% endif %}>
                     {% if p.header.icon %}
                         <i class="fa fa-{{ p.header.icon }}"></i>
                     {% endif %}
@@ -19,7 +20,7 @@
             </li>
         {% else %}
             <li>
-                <a href="{{ p.url }}" class="{{ active_page }}">
+                <a href="{{ p.url }}" class="{{ active_page }}"{% if p.active %} aria-current="page"{% endif %}>
                     {% if p.header.icon %}
                         <i class="fa fa-{{ p.header.icon }}"></i>
                     {% endif %}
@@ -31,9 +32,60 @@
     {% endfor %}
 {% endmacro %}
 
+{# The guide this page belongs to: the nearest Section List page, from this page up #}
+{% set guide_home = null %}
+{% set ancestor = page %}
+{% for level in 1..5 %}
+    {% if ancestor and not guide_home %}
+        {% if ancestor.template == 'section-list' %}
+            {% set guide_home = ancestor %}
+        {% else %}
+            {% set ancestor = ancestor.parent %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+{# The guide's own extra pages, such as Topics or Resources: the pages in its folder without a number prefix (which
+   keeps them out of its sections), ordered by their menu_order setting and then by folder name. Hide from Menu leaves
+   one out. The folder name is checked too, so a numbered section with Visible turned off isn't added. ksort sorts
+   them by the "order-folder" key, such as "001-topics" #}
+{% set guide_menu_pages = {} %}
+{% if guide_home %}
+    {% for p in guide_home.children %}
+        {% set numbered = p.folder matches '/^[0-9]+[.]/' %}
+        {% if not numbered and not p.visible and p.published and p.routable and not p.header.hide_from_menu %}
+            {% set sort_key = '%03d-%s'|format(p.header.menu_order ?? 999, p.slug) %}
+            {% set guide_menu_pages = guide_menu_pages|merge({(sort_key): p}) %}
+        {% endif %}
+    {% endfor %}
+    {% set guide_menu_pages = guide_menu_pages|ksort %}
+{% endif %}
+
+{# how many of the site's top-level pages are in the menu, so the divider below only shows when there are some #}
+{% set site_menu_count = 0 %}
+{% for p in pages.children.visible %}
+    {% if not p.header.hide_from_menu %}
+        {% set site_menu_count = site_menu_count + 1 %}
+    {% endif %}
+{% endfor %}
+
 <ul {{ tree ? 'class="tree"' : '' }}>
     {% import _self as macros %}
     {{ macros.nav_loop(pages, hide_home_menu_link, home_alias ) }}
+    {% if guide_menu_pages|length > 0 and site_menu_count > 0 %}
+        {# a thin line between the site's own menu items and the guide's (hidden from screen readers, which don't need it) #}
+        <li class="guide-menu-divider" aria-hidden="true"></li>
+    {% endif %}
+    {# while reading a guide, its own extra pages (aria-current tells screen readers which one is open) #}
+    {% for p in guide_menu_pages %}
+        <li>
+            <a href="{{ p.url }}" class="{{ p.active ? 'active' : '' }}"{% if p.active %} aria-current="page"{% endif %}>
+                {% if p.header.icon %}
+                    <i class="fa fa-{{ p.header.icon }}" aria-hidden="true"></i>
+                {% endif %}
+                {{ p.menu }}
+            </a>
+        </li>
+    {% endfor %}
     {# custom menu items check and display - hibbittsdesign.org #}
     {% if theme_var('displaycustommenus.enabled') %}
         {% for mitem in theme_var('menu') %}
