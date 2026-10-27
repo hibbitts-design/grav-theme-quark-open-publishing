@@ -83,7 +83,7 @@ Updating the theme keeps your pages and settings as they are, with the new featu
 
 All options are available in the Admin Panel under **Themes → Quark Open Publishing**.
 
-- **Open Publishing Options** – Creative Commons license display, chromeless site, menu dropdowns, **Hide Sidebar Button** (on by default: readers can hide a guide's side list on wider screens), and H5P setup
+- **Open Publishing Options** – Creative Commons license display, chromeless site, menu dropdowns, **Hide Sidebar Button** (on by default: readers can hide a guide's side list on wider screens), **Sections Link on Phones** (off by default: a link at the top of guide pages that jumps to the section list), and H5P setup
 - **Quark Options** – Dark Mode, text size on phones, production mode, grid size, custom logos, header and footer defaults, blog page and hero classes, and Spectre.css options
 - **Custom Menu Items** – text, icon, URL, and target for extra menu links
 - **Git Sync Link** – location, link type (view or edit), icon and text, and a custom Git repository URL
@@ -132,7 +132,7 @@ For longer guides:
 
 Settings, in the Admin Panel page editor:
 
-- **Section List page** – subtitle, cover image (small, beside the title and details, or large at the top) and its alt text, author(s), edition, last updated date, Start button text (the button below the details, linking to the first section), section label (e.g. "Unit" or "Chapter"), search box, reading progress (on by default), Keep My Place, Previous/Next position (top and bottom, the default, or bottom only), a Previous/Next bar at the bottom of the screen on phones (on by default), a Side Box for every page, cards per row (3 suits cards with images; 1 or 2 suits cards without images or with long titles), OER attribution (license, license URL, and attribution text), and for its card on a Guides List page a group and a badge
+- **Section List page** – subtitle, cover image (small, beside the title and details, or large at the top) and its alt text, author(s), edition, last updated date, Start button text (the button below the details, linking to the first section), section label (e.g. "Unit" or "Chapter") and its plural for the Sections link on phones, if turned on (e.g. "Units"), search box, reading progress (on by default), Keep My Place, Previous/Next position (top and bottom, the default, or bottom only), a Previous/Next bar at the bottom of the screen on phones (on by default), a Side Box for every page, cards per row (3 suits cards with images; 1 or 2 suits cards without images or with long titles), OER attribution (license, license URL, and attribution text), and for its card on a Guides List page a group and a badge
 - **Section** – section number, a section label override, Part, Learning Objectives, Side Box, and for its card a description, image, author(s) and a badge (such as "New" or "Draft"), also shown beside the section label on its page
 - **Section Page** – Learning Objectives, Side Box, and a badge shown beside the section label (such as "Draft")
 
@@ -141,7 +141,6 @@ A few more settings for the Section List page are left out of the Admin Panel to
 ```yaml
 card_image_layout: side          # side: images beside the text (the default with 1 card per row); top: above it
 card_description_lines: 3        # cut card descriptions to 2 or 3 lines
-section_label_plural: Units      # the Sections link on phones, e.g. "Units"
 ```
 
 Sections can also be grouped into parts by their folder names, as in Grav Helios Open Reader: folders named `part-1-section-1`, `part-1-section-2`, `part-2-section-1` and so on are grouped under "Part 1", "Part 2" and so on (a section's **Part** setting still comes first). To change these headings, add to the Section List page's front matter:

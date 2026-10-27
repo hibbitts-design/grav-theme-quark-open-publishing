@@ -12,4 +12,5 @@ dropdown:
   enabled: false
 sections_prev_next_style: buttons
 sidebar_hide_button: true
+phone_sections_link: false
 phone_text_size: standard

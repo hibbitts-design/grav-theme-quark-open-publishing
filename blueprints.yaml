@@ -1,7 +1,7 @@
 name: Quark Open Publishing
 type: theme
 slug: quark-open-publishing
-version: 3.4.27
+version: 3.4.28
 description: "A customized version of the Quark theme for open guides and books, with a blog and almost any other Grav page alongside them: guides with section cards, parts and reading progress. Includes Git Sync links and chromeless display for embedding in an LMS or other site."
 icon: unlock
 author:
@@ -126,6 +126,17 @@ form:
               help: "Let readers hide a guide's sidebar on wider screens to focus on the page."
               highlight: 1
               default: 1
+              options:
+                '0': Disabled
+                '1': Enabled
+              validate:
+                type: bool
+            phone_sections_link:
+              type: toggle
+              label: 'Sections Link on Phones'
+              help: "Show a link at the top of guide pages on phones that jumps to the section list."
+              highlight: 1
+              default: 0
               options:
                 '0': Disabled
                 '1': Enabled
