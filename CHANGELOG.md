@@ -1,5 +1,5 @@
 # v3.4.28
-## XX/XX/2026
+## 10/27/2026
 
 1. [](#improved)
     * Guide pages: the Sections link at the top of pages on phones is now off by default, as the link back to the guide already leads to every section; turn it on with the new Sections Link on Phones theme option
