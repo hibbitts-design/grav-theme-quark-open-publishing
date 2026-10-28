@@ -171,6 +171,10 @@ A guide can have its own pages outside its reading order, such as Topics or Reso
 > [!TIP]
 > A numbered folder would make the page one of the guide's sections instead. **Hide from Menu** (also on the **Advanced** tab) leaves a page out of the menu.
 
+### Links Between Pages
+
+Link from one section to another with a relative link, such as `[Accessibility](../accessibility)`. It keeps working when the guide moves – to another folder or site, or to Grav Helios Open Reader or Grav Open Course Hub – where an absolute link (`/my-guide/accessibility`) would need updating.
+
 ### Moving to Grav Helios Open Reader
 
 Quark Open Publishing is for a site built around a blog and one or more guides – even long ones, grouped into parts – and is free and open source. [Grav Helios Open Reader](https://github.com/hibbitts-design/grav-skeleton-helios-open-reader) is for a site built for reading, such as open textbooks and course readers, and runs on Helios, a premium Grav theme. When a site becomes mainly about reading, its guides can move to Open Reader with little rework. Open Reader adds:
