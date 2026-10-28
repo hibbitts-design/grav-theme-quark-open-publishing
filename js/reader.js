@@ -194,6 +194,10 @@ Also, on section pages, wide tables scroll sideways inside the text column inste
         if (target.closest && target.closest('.reader-table-scroll')) {
             return;
         }
+        // and while an image is shown larger (tap to see it larger), where the reader is looking at the image
+        if (document.querySelector('dialog[open]')) {
+            return;
+        }
 
         // the page's own Previous/Next links (tiles at the bottom, or the compact links at the top)
         var link = null;
