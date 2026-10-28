@@ -1,3 +1,9 @@
+# v3.4.30
+## 10/28/2026
+
+1. [](#bugfix)
+    * Arrow keys: with an image shown larger (tapped to see it larger), the left and right arrow keys no longer leave the page – they go to the previous or next page again once the image is closed
+
 # v3.4.29
 ## 10/27/2026
 
