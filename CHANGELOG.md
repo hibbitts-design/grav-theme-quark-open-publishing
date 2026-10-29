@@ -1,3 +1,9 @@
+# v3.4.31
+## 10/29/2026
+
+1. [](#bugfix)
+    * Guides: the Continue reading bar and search box stack on tablets too, so a long page title stays on one line
+
 # v3.4.30
 ## 10/28/2026
 
