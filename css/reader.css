@@ -795,7 +795,7 @@ html:not(.reader-sections-hidden) .reader-sidebar-toggle-show,
 }
 
 /* The row above the section cards: the "Continue reading" bar on the left and the guide's search box on the right
-   (stacked and full width on phones). The row is hidden when it has nothing to show. */
+   (stacked and full width on tablets and phones). The row is hidden when it has nothing to show. */
 .section-list-actions {
     display: flex;
     align-items: center;
@@ -820,7 +820,8 @@ html:not(.reader-sections-hidden) .reader-sidebar-toggle-show,
     margin-left: 0;
 }
 
-@media (max-width: 600px) {
+/* stacked below 960px, so a long page title in the bar still fits on one line */
+@media (max-width: 959px) {
     .section-list-actions {
         flex-direction: column;
         align-items: stretch;
