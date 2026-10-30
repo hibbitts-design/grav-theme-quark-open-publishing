@@ -202,16 +202,10 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
 
 /* Cards side by side line up: each card's image, title and details share rows with the other cards in its row,
    so a one-line title leaves space to match a two-line title next to it (subgrid; older browsers keep each card's
-   own heights). Not for cards with the image at the side, which have a different layout. */
+   own heights). Only in lists without side-image cards, which have their own layout. */
 @supports (grid-template-rows: subgrid) and selector(:has(*)) {
-    .section-cards > .column:has(> .section-card:not(.section-card-image-side)) {
-        grid-row: span 3;
-        display: grid;
-        grid-template-rows: subgrid;
-        row-gap: 0;
-    }
-
-    .section-cards .section-card:not(.section-card-image-side) {
+    .section-cards:not(:has(.section-card-image-side)) > .column,
+    .section-cards:not(:has(.section-card-image-side)) .section-card {
         grid-row: span 3;
         display: grid;
         grid-template-rows: subgrid;
@@ -219,9 +213,9 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     }
 
     /* each part keeps its own row, even when a card has no image */
-    .section-cards .section-card:not(.section-card-image-side) > .card-image { grid-row: 1; }
-    .section-cards .section-card:not(.section-card-image-side) > .card-header { grid-row: 2; }
-    .section-cards .section-card:not(.section-card-image-side) > .card-body { grid-row: 3; }
+    .section-cards:not(:has(.section-card-image-side)) .section-card > .card-image { grid-row: 1; }
+    .section-cards:not(:has(.section-card-image-side)) .section-card > .card-header { grid-row: 2; }
+    .section-cards:not(:has(.section-card-image-side)) .section-card > .card-body { grid-row: 3; }
 }
 
 /* the author and date sit at the bottom of the card, so they line up even when descriptions differ in length
