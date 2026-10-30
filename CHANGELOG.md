@@ -1,7 +1,9 @@
 # v3.4.34
 ## 10/30/2026
 
-1. [](#bugfix)
+1. [](#improved)
+    * A small gap between a card's title and its description
+2. [](#bugfix)
     * Cards stay in order in lists that mix side-image cards with cards without an image
 
 # v3.4.33
