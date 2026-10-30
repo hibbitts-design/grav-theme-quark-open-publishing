@@ -169,16 +169,70 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     color: #3b4351;
 }
 
-/* Section List page: a card for each section */
+/* Section List page: a card for each section, 1, 2 or 3 per row (the template gives each card col-12, col-6 or col-4),
+   one per row on phones. A grid rather than Spectre's columns, so the cards in a row can line up (see below), with
+   the same spacing as before. */
 .section-cards {
     list-style: none;
-    margin: 0 -0.4rem 1.2rem;
+    margin: 0 0 2.4rem;
     padding: 0;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.2rem 0.8rem;
 }
 
 .section-cards > .column {
-    margin: 0 0 1.2rem;
-    padding: 0 0.4rem;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    max-width: none;
+}
+
+.section-cards > .col-12 { grid-column: span 12; }
+.section-cards > .col-6 { grid-column: span 6; }
+.section-cards > .col-4 { grid-column: span 4; }
+
+@media (max-width: 840px) {
+    .section-cards > .col-md-6 { grid-column: span 6; }
+}
+
+@media (max-width: 600px) {
+    .section-cards > .col-sm-12 { grid-column: span 12; }
+}
+
+/* Cards side by side line up: each card's image, title and details share rows with the other cards in its row,
+   so a one-line title leaves space to match a two-line title next to it (subgrid; older browsers keep each card's
+   own heights). Not for cards with the image at the side, which have a different layout. */
+@supports (grid-template-rows: subgrid) and selector(:has(*)) {
+    .section-cards > .column:has(> .section-card:not(.section-card-image-side)) {
+        grid-row: span 3;
+        display: grid;
+        grid-template-rows: subgrid;
+        row-gap: 0;
+    }
+
+    .section-cards .section-card:not(.section-card-image-side) {
+        grid-row: span 3;
+        display: grid;
+        grid-template-rows: subgrid;
+        row-gap: 0;
+    }
+
+    /* each part keeps its own row, even when a card has no image */
+    .section-cards .section-card:not(.section-card-image-side) > .card-image { grid-row: 1; }
+    .section-cards .section-card:not(.section-card-image-side) > .card-header { grid-row: 2; }
+    .section-cards .section-card:not(.section-card-image-side) > .card-body { grid-row: 3; }
+}
+
+/* the author and date sit at the bottom of the card, so they line up even when descriptions differ in length
+   (any spare space goes below the description; the author line keeps its own small gap above it) */
+.section-card > .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.section-card > .card-body > .section-card-description {
+    margin-bottom: auto;
 }
 
 /* Section cards and Previous/Next tiles look like the blog's post cards: no border and a soft shadow.
