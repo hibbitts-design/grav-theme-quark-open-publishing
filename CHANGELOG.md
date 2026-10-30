@@ -1,3 +1,9 @@
+# v3.4.33
+## 10/30/2026
+
+1. [](#improved)
+    * Cards side by side line up: titles of one or two lines and the author and date line align across each row
+
 # v3.4.32
 ## 10/29/2026
 
