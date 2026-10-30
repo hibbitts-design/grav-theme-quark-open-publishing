@@ -277,6 +277,11 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     padding-top: 0;
 }
 
+/* a small gap between a card's title and its description, the same as the one above the author line */
+.section-card .section-card-description {
+    margin-top: 0.4rem;
+}
+
 /* A card with just a label and title: a little more space above and below the title, so it reads as a card
    rather than a thin row (both class names are needed to replace Spectre's spacing for a card's last part) */
 .section-card.section-card-title-only .card-header {
