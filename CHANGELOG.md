@@ -1,3 +1,9 @@
+# v3.4.35
+## 11/03/2026
+
+1. [](#bugfix)
+    * The sidebar's search box no longer jumps down as each guide page loads
+
 # v3.4.34
 ## 10/30/2026
 
