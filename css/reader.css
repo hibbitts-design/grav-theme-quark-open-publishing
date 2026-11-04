@@ -806,6 +806,16 @@ html:not(.reader-sections-hidden) .reader-sidebar-toggle-show,
     margin-bottom: 0;
 }
 
+/* on phones, table cells get less padding and slightly smaller text, so tables of three or four columns fit the
+   screen instead of scrolling sideways (wider tables still scroll) */
+@media (max-width: 600px) {
+    .reader-content table th,
+    .reader-content table td {
+        padding: 0.5rem 0.4rem;
+        font-size: 0.875rem;
+    }
+}
+
 /* footnotes (with Markdown Extra) as smaller, muted notes below the text */
 .reader-content .footnotes p,
 .reader-content .footnotes li {
