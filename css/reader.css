@@ -602,6 +602,12 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     display: none;
 }
 
+/* until js/reader.js shows the button, its row keeps the button's height (the class is added in
+   templates/sections.html.twig), so the search box below it doesn't jump down as each page loads */
+.reader-sidebar-js .reader-sidebar-toggle-row {
+    min-height: 2rem;
+}
+
 .reader-sidebar-toggle:hover,
 .reader-sidebar-toggle:focus {
     background: #f1f3f5;

@@ -79,6 +79,8 @@
        page, always keeps its side list #}
     {% if theme_var('sidebar_hide_button', true) and reader_home.template == 'section-list' and page.route != reader_home.route and not content_only %}
       <script>
+        // keeps the Hide sidebar button's space until js/reader.js shows it, so the search box doesn't jump down
+        document.documentElement.classList.add('reader-sidebar-js');
         try {
           if (localStorage.getItem('qop-sections-hidden') === '1') {
             document.documentElement.classList.add('reader-sections-hidden');
