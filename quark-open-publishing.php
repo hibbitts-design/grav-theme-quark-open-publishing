@@ -264,7 +264,10 @@ class QuarkOpenPublishing extends Quark
                 $pagesToRemove[] = $page;
             } elseif ($this->isInsideUnpublishedPage($page)) {
                 $pagesToRemove[] = $page;
-            } elseif ($scopePage && !$this->isPageOrChildOf($page, $scopePage)) {
+            } elseif ($scopePage && $scopePage->template() === 'reader-list' && !$this->isInGuide($page)) {
+                // from a Guides List page: only the guides' own pages (not the blog, other pages or the Guides List page)
+                $pagesToRemove[] = $page;
+            } elseif ($scopePage && $scopePage->template() === 'section-list' && !$this->isPageOrChildOf($page, $scopePage)) {
                 $pagesToRemove[] = $page;
             }
         }
@@ -274,8 +277,9 @@ class QuarkOpenPublishing extends Quark
     }
 
     /**
-     * The page that search is limited to, from ?scope=/its-route (added by the search box on a Multi-Page Content page).
-     * Only a Section List page is accepted; otherwise (or with no scope) this returns null and the whole site is searched.
+     * The page that search is limited to, from ?scope=/its-route (added by the search box on a Multi-Page Content page,
+     * or on a Guides List page to search all the guides). Only a Section List or Guides List page is accepted; otherwise
+     * (or with no scope) this returns null and the whole site is searched.
      */
     protected function getSearchScopePage()
     {
@@ -293,15 +297,30 @@ class QuarkOpenPublishing extends Quark
         // Find the page at that address
         $scopePage = $this->grav['pages']->find($scope);
 
-        // No page there, or it isn't a Section List page: search the whole site
+        // No page there, or it isn't a Section List or Guides List page: search the whole site
         if (!$scopePage) {
             return null;
         }
-        if ($scopePage->template() !== 'section-list') {
+        if (!in_array($scopePage->template(), ['section-list', 'reader-list'], true)) {
             return null;
         }
 
         return $scopePage;
+    }
+
+    /**
+     * Is the page part of a guide: a Section List page itself, or a page inside one?
+     */
+    protected function isInGuide($page)
+    {
+        // go up from the page through its parents, looking for a guide's home page
+        while ($page) {
+            if ($page->template() === 'section-list') {
+                return true;
+            }
+            $page = $page->parent();
+        }
+        return false;
     }
 
     /**
@@ -429,6 +448,9 @@ class QuarkOpenPublishing extends Quark
                 foreach (array_slice($parents, 1) as $parent) {
                     $trailTitles[] = $parent->title();
                 }
+            } elseif ($page->template() === 'section-list') {
+                // a guide's home page at the top of the site goes with its own guide's pages, not under the site title
+                $groupTitle = $page->title();
             }
 
             $title = (string) $page->title();

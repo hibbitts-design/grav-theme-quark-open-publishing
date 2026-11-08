@@ -81,6 +81,18 @@ form:
                 3: '3 lines'
               help: 'Lines of each guide''s subtitle shown on its card.'
 
+            header.show_search_box:
+              type: toggle
+              label: Show Search Box
+              highlight: 0
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+              help: 'A search box above the cards that searches all the guides.'
+
         # Hide from Menu comes from this theme's default.yaml (which this page type extends); only its help text
         # changes here - repeating the whole field would list its options twice in Admin
         advanced:

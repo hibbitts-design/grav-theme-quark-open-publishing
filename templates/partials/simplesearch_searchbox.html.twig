@@ -5,7 +5,11 @@
 {% set search_min = config.plugins.simplesearch.min_query_length ?? 3 %}
 {% set box_scope = search_scope ?? search_scope_page ?? null %}
 {# the placeholder ends in "…"; the name screen readers hear is the same words without it #}
-{% if box_scope %}
+{% if box_scope and box_scope.template == 'reader-list' %}
+    {# from a Guides List page (or its results page): all the guides #}
+    {% set search_placeholder = 'THEME_QUARK_OPEN_PUBLISHING.SEARCH_GUIDES_PLACEHOLDER'|t %}
+    {% set search_label = 'THEME_QUARK_OPEN_PUBLISHING.SEARCH_GUIDES_LABEL'|t %}
+{% elseif box_scope %}
     {% set search_placeholder = 'THEME_QUARK_OPEN_PUBLISHING.SEARCH_SCOPE_PLACEHOLDER'|t %}
     {% set search_label = 'THEME_QUARK_OPEN_PUBLISHING.SEARCH_SCOPE_LABEL'|t %}
 {% else %}

@@ -39,6 +39,17 @@
 
     {{ content_above|raw }}
 
+    {# Show Search Box (off unless turned on): a search box above the cards, on the right, that searches all the guides -
+       this page is its search_scope, so only the guides' own pages are searched (see onSimpleSearchCollection), not the
+       blog, other pages or this page. Hidden in embedded mode. #}
+    {% if page.header.show_search_box and (config.plugins.simplesearch.enabled or config.plugins.tntsearch.enabled) and not embedded_mode %}
+      <div class="section-list-actions">
+        <div class="reader-search">
+          {% include 'partials/search_box.html.twig' with { search_scope: page } %}
+        </div>
+      </div>
+    {% endif %}
+
     {# A card for each guide, 1, 2 or 3 per row (one per row on phones) #}
     {% set cards_per_row = page.header.cards_per_row|default(1) %}
     {% if cards_per_row == 3 %}

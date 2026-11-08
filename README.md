@@ -158,7 +158,7 @@ For a site with more than one guide, the **Guides List** page type (`reader-list
 
 To leave a guide out of the site menu but keep its card – for example when the Guides List page is the home page – turn on **Hide from Menu** on its home page (`hide_from_menu: true`, which works on any page). Setting **Visible** to No (`visible: false`) instead leaves the guide off the Guides List too, as in Grav Helios Open Reader.
 
-The Guides List page has a subtitle, cards per row, card image layout (beside the text or on top) and a description line limit (3 lines by default), and, as on a Section List page, a line with just `===` in its text puts the text after it below the cards.
+The Guides List page has a subtitle, cards per row, card image layout (beside the text or on top), a description line limit (3 lines by default) and an optional search box that searches all the guides (off by default), and, as on a Section List page, a line with just `===` in its text puts the text after it below the cards.
 
 ### Pages for a Guide
 
