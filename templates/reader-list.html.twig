@@ -39,16 +39,6 @@
 
     {{ content_above|raw }}
 
-    {# Show Search Box (off unless turned on): a search box above the cards, on the right, that searches all the guides -
-       this page is its search_scope, so only the guides' own pages are searched (see onSimpleSearchCollection), not the
-       blog, other pages or this page. Hidden in embedded mode. #}
-    {% if page.header.show_search_box and (config.plugins.simplesearch.enabled or config.plugins.tntsearch.enabled) and not embedded_mode %}
-      <div class="section-list-actions">
-        <div class="reader-search">
-          {% include 'partials/search_box.html.twig' with { search_scope: page } %}
-        </div>
-      </div>
-    {% endif %}
 
     {# A card for each guide, 1, 2 or 3 per row (one per row on phones) #}
     {% set cards_per_row = page.header.cards_per_row|default(1) %}
@@ -78,6 +68,24 @@
     {% set section_cards_class = 'section-cards columns' %}
     {% if card_description_lines == 2 or card_description_lines == 3 %}
       {% set section_cards_class = section_cards_class ~ ' section-cards-lines-' ~ card_description_lines %}
+    {% endif %}
+
+    {# Show Search Box (off unless turned on): a search box above the cards, on the left, that searches all the guides -
+       this page is its search_scope, so only the guides' own pages are searched (see onSimpleSearchCollection), not the
+       blog, other pages or this page. With 2 or 3 cards per row it's as wide as one card (the same grid columns as the
+       cards); with 1 per row it keeps its usual width. Hidden in embedded mode. #}
+    {% if page.header.show_search_box and (config.plugins.simplesearch.enabled or config.plugins.tntsearch.enabled) and not embedded_mode %}
+      {% set search_row_class = 'section-list-actions' %}
+      {% set search_box_class = 'reader-search' %}
+      {% if cards_per_row > 1 %}
+        {% set search_row_class = search_row_class ~ ' reader-list-search-grid' %}
+        {% set search_box_class = search_box_class ~ ' ' ~ card_column %}
+      {% endif %}
+      <div class="{{ search_row_class }}">
+        <div class="{{ search_box_class }}">
+          {% include 'partials/search_box.html.twig' with { search_scope: page } %}
+        </div>
+      </div>
     {% endif %}
 
     {# Groups, as in Helios Open Reader: guides with a Group setting are shown under a heading with its name, in the

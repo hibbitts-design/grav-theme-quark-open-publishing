@@ -889,6 +889,31 @@ html:not(.reader-sections-hidden) .reader-sidebar-toggle-show,
     margin-left: 0;
 }
 
+/* Guides List search box with 2 or 3 cards per row: as wide as one card, using the cards' 12-column grid and
+   column gap (the template gives the box the same col-6 or col-4 classes as the cards) */
+.section-list-actions.reader-list-search-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 0.8rem;
+}
+
+.reader-list-search-grid > .reader-search {
+    width: auto;
+    max-width: none;
+    margin-left: 0;
+}
+
+.reader-list-search-grid > .col-6 { grid-column: span 6; }
+.reader-list-search-grid > .col-4 { grid-column: span 4; }
+
+@media (max-width: 840px) {
+    .reader-list-search-grid > .col-md-6 { grid-column: span 6; }
+}
+
+@media (max-width: 600px) {
+    .reader-list-search-grid > .col-sm-12 { grid-column: span 12; }
+}
+
 /* stacked below 960px, so a long page title in the bar still fits on one line */
 @media (max-width: 959px) {
     .section-list-actions {
