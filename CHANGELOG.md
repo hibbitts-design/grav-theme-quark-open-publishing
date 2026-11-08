@@ -1,3 +1,11 @@
+# v3.4.38
+## 11/08/2026
+
+1. [](#new)
+    * Guides List pages can show a search box that searches all the guides (Show Search Box, off by default)
+1. [](#bugfix)
+    * Search results put a guide's home page with its own guide's pages, instead of under the site title
+
 # v3.4.37
 ## 11/08/2026
 
