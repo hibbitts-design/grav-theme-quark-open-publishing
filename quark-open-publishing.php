@@ -47,30 +47,37 @@ class QuarkOpenPublishing extends Quark
     }
 
     /**
-     * Before a guide page's Markdown is converted: turn on Markdown Extra (for footnotes) and list a Glossary
-     * page's terms - hibbittsdesign.org
+     * Before a page's Markdown is converted: list a Glossary page's terms, and on guide pages turn on Markdown Extra
+     * (for footnotes) - hibbittsdesign.org
      */
     public function onPageContentRaw(Event $event)
     {
         $page = $event['page'];
         // front end only: in Admin, the changed header could be saved into the page
-        if ($this->isAdmin() || !in_array($page->template(), self::GUIDE_TEMPLATES, true)) {
+        if ($this->isAdmin()) {
+            return;
+        }
+        $header = $page->header();
+
+        // a Glossary page (a section, or a standard page in the guide) lists its terms at the end, unless
+        // [glossary] places them
+        if (is_array($header->glossary ?? null)) {
+            $content = (string) $page->getRawContent();
+            if (!preg_match('/\[glossary\s*\/?\]/', $content)) {
+                $page->setRawContent(rtrim($content) . "\n\n[glossary]\n");
+            }
+        }
+
+        if (!in_array($page->template(), self::GUIDE_TEMPLATES, true)) {
             return;
         }
 
         // Markdown Extra, unless the page sets markdown: extra: itself
-        $header = $page->header();
         $markdown = (array) ($header->markdown ?? []);
         if (!array_key_exists('extra', $markdown)) {
             $markdown['extra'] = true;
             $header->markdown = $markdown;
             $this->addedHeaderSettings[$page->path()][] = 'markdown_extra';
-        }
-
-        // a Glossary page lists its terms at the end, unless [glossary] places them
-        $content = (string) $page->getRawContent();
-        if (is_array($header->glossary ?? null) && !preg_match('/\[glossary\s*\/?\]/', $content)) {
-            $page->setRawContent(rtrim($content) . "\n\n[glossary]\n");
         }
     }
 

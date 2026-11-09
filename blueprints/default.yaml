@@ -41,6 +41,27 @@ form:
                 validate:
                     type: bool
 
+            glossary_section:
+              type: section
+              title: Glossary
+              underline: true
+
+            header.glossary:
+              type: list
+              label: Glossary
+              style: vertical
+              collapsed: true
+              btnLabel: Add Term
+              help: 'Use this page as the guide''s Glossary, instead of a Glossary section: put it in the guide''s folder, like a Topics page, in an unnumbered folder so it isn''t shown as a section card. Only needed on that one page. The terms are listed in alphabetical order at the end of its text (or where you add [glossary]); in the guide''s text, [term]OER[/term] (or the Glossary Term editor button) shows a term''s definition when hovered over, tapped or chosen with the keyboard.'
+              fields:
+                .term:
+                  type: text
+                  label: Term
+                .definition:
+                  type: textarea
+                  label: Definition
+                  rows: 3
+
         # Two menu settings on Grav's own Advanced tab, right after its Visible setting (ordering@ places them there)
         advanced:
           fields:

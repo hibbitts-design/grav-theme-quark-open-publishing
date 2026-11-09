@@ -33,8 +33,8 @@
          guide script's arrow keys are for reading the guide in order #}
       {% do assets.addCss('theme://css/reader.css') %}
     {% endif %}
-    {# glossary (see shortcodes/GlossaryShortcode.php) #}
-    {% if page.template in ['sections', 'section', 'subsection', 'section-page', 'section-list'] or page.parent.template == 'section-list' %}
+    {# glossary (see shortcodes/GlossaryShortcode.php): guide pages, and any page with a Glossary or glossary terms #}
+    {% if page.template in ['sections', 'section', 'subsection', 'section-page', 'section-list'] or page.parent.template == 'section-list' or page.header.glossary is defined or 'glossary-term' in page.content %}
       {% do assets.addCss('theme://css/glossary.css') %}
       {% do assets.addJs('theme://js/glossary.js', {group:'bottom'}) %}
     {% endif %}
