@@ -33,6 +33,11 @@
          guide script's arrow keys are for reading the guide in order #}
       {% do assets.addCss('theme://css/reader.css') %}
     {% endif %}
+    {# glossary (see shortcodes/GlossaryShortcode.php) #}
+    {% if page.template in ['sections', 'section', 'subsection', 'section-page', 'section-list'] or page.parent.template == 'section-list' %}
+      {% do assets.addCss('theme://css/glossary.css') %}
+      {% do assets.addJs('theme://js/glossary.js', {group:'bottom'}) %}
+    {% endif %}
     {% if theme_var('dark_mode.mode') == 'enabled' %}
       {% do assets.addCss('theme://css/theme-dark.css') %}
     {% elseif theme_var('dark_mode.mode') == 'auto' and not config.system.assets.css_pipeline %}

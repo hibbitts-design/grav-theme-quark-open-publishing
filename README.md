@@ -113,7 +113,7 @@ The **Section List** page type (`section-list.md`) publishes a guide as a set of
 
 The Section List page's own text appears above the section cards. To show some of it below the cards, as in Grav Helios Open Reader, add a line with just `===` – the text after it appears below the cards.
 
-Footnotes (`[^1]`) need Grav's Markdown Extra. Turn it on for the whole site with **Markdown Extra** in the Admin Panel's System Configuration, or for one page by adding this to its front matter:
+Footnotes (`[^1]`, as the Pressbooks Converter writes them) work on guide pages – Section List and Sections pages and their pages – with no setup, as in Grav Helios Open Reader: these pages use Grav's Markdown Extra. A page can turn it off with `extra: false` under `markdown:` in its front matter. For footnotes on other pages, turn on **Markdown Extra** for the whole site in the Admin Panel's System Configuration, or for one page by adding this to its front matter:
 
 ```yaml
 markdown:
@@ -123,6 +123,8 @@ markdown:
 For longer guides:
 
 - **Parts** – give sections the same **Part** setting to group them under a heading on the home page and a label in the side list; section numbers, Previous/Next and the reading progress continue across parts
+- **Unnumbered sections** – turn off **Numbered** on a section (`numbered: false`), such as an Introduction, Preface or Appendix, so it has no number and the sections after it keep theirs (1, 2, 3...); give it a **Section Label Override** (such as "Introduction") to show a label instead, as in Grav Helios Open Reader
+- **Glossary** – add terms and definitions to a section's **Glossary** setting (often an unnumbered section at the end): they're listed in alphabetical order at the end of its text, or where you add `[glossary]`. In the guide's text, `[term]OER[/term]` (or the editor's **Glossary Term** button) shows the term's definition when hovered over or tapped, with a link to the Glossary (`[term name="OER"]open educational resources[/term]` when the text differs). Keyboard and screen reader users can open, read and close the definition too, and without JavaScript, in print and in a page's Markdown, a term is a link to its glossary entry. The box matches the theme's cards, in light and dark modes. As in Grav Helios Open Reader
 - **Keep My Place** – when a reader returns, a **Continue reading** bar above the section cards links to the last page they visited (remembered in their browser), as in Grav Helios Open Reader, and to the section they were reading on it (when its headings have ids, as with the Page TOC plugin); its close button forgets the place
 - **Arrow keys** – on guide pages, ← and → go to the previous and next page (→ on a guide's home page starts reading, and ← on its first page goes back to the home page), handy when presenting a guide by screen sharing, and **/** jumps to the guide's search box
 - **Previous/Next at the top** – compact Previous/Next links beside the link back to the home page, as well as the tiles at the bottom

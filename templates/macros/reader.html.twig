@@ -2,7 +2,8 @@
 
 {# The label shown above a section's title, for example "Chapter 2".
    A section's own section_label replaces it (and an empty one hides it); otherwise the reader home's
-   section_label is used with the section's section_number, or (when that's empty) its position (1 for the first section, and so on). #}
+   section_label is used with the section's section_number, or (when that's empty) its position (1 for the first section, and so on).
+   An unnumbered section (numbered: false) shows only its own label, if any. #}
 {% macro section_label(section_page, reader_home, position) -%}
     {# a guide copied from Grav Helios Open Reader may have Show Section Label turned on without a Section Label:
        it then uses "Section", as in Open Reader (Section List pages only) #}
@@ -21,7 +22,7 @@
     {%- endif -%}
     {%- if section_page.header.section_label is defined -%}
         {{- section_page.header.section_label -}}
-    {%- elseif home_label and show_home_label -%}
+    {%- elseif home_label and show_home_label and section_page.header.numbered is not same as(false) -%}
         {{- home_label ~ ' ' ~ (section_page.header.section_number ?: position) -}}
     {%- endif -%}
 {%- endmacro %}

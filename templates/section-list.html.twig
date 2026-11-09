@@ -153,7 +153,7 @@
       {% endif %}
     {% endfor %}
 
-    {# the card's number, counting across all parts #}
+    {# the card's number, counting across all parts and skipping unnumbered sections (numbered: false) #}
     {% set card_number = 0 %}
 
     {% for part_group in part_groups %}
@@ -162,7 +162,9 @@
       {% endif %}
       <ul class="{{ section_cards_class }}">
         {% for section_item in part_group.sections %}
-          {% set card_number = card_number + 1 %}
+          {% if section_item.header.numbered is not same as(false) %}
+            {% set card_number = card_number + 1 %}
+          {% endif %}
           {# the label (for example "Unit 2") uses the card's position; don't loop over reader_sections again inside this loop #}
           {% set label = reader.section_label(section_item, reader_home, card_number) %}
           {% set card_image = section_item.header.image ? section_item.media[section_item.header.image] : null %}

@@ -5,7 +5,8 @@ $(document).ready(function () {
     $('a[target="_blank"]').addClass("external-link");
     $('a[target="_top"]').addClass("external-link");
 
-    $('#body-wrapper').on('click', 'a:not(.external-link, [href^="#"], [class^="glightbox"])', function (e) {
+    // (not glossary terms: glossary.js opens their definition box)
+    $('#body-wrapper').on('click', 'a:not(.external-link, [href^="#"], [class^="glightbox"], .glossary-term)', function (e) {
         if (($(this).attr('rel') != 'lightbox') && ($(this).attr('href') != null)) {
             var target = new URL($(this).attr('href'), window.location.href);
 

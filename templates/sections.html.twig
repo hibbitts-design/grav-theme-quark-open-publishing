@@ -43,11 +43,15 @@
   {% import 'macros/reader.html.twig' as reader %}
   {% set section_heading_label = '' %}
   {% if section_page %}
-    {# the section's position in the list of sections, for its number #}
+    {# the section's number: its position among the numbered sections, as on its card #}
     {% set section_position = 0 %}
+    {% set numbered_count = 0 %}
     {% for section_item in reader_sections %}
+      {% if section_item.header.numbered is not same as(false) %}
+        {% set numbered_count = numbered_count + 1 %}
+      {% endif %}
       {% if section_item.route == section_page.route %}
-        {% set section_position = loop.index %}
+        {% set section_position = numbered_count %}
       {% endif %}
     {% endfor %}
     {% set section_heading_label = reader.section_label(section_page, reader_home, section_position) %}

@@ -1404,3 +1404,11 @@ html:not(.reader-sections-hidden) .reader-sidebar-toggle-show,
     outline: 2px solid #fff;
     outline-offset: 2px;
 }
+
+/* glossary definition box (css/glossary.css), styled like the section cards; Dark Mode colours are in theme-dark.css */
+.glossary-popover {
+    --glossary-popover-bg: #fff;
+    --glossary-popover-border: 0;
+    --glossary-popover-radius: 0.1rem;
+    --glossary-popover-shadow: 0 10px 45px -9px rgba(0, 0, 0, 0.2), 0 0 0 0.05rem rgba(80, 89, 108, 0.15);
+}

@@ -1,0 +1,97 @@
+/*
+Glossary terms, their definition box and the Glossary page's list.
+Each theme sets the box's --glossary-popover-* variables in its own stylesheet, to match its cards.
+
+The same file is in Quark Open Publishing, Quark 2 Open Publishing and Helios Open Reader (assets/glossary.css) –
+keep the copies the same - hibbittsdesign.org
+*/
+
+/* a term: text with a dotted underline (the class twice, to beat the theme's link colours) */
+.glossary-term.glossary-term {
+    color: inherit;
+    text-decoration: underline dotted;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    cursor: help;
+}
+
+.glossary-term.glossary-term:hover,
+.glossary-term.glossary-term[aria-expanded="true"] {
+    color: inherit;
+    text-decoration-style: solid;
+}
+
+.glossary-popover {
+    position: fixed;
+    z-index: 1000;
+    display: block;
+    box-sizing: border-box;
+    width: max-content;
+    max-width: min(22rem, calc(100vw - 16px));
+    padding: 0.75rem 0.9rem;
+    border: var(--glossary-popover-border, 1px solid rgba(128, 128, 128, 0.35));
+    border-radius: var(--glossary-popover-radius, 8px);
+    background: var(--glossary-popover-bg, #fff);
+    color: var(--glossary-popover-text, inherit);
+    box-shadow: var(--glossary-popover-shadow, 0 6px 24px rgba(0, 0, 0, 0.15));
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.45;
+    text-align: left;
+    text-indent: 0;
+}
+
+.glossary-popover[hidden] {
+    display: none;
+}
+
+/* the box takes focus only so screen readers announce it */
+.glossary-popover:focus {
+    outline: none;
+}
+
+.glossary-popover-term,
+.glossary-popover-definition {
+    display: block;
+    margin: 0 0 0.4rem;
+}
+
+.glossary-popover-term {
+    font-weight: 600;
+}
+
+.glossary-popover-link {
+    font-size: 0.85rem;
+}
+
+/* the Glossary page */
+.glossary-entry {
+    margin-top: 1.25rem;
+    scroll-margin-top: 5rem;
+}
+
+.glossary-entry .glossary-entry-term {
+    margin: 0 0 0.25rem;
+}
+
+.glossary-entry-definition > :last-child {
+    margin-bottom: 0;
+}
+
+/* highlight the entry a term's link goes to */
+.glossary-entry:target .glossary-entry-term strong {
+    background: rgba(250, 204, 21, 0.35);
+    border-radius: 2px;
+    box-shadow: 0 0 0 0.15em rgba(250, 204, 21, 0.35);
+}
+
+@media print {
+    .glossary-term.glossary-term {
+        text-decoration: none;
+    }
+
+    .glossary-popover {
+        display: none !important;
+    }
+}

@@ -44,6 +44,19 @@ form:
               placeholder: 'e.g. 1 or 1.2'
               help: 'Optional number shown with the Section Label (e.g. "Chapter 1.2"). Leave empty to use the section''s position.'
 
+            header.numbered:
+              type: toggle
+              label: Numbered
+              toggleable: true
+              highlight: 1
+              default: 1
+              options:
+                1: 'Yes'
+                0: 'No'
+              validate:
+                type: bool
+              help: 'Turn off for an Introduction, Preface or Appendix: this section gets no number, and the sections after it keep their numbers (1, 2, 3...). Add a Section Label Override (such as Introduction) to show a label instead.'
+
             header.section_label:
               type: text
               size: medium
@@ -74,6 +87,22 @@ form:
               toggleable: true
               rows: 4
               help: 'Markdown shown under the side list on this page, in place of the guide''s Side Box (false hides it here and on this section''s pages).'
+
+            header.glossary:
+              type: list
+              label: Glossary
+              style: vertical
+              collapsed: true
+              btnLabel: Add Term
+              help: 'Makes this the guide''s Glossary page: the terms are listed in alphabetical order at the end of its text (or where you add [glossary]). In the guide''s text, [term]OER[/term] (or the Glossary Term editor button) then shows a term''s definition when hovered over, tapped or chosen with the keyboard.'
+              fields:
+                .term:
+                  type: text
+                  label: Term
+                .definition:
+                  type: textarea
+                  label: Definition
+                  rows: 3
 
             card:
                 type: section

@@ -658,3 +658,11 @@ mark {
     background: hsl(220, 13%, 26%);
     color: hsl(220, 14%, 71%);
 }
+
+/* glossary definition box (css/glossary.css), like the section cards */
+.glossary-popover {
+    --glossary-popover-bg: var(--qop-dark-card);
+    --glossary-popover-text: var(--qop-dark-text);
+    --glossary-popover-border: 0;
+    --glossary-popover-shadow: 0 12px 45px -9px rgba(0, 0, 0, 0.8), 0 0 0 0.05rem var(--qop-dark-border);
+}

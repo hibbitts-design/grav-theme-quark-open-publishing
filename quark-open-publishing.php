@@ -10,6 +10,12 @@ use RocketTheme\Toolbox\Event\Event;
 
 class QuarkOpenPublishing extends Quark
 {
+    // guide pages
+    const GUIDE_TEMPLATES = ['section-list', 'section', 'section-page', 'sections', 'subsection'];
+
+    // pages given markdown.extra before conversion, to remove it again afterwards
+    protected $addedMarkdownExtra = [];
+
     // The search route set in the SimpleSearch plugin, for example '/search'
     protected $searchRoute = '/search';
 
@@ -33,8 +39,91 @@ class QuarkOpenPublishing extends Quark
                 // first, before anything opens the page (Grav makes a page's redirect when it opens it)
                 ['onEmbeddedRedirect', 1000]
             ],
-            'onSimpleSearchCollection' => ['onSimpleSearchCollection', 0]
+            'onSimpleSearchCollection' => ['onSimpleSearchCollection', 0],
+            'onPageContentRaw' => ['onPageContentRaw', 0],
+            'onPageContentProcessed' => ['onPageContentProcessed', 0]
         ];
+    }
+
+    /**
+     * Before a guide page's Markdown is converted: turn on Markdown Extra (for footnotes) and list a Glossary
+     * page's terms - hibbittsdesign.org
+     */
+    public function onPageContentRaw(Event $event)
+    {
+        $page = $event['page'];
+        // front end only: in Admin, the changed header could be saved into the page
+        if ($this->isAdmin() || !in_array($page->template(), self::GUIDE_TEMPLATES, true)) {
+            return;
+        }
+
+        // Markdown Extra, unless the page sets markdown: extra: itself
+        $header = $page->header();
+        $markdown = (array) ($header->markdown ?? []);
+        if (!array_key_exists('extra', $markdown)) {
+            $markdown['extra'] = true;
+            $header->markdown = $markdown;
+            $this->addedMarkdownExtra[$page->path()] = true;
+        }
+
+        // a Glossary page lists its terms at the end, unless [glossary] places them
+        $content = (string) $page->getRawContent();
+        if (is_array($header->glossary ?? null) && !preg_match('/\[glossary\s*\/?\]/', $content)) {
+            $page->setRawContent(rtrim($content) . "\n\n[glossary]\n");
+        }
+    }
+
+    /**
+     * After conversion: give footnote links names and roles that screen readers understand - hibbittsdesign.org
+     */
+    public function onPageContentProcessed(Event $event)
+    {
+        $page = $event['page'];
+        $this->removeAddedMarkdownExtra($page);
+        if ($this->isAdmin() || !in_array($page->template(), self::GUIDE_TEMPLATES, true)) {
+            return;
+        }
+        $content = $page->getRawContent();
+        if (strpos($content, 'footnote-ref') === false) {
+            return;
+        }
+
+        // <a href="#fn:1" class="footnote-ref">1</a> gets role="doc-noteref" aria-label="Footnote 1"
+        $content = preg_replace_callback('/(<a href="#fn:[^"]*" class="footnote-ref")>(\d+)<\/a>/', function ($match) {
+            $label = $this->translateAttribute(['THEME_QUARK_OPEN_PUBLISHING.FOOTNOTE_REF', $match[2]]);
+            return $match[1] . ' role="doc-noteref" aria-label="' . $label . '">' . $match[2] . '</a>';
+        }, $content) ?? $content;
+
+        $content = str_replace('class="footnote-backref"', 'class="footnote-backref" role="doc-backlink" aria-label="'
+            . $this->translateAttribute('THEME_QUARK_OPEN_PUBLISHING.FOOTNOTE_BACK') . '"', $content);
+        $content = str_replace('<div class="footnotes">', '<div class="footnotes" role="doc-endnotes" aria-label="'
+            . $this->translateAttribute('THEME_QUARK_OPEN_PUBLISHING.FOOTNOTES') . '">', $content);
+
+        $page->setRawContent($content);
+    }
+
+    // a translated string, escaped for an HTML attribute
+    protected function translateAttribute($key): string
+    {
+        return htmlspecialchars($this->grav['language']->translate($key), ENT_QUOTES, 'UTF-8');
+    }
+
+    // remove the Markdown Extra setting added before conversion, so it can't be saved into the page's file
+    protected function removeAddedMarkdownExtra($page): void
+    {
+        if (!isset($this->addedMarkdownExtra[$page->path()])) {
+            return;
+        }
+        unset($this->addedMarkdownExtra[$page->path()]);
+
+        $header = $page->header();
+        $markdown = (array) ($header->markdown ?? []);
+        unset($markdown['extra']);
+        if ($markdown) {
+            $header->markdown = $markdown;
+        } else {
+            unset($header->markdown);
+        }
     }
 
     public function onThemeInitialized()
@@ -130,6 +219,7 @@ class QuarkOpenPublishing extends Quark
         if ($this->isAdmin() && ($this->grav['config']->get('plugins.shortcode-core.enabled'))) {
             $this->grav['assets']->add('theme://editor-buttons/admin/js/shortcode-pdf.js');
             $this->grav['assets']->add('theme://editor-buttons/admin/js/shortcode-h5p.js');
+            $this->grav['assets']->add('theme://editor-buttons/admin/js/shortcode-term.js');
         }
     }
 
