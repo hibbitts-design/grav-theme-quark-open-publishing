@@ -1412,3 +1412,21 @@ html:not(.reader-sections-hidden) .reader-sidebar-toggle-show,
     --glossary-popover-radius: 0.1rem;
     --glossary-popover-shadow: 0 10px 45px -9px rgba(0, 0, 0, 0.2), 0 0 0 0.05rem rgba(80, 89, 108, 0.15);
 }
+
+/* a table's caption (from a "Table:" line), like a figure's caption; and the number on figures and tables */
+.reader-content table caption {
+    margin-bottom: 0.375rem;
+    font-size: 0.75rem;
+    font-style: italic;
+    text-align: center;
+}
+
+.reader-content table caption.caption-bottom {
+    caption-side: bottom;
+    margin: 0.375rem 0 0;
+}
+
+.reader-content .figure-number {
+    font-style: normal;
+    font-weight: 600;
+}

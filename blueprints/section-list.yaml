@@ -238,6 +238,18 @@ form:
                 type: bool
               help: 'Remember the last page of this guide each reader visited (in their own browser). When they return, a "Continue reading" bar above the section cards on this page links to that page.'
 
+            header.number_figures:
+              type: toggle
+              label: Number Figures and Tables
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+              help: 'Number captioned figures and tables by section (Figure 3.2 is the second figure in Section 3). A caption is an italic line just below an image, or a Table: line just above or below a table. Captions that already start with a number are left as they are.'
+
             header.prev_next_position:
               type: select
               label: Prev/Next Page Controls Position

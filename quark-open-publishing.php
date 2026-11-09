@@ -13,8 +13,8 @@ class QuarkOpenPublishing extends Quark
     // guide pages
     const GUIDE_TEMPLATES = ['section-list', 'section', 'section-page', 'sections', 'subsection'];
 
-    // pages given markdown.extra before conversion, to remove it again afterwards
-    protected $addedMarkdownExtra = [];
+    // header settings added to pages before conversion, by page path, to remove again afterwards
+    protected $addedHeaderSettings = [];
 
     // The search route set in the SimpleSearch plugin, for example '/search'
     protected $searchRoute = '/search';
@@ -40,8 +40,9 @@ class QuarkOpenPublishing extends Quark
                 ['onEmbeddedRedirect', 1000]
             ],
             'onSimpleSearchCollection' => ['onSimpleSearchCollection', 0],
+            'onPageInitialized' => ['skipCacheForNumberedPages', 0],
             'onPageContentRaw' => ['onPageContentRaw', 0],
-            'onPageContentProcessed' => ['onPageContentProcessed', 0]
+            'onPageContentProcessed' => ['onPageContentProcessed', -100]
         ];
     }
 
@@ -63,7 +64,7 @@ class QuarkOpenPublishing extends Quark
         if (!array_key_exists('extra', $markdown)) {
             $markdown['extra'] = true;
             $header->markdown = $markdown;
-            $this->addedMarkdownExtra[$page->path()] = true;
+            $this->addedHeaderSettings[$page->path()][] = 'markdown_extra';
         }
 
         // a Glossary page lists its terms at the end, unless [glossary] places them
@@ -74,18 +75,35 @@ class QuarkOpenPublishing extends Quark
     }
 
     /**
-     * After conversion: give footnote links names and roles that screen readers understand - hibbittsdesign.org
+     * After conversion: accessible footnotes, and captions and numbers for tables and figures - hibbittsdesign.org
      */
     public function onPageContentProcessed(Event $event)
     {
         $page = $event['page'];
-        $this->removeAddedMarkdownExtra($page);
+        $this->removeAddedHeaderSettings($page);
         if ($this->isAdmin() || !in_array($page->template(), self::GUIDE_TEMPLATES, true)) {
             return;
         }
-        $content = $page->getRawContent();
+
+        $content = $this->accessibleFootnotes($page->getRawContent());
+
+        if (!class_exists('HibbittsDesign\FigureNumbers')) {
+            require_once __DIR__ . '/classes/FigureNumbers.php';
+        }
+        $language = $this->grav['language'];
+        $content = \HibbittsDesign\FigureNumbers::process($page, $content, [
+            'figure' => $language->translate('THEME_QUARK_OPEN_PUBLISHING.FIGURE_NUMBER'),
+            'table' => $language->translate('THEME_QUARK_OPEN_PUBLISHING.TABLE_NUMBER'),
+        ]);
+
+        $page->setRawContent($content);
+    }
+
+    // footnote links with names and roles that screen readers understand
+    protected function accessibleFootnotes(string $content): string
+    {
         if (strpos($content, 'footnote-ref') === false) {
-            return;
+            return $content;
         }
 
         // <a href="#fn:1" class="footnote-ref">1</a> gets role="doc-noteref" aria-label="Footnote 1"
@@ -99,7 +117,7 @@ class QuarkOpenPublishing extends Quark
         $content = str_replace('<div class="footnotes">', '<div class="footnotes" role="doc-endnotes" aria-label="'
             . $this->translateAttribute('THEME_QUARK_OPEN_PUBLISHING.FOOTNOTES') . '">', $content);
 
-        $page->setRawContent($content);
+        return $content;
     }
 
     // a translated string, escaped for an HTML attribute
@@ -108,22 +126,44 @@ class QuarkOpenPublishing extends Quark
         return htmlspecialchars($this->grav['language']->translate($key), ENT_QUOTES, 'UTF-8');
     }
 
-    // remove the Markdown Extra setting added before conversion, so it can't be saved into the page's file
-    protected function removeAddedMarkdownExtra($page): void
+    /**
+     * A page's figure numbers depend on the pages before it, but Grav's content cache only notices changes to the
+     * page itself, so pages in a numbered guide skip it (unless the page sets cache_enable itself) - hibbittsdesign.org
+     */
+    public function skipCacheForNumberedPages(Event $event)
     {
-        if (!isset($this->addedMarkdownExtra[$page->path()])) {
+        $page = $event['page'];
+        if ($this->isAdmin() || !$page || !in_array($page->template(), self::GUIDE_TEMPLATES, true) || isset($page->header()->cache_enable)) {
             return;
         }
-        unset($this->addedMarkdownExtra[$page->path()]);
-
-        $header = $page->header();
-        $markdown = (array) ($header->markdown ?? []);
-        unset($markdown['extra']);
-        if ($markdown) {
-            $header->markdown = $markdown;
-        } else {
-            unset($header->markdown);
+        if (!class_exists('HibbittsDesign\FigureNumbers')) {
+            require_once __DIR__ . '/classes/FigureNumbers.php';
         }
+        if (\HibbittsDesign\FigureNumbers::numberingOn($page)) {
+            $page->header()->cache_enable = false;
+            $this->addedHeaderSettings[$page->path()][] = 'cache_enable';
+        }
+    }
+
+    // remove the header settings added before conversion, so they can't be saved into the page's file
+    protected function removeAddedHeaderSettings($page): void
+    {
+        $header = $page->header();
+        foreach ($this->addedHeaderSettings[$page->path()] ?? [] as $setting) {
+            if ($setting === 'cache_enable') {
+                unset($header->cache_enable);
+            }
+            if ($setting === 'markdown_extra') {
+                $markdown = (array) ($header->markdown ?? []);
+                unset($markdown['extra']);
+                if ($markdown) {
+                    $header->markdown = $markdown;
+                } else {
+                    unset($header->markdown);
+                }
+            }
+        }
+        unset($this->addedHeaderSettings[$page->path()]);
     }
 
     public function onThemeInitialized()
