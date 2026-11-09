@@ -1,3 +1,11 @@
+# v3.5.1
+## 11/09/2026
+
+1. [](#new)
+    * A Glossary can be a standard page in the guide, in an unnumbered folder beside pages like Topics and Resources, instead of a section: its Glossary setting is on the Options tab, and its terms are listed automatically
+1. [](#improved)
+    * Glossary terms show their definition on any page that uses them, not only on a guide's own pages
+
 # v3.5.0
 ## 11/08/2026
 
