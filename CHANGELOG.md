@@ -1,3 +1,13 @@
+# v3.5.0
+## 11/08/2026
+
+1. [](#new)
+    * Sections can be unnumbered: turn off a section's Numbered setting for an Introduction, Preface or Appendix, and the sections after it keep their numbers (1, 2, 3...)
+    * Footnotes (`[^1]`, as the Pressbooks Converter writes them) work on guide pages without turning on Markdown Extra, and screen readers announce them as footnotes, with a way back to the text
+    * A guide can have a Glossary: add terms and definitions to a section's Glossary setting (listed in alphabetical order on that page), and `[term]OER[/term]` in the text shows a term's definition when hovered over, tapped or chosen with the keyboard, with a link to the Glossary – also added with the editor's Glossary Term button, and matching the theme in light and dark modes, as in Grav Helios Open Reader
+    * Captioned figures and tables can be numbered by section (Figure 3.2 is the second figure in Section 3), with the guide's Number Figures and Tables setting (off by default); captions that already start with a number are left as they are
+    * A table's caption can be a `Table: …` line just above or below it, as in Pandoc and Quarto, and becomes the table's real caption
+
 # v3.4.39
 ## 11/08/2026
 
