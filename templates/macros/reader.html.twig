@@ -9,7 +9,7 @@
        it then uses "Section", as in Open Reader (Section List pages only) #}
     {%- if reader_home.header.section_label is defined -%}
         {%- set home_label = reader_home.header.section_label -%}
-    {%- elseif reader_home.template == 'section-list' and reader_home.header.show_section_label -%}
+    {%- elseif reader_home.template in ['section-list', 'guide'] and reader_home.header.show_section_label -%}
         {%- set home_label = 'THEME_QUARK_OPEN_PUBLISHING.READER_SECTION_LABEL'|t -%}
     {%- else -%}
         {%- set home_label = '' -%}
@@ -17,7 +17,7 @@
     {# Show Section Label turned off (as in Open Reader) hides these labels on a Section List page;
        a section's own label, set on the section, still shows #}
     {%- set show_home_label = true -%}
-    {%- if reader_home.template == 'section-list' and reader_home.header.show_section_label is defined and not reader_home.header.show_section_label -%}
+    {%- if reader_home.template in ['section-list', 'guide'] and reader_home.header.show_section_label is defined and not reader_home.header.show_section_label -%}
         {%- set show_home_label = false -%}
     {%- endif -%}
     {%- if section_page.header.section_label is defined -%}

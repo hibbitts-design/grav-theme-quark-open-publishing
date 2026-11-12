@@ -4,7 +4,7 @@
 
 {# A page in a guide's folder that isn't one of its sections (such as Topics or Resources): a link back to the guide at
    the top, as on the guide's own pages (left out when embedded, which shows content only) #}
-{% set in_guide = page.parent.template == 'section-list' and not (embedded_mode or theme_var('chromeless.enabled')) %}
+{% set in_guide = page.parent.template in ['section-list', 'guide'] and not (embedded_mode or theme_var('chromeless.enabled')) %}
 
 {% block content %}
     {% if in_guide %}

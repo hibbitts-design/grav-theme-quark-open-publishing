@@ -12,7 +12,7 @@
 
   {# Reader details (the same page settings as Helios Open Reader) are set on the reader home: the Multi-Section page
      or Section List page that this page belongs to - hibbittsdesign.org #}
-  {% set reader_home_templates = ['sections', 'section-list'] %}
+  {% set reader_home_templates = ['sections', 'section-list', 'guide'] %}
   {% if page.template in reader_home_templates %}
     {% set reader_home = page %}
   {% elseif page.parent.template in reader_home_templates %}
@@ -23,7 +23,7 @@
   {# The guide's sections: the reader home's page collection, or for a Section List page whose collection
      doesn't list its items (such as a publication copied from Grav Helios Open Reader), its child pages,
      in the Order By and Order settings' order when set (as on the Section List page) #}
-  {% if reader_home.template == 'section-list' and reader_home.header.content.items is not defined %}
+  {% if reader_home.template in ['section-list', 'guide'] and reader_home.header.content.items is not defined %}
     {% set reader_sections = reader_home.children.visible() %}
     {% if reader_home.header.content.order.by is defined %}
       {% set reader_sections = reader_sections.order(reader_home.header.content.order.by, reader_home.header.content.order.dir|default('asc')) %}
@@ -59,18 +59,18 @@
 
   {# In embedded mode (or with the site-wide chromeless setting), pages of a Section List page show only their content,
      as in Helios Open Reader: no side list, back link, progress bar or Previous/Next. Multi-Section pages are unchanged. #}
-  {% set content_only = reader_home.template == 'section-list' and (embedded_mode or theme_var('chromeless.enabled')) %}
+  {% set content_only = reader_home.template in ['section-list', 'guide'] and (embedded_mode or theme_var('chromeless.enabled')) %}
 
   {# Previous/Next position and reading progress, from the guide's home page settings. When a Section List guide doesn't
      set them, Previous/Next is at the top and bottom, with the reading progress, as in Helios Open Reader; Multi-Section
      pages keep Previous/Next at the bottom only, without the progress. (?? only uses the default when a setting isn't
      there at all, so a guide set to "bottom" or with the progress turned off keeps its choice.) #}
-  {% set is_guide = reader_home.template == 'section-list' %}
+  {% set is_guide = reader_home.template in ['section-list', 'guide'] %}
   {% set prev_next_position = reader_home.header.prev_next_position ?? (is_guide ? 'both' : 'bottom') %}
   {% set show_reading_progress = reader_home.header.show_reading_progress ?? is_guide %}
 
   {# Keep My Place: remember this page, so the Section List page's Start button can continue from it (see js/reader.js) #}
-  {% if reader_home.template == 'section-list' and page.route != reader_home.route
+  {% if reader_home.template in ['section-list', 'guide'] and page.route != reader_home.route
     and (reader_home.header.keep_my_place is not defined or reader_home.header.keep_my_place) %}
     <span class="reader-save-place" data-reader-home="{{ reader_home.url }}" data-url="{{ page.url }}" data-title="{{ page.title }}" hidden></span>
   {% endif %}
@@ -81,7 +81,7 @@
        side list doesn't appear and then disappear. Only on the pages with the Hide/Show sidebar button (a guide's pages,
        below, when the theme's Hide Sidebar Button option is on), so a page without the button, such as a Multi-Section
        page, always keeps its side list #}
-    {% if theme_var('sidebar_hide_button', true) and reader_home.template == 'section-list' and page.route != reader_home.route and not content_only %}
+    {% if theme_var('sidebar_hide_button', true) and reader_home.template in ['section-list', 'guide'] and page.route != reader_home.route and not content_only %}
       <script>
         // keeps the Hide sidebar button's space until js/reader.js shows it, so the search box doesn't jump down
         document.documentElement.classList.add('reader-sidebar-js');
@@ -98,7 +98,7 @@
       {# A link back to the Section List page, which has the section cards (hidden in embedded mode).
          With the Section List page's Prev/Next Page Controls Position set to "Top and bottom", a compact
          Previous/Next row sits on the same line, on the right ("top" alone, as in Helios Open Reader, works the same) #}
-      {% if reader_home.template == 'section-list' and page.route != reader_home.route and not content_only %}
+      {% if reader_home.template in ['section-list', 'guide'] and page.route != reader_home.route and not content_only %}
         {% set show_top_prev_next = prev_next_position in ['both', 'top'] and not(hide_next_prev_page_buttons) %}
         {# a nav, as these are navigation links (Grav 2's Markdown output also leaves navigation out) #}
         <nav class="reader-top-bar" aria-label="{{ reader_home.title }}">
@@ -163,7 +163,7 @@
          "Next/Prev Section Buttons Style" setting (or, for sites that set it in 3.0.x, the old theme-wide
          sections_prev_next_style setting) is tiles - hibbittsdesign.org #}
       {% set prev_next_style = reader_home.header.prev_next_style ?? theme_var('sections_prev_next_style') %}
-      {% if reader_home.template == 'section-list' or prev_next_style == 'tiles' %}
+      {% if reader_home.template in ['section-list', 'guide'] or prev_next_style == 'tiles' %}
         {% if page.template != 'sections' and not content_only %}
           <div class="reader-nav-block">
             {% if show_reading_progress %}
@@ -280,11 +280,11 @@
 
         {# The top of the side list: on a guide's pages, the Hide/Show sidebar button, and a search box (on pages of a Section
            List page: its Show Search Box setting; hidden in embedded mode) #}
-        {% set show_side_search = reader_home.template == 'section-list'
+        {% set show_side_search = reader_home.template in ['section-list', 'guide']
           and (reader_home.header.show_search_box is not defined or reader_home.header.show_search_box)
           and (config.plugins.simplesearch.enabled or config.plugins.tntsearch.enabled) and not embedded_mode %}
         {# (the button can be turned off with the theme's Hide Sidebar Button option) #}
-        {% set show_sidebar_toggle = theme_var('sidebar_hide_button', true) and reader_home.template == 'section-list' and page.route != reader_home.route and not content_only %}
+        {% set show_sidebar_toggle = theme_var('sidebar_hide_button', true) and reader_home.template in ['section-list', 'guide'] and page.route != reader_home.route and not content_only %}
         {% if show_side_search or show_sidebar_toggle %}
           <div class="reader-sidebar-top">
             {# On wider screens: a button, in its own row at the top of the sidebar, that collapses the sidebar (the side
@@ -312,7 +312,7 @@
 
           {# The sections for the side list: on a Section List page, the guide's sections (found above);
              on a Multi-Section page, the nearest page collection, as before #}
-          {% if reader_home.template == 'section-list' %}
+          {% if reader_home.template in ['section-list', 'guide'] %}
             {% set collection = reader_sections %}
           {% else %}
             {% set collection = page.collection.visible() %}
@@ -331,7 +331,7 @@
 
           {% for p in collection %}
 
-            {% if reader_home.template == 'section-list' %}
+            {% if reader_home.template in ['section-list', 'guide'] %}
               {# (trim turns the macro's result into plain text, so it can be compared with the previous title) #}
               {% set part_title = reader.part_title(p, reader_home)|trim %}
               {% if part_title and part_title != previous_part %}

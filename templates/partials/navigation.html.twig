@@ -37,7 +37,7 @@
 {% set ancestor = page %}
 {% for level in 1..5 %}
     {% if ancestor and not guide_home %}
-        {% if ancestor.template == 'section-list' %}
+        {% if ancestor.template in ['section-list', 'guide'] %}
             {% set guide_home = ancestor %}
         {% else %}
             {% set ancestor = ancestor.parent %}

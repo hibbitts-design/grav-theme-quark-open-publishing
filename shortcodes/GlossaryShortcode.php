@@ -119,7 +119,7 @@ class GlossaryShortcode extends Shortcode
     protected function guideHome($page)
     {
         for ($current = $page; $current && !$current->root(); $current = $current->parent()) {
-            if (in_array($current->template(), ['section-list', 'sections'], true)) {
+            if (in_array($current->template(), ['section-list', 'guide', 'sections'], true)) {
                 return $current;
             }
         }

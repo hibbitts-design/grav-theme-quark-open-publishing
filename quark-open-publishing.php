@@ -11,7 +11,11 @@ use RocketTheme\Toolbox\Event\Event;
 class QuarkOpenPublishing extends Quark
 {
     // guide pages
-    const GUIDE_TEMPLATES = ['section-list', 'section', 'section-page', 'sections', 'subsection'];
+    const GUIDE_TEMPLATES = ['section-list', 'guide', 'section', 'section-page', 'sections', 'subsection'];
+
+    // a guide's home page and the Guides page: the names used so far, and the new ones (guide.md and guide-list.md)
+    const GUIDE_HOME_TEMPLATES = ['section-list', 'guide'];
+    const GUIDE_LIST_TEMPLATES = ['reader-list', 'guide-list'];
 
     // The search route set in the SimpleSearch plugin, for example '/search'
     protected $searchRoute = '/search';
@@ -309,10 +313,10 @@ class QuarkOpenPublishing extends Quark
                 $pagesToRemove[] = $page;
             } elseif ($this->isInsideUnpublishedPage($page)) {
                 $pagesToRemove[] = $page;
-            } elseif ($scopePage && $scopePage->template() === 'reader-list' && !$this->isInGuide($page)) {
+            } elseif ($scopePage && in_array($scopePage->template(), self::GUIDE_LIST_TEMPLATES, true) && !$this->isInGuide($page)) {
                 // from a Guides List page: only the guides' own pages (not the blog, other pages or the Guides List page)
                 $pagesToRemove[] = $page;
-            } elseif ($scopePage && $scopePage->template() === 'section-list' && !$this->isPageOrChildOf($page, $scopePage)) {
+            } elseif ($scopePage && in_array($scopePage->template(), self::GUIDE_HOME_TEMPLATES, true) && !$this->isPageOrChildOf($page, $scopePage)) {
                 $pagesToRemove[] = $page;
             }
         }
@@ -346,7 +350,7 @@ class QuarkOpenPublishing extends Quark
         if (!$scopePage) {
             return null;
         }
-        if (!in_array($scopePage->template(), ['section-list', 'reader-list'], true)) {
+        if (!in_array($scopePage->template(), ['section-list', 'guide', 'reader-list', 'guide-list'], true)) {
             return null;
         }
 
@@ -354,13 +358,13 @@ class QuarkOpenPublishing extends Quark
     }
 
     /**
-     * Is the page part of a guide: a Section List page itself, or a page inside one?
+     * Is the page part of a guide: its home page itself (guide.md or section-list.md), or a page inside one?
      */
     protected function isInGuide($page)
     {
         // go up from the page through its parents, looking for a guide's home page
         while ($page) {
-            if ($page->template() === 'section-list') {
+            if (in_array($page->template(), self::GUIDE_HOME_TEMPLATES, true)) {
                 return true;
             }
             $page = $page->parent();
@@ -493,7 +497,7 @@ class QuarkOpenPublishing extends Quark
                 foreach (array_slice($parents, 1) as $parent) {
                     $trailTitles[] = $parent->title();
                 }
-            } elseif ($page->template() === 'section-list') {
+            } elseif (in_array($page->template(), self::GUIDE_HOME_TEMPLATES, true)) {
                 // a guide's home page at the top of the site goes with its own guide's pages, not under the site title
                 $groupTitle = $page->title();
             }

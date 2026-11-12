@@ -1,0 +1,4 @@
+# The Guides page under its new name (guide-list.md): the same settings as a Guides List page (reader-list.md)
+'@extends':
+    type: reader-list
+    context: 'theme://blueprints'

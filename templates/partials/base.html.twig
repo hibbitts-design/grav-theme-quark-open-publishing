@@ -25,16 +25,16 @@
     {% do assets.addCss('theme://css/links.css') %}
     {% do assets.addCss('theme://css/theme.css',100) %}
     {# multi-page content (Section List and Multi-Section pages), loaded before Dark Mode so its colours can be changed there - hibbittsdesign.org #}
-    {% if page.template in ['sections', 'section', 'subsection', 'section-page', 'section-list', 'reader-list'] %}
+    {% if page.template in ['sections', 'section', 'subsection', 'section-page', 'section-list', 'guide', 'reader-list', 'guide-list'] %}
       {% do assets.addCss('theme://css/reader.css') %}
       {% do assets.addJs('theme://js/reader.js', {group:'bottom'}) %}
-    {% elseif page.parent.template == 'section-list' %}
+    {% elseif page.parent.template in ['section-list', 'guide'] %}
       {# another page in a guide's folder (such as Topics): the styles only, for its link back to the guide - the
          guide script's arrow keys are for reading the guide in order #}
       {% do assets.addCss('theme://css/reader.css') %}
     {% endif %}
     {# glossary (see shortcodes/GlossaryShortcode.php): guide pages, and any page with a Glossary or glossary terms #}
-    {% if page.template in ['sections', 'section', 'subsection', 'section-page', 'section-list'] or page.parent.template == 'section-list' or page.header.glossary is defined or 'glossary-term' in page.content %}
+    {% if page.template in ['sections', 'section', 'subsection', 'section-page', 'section-list', 'guide'] or page.parent.template in ['section-list', 'guide'] or page.header.glossary is defined or 'glossary-term' in page.content %}
       {% do assets.addCss('theme://css/glossary.css') %}
       {% do assets.addJs('theme://js/glossary.js', {group:'bottom'}) %}
     {% endif %}
@@ -79,7 +79,7 @@
     {# The page title as a hidden h1 for screen readers - except on guide pages (Section List and Multi-Section pages and their
        sections), which show their title as a visible h1, unless it's hidden, the 404 page, and pages whose text has its own
        "# ..." heading (so they don't get two) - hibbittsdesign.org #}
-    {% set has_visible_h1 = page.template in ['section-list', 'reader-list', 'sections', 'section', 'subsection', 'section-page', 'error']
+    {% set has_visible_h1 = page.template in ['section-list', 'guide', 'reader-list', 'guide-list', 'sections', 'section', 'subsection', 'section-page', 'error']
       and not page.header.hide_page_title and not grav.uri.param('hidepagetitle') %}
     {% if not has_visible_h1 and '<h1' not in page.content %}
     <h1 class="hidden">{{ page.title }}</h1>

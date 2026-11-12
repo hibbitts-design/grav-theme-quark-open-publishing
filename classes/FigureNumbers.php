@@ -118,7 +118,7 @@ class FigureNumbers
     protected static function guideHome($page)
     {
         for ($current = $page; $current && !$current->root(); $current = $current->parent()) {
-            if ($current->template() === 'section-list') {
+            if (in_array($current->template(), ['section-list', 'guide'], true)) {
                 return $current;
             }
         }
@@ -126,7 +126,7 @@ class FigureNumbers
         $section = self::sectionOf($page);
         if ($section && $section->parent() && $section->parent()->root()) {
             foreach (Grav::instance()['pages']->root()->children() as $child) {
-                if ($child->template() === 'section-list') {
+                if (in_array($child->template(), ['section-list', 'guide'], true)) {
                     return $child;
                 }
             }

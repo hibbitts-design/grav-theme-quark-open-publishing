@@ -10,7 +10,7 @@
      Hidden (not visible) and unpublished guides are left out. #}
   {% set guide_pages = [] %}
   {% for child_page in pages.children.visible.published %}
-    {% if child_page.template == 'section-list' %}
+    {% if child_page.template in ['section-list', 'guide'] %}
       {% set guide_pages = guide_pages|merge([child_page]) %}
     {% endif %}
   {% endfor %}

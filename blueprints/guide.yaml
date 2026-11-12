@@ -1,0 +1,4 @@
+# A guide's home page under its new name (guide.md): the same settings as a Section List page (section-list.md)
+'@extends':
+    type: section-list
+    context: 'theme://blueprints'
