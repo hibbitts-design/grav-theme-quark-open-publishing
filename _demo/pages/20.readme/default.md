@@ -3,19 +3,21 @@ title: 'Read Me'
 published: true
 ---
 
-### Create, Share and Collaborate using Grav Open Publishing Space!  
+# Read Me
+
+## Create, Share and Collaborate using Grav Open Publishing Space!  
 
 1. Create a new [Git](https://git-scm.com/) repository (hosted on [GitHub](https://github.com/), [GitLab](https://about.gitlab.com/), [Bitbucket](https://bitbucket.org/) or your own server) with at least one commit.
 2. Set up Git Sync in the Admin Panel for step-by-step instructions – on Grav 2 it has its own [Git Sync](../../admin/plugin/git-sync) menu item, and on Grav 1.7 it's under Plugins → [Git Sync](../../admin/plugins/git-sync).
 3. Configure the [Git Sync Link](../../admin/themes/mytheme) settings in the Theme options to change the display and functionality of the automatically displayed Git Sync Link.
 
-### Embed Open Publishing Space Page Content into Other Systems
+## Embed Open Publishing Space Page Content into Other Systems
 
 By adding the URL parameter (i.e. flag) `chromeless:true` to any Open Publishing Space page you can display that page's content without the global header image, site navigation bar, sidebar and footer - a great way to seamlessly embed Open Publishing Space pages into other systems.  
 
 For example, the URL [http://demo.hibbittsdesign.org/grav-open-publishing-quark/](http://demo.hibbittsdesign.org/grav-open-publishing-quark/) displays the standard Open Publishing Space blog post list page but the URL [http://demo.hibbittsdesign.org/grav-open-publishing-quark/chromeless:true](http://demo.hibbittsdesign.org/grav-open-publishing-quark/chromeless:true) will only display that page's content. Any links between Open Publishing Space pages will result in pages being displayed in the same manner.
 
-### What Else Can the Open Publishing Space do for You? ##
+## What Else Can the Open Publishing Space do for You? ##
 Learn more about the capabilities of the Open Publishing Space project in its [README on GitHub](https://github.com/hibbitts-design/grav-skeleton-open-publishing-space#readme).
 
 <hr>

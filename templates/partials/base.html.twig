@@ -77,10 +77,11 @@
     <div id="page-wrapper">
 
     {# The page title as a hidden h1 for screen readers - except on guide pages (Section List and Multi-Section pages and their
-       sections), which show their title as a visible h1, unless it's hidden - hibbittsdesign.org #}
-    {% set has_visible_h1 = page.template in ['section-list', 'reader-list', 'sections', 'section', 'subsection', 'section-page']
+       sections), which show their title as a visible h1, unless it's hidden, the 404 page, and pages whose text has its own
+       "# ..." heading (so they don't get two) - hibbittsdesign.org #}
+    {% set has_visible_h1 = page.template in ['section-list', 'reader-list', 'sections', 'section', 'subsection', 'section-page', 'error']
       and not page.header.hide_page_title and not grav.uri.param('hidepagetitle') %}
-    {% if not has_visible_h1 %}
+    {% if not has_visible_h1 and '<h1' not in page.content %}
     <h1 class="hidden">{{ page.title }}</h1>
     {% endif %}
 
