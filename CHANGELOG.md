@@ -1,3 +1,11 @@
+# v3.5.2
+## XX/XX/2026
+
+1. [](#new)
+    * New names guide.md (guide home) and guide-list.md (Guides page), as in Quark 2 Open Publishing; the old names still work
+1. [](#bugfix)
+    * No hidden second page title when the page text has its own "# Title", or on the "page not found" page
+
 # v3.5.1
 ## 11/09/2026
 
