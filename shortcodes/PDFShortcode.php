@@ -30,7 +30,9 @@ class PDFShortcode extends Shortcode
             $title = htmlspecialchars($sc->getParameter('title', 'PDF document'), ENT_QUOTES, 'UTF-8');
 
             if ($pdfurl) {
-                return '<span class="video-responsive' . $ratioClass . '"><iframe src="https://docs.google.com/gview?url=' . $pdfurl . '&embedded=true" title="' . $title . '" width="640" height="480" style="border:none"></iframe></span>';
+                // the PDF itself, shown by the browser's own PDF viewer (Google's viewer, used before, sometimes sent an
+                // empty reply that browsers saved as a "gview" download)
+                return '<span class="video-responsive' . $ratioClass . '"><iframe src="' . htmlspecialchars(html_entity_decode($pdfurl, ENT_QUOTES, 'UTF-8'), ENT_QUOTES, 'UTF-8') . '" title="' . $title . '" width="640" height="480" style="border:none"></iframe></span>';
             }
 
         });

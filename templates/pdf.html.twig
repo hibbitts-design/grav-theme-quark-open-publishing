@@ -28,7 +28,8 @@
 {{ page.header.pdf_title }}
 {% endif %}
 <div class="video-responsive video-responsive-1-1">
-<iframe style="border: 0px #ffffff none;" src="https://docs.google.com/gview?url={{ page.header.pdf_url }}&embedded=true" width="640" height="480"></iframe>
+{# the PDF itself, shown by the browser's own PDF viewer (Google's viewer sometimes sent an empty "gview" download) #}
+<iframe style="border: 0px #ffffff none;" src="{{ page.header.pdf_url }}" width="640" height="480"></iframe>
 </div>
 </p>
 </div>
