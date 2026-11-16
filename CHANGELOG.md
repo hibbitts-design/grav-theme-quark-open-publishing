@@ -1,3 +1,9 @@
+# v3.5.3
+## XX/XX/2026
+
+1. [](#improved)
+    * README: a tip pointing Grav 2 users to Quark 2 Open Publishing, with pages as Markdown and course pages for Open Course Space
+
 # v3.5.2
 ## 11/14/2026
 
