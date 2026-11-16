@@ -18,6 +18,9 @@
 
 </div>
 
+> [!TIP]
+> On Grav 2? [Quark 2 Open Publishing](https://github.com/hibbitts-design/grav-theme-quark2-open-publishing) is the same theme on Quark 2, with pages as Markdown and course pages for [Grav Open Course Space](https://github.com/hibbitts-design/grav-skeleton-open-course-space).
+
 Quark Open Publishing adds what open guides and books need on top of the Quark theme, while keeping everything else Quark can do, such as a blog and modular pages: guides with section cards and reading progress – even long ones, grouped into parts – pages that embed cleanly in other systems, links that open each page's source in your Git repository, and a set of shortcodes and page types for rich content.
 
 ## What Sets It Apart
