@@ -10,7 +10,8 @@ use Thunder\Shortcode\Shortcode\ShortcodeInterface;
  *
  *   [term]OER[/term]                            a term, linked to its glossary entry (js/glossary.js shows the definition)
  *   [term name="OER"]open resources[/term]      when the text differs from the term in the glossary
- *   [glossary]                                  the glossary's terms, in alphabetical order
+ *   [glossary]                                  the glossary's terms, in alphabetical order (a long glossary gets
+ *                                               an A–Z index and letter headings, as the [topics] shortcode shows)
  *
  * A guide's Glossary page is a page in the guide with the terms in its front matter:
  *
@@ -22,6 +23,9 @@ use Thunder\Shortcode\Shortcode\ShortcodeInterface;
  */
 class GlossaryShortcode extends Shortcode
 {
+    // a glossary with more terms than this gets an A–Z index and letter headings
+    const LETTERS_FROM = 26;
+
     // published pages with a glossary, found once per request
     protected static $glossaryPages = null;
 
@@ -70,10 +74,19 @@ class GlossaryShortcode extends Shortcode
             return strnatcasecmp($a['term'], $b['term']);
         });
 
+        // a long glossary is split by first letter, with the same A–Z index and letter headings as [topics]
+        $byLetter = count($entries) > self::LETTERS_FROM;
+
         // Not a <dl>: Grav's .md output would run each term into its definition.
         // The term/definition roles keep the pairing for screen readers.
         $output = '<div class="glossary-list">' . "\n";
+        $currentLetter = '';
         foreach ($entries as $entry) {
+            $letter = strtoupper(substr($entry['term'], 0, 1));
+            if ($byLetter && ctype_alpha($letter) && $letter !== $currentLetter) {
+                $output .= '<h2 class="topics-letter" id="' . strtolower($letter) . '">' . $letter . '</h2>' . "\n";
+                $currentLetter = $letter;
+            }
             $id = $this->escape($entry['id']);
             $output .= '<div class="glossary-entry" id="' . $id . '">' . "\n"
                 . '<p class="glossary-entry-term"><strong role="term" id="' . $id . '-term">' . $this->escape($entry['term']) . '</strong></p>' . "\n"
@@ -82,7 +95,30 @@ class GlossaryShortcode extends Shortcode
                 . '</div>' . "\n";
         }
 
-        return $output . '</div>';
+        $output .= '</div>';
+        if ($byLetter) {
+            $output = '<div class="topics-section">' . $this->letterIndex($entries) . $output . '</div>';
+        }
+        return $output;
+    }
+
+    // The A–Z index above a long glossary, as [topics] shows it: a letter with terms links to its heading, and a
+    // letter without is faded (and hidden from screen readers)
+    protected function letterIndex(array $entries): string
+    {
+        $letters = [];
+        foreach ($entries as $entry) {
+            $letters[strtoupper(substr($entry['term'], 0, 1))] = true;
+        }
+        $items = [];
+        foreach (range('A', 'Z') as $letter) {
+            if (isset($letters[$letter])) {
+                $items[] = '<a href="#' . strtolower($letter) . '">' . $letter . '</a>';
+            } else {
+                $items[] = '<span class="topics-index-empty" aria-hidden="true">' . $letter . '</span>';
+            }
+        }
+        return '<nav class="topics-index" aria-label="Glossary A–Z index">' . implode('', $items) . '</nav>';
     }
 
     /**

@@ -2,7 +2,8 @@
    module pages. Shown under the current page in the side list, or, with show_above_content, as an "On this page" box above
    the content on phones and narrow windows (where the side list comes after the page). Needs the Page TOC plugin, which
    also gives each heading the anchor these links jump to; without it, nothing is shown - hibbittsdesign.org #}
-{% if config.plugins['page-toc'].enabled %}
+{# (a page with an A–Z index, such as a long glossary, doesn't need it: the index already links to each letter) #}
+{% if config.plugins['page-toc'].enabled and 'topics-index' not in page.content %}
   {# toc_items(content, first heading level, number of levels): here, one level of h2s #}
   {% set sections = toc_items(page.content, 2, 1) %}
   {% if sections.children|length < 2 %}
