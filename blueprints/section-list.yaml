@@ -209,6 +209,18 @@ form:
                 type: bool
               help: 'Show a search box beside the Start button on this page, and above the side list on its sections and their pages. With the SimpleSearch plugin, it searches just this page and its sections.'
 
+            header.show_search_box_on_page:
+              type: toggle
+              label: Show Search Box on This Page
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+              help: 'Turn off to hide the search box beside the Start button only; its sections and their pages keep theirs.'
+
             sectionpages:
               type: section
               title: Section Pages

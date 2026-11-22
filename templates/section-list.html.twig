@@ -83,6 +83,7 @@
          mode). #}
     {% set show_reader_resume = page.header.keep_my_place is not defined or page.header.keep_my_place %}
     {% set show_reader_search = (page.header.show_search_box is not defined or page.header.show_search_box)
+      and (page.header.show_search_box_on_page is not defined or page.header.show_search_box_on_page)
       and (config.plugins.simplesearch.enabled or config.plugins.tntsearch.enabled) and not embedded_mode %}
 
     {% if show_reader_resume or show_reader_search %}
