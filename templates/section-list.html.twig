@@ -181,8 +181,11 @@
           <li class="column {{ card_column }}">
             <div class="{{ card_class }}">
               {% if card_image %}
-                <div class="card-image">
-                  <img class="img-responsive" src="{{ card_image.cropZoom(800, 400).url }}" alt="">
+                {# a portrait image is shown whole on a light band instead of cropped, as on the Guides List
+                   (see css/reader.css) #}
+                {% set card_image_portrait = card_image.get('height') > card_image.get('width') %}
+                <div class="card-image{{ card_image_portrait ? ' card-image-portrait' }}">
+                  <img class="img-responsive" src="{{ card_image_portrait ? card_image.cropResize(800, 400).url : card_image.cropZoom(800, 400).url }}" alt="">
                 </div>
               {% endif %}
               <div class="card-header">

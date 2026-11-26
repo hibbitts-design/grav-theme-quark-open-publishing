@@ -564,6 +564,11 @@ mark {
     background: var(--qop-dark-link);
 }
 
+/* the band behind a portrait card image (see css/reader.css) */
+.section-card .card-image-portrait img {
+    background: var(--qop-dark-recessed);
+}
+
 .section-card,
 .reader-nav-tile {
     background: var(--qop-dark-card);

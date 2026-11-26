@@ -218,6 +218,16 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
     .section-cards:not(:has(.section-card-image-side)) .section-card > .card-body { grid-row: 3; }
 }
 
+/* A portrait card image, such as a book cover: shown whole at its own shape, centred on a light band in the image's
+   usual 2:1 place, instead of cropped to fill it (see reader-list.html.twig; Dark Mode has its band colour in
+   css/theme-dark.css) */
+.section-card .card-image-portrait img {
+    width: 100%; /* a landscape image is wider than the card; a portrait one is stretched to it, as a band */
+    aspect-ratio: 2 / 1;
+    object-fit: contain;
+    background: #f1f3f5;
+}
+
 /* the author and date sit at the bottom of the card, so they line up even when descriptions differ in length
    (any spare space goes below the description; the author line keeps its own small gap above it) */
 .section-card > .card-body {
@@ -320,6 +330,11 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
         object-fit: cover;
     }
 
+    /* a portrait image is shown whole in its column instead (see above) */
+    .section-card-image-side .card-image-portrait img {
+        object-fit: contain;
+    }
+
     .section-card-image-side .card-header {
         padding: 1.2rem 1.2rem 0;
     }
@@ -334,6 +349,10 @@ dividers, Spectre components (card, label, bar, btn), and link-style hover feedb
         height: 8rem;
         aspect-ratio: auto;
         object-fit: cover;
+    }
+
+    .section-card-image-side .card-image-portrait img {
+        object-fit: contain;
     }
 }
 
