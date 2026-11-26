@@ -6,9 +6,15 @@
 {% set box_scope = search_scope ?? search_scope_page ?? null %}
 {# the placeholder ends in "…"; the name screen readers hear is the same words without it #}
 {% if box_scope and box_scope.template in ['reader-list', 'guide-list'] %}
-    {# from a Guides List page (or its results page): all the guides #}
-    {% set search_placeholder = 'THEME_QUARK_OPEN_PUBLISHING.SEARCH_GUIDES_PLACEHOLDER'|t %}
-    {% set search_label = 'THEME_QUARK_OPEN_PUBLISHING.SEARCH_GUIDES_LABEL'|t %}
+    {# from a Guides List page (or its results page): all the guides – in the page's own words when its Search Box
+       Text setting has them, such as "Search all books" #}
+    {% if box_scope.header.search_box_text %}
+        {% set search_label = box_scope.header.search_box_text %}
+        {% set search_placeholder = search_label ~ '…' %}
+    {% else %}
+        {% set search_placeholder = 'THEME_QUARK_OPEN_PUBLISHING.SEARCH_GUIDES_PLACEHOLDER'|t %}
+        {% set search_label = 'THEME_QUARK_OPEN_PUBLISHING.SEARCH_GUIDES_LABEL'|t %}
+    {% endif %}
 {% elseif box_scope %}
     {% set search_placeholder = 'THEME_QUARK_OPEN_PUBLISHING.SEARCH_SCOPE_PLACEHOLDER'|t %}
     {% set search_label = 'THEME_QUARK_OPEN_PUBLISHING.SEARCH_SCOPE_LABEL'|t %}
@@ -17,7 +23,7 @@
     {% set search_label = 'THEME_QUARK_OPEN_PUBLISHING.SEARCH_LABEL'|t %}
 {% endif %}
 <form class="search-box" role="search" action="{{ search_action }}" method="get">
-    <input class="form-input" type="search" name="query" value="{{ query|e }}" placeholder="{{ search_placeholder }}" aria-label="{{ search_label }}" {% if search_min > 0 %}minlength="{{ search_min }}"{% endif %} required>
+    <input class="form-input" type="search" name="query" value="{{ query|e }}" placeholder="{{ search_placeholder|e }}" aria-label="{{ search_label|e }}" {% if search_min > 0 %}minlength="{{ search_min }}"{% endif %} required>
     {% if box_scope %}
         {# rawRoute, for example /open-education-essentials, stays the same when the page is the site's home page (whose route is /) #}
         <input type="hidden" name="scope" value="{{ box_scope.rawRoute|e('html_attr') }}">

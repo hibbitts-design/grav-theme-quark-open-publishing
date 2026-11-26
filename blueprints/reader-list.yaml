@@ -93,6 +93,12 @@ form:
                 type: bool
               help: 'A search box above the cards that searches all the guides.'
 
+            header.search_box_text:
+              type: text
+              label: Search Box Text
+              placeholder: 'Search all guides'
+              help: 'The search box''s words, such as "Search all books".'
+
         # Hide from Menu comes from this theme's default.yaml (which this page type extends); only its help text
         # changes here - repeating the whole field would list its options twice in Admin
         advanced:
