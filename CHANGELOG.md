@@ -1,5 +1,5 @@
 # v3.5.7
-## XX/XX/2026
+## 11/26/2026
 
 1. [](#new)
     * Search Box Text (Guides List page): the search box's own words, such as "Search all books" for a site of books, instead of "Search all guides"
