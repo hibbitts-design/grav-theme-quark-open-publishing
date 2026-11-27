@@ -38,7 +38,8 @@ class H5PShortcode extends Shortcode
                 // added via shortcode-core so it is kept for cached pages
                 $this->shortcode->addAssets('js', 'https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js');
 
-                return '<span><iframe src="' . $h5psrc . '" title="' . $h5ptitle . '" width="400" height="300" frameborder="0" allowfullscreen="allowfullscreen"></iframe></span>';
+                // full width from the start, so the H5P content sets itself up at its real size (Firefox doesn't rescale it later)
+                return '<span><iframe src="' . $h5psrc . '" title="' . $h5ptitle . '" width="400" height="300" style="width:100%" frameborder="0" allowfullscreen="allowfullscreen"></iframe></span>';
             }
 
         });
