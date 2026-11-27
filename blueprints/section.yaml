@@ -32,9 +32,20 @@ form:
                 validate:
                     type: bool
 
+            # Grav's Taxonomies, moved from the top of this tab to the end, below Page Title
+            taxonomies:
+              ordering@: header.hide_page_title
+
+        # The guide settings, in their own tab (as a guide's home page has its own Details tab)
+        guide_page:
+          type: tab
+          title: Guide Page
+
+          fields:
+
             reader:
                 type: section
-                title: Reader Details
+                title: Guide Page Details
                 underline: true
 
             header.section_number:
@@ -158,7 +169,3 @@ form:
                 purple: Purple
                 plain: Plain
               help: 'The badge colour.'
-
-            # Grav's Taxonomies, moved from the top of this tab to the end, below the guide settings
-            taxonomies:
-              ordering@: header.badge_color
