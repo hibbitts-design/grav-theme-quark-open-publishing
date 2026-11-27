@@ -1,3 +1,9 @@
+# v3.5.9
+## 11/27/2026
+
+1. [](#bugfix)
+    * H5P content shows at full width when a page first loads in Firefox, instead of small until the window is resized
+
 # v3.5.8
 ## 11/27/2026
 
